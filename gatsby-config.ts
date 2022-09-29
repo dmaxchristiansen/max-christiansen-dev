@@ -33,6 +33,23 @@ const config: GatsbyConfig = {
         icon: `src/images/favicon.png`,
       },
     },
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Roboto",
+              variants: ["400", "500", "700"],
+              strategy: "cdn",
+            },
+          ],
+        },
+        useMinify: true,
+        usePreload: true,
+        usePreconnect: false,
+      },
+    },
   ],
 };
 
