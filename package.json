@@ -46,22 +46,6 @@
   "repository": {
     "type": "git"
   },
-  "commitlint": {
-    "rules": {
-      "references-empty": [
-        2,
-        "never"
-      ]
-    },
-    "parserPreset": {
-      "parserOpts": {
-        "referenceActions": null,
-        "issuePrefixes": [
-          "FS-"
-        ]
-      }
-    }
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write"
