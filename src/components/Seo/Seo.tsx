@@ -49,7 +49,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, pathname, image }) => {
       <meta name="description" content={description || siteData.description} />
       <meta
         name="image"
-        content={image || `${siteData.siteUrl}/${siteData.image}`}
+        content={image || `${siteData.siteUrl}${siteData.image}`}
       />
       <meta property="og:site_name" content={siteData.title} />
       <meta property="og:title" content={title || siteData.title} />
@@ -59,11 +59,11 @@ const Seo: React.FC<SeoProps> = ({ title, description, pathname, image }) => {
       />
       <meta
         property="og:image"
-        content={image || `${siteData.siteUrl}/${siteData.image}`}
+        content={image || `${siteData.siteUrl}${siteData.image}`}
       />
       <meta
         property="og:image:secure_url"
-        content={image || `${siteData.siteUrl}/${siteData.image}`}
+        content={image || `${siteData.siteUrl}${siteData.image}`}
       />
       <meta property="og:image:alt" content="fire" />
       <meta property="og:image:type" content="image/jpg" />
@@ -82,7 +82,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, pathname, image }) => {
       />
       <meta
         name="twitter:image"
-        content={image || `${siteData.siteUrl}/${siteData.image}`}
+        content={image || `${siteData.siteUrl}${siteData.image}`}
       />
       <meta name="twitter:image:alt" content="fire" />
       <meta name="twitter:card" content="summary" />
