@@ -1,7 +1,10 @@
-import React from "react";
 import GlobalStyle from "../../styles/GlobalStyle";
 
-const Layout = ({ children }) => (
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => (
   <>
     <GlobalStyle />
     <main>{children}</main>

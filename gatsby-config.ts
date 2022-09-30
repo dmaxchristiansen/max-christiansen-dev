@@ -20,7 +20,11 @@ const config: GatsbyConfig = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-eslint`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-tsconfig-paths`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
