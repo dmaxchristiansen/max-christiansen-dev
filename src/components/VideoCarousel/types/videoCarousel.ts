@@ -1,0 +1,30 @@
+export interface SlideProps {
+  internalId: string;
+  index: number;
+  attribution: string;
+  title: string;
+  quote: string;
+  thumbnailImageUrl: string;
+  videoPreviewImageUrl: string;
+  videoPlaybackId: string;
+}
+
+export interface VideoCarouselProps {
+  isBackgroundDark: boolean;
+  header?: string;
+  slideConfig: SlideProps[];
+}
+
+export interface SingleProps {
+  slide: SlideProps;
+  isBackgroundDark: boolean;
+}
+
+export interface TwoCarouselProps {
+  slideConfig: SlideProps[];
+  isBackgroundDark: boolean;
+}
+
+export interface CarouselProps {
+  isBackgroundDark: boolean;
+}

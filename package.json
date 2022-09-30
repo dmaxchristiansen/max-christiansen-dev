@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Daniel Max Christiansen <dmaxchristiansen@gmail.com>",
   "dependencies": {
+    "@mux/mux-video-react": "^0.5.4",
     "gatsby": "^4.24.0",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
