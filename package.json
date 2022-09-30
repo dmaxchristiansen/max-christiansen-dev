@@ -8,7 +8,9 @@
     "gatsby": "^4.24.0",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
+    "gatsby-plugin-netlify": "^5.0.1",
     "gatsby-plugin-sharp": "^4.24.0",
+    "gatsby-plugin-styled-components": "^5.24.0",
     "gatsby-plugin-webfonts": "^2.2.2",
     "gatsby-source-filesystem": "^4.24.0",
     "gatsby-transformer-sharp": "^4.24.0",
@@ -23,9 +25,19 @@
     "@commitlint/config-conventional": "^17.1.0",
     "@types/node": "^18.7.23",
     "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "@types/react-helmet": "^6.1.5",
     "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
     "enforce-branch-name": "^1.1.2",
+    "eslint": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "gatsby-plugin-eslint": "^4.0.2",
+    "gatsby-plugin-tsconfig-paths": "^1.0.5",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
@@ -38,10 +50,13 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "serve": "gatsby serve",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "type-check": "tsc",
+    "type-check:watch": "tsc --watch",
+    "lint": "eslint './**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint './**/*.{js,jsx,ts,tsx}' --fix",
     "prepare": "husky install"
   },
   "repository": {
@@ -65,6 +80,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
+      "eslint --cache --fix",
       "prettier --write"
     ]
   },

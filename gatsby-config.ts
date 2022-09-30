@@ -10,6 +10,7 @@ const config: GatsbyConfig = {
     siteLanguage: "en",
     ogLanguage: "en_US",
   },
+  jsxRuntime: "automatic",
   plugins: [
     `gatsby-plugin-image`,
     {
@@ -20,7 +21,11 @@ const config: GatsbyConfig = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-eslint`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-tsconfig-paths`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -41,7 +46,7 @@ const config: GatsbyConfig = {
             {
               family: "Roboto",
               variants: ["400", "500", "700"],
-              strategy: "cdn",
+              strategy: "selfHosted",
             },
           ],
         },

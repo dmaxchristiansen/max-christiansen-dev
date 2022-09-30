@@ -1,11 +1,15 @@
-import React from "react";
+import styled from "styled-components";
 import Layout from "../components/Layout/Layout";
 import Seo from "../components/Seo/Seo";
 
+const MainHeader = styled.h1`
+  text-align: center;
+`;
+
 const IndexPage = () => (
   <Layout>
-    <Seo title="Home" pathname="/" />
-    <h1>Frontend Showcase</h1>
+    <Seo title="FrontendShowcase" pathname="/" />
+    <MainHeader>Frontend Showcase</MainHeader>
   </Layout>
 );
 
