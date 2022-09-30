@@ -6,7 +6,7 @@ const config: GatsbyConfig = {
     description: `A showcase of frontend React components built in Gatsby`,
     author: `@RealMaxFaze`,
     image: `/seo/react.png`,
-    siteUrl: `https://www.placeholder.com`,
+    siteUrl: `https://dmc-frontend-showcase.netlify.app`,
     siteLanguage: "en",
     ogLanguage: "en_US",
   },
