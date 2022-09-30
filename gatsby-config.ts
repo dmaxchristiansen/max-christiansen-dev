@@ -10,6 +10,7 @@ const config: GatsbyConfig = {
     siteLanguage: "en",
     ogLanguage: "en_US",
   },
+  jsxRuntime: "automatic",
   plugins: [
     `gatsby-plugin-image`,
     {
