@@ -41,7 +41,7 @@ const config: GatsbyConfig = {
             {
               family: "Roboto",
               variants: ["400", "500", "700"],
-              strategy: "cdn",
+              strategy: "selfHosted",
             },
           ],
         },
