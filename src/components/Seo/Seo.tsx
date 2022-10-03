@@ -1,10 +1,9 @@
 import { useStaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet";
 
 interface SeoProps {
   title?: string;
   description?: string;
-  pathname: string;
+  pathname?: string;
   image?: string;
 }
 
@@ -16,14 +15,12 @@ interface SiteMetadata {
       author: string;
       image: string;
       siteUrl: string;
-      siteLanguage: string;
-      ogLanguage: string;
     };
   };
 }
 
 const Seo: React.FC<SeoProps> = ({ title, description, pathname, image }) => {
-  const data: SiteMetadata = useStaticQuery(
+  const { site }: SiteMetadata = useStaticQuery(
     graphql`
       {
         site {
@@ -33,60 +30,42 @@ const Seo: React.FC<SeoProps> = ({ title, description, pathname, image }) => {
             author
             image
             siteUrl
-            siteLanguage
-            ogLanguage
           }
         }
       }
     `,
   );
+  const siteDefault = site.siteMetadata;
 
-  const siteData = data.site.siteMetadata;
+  const metaTitle = title ? title : siteDefault.title;
+  const metaDescription = description ? description : siteDefault.description;
+  const metaImage = image ? image : siteDefault.image;
+  const metaSiteUrl = pathname
+    ? `${siteDefault.siteUrl}${pathname}`
+    : siteDefault.siteUrl;
+
+  console.log(pathname);
 
   return (
-    <Helmet title={title || siteData.title}>
-      <html lang={siteData.siteLanguage} />
-      <meta name="description" content={description || siteData.description} />
-      <meta
-        name="image"
-        content={image || `${siteData.siteUrl}${siteData.image}`}
-      />
-      <meta property="og:site_name" content={siteData.title} />
-      <meta property="og:title" content={title || siteData.title} />
-      <meta
-        property="og:description"
-        content={description || siteData.description}
-      />
-      <meta
-        property="og:image"
-        content={image || `${siteData.siteUrl}${siteData.image}`}
-      />
-      <meta
-        property="og:image:secure_url"
-        content={image || `${siteData.siteUrl}${siteData.image}`}
-      />
-      <meta property="og:image:alt" content="fire" />
-      <meta property="og:image:type" content="image/jpg" />
-      <meta
-        property="og:url"
-        content={pathname ? `${siteData.siteUrl}${pathname}` : siteData.siteUrl}
-      />
-      <meta property="og:locale" content={siteData.ogLanguage} />
+    <>
+      <title>{metaTitle}</title>
+      <meta name="description" content={metaDescription} />
+      <meta name="image" content={metaImage} />
+      <meta property="og:title" content={metaTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:image" content={metaImage} />
+      <meta property="og:image:secure_url" content={metaImage} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:alt" content="react" />
+      <meta property="og:url" content={metaSiteUrl} />
       <meta property="og:type" content="website" />
-      <meta name="twitter:site" content={siteData.author} />
-      <meta name="twitter:creator" content={siteData.author} />
-      <meta name="twitter:title" content={title || siteData.title} />
-      <meta
-        name="twitter:description"
-        content={description || siteData.description}
-      />
-      <meta
-        name="twitter:image"
-        content={image || `${siteData.siteUrl}${siteData.image}`}
-      />
-      <meta name="twitter:image:alt" content="fire" />
+      <meta name="twitter:title" content={metaTitle} />
+      <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:card" content="summary" />
-    </Helmet>
+      <meta name="twitter:creator" content={siteDefault.author} />
+      <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:image:alt" content="react" />
+    </>
   );
 };
 

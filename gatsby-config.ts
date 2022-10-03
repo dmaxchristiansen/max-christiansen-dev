@@ -5,10 +5,8 @@ const config: GatsbyConfig = {
     title: `Frontend Showcase`,
     description: `A showcase of frontend React components built in Gatsby`,
     author: `@RealMaxFaze`,
-    image: `/seo/react.png`,
+    image: `https://dmc-frontend-showcase.netlify.app/seo/react.png`,
     siteUrl: `https://dmc-frontend-showcase.netlify.app`,
-    siteLanguage: "en",
-    ogLanguage: "en_US",
   },
   jsxRuntime: "automatic",
   plugins: [
