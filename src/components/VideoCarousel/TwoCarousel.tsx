@@ -13,6 +13,8 @@ import {
 import QuotationMark from "./QuotationMark";
 import TwoCarouselSlide from "./TwoCarouselSlide";
 
+const TWO_CAROUSEL_ANIMATION_SPEED = "500ms";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,7 +39,7 @@ const CopyContainer = styled.div<CopyContainerProps>`
   flex-direction: column;
   min-height: 182px;
   margin-bottom: 32px;
-  animation: ${ACTION_KEYFRAMES} 500ms;
+  animation: ${ACTION_KEYFRAMES} ${TWO_CAROUSEL_ANIMATION_SPEED};
   @media (min-width: 768px) {
     width: 35%;
     min-height: unset;
@@ -71,7 +73,7 @@ const Slider = styled.div<SliderProps>`
   left: ${({ activeIndex }) => `-${activeIndex * 100}%`};
   height: 100%;
   width: 200%;
-  transition: left 500ms ease-in-out;
+  transition: left ${TWO_CAROUSEL_ANIMATION_SPEED} ease-in-out;
 `;
 
 const NavButtonRow = styled.div`

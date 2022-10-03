@@ -10,6 +10,7 @@ import {
   SHARED_NAV_BUTTON_ROW_STYLES,
   SLIDE_ANIMATION_SPEED,
   BUTTON_OPACITY_FADE,
+  VIDEO_TRANSITION_SPEED,
 } from "./utils/constants";
 import MuxVideo from "@mux/mux-video-react";
 import CloseButton from "./CloseButton";
@@ -85,7 +86,6 @@ const Second = styled.div<VisibilityProps>`
 
 const AnimatedSecond = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  height: 70%;
   left: ${({ action }) =>
     action === PREV ? "25%" : action === NEXT ? "61.85%" : "47.5%"};
   height: ${({ action }) => (action === PREV ? "100%" : "70%")};
@@ -103,18 +103,18 @@ const Third = styled.div<VisibilityProps>`
 
 const AnimatedThird = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  height: 70%;
   left: ${({ action }) =>
     action === PREV ? "47.5%" : action === NEXT ? "76%" : "61.85%"};
+  height: 70%;
   transition: left ${SLIDE_ANIMATION_SPEED};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
 const PrevClone = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  height: 70%;
   left: ${({ action }) => (action === PREV ? "61.85%" : "76%")};
   transition: left ${SLIDE_ANIMATION_SPEED};
+  height: 70%;
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -157,11 +157,11 @@ const NavButton = styled.button<NavButtonProps>`
 const VideoContainer = styled.div<VisibilityProps>`
   display: flex;
   position: relative;
+  top: ${({ isVisible }) => (isVisible ? "0%" : "-105%")};
   width: 100%;
   border-radius: 16px;
   z-index: ${VIDEO_CONTAINER_Z_INDEX};
-  top: ${({ isVisible }) => (isVisible ? "0%" : "-105%")};
-  transition: top 500ms ease-in-out;
+  transition: top ${VIDEO_TRANSITION_SPEED} ease-in-out;
 `;
 
 const CarouselWrapper = () => {

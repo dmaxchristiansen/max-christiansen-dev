@@ -5,6 +5,7 @@ interface SeoProps {
   description?: string;
   pathname?: string;
   image?: string;
+  noIndex?: boolean;
 }
 
 interface SiteMetadata {
@@ -19,7 +20,13 @@ interface SiteMetadata {
   };
 }
 
-const Seo: React.FC<SeoProps> = ({ title, description, pathname, image }) => {
+const Seo: React.FC<SeoProps> = ({
+  title,
+  description,
+  pathname,
+  image,
+  noIndex,
+}) => {
   const { site }: SiteMetadata = useStaticQuery(
     graphql`
       {
@@ -44,8 +51,6 @@ const Seo: React.FC<SeoProps> = ({ title, description, pathname, image }) => {
     ? `${siteDefault.siteUrl}${pathname}`
     : siteDefault.siteUrl;
 
-  console.log(pathname);
-
   return (
     <>
       <title>{metaTitle}</title>
@@ -65,6 +70,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, pathname, image }) => {
       <meta name="twitter:creator" content={siteDefault.author} />
       <meta name="twitter:image" content={metaImage} />
       <meta name="twitter:image:alt" content="react" />
+      {noIndex && <meta name="robots" content="noindex" />}
     </>
   );
 };
