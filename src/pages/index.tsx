@@ -15,12 +15,13 @@ const MainHeader = styled.h1`
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="FrontendShowcase" pathname="/" />
     <MainHeader>Frontend Showcase</MainHeader>
     <VideoCarousel {...singleConfig} />
     <VideoCarousel {...twoCarouselConfig} />
     <VideoCarousel {...carouselConfig} />
   </Layout>
 );
+
+export const Head = () => <Seo />;
 
 export default IndexPage;
