@@ -9,6 +9,7 @@ import {
   SHARED_NAV_BUTTON_STYLES,
   SLIDE_ANIMATION_SPEED,
   BUTTON_OPACITY_FADE,
+  VIDEO_TRANSITION_SPEED,
 } from "./utils/constants";
 import MuxVideo from "@mux/mux-video-react";
 import { ActionProps, VisibilityProps } from "./CarouselWrapper";
@@ -92,7 +93,7 @@ const AnimatedSecond = styled.div<ActionProps & VisibilityProps>`
     action === NEXT || action === PREV ? "25%" : "calc(50% + 5px)"};
   height: ${({ action }) => (action === PREV ? "200%" : "100%")};
   width: ${({ action }) => (action === PREV ? "50%" : "calc(25% - 5px)")};
-  transition-property: left, top, height, width;
+  transition-property: top, left, height, width;
   transition-duration: ${SLIDE_ANIMATION_SPEED};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
@@ -122,9 +123,9 @@ const NavButton = styled.button`
 const ActiveClone = styled.div<ActionProps & VisibilityProps>`
   display: flex;
   position: absolute;
+  left: ${({ action }) => (action === NEXT ? "0%" : "calc(-100% - 10px)")};
   width: 100%;
   height: 100%;
-  left: ${({ action }) => (action === NEXT ? "0%" : "calc(-100% - 10px)")};
   transition: left ${SLIDE_ANIMATION_SPEED};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
@@ -136,7 +137,7 @@ const Active = styled.div<TransitionProps & VisibilityProps>`
   width: 100%;
   height: 100%;
   z-index: ${VIDEO_PREVIEW_Z_INDEX};
-  transition: top 500ms ease-in-out;
+  transition: top ${VIDEO_TRANSITION_SPEED} ease-in-out;
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -151,7 +152,8 @@ const AnimatedActive = styled.div<ActionProps & VisibilityProps>`
       ? "calc(50% + 5px)"
       : "0%"};
   height: ${({ action }) => (action === NEXT ? "50%" : "100%")};
-  transition-property: left, top, height;
+  width: ${({ action }) => (action === NEXT ? "calc(50% - 5px)" : "100%")};
+  transition-property: top, left, height, width;
   transition-duration: ${SLIDE_ANIMATION_SPEED};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;

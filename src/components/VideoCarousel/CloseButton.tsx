@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { BUTTON_OPACITY_FADE } from "./utils/constants";
+import {
+  BUTTON_OPACITY_FADE,
+  BUTTON_TRANSITION_SPEED,
+} from "./utils/constants";
 import CloseIcon from "./CloseIcon";
 
 interface CloseButtonProps {
@@ -17,7 +20,7 @@ const Button = styled.button`
   border: 2px solid rgba(255, 255, 255, 0);
   border-radius: 5px;
   cursor: pointer;
-  transition: opacity, border 200ms;
+  transition: opacity, border ${BUTTON_TRANSITION_SPEED};
 
   &:hover {
     opacity: ${BUTTON_OPACITY_FADE};

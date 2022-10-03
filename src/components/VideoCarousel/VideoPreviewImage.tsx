@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { VIDEO_TRANSITION_SPEED } from "./utils/constants";
 
 export interface VideoPreviewImageProps {
   backgroundUrl: string;
@@ -16,7 +17,7 @@ const VideoPreview = styled.div<VideoPreviewImageProps>`
   border-radius: 16px;
   background-image: ${({ backgroundUrl }) => `url(${backgroundUrl})`};
   background-size: cover;
-  transition: top 500ms ease-in-out;
+  transition: top ${VIDEO_TRANSITION_SPEED} ease-in-out;
 `;
 
 const VideoPreviewImage: React.FC<

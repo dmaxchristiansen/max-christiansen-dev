@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { BUTTON_OPACITY_FADE } from "./utils/constants";
+import {
+  BUTTON_OPACITY_FADE,
+  BUTTON_TRANSITION_SPEED,
+} from "./utils/constants";
 import PlayIcon from "./PlayIcon";
 
 interface PlayButtonProps {
@@ -19,7 +22,7 @@ const Button = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  transition: opacity 200ms;
+  transition: opacity ${BUTTON_TRANSITION_SPEED};
   &:hover {
     opacity: ${BUTTON_OPACITY_FADE};
   }

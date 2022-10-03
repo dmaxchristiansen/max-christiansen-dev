@@ -22,7 +22,6 @@ const useHandleWindowResize = (resizeCallback: ResizeCallback) => {
 
 export const mobileWidthThreshold = 768;
 
-// Convenience function to handle window resizing that falls below the provided threshold value.
 export const isLessThanWidthThreshold = (widthThreshold: number) => {
   return (width: number, _height: number) => width <= widthThreshold;
 };
