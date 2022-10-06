@@ -72,7 +72,11 @@ const imageKeyframes = keyframes`
 `;
 
 const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
   perspective: 500px;
+  overflow: hidden;
 `;
 
 const ImageWrapper = styled.div`
