@@ -110,10 +110,7 @@ const NavButton = styled.button<NavButtonProps>`
   }
 `;
 
-const TwoCarousel: React.FC<TwoCarouselProps> = ({
-  slideConfig,
-  isBackgroundDark,
-}) => {
+const TwoCarousel: React.FC<TwoCarouselProps> = ({ slideConfig }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -124,7 +121,7 @@ const TwoCarousel: React.FC<TwoCarouselProps> = ({
           activeIndex={activeIndex}
           slideIndex={slide.index}
         >
-          <QuotationMark isWhite={isBackgroundDark} />
+          <QuotationMark isWhite={true} />
           <Quote>{slide.quote}</Quote>
           <Attribution>{slide.attribution}</Attribution>
           <Title>{slide.title}</Title>

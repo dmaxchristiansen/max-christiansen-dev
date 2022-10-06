@@ -6,24 +6,17 @@ import Single from "./Single";
 import TwoCarousel from "./TwoCarousel";
 import Carousel from "./Carousel";
 
-interface BackgroundProps {
-  isBackgroundDark: boolean;
-}
-
-const Container = styled.div<BackgroundProps>`
+const Container = styled.div`
   padding-top: 32px;
-  background-color: ${({ isBackgroundDark }) =>
-    isBackgroundDark ? "#000000" : "#ffffff"};
   @media (min-width: 768px) {
     padding-top: 64px;
   }
 `;
 
-const Wrapper = styled.div<BackgroundProps>`
+const Wrapper = styled.div`
   max-width: 1350px;
   margin: 0 auto;
-  color: ${({ isBackgroundDark }) =>
-    isBackgroundDark ? "#ffffff" : "#000000"};
+  color: #ffffff;
 `;
 
 const Header = styled.h2`
@@ -43,26 +36,18 @@ const Header = styled.h2`
 `;
 
 const VideoCarousel: React.FC<VideoCarouselProps> = ({
-  isBackgroundDark,
   header,
   slideConfig,
 }) => {
   const renderVariants = (slideConfig: SlideProps[]) => {
     if (slideConfig.length === 1) {
-      return (
-        <Single slide={slideConfig[0]} isBackgroundDark={isBackgroundDark} />
-      );
+      return <Single slide={slideConfig[0]} />;
     } else if (slideConfig.length === 2) {
-      return (
-        <TwoCarousel
-          slideConfig={slideConfig}
-          isBackgroundDark={isBackgroundDark}
-        />
-      );
+      return <TwoCarousel slideConfig={slideConfig} />;
     } else {
       return (
         <CarouselContextProvider slideConfig={slideConfig}>
-          <Carousel isBackgroundDark={isBackgroundDark} />
+          <Carousel />
         </CarouselContextProvider>
       );
     }
@@ -70,8 +55,8 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({
 
   return (
     <WindowResizeContextProvider>
-      <Container isBackgroundDark={isBackgroundDark}>
-        <Wrapper isBackgroundDark={isBackgroundDark}>
+      <Container>
+        <Wrapper>
           {header && <Header>{header}</Header>}
           {renderVariants(slideConfig)}
         </Wrapper>

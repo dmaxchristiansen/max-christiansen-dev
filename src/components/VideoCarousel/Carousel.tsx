@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { CarouselProps } from "./types/videoCarousel";
 import {
   Quote,
   Attribution,
@@ -49,7 +48,7 @@ const CopyContainer = styled.div`
   }
 `;
 
-const Carousel: React.FC<CarouselProps> = ({ isBackgroundDark }) => {
+const Carousel: React.FC = () => {
   const context = useContext(CarouselContext);
   const isMobile = useHandleWindowResize(isLessThanWidthThreshold(767));
 
@@ -58,7 +57,7 @@ const Carousel: React.FC<CarouselProps> = ({ isBackgroundDark }) => {
       <CopyContainer
         key={`copyContainer-${context?.activeIndex.toString() ?? ""}`}
       >
-        <QuotationMark isWhite={isBackgroundDark} />
+        <QuotationMark isWhite={true} />
         <Quote>{context?.activeQuote}</Quote>
         <Attribution>{context?.activeName}</Attribution>
         <Title>{context?.activeTitle}</Title>

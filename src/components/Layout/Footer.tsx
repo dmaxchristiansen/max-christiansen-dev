@@ -6,9 +6,8 @@ interface DataProps {
 }
 
 const Container = styled.div`
-  display: flex;
+  margin-top: auto;
   padding-bottom: 6px;
-  background-color: #343a40;
 `;
 
 const Wrapper = styled.div`
@@ -26,6 +25,8 @@ const Wrapper = styled.div`
 const Text = styled.p`
   margin: 6px 6px 0;
   line-height: 1;
+  font-family: "Exo";
+  font-size: 20px;
   @media (min-width: 768px) {
     margin: 6px 18px 0;
   }
@@ -33,6 +34,8 @@ const Text = styled.p`
 
 const Link = styled.a`
   color: #f8f9fa;
+  font-family: "Exo";
+  font-weight: 400;
 `;
 
 const Footer: React.FC = () => {
