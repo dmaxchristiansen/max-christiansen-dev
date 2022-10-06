@@ -60,7 +60,7 @@ const Nav = () => (
     <Wrapper>
       <StyledHomeLink to="/">
         <StaticImage
-          src="../../images/otter_icon.png"
+          src="../../images/otter-icon-nav.png"
           alt=""
           width={40}
           placeholder="tracedSVG"
@@ -70,11 +70,6 @@ const Nav = () => (
       <List>
         <Item>
           <StyledItemLink to="/chambers/marquee">Marquee</StyledItemLink>
-        </Item>
-        <Item>
-          <StyledItemLink to="/chambers/video-carousel">
-            Video Carousel
-          </StyledItemLink>
         </Item>
       </List>
     </Wrapper>

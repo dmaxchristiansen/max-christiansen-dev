@@ -33,7 +33,7 @@ const config: GatsbyConfig = {
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/otter-favioh.png`,
+        icon: `src/images/otter-favicon.png`,
       },
     },
     {
