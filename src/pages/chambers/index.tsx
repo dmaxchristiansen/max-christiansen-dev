@@ -62,6 +62,23 @@ const VideoCarouselHeader = styled.h1<HeaderProps>`
   animation-delay: 1s;
 `;
 
+const imageKeyframes = keyframes`
+  from { 
+    transform: rotateY(0deg); 
+  }
+  to { 
+    transform: rotateY(360deg);
+  }
+`;
+
+const ImageContainer = styled.div`
+  perspective: 500px;
+`;
+
+const ImageWrapper = styled.div`
+  animation: ${imageKeyframes} 5s linear infinite;
+`;
+
 const ChambersPage = () => {
   const [isAnimated, setIsAnimated] = useState(true);
   return (
@@ -76,21 +93,25 @@ const ChambersPage = () => {
             Marquee
           </MarqueeHeader>
         </StyledLink>
-        <StyledLink to="/chambers/video-carousel">
+        <StyledLink to="/">
           <VideoCarouselHeader
             isAnimated={isAnimated}
             onMouseOver={() => setIsAnimated(false)}
             onMouseLeave={() => setIsAnimated(true)}
           >
-            Video Carousel
+            Something Else
           </VideoCarouselHeader>
         </StyledLink>
-        <StaticImage
-          src="../../images/otter-friend.png"
-          alt="otter"
-          width={400}
-          placeholder="tracedSVG"
-        />
+        <ImageContainer>
+          <ImageWrapper>
+            <StaticImage
+              src="../../images/otter-friend.png"
+              alt="otter"
+              width={400}
+              placeholder="tracedSVG"
+            />
+          </ImageWrapper>
+        </ImageContainer>
       </Container>
     </Layout>
   );
