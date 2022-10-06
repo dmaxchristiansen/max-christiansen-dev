@@ -13,7 +13,6 @@ export const buttonConfig = [
 ];
 
 export const singleConfig = {
-  isBackgroundDark: true,
   header: "Single Slide",
   slideConfig: [
     {
@@ -30,7 +29,6 @@ export const singleConfig = {
 };
 
 export const twoCarouselConfig = {
-  isBackgroundDark: false,
   header: "Two Slide Carousel",
   slideConfig: [
     {
@@ -57,7 +55,6 @@ export const twoCarouselConfig = {
 };
 
 export const carouselConfig = {
-  isBackgroundDark: true,
   header: "3+ Slides Carousel",
   slideConfig: [
     {

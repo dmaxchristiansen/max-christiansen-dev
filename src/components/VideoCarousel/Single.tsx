@@ -45,7 +45,7 @@ const VideoContainer = styled.div`
   }
 `;
 
-const Single: React.FC<SingleProps> = ({ slide, isBackgroundDark }) => {
+const Single: React.FC<SingleProps> = ({ slide }) => {
   const { attribution, title, quote, videoPreviewImageUrl, videoPlaybackId } =
     slide;
 
@@ -71,7 +71,7 @@ const Single: React.FC<SingleProps> = ({ slide, isBackgroundDark }) => {
   return (
     <Container>
       <CopyContainer>
-        <QuotationMark isWhite={isBackgroundDark} />
+        <QuotationMark isWhite={true} />
         <Quote>{quote}</Quote>
         <Attribution>{attribution}</Attribution>
         <Title>{title}</Title>

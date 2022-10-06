@@ -46,6 +46,15 @@ const config: GatsbyConfig = {
               variants: ["400", "500", "700"],
               strategy: "selfHosted",
             },
+            {
+              family: "Mr Dafoe",
+              strategy: "selfHosted",
+            },
+            {
+              family: "Exo",
+              variants: ["900"],
+              strategy: "selfHosted",
+            },
           ],
         },
         useMinify: true,
