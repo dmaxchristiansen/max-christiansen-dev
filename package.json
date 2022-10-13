@@ -6,7 +6,7 @@
   "author": "Daniel Max Christiansen <dmaxchristiansen@gmail.com>",
   "dependencies": {
     "@mux/mux-video-react": "^0.5.4",
-    "gatsby": "^4.24.0",
+    "gatsby": "^4.24.4",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
     "gatsby-plugin-netlify": "^5.0.1",
@@ -15,9 +15,8 @@
     "gatsby-plugin-webfonts": "^2.2.2",
     "gatsby-source-filesystem": "^4.24.0",
     "gatsby-transformer-sharp": "^4.24.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "styled-components": "^5.3.6",
     "uuid": "^9.0.0"
   },
@@ -86,7 +85,7 @@
     ]
   },
   "engines": {
-    "node": "16.15.0",
-    "npm": "8.5.5"
+    "node": "16.17.1",
+    "npm": "8.15.0"
   }
 }

@@ -5,7 +5,7 @@ const config: GatsbyConfig = {
     title: `Frontend Showcase`,
     description: `A showcase of frontend React components built in Gatsby`,
     author: `@RealMaxFaze`,
-    image: `https://dmc-frontend-showcase.netlify.app/seo/react.png`,
+    image: `https://dmc-frontend-showcase.netlify.app/otter-icon.png`,
     siteUrl: `https://dmc-frontend-showcase.netlify.app`,
   },
   jsxRuntime: "automatic",
@@ -33,7 +33,7 @@ const config: GatsbyConfig = {
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/otter-favicon.png`,
+        icon: `static/otter-icon.png`,
       },
     },
     {
@@ -52,7 +52,7 @@ const config: GatsbyConfig = {
             },
             {
               family: "Exo",
-              variants: ["900"],
+              variants: ["500", "900"],
               strategy: "selfHosted",
             },
           ],
