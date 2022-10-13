@@ -2,28 +2,24 @@ module.exports = {
   globals: {
     __PATH_PREFIX__: true,
   },
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ["./tsconfig.json"],
+  },
   root: true,
   env: {
     browser: true,
     node: true,
   },
-  parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint", "unused-imports", "react-hooks"],
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"],
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      ],
-      parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ["./tsconfig.json"],
-      },
-    },
+  extends: [
+    "eslint:recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "react-app",
   ],
-  extends: ["react-app", "plugin:jsx-a11y/recommended", "eslint:recommended"],
-  ignorePatterns: ["gatsby-*.ts", "public"],
   rules: {
     quotes: [
       "warn",
@@ -31,8 +27,8 @@ module.exports = {
       { avoidEscape: true, allowTemplateLiterals: true },
     ],
     "react/destructuring-assignment": "warn",
-    "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "unused-imports/no-unused-imports": "warn",

@@ -4,9 +4,6 @@
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": "./",
-    "paths": {
-      "src/*": ["src/*"]
-    },
     "declaration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -17,6 +14,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -24,13 +22,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "./public",
+    "paths": {
+      "src/*": ["src/*"]
+    },
     "removeComments": true,
     "resolveJsonModule": true,
+    "sourceMap": true,
     "strict": true,
     "skipLibCheck": true,
-    "target": "esnext",
-    "sourceMap": true,
-    "noEmit": true
+    "target": "esnext"
   },
   "include": ["src", "types.d.ts", ".eslintrc.js", "gatsby-*"]
 }
