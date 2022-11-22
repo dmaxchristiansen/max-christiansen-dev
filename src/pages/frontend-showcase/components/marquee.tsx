@@ -4,8 +4,7 @@ import Marquee from "src/components/Marquee/Marquee";
 import { emojiConfig } from "src/components/Marquee/utils/configs";
 
 const MarqueePage = () => (
-  <Layout headerText="Marquee">
-    <div>TODO: Add back button</div>
+  <Layout headerText="Marquee" hasBackButton>
     <Marquee pt="48px" pb="48px" backwardScroll images={emojiConfig} />
     <Marquee pt="48px" pb="48px" images={emojiConfig} />
   </Layout>
