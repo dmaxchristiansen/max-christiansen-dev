@@ -2,15 +2,13 @@ import { useState } from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import styled, { css, keyframes } from "styled-components";
-import Layout from "../../components/Layout/Layout";
-import Seo from "../../components/Seo/Seo";
+import Layout from "src/components/Layout/Layout";
+import Seo from "src/components/Seo/Seo";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (max-width: 520px) {
-  }
 `;
 
 interface HeaderProps {
@@ -83,12 +81,13 @@ const ImageWrapper = styled.div`
   animation: ${imageKeyframes} 5s linear infinite;
 `;
 
-const ChambersPage = () => {
+const ComponentsPage = () => {
   const [isAnimated, setIsAnimated] = useState(true);
+
   return (
     <Layout>
       <Container>
-        <StyledLink to="/chambers/marquee">
+        <StyledLink to="/frontend-showcase/components/marquee">
           <MarqueeHeader
             isAnimated={isAnimated}
             onMouseOver={() => setIsAnimated(false)}
@@ -97,19 +96,19 @@ const ChambersPage = () => {
             Marquee
           </MarqueeHeader>
         </StyledLink>
-        <StyledLink to="/">
+        <StyledLink to="/frontend-showcase/components/video-carousel">
           <VideoCarouselHeader
             isAnimated={isAnimated}
             onMouseOver={() => setIsAnimated(false)}
             onMouseLeave={() => setIsAnimated(true)}
           >
-            Something Else
+            Video Carousel
           </VideoCarouselHeader>
         </StyledLink>
         <ImageContainer>
           <ImageWrapper>
             <StaticImage
-              src="../../images/otter-friend.png"
+              src="../../../images/otter-friend.png"
               alt="otter"
               width={400}
               placeholder="tracedSVG"
@@ -121,6 +120,12 @@ const ChambersPage = () => {
   );
 };
 
-export const Head = () => <Seo title="Chambers" />;
+export const Head = () => (
+  <Seo
+    title="Components"
+    description="React components built in Gatsby"
+    pathname="/frontend-showcase/components"
+  />
+);
 
-export default ChambersPage;
+export default ComponentsPage;

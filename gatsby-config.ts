@@ -2,8 +2,8 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Frontend Showcase`,
-    description: `A showcase of frontend React components built in Gatsby`,
+    title: `Max Christiansen Dev`,
+    description: `Developer devoted to creating great web experiences, meet Max Christiansen`,
     author: `@RealMaxFaze`,
     image: `https://dmc-frontend-showcase.netlify.app/otter-icon.png`,
     siteUrl: `https://dmc-frontend-showcase.netlify.app`,
@@ -27,8 +27,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Frontend Showcase`,
-        short_name: `Frontend Showcase`,
+        name: `Max Christiansen Dev`,
+        short_name: `Max Christiansen Dev`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffffff`,

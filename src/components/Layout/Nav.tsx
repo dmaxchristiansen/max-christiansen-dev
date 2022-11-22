@@ -1,20 +1,27 @@
 import { useState, useEffect } from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { Link } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 
 const SCROLL_REACTION_THRESHOLD = 5;
+const TRANSITION_TIME = "250ms";
 
 interface ContainerProps {
-  isOpaque: boolean;
+  isScrolled: boolean;
 }
 
 const Container = styled.nav<ContainerProps>`
   position: fixed;
   width: 100%;
-  background-color: ${({ isOpaque }) => isOpaque && "#ffffff"};
-  box-shadow: ${({ isOpaque }) => isOpaque && "0 0 8px 0 rgba(0, 0, 0, 0.3)"};
-  transition: background-color 250ms;
+  background-color: ${({ isScrolled }) =>
+    isScrolled && "rgba(26, 26, 26, 0.7)"};
+  box-shadow: ${({ isScrolled }) =>
+    isScrolled && "0 0 8px 0 rgba(0, 0, 0, 0.3)"};
+  backdrop-filter: ${({ isScrolled }) =>
+    isScrolled && "saturate(180%) blur(20px)"};
+  z-index: 1000;
+  transition-property: background-color, backdrop-filter;
+  transition-duration: ${TRANSITION_TIME};
 `;
 
 const Wrapper = styled.div`
@@ -23,28 +30,22 @@ const Wrapper = styled.div`
   max-width: 1350px;
   margin: 0 auto;
   padding: 6px 30px;
+  font-size: 20px;
 `;
 
 const StyledHomeLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  transition: opacity 250ms;
+  transition: opacity ${TRANSITION_TIME};
   &:hover {
     opacity: 0.85;
   }
 `;
 
-interface TextProps {
-  isDark: boolean;
-}
-
-const HomeLinkText = styled.div<TextProps>`
+const HomeLinkText = styled.div`
   margin-left: 12px;
-  color: ${({ isDark }) => (isDark ? "#000000" : "#ffffff")};
-  font-family: "Exo";
-  font-size: 22px;
-  transition: color 250ms;
+  color: #ffffff;
 `;
 
 const List = styled.ul`
@@ -57,54 +58,19 @@ const List = styled.ul`
 const Item = styled.li`
   list-style: none;
   margin: 0 12px 0;
-  transition: opacity 250ms;
+  transition: opacity ${TRANSITION_TIME};
   &:hover {
     opacity: 0.75;
   }
 `;
 
-interface IconDataProps {
-  whiteIcon: {
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData;
-    };
-  };
-  blackIcon: {
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData;
-    };
-  };
-}
-
-const StyledItemLink = styled(Link).withConfig({
-  shouldForwardProp: prop => !["isDark"].includes(prop),
-})<TextProps>`
+const StyledItemLink = styled(Link)`
   text-decoration: none;
-  color: ${({ isDark }) => (isDark ? "#000000" : "#ffffff")};
-  font-family: "Exo";
-  font-size: 22px;
-  transition: color 250ms;
+  color: #ffffff;
+  color: #00a1ef;
 `;
 
 const Nav = () => {
-  const iconData: IconDataProps = useStaticQuery(graphql`
-    {
-      whiteIcon: file(name: { eq: "otter-icon-nav-white" }) {
-        childImageSharp {
-          gatsbyImageData(placeholder: TRACED_SVG, quality: 100, width: 40)
-        }
-      }
-      blackIcon: file(name: { eq: "otter-icon-nav-black" }) {
-        childImageSharp {
-          gatsbyImageData(placeholder: TRACED_SVG, quality: 100, width: 40)
-        }
-      }
-    }
-  `);
-
-  const whiteIcon = iconData.whiteIcon.childImageSharp.gatsbyImageData;
-  const blackIcon = iconData.blackIcon.childImageSharp.gatsbyImageData;
-
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -122,17 +88,31 @@ const Nav = () => {
   });
 
   return (
-    <Container isOpaque={isScrolled}>
+    <Container isScrolled={isScrolled}>
       <Wrapper>
         <StyledHomeLink to="/">
-          <GatsbyImage image={isScrolled ? blackIcon : whiteIcon} alt="otter" />
-          <HomeLinkText isDark={isScrolled}>Frontend Showcase</HomeLinkText>
+          <StaticImage
+            src="../../images/otter-icon-nav-white.png"
+            width={36}
+            placeholder="tracedSVG"
+            alt="otter"
+          />
+          <HomeLinkText>Max Christiansen Dev</HomeLinkText>
         </StyledHomeLink>
         <List>
           <Item>
-            <StyledItemLink isDark={isScrolled} to="/chambers/marquee">
-              Marquee
+            <StyledItemLink to="#">&#x2f;&#x2f;&nbsp;expertise</StyledItemLink>
+          </Item>
+          <Item>
+            <StyledItemLink to="#">&#x2f;&#x2f;&nbsp;work</StyledItemLink>
+          </Item>
+          <Item>
+            <StyledItemLink to="/frontend-showcase">
+              &#x2f;&#x2f;&nbsp;showcase
             </StyledItemLink>
+          </Item>
+          <Item>
+            <StyledItemLink to="#">&#x2f;&#x2f;&nbsp;contact</StyledItemLink>
           </Item>
         </List>
       </Wrapper>

@@ -5,12 +5,12 @@ const GlobalStyle = createGlobalStyle`
   *::before, 
   *::after {
     box-sizing: inherit;
-    font-family: Roboto, sans-serif;
+    font-family: Exo, sans-serif;
   }
 
   html {
     box-sizing: border-box;
-    font-family: Roboto, sans-serif;
+    font-family: Exo, sans-serif;
   }
 
   body {
