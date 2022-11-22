@@ -1,3 +1,3 @@
 <h1 align="center">
-  Frontend Showcase
+  Max Christiansen Dev
 </h1>
