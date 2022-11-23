@@ -27,6 +27,10 @@ const Container = styled.nav<ContainerProps>`
   backdrop-filter: ${({ isScrolled }) =>
     isScrolled && SCROLLED_BACKDROP_FILTER};
   z-index: ${NAV_Z_INDEX};
+
+  @media (max-width: 991px) {
+    display: none;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -134,7 +138,7 @@ const Nav = () => {
             <ItemLink to="/showcase">&#x2f;&#x2f;&nbsp;showcase</ItemLink>
           </Item>
           <Item>
-            <ItemLink to="#">&#x2f;&#x2f;&nbsp;contact</ItemLink>
+            <ItemLink to="/contact">&#x2f;&#x2f;&nbsp;contact</ItemLink>
           </Item>
         </List>
       </Wrapper>
