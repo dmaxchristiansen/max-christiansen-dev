@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import {
-  BUTTON_OPACITY_FADE,
-  BUTTON_TRANSITION_SPEED,
-} from "./utils/constants";
+import { FAST } from "src/utils/constants/transition-speeds";
+import { CAROUSEL_PLAY_BUTTON_Z_INDEX } from "src/utils/constants/layer-constants";
+import { OPACITY_FADE } from "src/utils/constants/animation-constants";
 import PlayIcon from "./PlayIcon";
 
 interface PlayButtonProps {
@@ -11,20 +10,18 @@ interface PlayButtonProps {
   onButtonClick: () => void;
 }
 
-const BUTTON_Z_INDEX = "10";
-
 const Button = styled.button`
   position: absolute;
   left: 16px;
   bottom: 16px;
   padding: 0;
-  z-index: ${BUTTON_Z_INDEX};
+  z-index: ${CAROUSEL_PLAY_BUTTON_Z_INDEX};
   border: none;
   background: none;
   cursor: pointer;
-  transition: opacity ${BUTTON_TRANSITION_SPEED};
+  transition: opacity ${FAST};
   &:hover {
-    opacity: ${BUTTON_OPACITY_FADE};
+    opacity: ${OPACITY_FADE};
   }
   @media (min-width: 992px) {
     left: 24px;

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
-import Layout from "../components/Layout/Layout";
-import Seo from "../components/Seo/Seo";
+import downArrow from "src/images/down-arrow.gif";
+import { scrollToTargetElement } from "src/utils/helpers";
+import Layout from "src/components/Layout/Layout";
+import Seo from "src/components/Seo/Seo";
 
 const Container = styled.div`
   display: flex;
@@ -20,7 +22,6 @@ const ProfileContainer = styled.div`
 const ProfileCopyContainer = styled.div`
   width: 70%;
   margin-left: 40px;
-  color: #ffffff;
 `;
 
 const ProfileHeader = styled.h1`
@@ -43,8 +44,23 @@ const Placeholder = styled.div`
   height: 800px;
   width: 100%;
   margin-bottom: 50px;
-  color: #ffffff;
   outline: 1px solid red;
+`;
+
+const ScrollDownButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const ScrollDownButton = styled.button`
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
+
+const DownArrow = styled.img`
+  width: 140px;
 `;
 
 const IndexPage = () => (
@@ -70,7 +86,16 @@ const IndexPage = () => (
           </ProfileCopy>
         </ProfileCopyContainer>
       </ProfileContainer>
-      <Placeholder>expertise</Placeholder>
+      <ScrollDownButtonWrapper>
+        <ScrollDownButton
+          type="button"
+          aria-label="scroll down"
+          onClick={() => scrollToTargetElement("expertise", 70)}
+        >
+          <DownArrow src={downArrow} alt="scroll down arrow" />
+        </ScrollDownButton>
+      </ScrollDownButtonWrapper>
+      <Placeholder id="expertise">expertise</Placeholder>
       <Placeholder id="work">work</Placeholder>
     </Container>
   </Layout>

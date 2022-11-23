@@ -2,9 +2,17 @@ import { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+import { NAV_Z_INDEX } from "src/utils/constants/layer-constants";
+import { BLUE_EYES } from "src/styles/colors";
+import { FAST } from "src/utils/constants/transition-speeds";
+import { OPACITY_FADE } from "src/utils/constants/animation-constants";
+import { scrollToTargetElement } from "src/utils/helpers";
 
 const SCROLL_REACTION_THRESHOLD = 5;
-const TRANSITION_TIME = "250ms";
+
+const SCROLLED_BACKGROUND_COLOR = "rgba(26, 26, 26, 0.7)";
+const SCROLLED_BOX_SHADOW = "0 0 8px 0 rgba(0, 0, 0, 0.3)";
+const SCROLLED_BACKDROP_FILTER = "saturate(180%) blur(20px)";
 
 interface ContainerProps {
   isScrolled: boolean;
@@ -14,14 +22,11 @@ const Container = styled.nav<ContainerProps>`
   position: fixed;
   width: 100%;
   background-color: ${({ isScrolled }) =>
-    isScrolled && "rgba(26, 26, 26, 0.7)"};
-  box-shadow: ${({ isScrolled }) =>
-    isScrolled && "0 0 8px 0 rgba(0, 0, 0, 0.3)"};
+    isScrolled && SCROLLED_BACKGROUND_COLOR};
+  box-shadow: ${({ isScrolled }) => isScrolled && SCROLLED_BOX_SHADOW};
   backdrop-filter: ${({ isScrolled }) =>
-    isScrolled && "saturate(180%) blur(20px)"};
-  z-index: 1000;
-  transition-property: background-color, backdrop-filter;
-  transition-duration: ${TRANSITION_TIME};
+    isScrolled && SCROLLED_BACKDROP_FILTER};
+  z-index: ${NAV_Z_INDEX};
 `;
 
 const Wrapper = styled.div`
@@ -37,15 +42,14 @@ const StyledHomeLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  transition: opacity ${TRANSITION_TIME};
+  transition: opacity ${FAST};
   &:hover {
-    opacity: 0.85;
+    opacity: ${OPACITY_FADE};
   }
 `;
 
 const HomeLinkText = styled.div`
   margin-left: 12px;
-  color: #ffffff;
 `;
 
 const List = styled.ul`
@@ -57,17 +61,25 @@ const List = styled.ul`
 
 const Item = styled.li`
   list-style: none;
-  margin: 0 12px 0;
-  transition: opacity ${TRANSITION_TIME};
+  margin: 0 0 0 18px;
+  transition: opacity ${FAST};
   &:hover {
-    opacity: 0.75;
+    opacity: ${OPACITY_FADE};
   }
 `;
 
-const StyledItemLink = styled(Link)`
+const ItemLink = styled(Link)`
   text-decoration: none;
-  color: #ffffff;
-  color: #00a1ef;
+  color: ${BLUE_EYES};
+`;
+
+const ItemButton = styled.button`
+  padding: 0;
+  color: ${BLUE_EYES};
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
 `;
 
 const Nav = () => {
@@ -101,18 +113,28 @@ const Nav = () => {
         </StyledHomeLink>
         <List>
           <Item>
-            <StyledItemLink to="#">&#x2f;&#x2f;&nbsp;expertise</StyledItemLink>
+            <ItemButton
+              type="button"
+              aria-label="scroll to expertise"
+              onClick={() => scrollToTargetElement("expertise", 70)}
+            >
+              &#x2f;&#x2f;&nbsp;expertise
+            </ItemButton>
           </Item>
           <Item>
-            <StyledItemLink to="#work">&#x2f;&#x2f;&nbsp;work</StyledItemLink>
+            <ItemButton
+              type="button"
+              aria-label="scroll to work"
+              onClick={() => scrollToTargetElement("work", 70)}
+            >
+              &#x2f;&#x2f;&nbsp;work
+            </ItemButton>
           </Item>
           <Item>
-            <StyledItemLink to="/frontend-showcase">
-              &#x2f;&#x2f;&nbsp;showcase
-            </StyledItemLink>
+            <ItemLink to="/showcase">&#x2f;&#x2f;&nbsp;showcase</ItemLink>
           </Item>
           <Item>
-            <StyledItemLink to="#">&#x2f;&#x2f;&nbsp;contact</StyledItemLink>
+            <ItemLink to="#">&#x2f;&#x2f;&nbsp;contact</ItemLink>
           </Item>
         </List>
       </Wrapper>

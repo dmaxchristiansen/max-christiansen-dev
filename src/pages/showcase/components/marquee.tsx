@@ -10,6 +10,12 @@ const MarqueePage = () => (
   </Layout>
 );
 
-export const Head = () => <Seo title="Marquee" />;
+export const Head = () => (
+  <Seo
+    title="Marquee"
+    description="A smooth scrolling marquee component"
+    pathname="/showcase/components/marquee"
+  />
+);
 
 export default MarqueePage;

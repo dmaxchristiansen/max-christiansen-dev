@@ -16,7 +16,6 @@ const Container = styled.div`
 const Wrapper = styled.div`
   max-width: 1350px;
   margin: 0 auto;
-  color: #ffffff;
 `;
 
 const Header = styled.h2`

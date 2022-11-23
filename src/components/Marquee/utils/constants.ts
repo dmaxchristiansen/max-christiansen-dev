@@ -18,7 +18,7 @@ export const BACKWARD_KEYFRAMES = keyframes`
   }
 `;
 
-export const CONTAINER_MAX_WIDTH = 1440;
+export const CONTAINER_MAX_WIDTH = 1350;
 
 export const IMAGE_MAX_WIDTH = 128;
 export const IMAGE_WRAPPER_PADDING_X = 60;

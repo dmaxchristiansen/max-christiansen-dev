@@ -15,6 +15,12 @@ const VideoCarouselPage = () => (
   </Layout>
 );
 
-export const Head = () => <Seo noIndex />;
+export const Head = () => (
+  <Seo
+    title="Video Carousel"
+    description="Three variants of a video carousel component"
+    pathname="/showcase/components/video-carousel"
+  />
+);
 
 export default VideoCarouselPage;

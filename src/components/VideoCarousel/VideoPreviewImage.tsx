@@ -1,23 +1,22 @@
 import styled from "styled-components";
-import { VIDEO_TRANSITION_SPEED } from "./utils/constants";
+import { MEDIUM } from "src/utils/constants/transition-speeds";
+import { CAROUSEL_VIDEO_PREVIEW_Z_INDEX } from "src/utils/constants/layer-constants";
 
 export interface VideoPreviewImageProps {
   backgroundUrl: string;
   isVisible: boolean;
 }
 
-export const VIDEO_PREVIEW_Z_INDEX = "10";
-
 const VideoPreview = styled.div<VideoPreviewImageProps>`
   position: absolute;
   top: ${({ isVisible }) => (isVisible ? "0%" : "-105%")};
   width: 100%;
   height: 100%;
-  z-index: ${VIDEO_PREVIEW_Z_INDEX};
+  z-index: ${CAROUSEL_VIDEO_PREVIEW_Z_INDEX};
   border-radius: 16px;
   background-image: ${({ backgroundUrl }) => `url(${backgroundUrl})`};
   background-size: cover;
-  transition: top ${VIDEO_TRANSITION_SPEED} ease-in-out;
+  transition: top ${MEDIUM} ease-in-out;
 `;
 
 const VideoPreviewImage: React.FC<

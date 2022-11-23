@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import {
-  BUTTON_OPACITY_FADE,
-  BUTTON_TRANSITION_SPEED,
-} from "./utils/constants";
+import { FAST } from "src/utils/constants/transition-speeds";
+import { OPACITY_FADE } from "src/utils/constants/animation-constants";
+import { CLEAR, WHITE } from "src/styles/colors";
 import CloseIcon from "./CloseIcon";
 
 interface CloseButtonProps {
@@ -17,18 +16,18 @@ const Button = styled.button`
   right: 12px;
   padding: 2px;
   background: none;
-  border: 2px solid rgba(255, 255, 255, 0);
+  border: 2px solid ${CLEAR};
   border-radius: 5px;
   cursor: pointer;
-  transition: opacity, border ${BUTTON_TRANSITION_SPEED};
+  transition: opacity, border ${FAST};
 
   &:hover {
-    opacity: ${BUTTON_OPACITY_FADE};
-    border: 2px solid #ffffff;
+    opacity: ${OPACITY_FADE};
+    border: 2px solid ${WHITE};
   }
 
   &:focus {
-    border: 2px solid #ffffff;
+    border: 2px solid ${WHITE};
   }
 `;
 
