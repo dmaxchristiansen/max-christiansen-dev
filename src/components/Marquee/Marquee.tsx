@@ -18,7 +18,7 @@ const SectionContainer = styled.div<SectionContainerProps>`
   display: block;
   max-width: ${CONTAINER_MAX_WIDTH}px;
   margin: 0 auto;
-  padding: ${({ pt, pb }) => `${pt} 24px ${pb}`};
+  padding: ${({ pt, pb }) => `${pt} 30px ${pb}`};
 `;
 
 const MarqueeContainer = styled.div`

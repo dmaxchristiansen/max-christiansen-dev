@@ -1,5 +1,24 @@
 import { Link } from "gatsby";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import {
+  FUTURE_BLUE,
+  PURPLE_PASTEL,
+  CANDY_BLUE,
+  MAVEN_BLUE,
+  BLUE_DREAM,
+  DUSKY_BLUE,
+  BLUE_SKY,
+  BLUE_EYES,
+  WHITE,
+  PEACHY,
+  HOT_PINK,
+  PURPLE_HAZE,
+  BLUE_GRAY,
+  BLUE_GRIMLY,
+  GRIMACE,
+} from "src/styles/colors";
+import { MEDIUM, TURTLE } from "src/utils/constants/transition-speeds";
+import { TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
 import Layout from "src/components/Layout/Layout";
 import Seo from "src/components/Seo/Seo";
 
@@ -12,9 +31,6 @@ const Container = styled.div`
   height: 100vh;
   perspective: 700px;
   overflow: hidden;
-  @media (max-width: 520px) {
-    perspective: 800px;
-  }
 `;
 
 const Grid = styled.div`
@@ -24,25 +40,24 @@ const Grid = styled.div`
   width: 200%;
   background: linear-gradient(
       transparent 65%,
-      rgba(46, 38, 255, 0.4) 75%,
-      #7d41e6 80%,
-      rgba(46, 38, 255, 0.4) 85%,
+      ${FUTURE_BLUE} 75%,
+      ${PURPLE_PASTEL} 80%,
+      ${FUTURE_BLUE} 85%,
       transparent 95%
     ),
     linear-gradient(
       90deg,
       transparent 65%,
-      rgba(46, 38, 255, 0.4) 75%,
-      #7d41e6 80%,
-      rgba(46, 38, 255, 0.4) 85%,
+      ${FUTURE_BLUE} 75%,
+      ${PURPLE_PASTEL} 80%,
+      ${FUTURE_BLUE} 85%,
       transparent 95%
     );
   background-size: 30px 30px;
   mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
   transform: rotateX(-100deg);
-  @media (max-width: 520px) {
-    bottom: -100%;
-    transform: rotateX(-105deg);
+  @media (max-width: 1000px) {
+    display: none;
   }
 `;
 
@@ -51,16 +66,17 @@ const Lines = styled.div`
   height: 72px;
   width: 100%;
   background: linear-gradient(
-    rgba(89, 193, 254, 0.2) 20%,
-    #59c1fe 40%,
-    #59c1fe 60%,
-    rgba(89, 193, 254, 0.2) 80%
+    ${MAVEN_BLUE} 20%,
+    ${CANDY_BLUE} 40%,
+    ${CANDY_BLUE} 60%,
+    ${MAVEN_BLUE} 80%
   );
   background-size: 1px 8px;
-  box-shadow: 0 0 16px rgba(89, 193, 254, 0.4);
+  box-shadow: 0 0 16px ${BLUE_DREAM};
   transform: translateY(-26px);
   @media (max-width: 520px) {
-    transform: translateY(-110px);
+    position: relative;
+    transform: translateY(-100px);
     height: 24px;
   }
 `;
@@ -69,7 +85,6 @@ const Header = styled.h1`
   position: relative;
   top: -58px;
   margin: 0;
-  font-family: "Exo";
   font-size: 180px;
   letter-spacing: 4px;
   transform: skew(-15deg);
@@ -102,7 +117,7 @@ const Header = styled.h1`
     }
   }
   @media (max-width: 520px) {
-    top: -110px;
+    top: -150px;
     font-size: 60px;
     &:after {
       top: -2px;
@@ -113,10 +128,10 @@ const Header = styled.h1`
 
 const FirstSpan = styled.span`
   display: block;
-  text-shadow: 0 0 18px #8ba2d0, 0 0 36px black, 0 0 200px #165ff3;
+  text-shadow: 0 0 18px ${DUSKY_BLUE}, 0 0 36px black, 0 0 200px ${BLUE_SKY};
   -webkit-text-stroke: 12px rgba(0, 0, 0, 0.5);
   @media (max-width: 1000px) {
-    text-shadow: 0 0 9px #8ba2d0, 0 0 18px black, 0 0 100px #165ff3;
+    text-shadow: 0 0 9px ${DUSKY_BLUE}, 0 0 18px black, 0 0 100px ${BLUE_SKY};
     -webkit-text-stroke: 6px rgba(0, 0, 0, 0.5);
   }
 `;
@@ -126,30 +141,18 @@ const SecondSpan = styled.span`
   left: 0;
   top: 0;
   background-image: linear-gradient(
-    #032d50 25%,
-    #00a1ef 35%,
-    white 50%,
-    #20125f 50%,
-    #8313e7 55%,
-    #ff61af 75%
+    ${BLUE_GRIMLY} 25%,
+    ${BLUE_EYES} 35%,
+    ${WHITE} 50%,
+    ${GRIMACE} 50%,
+    ${PURPLE_HAZE} 55%,
+    ${PEACHY} 75%
   );
   -webkit-background-clip: text;
-  -webkit-text-stroke: 1.6px #94a0b9;
+  -webkit-text-stroke: 1.6px ${BLUE_GRAY};
   -webkit-text-fill-color: transparent;
   @media (max-width: 1000px) {
-    -webkit-text-stroke: 1px #94a0b9;
-  }
-`;
-
-const subheaderKeyframes = keyframes`
-  0% {
-    text-shadow: 0 0 16px #fe05e1, 0 0 18px #fe05e1;
-  }
-  50% {
-    text-shadow: 0 0 32px #fe05e1, 0 0 48px #fe05e1;
-  }
-  100% {
-    text-shadow: 0 0 16px #fe05e1, 0 0 18px #fe05e1;
+    -webkit-text-stroke: 1px ${BLUE_GRAY};
   }
 `;
 
@@ -158,18 +161,18 @@ const Subheader = styled.h2`
   top: 40%;
   margin: 0;
   z-index: 100;
-  color: #ffffff;
   font-family: "Mr Dafoe";
   font-size: 172px;
-  animation: ${subheaderKeyframes} 1.5s;
+  animation: ${TEXT_GLOW_KEYFRAMES} ${TURTLE};
   animation-iteration-count: infinite;
   @media (max-width: 1000px) {
     font-size: 86px;
     top: 45%;
   }
   @media (max-width: 520px) {
+    position: relative;
+    top: -150px;
     font-size: 72px;
-    top: 32%;
   }
 `;
 
@@ -179,25 +182,21 @@ const StyledLink = styled(Link)`
   top: 70%;
   padding: 15px 25px;
   z-index: 100;
-  box-shadow: 0 0 24px 6px #00a1ef;
-  background-color: #00a1ef;
-  border: 2px solid #ff61af;
+  box-shadow: 0 0 24px 6px ${BLUE_EYES};
+  background-color: ${BLUE_EYES};
+  border: 2px solid ${PEACHY};
   border-radius: 16px;
-  color: #8313e7;
+  color: ${PURPLE_HAZE};
   font-weight: 700;
   font-size: 20px;
   letter-spacing: 2px;
   text-decoration: none;
   transition: color, background-color, box-shadow;
-  transition-duration: 500ms;
+  transition-duration: ${MEDIUM};
   &:hover {
-    box-shadow: 0 0 48px 12px #fe05e1;
-    background-color: #8313e7;
-    color: #fe05e1;
-  }
-  @media (max-width: 1000px) {
-    padding: 12px 22px;
-    font-size: 16px;
+    box-shadow: 0 0 48px 12px ${HOT_PINK};
+    background-color: ${PURPLE_HAZE};
+    color: ${HOT_PINK};
   }
   @media (max-width: 520px) {
     top: 65%;
@@ -214,7 +213,7 @@ const FrontendShowcasePage = () => (
         <SecondSpan>FRONTEND</SecondSpan>
       </Header>
       <Subheader>Showcase</Subheader>
-      <StyledLink to="/frontend-showcase/components">ENTER</StyledLink>
+      <StyledLink to="/showcase/components">ENTER</StyledLink>
     </Container>
   </Layout>
 );
@@ -223,7 +222,7 @@ export const Head = () => (
   <Seo
     title="Frontend Showcase"
     description="A showcase of frontend React components built in Gatsby"
-    pathname="/frontend-showcase"
+    pathname="/showcase"
   />
 );
 

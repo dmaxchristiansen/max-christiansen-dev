@@ -7,13 +7,13 @@ import {
   PREV,
   SHARED_NAV_BUTTON_ROW_STYLES,
   SHARED_NAV_BUTTON_STYLES,
-  SLIDE_ANIMATION_SPEED,
-  BUTTON_OPACITY_FADE,
-  VIDEO_TRANSITION_SPEED,
 } from "./utils/constants";
+import { LIGHT_GRAY, GRAY } from "src/styles/colors";
+import { MEDIUM, FAST } from "src/utils/constants/transition-speeds";
+import { CAROUSEL_VIDEO_PREVIEW_Z_INDEX } from "src/utils/constants/layer-constants";
+import { OPACITY_FADE } from "src/utils/constants/animation-constants";
 import MuxVideo from "@mux/mux-video-react";
 import { ActionProps, VisibilityProps } from "./CarouselWrapper";
-import { VIDEO_PREVIEW_Z_INDEX } from "./VideoPreviewImage";
 import { buttonConfig } from "./utils/configs";
 import CloseButton from "./CloseButton";
 import PlayButton from "./PlayButton";
@@ -53,7 +53,7 @@ const SHARED_INACTIVE_SLIDE_STYLES = css`
 const PrevClone = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_INACTIVE_SLIDE_STYLES}
   left: ${({ action }) => (action === PREV ? "25%" : "calc(0% - 5px)")};
-  transition: left ${SLIDE_ANIMATION_SPEED};
+  transition: left ${FAST};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -76,7 +76,7 @@ const AnimatedThird = styled.div<ActionProps & VisibilityProps>`
       : action === PREV
       ? "calc(50% + 5px)"
       : "25%"};
-  transition: left ${SLIDE_ANIMATION_SPEED};
+  transition: left ${FAST};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -94,7 +94,7 @@ const AnimatedSecond = styled.div<ActionProps & VisibilityProps>`
   height: ${({ action }) => (action === PREV ? "200%" : "100%")};
   width: ${({ action }) => (action === PREV ? "50%" : "calc(25% - 5px)")};
   transition-property: top, left, height, width;
-  transition-duration: ${SLIDE_ANIMATION_SPEED};
+  transition-duration: ${FAST};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -109,14 +109,14 @@ const NavButton = styled.button`
   height: 48px;
   width: 48px;
   margin: 0 5px 0;
-  background-color: #dddddd;
+  background-color: ${LIGHT_GRAY};
   font-size: 32px;
   &:hover {
-    background-color: #bcbcbc;
+    background-color: ${GRAY};
   }
   &:disabled {
-    opacity: ${BUTTON_OPACITY_FADE};
-    background-color: #bcbcbc;
+    opacity: ${OPACITY_FADE};
+    background-color: ${GRAY};
   }
 `;
 
@@ -126,7 +126,7 @@ const ActiveClone = styled.div<ActionProps & VisibilityProps>`
   left: ${({ action }) => (action === NEXT ? "0%" : "calc(-100% - 10px)")};
   width: 100%;
   height: 100%;
-  transition: left ${SLIDE_ANIMATION_SPEED};
+  transition: left ${FAST};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -136,8 +136,8 @@ const Active = styled.div<TransitionProps & VisibilityProps>`
   top: ${({ isTransitioned }) => (isTransitioned ? "-105%" : "0%")};
   width: 100%;
   height: 100%;
-  z-index: ${VIDEO_PREVIEW_Z_INDEX};
-  transition: top ${VIDEO_TRANSITION_SPEED} ease-in-out;
+  z-index: ${CAROUSEL_VIDEO_PREVIEW_Z_INDEX};
+  transition: top ${MEDIUM} ease-in-out;
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -154,7 +154,7 @@ const AnimatedActive = styled.div<ActionProps & VisibilityProps>`
   height: ${({ action }) => (action === NEXT ? "50%" : "100%")};
   width: ${({ action }) => (action === NEXT ? "calc(50% - 5px)" : "100%")};
   transition-property: top, left, height, width;
-  transition-duration: ${SLIDE_ANIMATION_SPEED};
+  transition-duration: ${FAST};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 

@@ -10,10 +10,9 @@ import {
   SHARED_NAV_BUTTON_STYLES,
   ACTION_KEYFRAMES,
 } from "./utils/constants";
+import { MEDIUM } from "src/utils/constants/transition-speeds";
 import QuotationMark from "./QuotationMark";
 import TwoCarouselSlide from "./TwoCarouselSlide";
-
-const TWO_CAROUSEL_ANIMATION_SPEED = "500ms";
 
 const Container = styled.div`
   display: flex;
@@ -39,7 +38,7 @@ const CopyContainer = styled.div<CopyContainerProps>`
   flex-direction: column;
   min-height: 182px;
   margin-bottom: 32px;
-  animation: ${ACTION_KEYFRAMES} ${TWO_CAROUSEL_ANIMATION_SPEED};
+  animation: ${ACTION_KEYFRAMES} ${MEDIUM};
   @media (min-width: 768px) {
     width: 35%;
     min-height: unset;
@@ -73,7 +72,7 @@ const Slider = styled.div<SliderProps>`
   left: ${({ activeIndex }) => `-${activeIndex * 100}%`};
   height: 100%;
   width: 200%;
-  transition: left ${TWO_CAROUSEL_ANIMATION_SPEED} ease-in-out;
+  transition: left ${MEDIUM} ease-in-out;
 `;
 
 const NavButtonRow = styled.div`

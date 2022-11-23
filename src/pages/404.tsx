@@ -1,17 +1,29 @@
-import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+import { SNAIL } from "src/utils/constants/transition-speeds";
+import { SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
 import Layout from "../components/Layout/Layout";
 import Seo from "../components/Seo/Seo";
+import ButtonLink from "src/components/ButtonLink/ButtonLink";
 
 const Container = styled.div`
   min-height: 100vh;
-  background-color: gainsboro;
-  text-align: center;
   padding: 60px 30px;
+  text-align: center;
   @media (min-width: 768px) {
     padding: 100px 30px;
   }
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+`;
+
+const ImageWrapper = styled.div`
+  animation: ${SPIN_KEYFRAMES} ${SNAIL} linear infinite;
 `;
 
 const Header = styled.h1`
@@ -34,25 +46,28 @@ const Message = styled.p`
   }
 `;
 
-const StyledLink = styled(Link)`
-  font-size: 32px;
-  @media (min-width: 768px) {
-    font-size: 40px;
-  }
-`;
-
 const NotFoundPage = () => (
-  <Layout>
+  <Layout hideNav hideFooter>
     <Container>
-      <StaticImage
-        src="../images/four-o-four.png"
-        alt="sad"
-        placeholder="tracedSVG"
-        width={300}
-      />
+      <ImageContainer>
+        <ImageWrapper>
+          <StaticImage
+            src="../images/four-o-four.png"
+            alt="sad face"
+            placeholder="tracedSVG"
+            width={300}
+          />
+        </ImageWrapper>
+      </ImageContainer>
       <Header>404</Header>
       <Message>THIS PAGE IS UNAVAILABLE OR DOES NOT EXIST</Message>
-      <StyledLink to="/">BACK TO HOME</StyledLink>
+      <ButtonLink
+        href="/"
+        text="BACK TO HOME"
+        fontSize="32px"
+        py="6px"
+        px="12px"
+      />
     </Container>
   </Layout>
 );

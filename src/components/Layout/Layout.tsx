@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import GlobalStyle from "../../styles/GlobalStyle";
-import Header from "./Header";
+import { ELECTRIC_PURPLE, OBSIDIAN, JELLYBEAN } from "src/styles/colors";
+import ComponentHeader from "./ComponentHeader";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import ButtonLink from "src/components/ButtonLink/ButtonLink";
@@ -16,8 +17,8 @@ const Background = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: radial-gradient(rgba(118, 0, 191, 0.5) 0%, transparent 70%),
-    linear-gradient(#0b161e 40%, #202076 70%);
+  background: radial-gradient(${ELECTRIC_PURPLE} 0%, transparent 70%),
+    linear-gradient(${OBSIDIAN} 40%, ${JELLYBEAN} 70%);
 `;
 
 const ButtonWrapper = styled.div`
@@ -49,7 +50,7 @@ const Layout: React.FC<LayoutProps & React.PropsWithChildren> = ({
         {hasBackButton && (
           <ButtonWrapper>
             <ButtonLink
-              href="/frontend-showcase/components"
+              href="/showcase/components"
               text="back to components"
               fontSize="14px"
               py="5px"
@@ -57,12 +58,12 @@ const Layout: React.FC<LayoutProps & React.PropsWithChildren> = ({
             />
           </ButtonWrapper>
         )}
-        {headerText && <Header text={headerText} />}
+        {headerText && <ComponentHeader text={headerText} />}
         {children}
         {hasBackButton && (
           <ButtonWrapper>
             <ButtonLink
-              href="/frontend-showcase/components"
+              href="/showcase/components"
               text="back to components"
               fontSize="14px"
               py="6px"
