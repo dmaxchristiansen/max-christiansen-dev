@@ -104,7 +104,7 @@ const Nav = () => {
             <StyledItemLink to="#">&#x2f;&#x2f;&nbsp;expertise</StyledItemLink>
           </Item>
           <Item>
-            <StyledItemLink to="#">&#x2f;&#x2f;&nbsp;work</StyledItemLink>
+            <StyledItemLink to="#work">&#x2f;&#x2f;&nbsp;work</StyledItemLink>
           </Item>
           <Item>
             <StyledItemLink to="/frontend-showcase">
