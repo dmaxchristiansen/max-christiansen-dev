@@ -3,10 +3,10 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Max Christiansen Dev`,
-    description: `Developer devoted to creating great web experiences, meet Max Christiansen`,
+    description: `Developer devoted to creating amazing, accessible web experiences, meet Max Christiansen`,
     author: `@RealMaxFaze`,
-    image: `https://dmc-frontend-showcase.netlify.app/otter-icon.png`,
-    siteUrl: `https://dmc-frontend-showcase.netlify.app`,
+    image: `https://max-christiansen-dev.netlify.app/otter-icon.png`,
+    siteUrl: `https://max-christiansen-dev.netlify.app`,
   },
   jsxRuntime: "automatic",
   plugins: [
@@ -41,11 +41,6 @@ const config: GatsbyConfig = {
       options: {
         fonts: {
           google: [
-            {
-              family: "Roboto",
-              variants: ["400", "500", "700"],
-              strategy: "selfHosted",
-            },
             {
               family: "Mr Dafoe",
               strategy: "selfHosted",
