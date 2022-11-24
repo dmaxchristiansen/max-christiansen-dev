@@ -2,6 +2,6 @@
   Max Christiansen Dev
 </h1>
 <h2 align="center">
-  Developer devoted to creating amazing, accessible web experiences
+  Developer devoted to creating beautifully simple, accessible web experiences
 </h2>
 

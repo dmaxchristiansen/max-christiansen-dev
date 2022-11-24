@@ -6,38 +6,58 @@ import Layout from "src/components/Layout/Layout";
 import Seo from "src/components/Seo/Seo";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   max-width: 1350px;
   margin: 0 auto;
   padding: 0 30px 0;
 `;
 
-const ProfileContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 50px;
+const HeaderContainer = styled.div`
+  position: relative;
+  height: 100vh;
+  margin-top: 40px;
+  text-align: center;
+  letter-spacing: 4px;
+  @media (max-width: 520px) {
+    margin-top: 0px;
+  }
 `;
 
-const ProfileCopyContainer = styled.div`
-  width: 70%;
-  margin-left: 40px;
-`;
-
-const ProfileHeader = styled.h1`
+const Header = styled.h1`
   margin: 0;
   font-size: 80px;
   line-height: 1;
+  @media (max-width: 991px) {
+    font-size: 60px;
+  }
+  @media (max-width: 520px) {
+    margin-bottom: 10px;
+    font-size: 40px;
+  }
 `;
 
-const ProfileSubheader = styled.h2`
+const Subheader = styled.h2`
   margin: 0;
   font-size: 40px;
   line-height: 1;
+  @media (max-width: 991px) {
+    font-size: 30px;
+  }
+  @media (max-width: 520px) {
+    font-size: 24px;
+  }
 `;
 
-const ProfileCopy = styled.p`
-  font-size: 20px;
+const HeaderCopy = styled.p`
+  margin: 40px 0 60px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  @media (max-width: 991px) {
+    font-size: 20px;
+  }
+  @media (max-width: 520px) {
+    margin: 20px 0 30px;
+    font-size: 18px;
+  }
 `;
 
 const Placeholder = styled.div`
@@ -50,6 +70,9 @@ const Placeholder = styled.div`
 const ScrollDownButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  position: absolute;
+  width: 100%;
+  bottom: 120px;
 `;
 
 const ScrollDownButton = styled.button`
@@ -66,35 +89,28 @@ const DownArrow = styled.img`
 const IndexPage = () => (
   <Layout>
     <Container>
-      <ProfileContainer>
+      <HeaderContainer>
+        <Header>Max Christiansen</Header>
+        <Subheader>Software Engineer</Subheader>
+        <HeaderCopy>
+          devoted to creating beautifully simple, accessible web experiences
+        </HeaderCopy>
         <StaticImage
-          style={{ borderRadius: "50%" }}
+          style={{ borderRadius: "16px" }}
+          width={300}
           src="../images/dmc-raft-profile.jpg"
           alt="Max Christiansen"
         />
-        <ProfileCopyContainer>
-          <ProfileHeader>Max Christiansen</ProfileHeader>
-          <ProfileSubheader>Software Engineer</ProfileSubheader>
-          <ProfileCopy>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </ProfileCopy>
-        </ProfileCopyContainer>
-      </ProfileContainer>
-      <ScrollDownButtonWrapper>
-        <ScrollDownButton
-          type="button"
-          aria-label="scroll down"
-          onClick={() => scrollToTargetElement("expertise", 70)}
-        >
-          <DownArrow src={downArrow} alt="scroll down arrow" />
-        </ScrollDownButton>
-      </ScrollDownButtonWrapper>
+        <ScrollDownButtonWrapper>
+          <ScrollDownButton
+            type="button"
+            aria-label="scroll down"
+            onClick={() => scrollToTargetElement("expertise", 70)}
+          >
+            <DownArrow src={downArrow} alt="scroll down arrow" />
+          </ScrollDownButton>
+        </ScrollDownButtonWrapper>
+      </HeaderContainer>
       <Placeholder id="expertise">expertise</Placeholder>
       <Placeholder id="work">work</Placeholder>
     </Container>
