@@ -3,10 +3,10 @@ import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { NAV_Z_INDEX } from "src/utils/constants/layer-constants";
-import { BLUE_EYES } from "src/styles/colors";
 import { FAST } from "src/utils/constants/transition-speeds";
 import { OPACITY_FADE } from "src/utils/constants/animation-constants";
 import { scrollToTargetElement } from "src/utils/helpers";
+import Hamburger from "./Hamburger";
 
 const SCROLL_REACTION_THRESHOLD = 5;
 
@@ -27,15 +27,12 @@ const Container = styled.nav<ContainerProps>`
   backdrop-filter: ${({ isScrolled }) =>
     isScrolled && SCROLLED_BACKDROP_FILTER};
   z-index: ${NAV_Z_INDEX};
-
-  @media (max-width: 991px) {
-    display: none;
-  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   max-width: 1350px;
   margin: 0 auto;
   padding: 6px 30px;
@@ -54,6 +51,9 @@ const StyledHomeLink = styled(Link)`
 
 const HomeLinkText = styled.div`
   margin-left: 12px;
+  @media (max-width: 991px) {
+    display: none;
+  }
 `;
 
 const List = styled.ul`
@@ -61,6 +61,9 @@ const List = styled.ul`
   align-items: center;
   margin: 0;
   padding: 0;
+  @media (max-width: 991px) {
+    display: none;
+  }
 `;
 
 const Item = styled.li`
@@ -74,12 +77,10 @@ const Item = styled.li`
 
 const ItemLink = styled(Link)`
   text-decoration: none;
-  color: ${BLUE_EYES};
 `;
 
 const ItemButton = styled.button`
   padding: 0;
-  color: ${BLUE_EYES};
   font-size: 20px;
   background: none;
   border: none;
@@ -87,6 +88,7 @@ const ItemButton = styled.button`
 `;
 
 const Nav = () => {
+  const [isCollapseOpen, setIsCollapseOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -108,13 +110,19 @@ const Nav = () => {
       <Wrapper>
         <StyledHomeLink to="/">
           <StaticImage
-            src="../../images/otter-icon-nav-white.png"
+            src="../../../images/otter-icon-nav-white.png"
             width={36}
             placeholder="tracedSVG"
             alt="otter"
           />
           <HomeLinkText>Max Christiansen Dev</HomeLinkText>
         </StyledHomeLink>
+
+        <Hamburger
+          isCollapseOpen={isCollapseOpen}
+          setIsCollapseOpen={setIsCollapseOpen}
+        />
+
         <List>
           <Item>
             <ItemButton

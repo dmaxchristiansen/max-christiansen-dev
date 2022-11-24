@@ -18,7 +18,7 @@ const HeaderContainer = styled.div`
   text-align: center;
   letter-spacing: 4px;
   @media (max-width: 520px) {
-    margin-top: 20px;
+    margin-top: 0px;
   }
 `;
 
@@ -30,6 +30,7 @@ const Header = styled.h1`
     font-size: 60px;
   }
   @media (max-width: 520px) {
+    margin-bottom: 10px;
     font-size: 40px;
   }
 `;
@@ -54,6 +55,7 @@ const HeaderCopy = styled.p`
     font-size: 20px;
   }
   @media (max-width: 520px) {
+    margin: 20px 0 30px;
     font-size: 18px;
   }
 `;
