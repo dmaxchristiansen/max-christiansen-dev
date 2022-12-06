@@ -11,6 +11,7 @@ interface LayoutProps {
   headerText?: string;
   hideFooter?: boolean;
   hasBackButton?: boolean;
+  isHomeNav?: boolean;
 }
 
 const Background = styled.div`
@@ -40,11 +41,12 @@ const Layout: React.FC<LayoutProps & React.PropsWithChildren> = ({
   headerText,
   hideFooter,
   hasBackButton,
+  isHomeNav,
   children,
 }) => (
   <>
     <GlobalStyle />
-    {!hideNav && <Nav />}
+    {!hideNav && <Nav isHomeNav={isHomeNav} />}
     <Background>
       <Main hasTopPadding={!hideNav}>
         {hasBackButton && (
