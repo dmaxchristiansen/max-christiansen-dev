@@ -19,17 +19,15 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.h2`
-  display: none;
+  display: block;
   margin: 0 auto 16px;
+  font-size: 30px;
   text-align: center;
   @media (min-width: 768px) {
-    display: block;
-    max-width: 558px;
     margin-bottom: 64px;
     font-size: 40px;
   }
   @media (min-width: 992px) {
-    max-width: 882px;
     margin-bottom: 100px;
   }
 `;

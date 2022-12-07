@@ -12,22 +12,6 @@ export const buttonConfig = [
   { index: 1, label: "→" },
 ];
 
-export const singleConfig = {
-  header: "Single Slide",
-  slideConfig: [
-    {
-      index: 0,
-      internalId: "3tkwe58YfXVl13iB5jR5vB",
-      attribution: "Magnolia B.",
-      title: "VP Operations",
-      quote: "You only live once, but if you do it right, once is enough.",
-      thumbnailImageUrl: magnoliaT,
-      videoPreviewImageUrl: magnoliaVp,
-      videoPlaybackId: "feho00uzABfveO2Y7uywrzPDMYUzLI9aYq3P00wClFkls",
-    },
-  ],
-};
-
 export const twoCarouselConfig = {
   header: "Two Slide Carousel",
   slideConfig: [

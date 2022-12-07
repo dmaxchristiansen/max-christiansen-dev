@@ -33,6 +33,11 @@ const SHARED_HEADER_STYLES = css`
   &:hover {
     color: ${BLUE_SKY};
   }
+  @media (max-width: 991px) {
+    margin: 0 0 75px;
+    font-size: 80px;
+    line-height: 1;
+  }
 `;
 
 interface HeaderProps {
