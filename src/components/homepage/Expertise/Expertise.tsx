@@ -1,87 +1,103 @@
-import styled from "styled-components";
-import { HOT_PINK, BLUE_SKY, PURPLE_HAZE } from "src/styles/colors";
+import { forwardRef } from "react";
+import styled, { css } from "styled-components";
+import { WHITE } from "src/styles/colors";
+import { InViewProps } from "src/components/homepage/types/homepage";
+import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
 import SectionHeader from "src/components/homepage/SectionHeader";
-import ComputerSvg from "src/components/homepage/Expertise/svgs/ComputerSvg";
-import ReactSvg from "src/components/homepage/Expertise/svgs/ReactSvg";
-import BrainSvg from "src/components/homepage/Expertise/svgs/BrainSvg";
+import Col from "src/components/homepage/Expertise/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader";
+
+const Container = styled.div`
+  padding: 0 30px;
+`;
 
 const FlexRow = styled.div`
   display: flex;
   max-width: 1100px;
   margin: 0 auto;
-  border: 4px solid #a3a3a3;
-  border-radius: 10px;
-`;
-
-const Col = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: calc(100% / 3);
-  padding: 40px 30px;
-  border-style: solid;
-  border-color: #a3a3a3;
-  border-width: 0 2px 0 0;
-  &:last-child {
-    border-width: 0;
+  @media (max-width: 991px) {
+    flex-direction: column;
   }
 `;
 
-const SubheaderContainer = styled.div`
+const SubheaderWrapper = styled.div`
   display: flex;
+  margin-bottom: 20px;
 `;
 
 const SvgWrapper = styled.div`
   min-width: 42px;
 `;
 
-const ContentContainer = styled.div``;
+const ContentWrapper = styled.div`
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    height: 65%;
+    width: 0;
+    opacity: 0.3;
+    border: 1px solid ${WHITE};
+    bottom: 18%;
+  }
+`;
 
-const Expertise = () => (
-  <div id="expertise">
-    <SectionHeader text="My Expertise" />
+const SharedPseudoStyles = css`
+  display: block;
+  margin-left: -35px;
+  opacity: 0.3;
+  font-size: 14px;
+`;
+
+const Content = styled.h3`
+  margin: 0;
+  padding-left: 35px;
+  font-family: Roboto Mono;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  &:before {
+    content: "<h3>";
+    margin-bottom: 5px;
+    ${SharedPseudoStyles}
+  }
+  &:after {
+    content: "</h3>";
+    margin-top: 5px;
+    ${SharedPseudoStyles}
+  }
+  @media (max-width: 991px) {
+    font-size: 20px;
+  }
+  @media (max-width: 520px) {
+    font-size: 16px;
+  }
+`;
+
+const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => (
+  <Container id="expertise" ref={ref}>
+    <SectionHeader text="My Expertise" inView={inView} />
     <FlexRow>
-      <Col>
-        <SubheaderContainer>
-          <SvgWrapper>
-            <ComputerSvg />
-          </SvgWrapper>
-          <Subheader
-            topLineText="Software"
-            bottomLineText="Development"
-            backgroundColor={HOT_PINK}
-          />
-        </SubheaderContainer>
-        <ContentContainer></ContentContainer>
-      </Col>
-      <Col>
-        <SubheaderContainer>
-          <SvgWrapper>
-            <ReactSvg />
-          </SvgWrapper>
-          <Subheader
-            topLineText="Frontend Dev"
-            bottomLineText="React, GatsbyJS"
-            backgroundColor={BLUE_SKY}
-          />
-        </SubheaderContainer>
-        <ContentContainer></ContentContainer>
-      </Col>
-      <Col>
-        <SubheaderContainer>
-          <SvgWrapper>
-            <BrainSvg />
-          </SvgWrapper>
-          <Subheader
-            topLineText="Interpersonal"
-            bottomLineText="Communication"
-            backgroundColor={PURPLE_HAZE}
-          />
-        </SubheaderContainer>
-        <ContentContainer></ContentContainer>
-      </Col>
+      {colConfig.map(col => (
+        <Col key={col.topLineText} index={col.index} inView={inView}>
+          <SubheaderWrapper>
+            <SvgWrapper>
+              <col.SvgComponent />
+            </SvgWrapper>
+            <Subheader
+              topLineText={col.topLineText}
+              bottomLineText={col.bottomLineText}
+              backgroundColor={col.backgroundColor}
+            />
+          </SubheaderWrapper>
+          <ContentWrapper>
+            <Content>{col.contentText}</Content>
+          </ContentWrapper>
+        </Col>
+      ))}
     </FlexRow>
-  </div>
-);
+  </Container>
+));
 
 export default Expertise;

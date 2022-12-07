@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import queryString from "query-string";
 import { scrollToTargetElement } from "src/utils/helpers";
 import Layout from "src/components/Layout/Layout";
@@ -21,11 +22,25 @@ const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
     scrollToTargetElement(activeParam, 70);
   });
 
+  defaultFallbackInView(true);
+
+  const { ref: expertiseRef, inView: isExpertiseVisible } = useInView({
+    threshold: 1,
+    delay: 100,
+    triggerOnce: true,
+  });
+
+  const { ref: workRef, inView: isWorkVisible } = useInView({
+    threshold: 1,
+    delay: 100,
+    triggerOnce: true,
+  });
+
   return (
     <Layout isHomeNav>
       <Intro />
-      <Expertise />
-      <Work />
+      <Expertise ref={expertiseRef} inView={isExpertiseVisible} />
+      <Work ref={workRef} inView={isWorkVisible} />
     </Layout>
   );
 };

@@ -15,6 +15,12 @@ const Heading = styled.h2`
   font-weight: 400;
   font-size: 26px;
   line-height: 1.2;
+  @media (max-width: 991px) {
+    font-size: 38px;
+  }
+  @media (max-width: 520px) {
+    font-size: 28px;
+  }
 `;
 
 const Span = styled.span<BackgroundProps>`
