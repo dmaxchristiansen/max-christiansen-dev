@@ -19,19 +19,19 @@ const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
 
   useEffect(() => {
     if (!activeParam) return;
-    scrollToTargetElement(activeParam, 70);
+    scrollToTargetElement(activeParam, 60);
   });
 
   defaultFallbackInView(true);
 
   const { ref: expertiseRef, inView: isExpertiseVisible } = useInView({
-    threshold: 1,
+    threshold: 0.5,
     delay: 100,
     triggerOnce: true,
   });
 
   const { ref: workRef, inView: isWorkVisible } = useInView({
-    threshold: 1,
+    threshold: 0.5,
     delay: 100,
     triggerOnce: true,
   });

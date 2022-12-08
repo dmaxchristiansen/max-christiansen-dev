@@ -1,22 +1,33 @@
 import { forwardRef } from "react";
+import { StaticImage } from "gatsby-plugin-image";
 import styled, { css } from "styled-components";
 import { WHITE } from "src/styles/colors";
 import { InViewProps } from "src/components/homepage/types/homepage";
 import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
+import { EX_MEDIUM, EX_SLOW } from "./utils/constants";
 import SectionHeader from "src/components/homepage/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader";
 
 const Container = styled.div`
+  position: relative;
+  height: 1000px;
   padding: 0 30px;
+  @media (max-width: 991px) {
+    height: unset;
+  }
 `;
 
 const FlexRow = styled.div`
+  position: relative;
   display: flex;
   max-width: 1100px;
   margin: 0 auto;
+  padding-top: 30px;
+  z-index: 20;
   @media (max-width: 991px) {
     flex-direction: column;
+    padding-bottom: 30px;
   }
 `;
 
@@ -75,6 +86,21 @@ const Content = styled.h3`
   }
 `;
 
+const ImageContainer = styled.div<InViewProps>`
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 110px;
+  width: 100%;
+  opacity: ${({ inView }) => (inView ? "0.17" : "0")};
+  z-index: 10;
+  transition: opacity ${EX_SLOW};
+  transition-delay: ${EX_MEDIUM};
+  @media (max-width: 991px) {
+    display: none;
+  }
+`;
+
 const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => (
   <Container id="expertise" ref={ref}>
     <SectionHeader text="My Expertise" inView={inView} />
@@ -97,6 +123,14 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => (
         </Col>
       ))}
     </FlexRow>
+    <ImageContainer inView={inView}>
+      <StaticImage
+        src="../../../images/code-snapshot.png"
+        alt=""
+        width={700}
+        placeholder="tracedSVG"
+      />
+    </ImageContainer>
   </Container>
 ));
 

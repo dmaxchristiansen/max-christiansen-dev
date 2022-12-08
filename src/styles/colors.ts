@@ -1,5 +1,6 @@
 export const WHITE = "#ffffff";
 export const BLACK = "#000000";
+export const TRANSLUCENT_BLACK = "rgba(0, 0, 0, 0.6)";
 
 export const CLEAR = "rgba(255, 255, 255, 0)";
 

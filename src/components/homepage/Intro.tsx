@@ -130,7 +130,7 @@ const Intro = () => (
         <ScrollDownButton
           type="button"
           aria-label="scroll down"
-          onClick={() => scrollToTargetElement("expertise", 70)}
+          onClick={() => scrollToTargetElement("expertise", 60)}
         >
           <DownArrow src={downArrow} alt="scroll down arrow" />
         </ScrollDownButton>
