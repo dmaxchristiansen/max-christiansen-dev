@@ -6,7 +6,7 @@ import Layout from "src/components/Layout/Layout";
 import Seo from "src/components/Seo/Seo";
 import Intro from "src/components/homepage/Intro";
 import Expertise from "src/components/homepage/Expertise/Expertise";
-import Work from "src/components/homepage/Work";
+import Work from "src/components/homepage/Work/Work";
 
 interface IndexPageProps {
   location: {
