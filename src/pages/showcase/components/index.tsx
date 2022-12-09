@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { Link } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
 import styled, { css } from "styled-components";
 import { HOT_PINK, BLUE_SKY } from "src/styles/colors";
-import { SLOW, TURTLE, SNAIL } from "src/utils/constants/transition-speeds";
-import {
-  TEXT_GLOW_KEYFRAMES,
-  SPIN_KEYFRAMES,
-} from "src/utils/constants/animation-constants";
+import { SLOW, TURTLE } from "src/utils/constants/transition-speeds";
+import { TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
 import Layout from "src/components/Layout/Layout";
 import Seo from "src/components/Seo/Seo";
+import SpinningOtter from "src/components/SpinningOtter/SpinningOtter";
 
 const Container = styled.div`
   display: flex;
@@ -64,18 +61,6 @@ const DataVisualizerHeader = styled.h1<HeaderProps>`
   animation-delay: 1s;
 `;
 
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  perspective: 500px;
-  overflow: hidden;
-`;
-
-const ImageWrapper = styled.div`
-  animation: ${SPIN_KEYFRAMES} ${SNAIL} linear infinite;
-`;
-
 const ComponentsPage = () => {
   const [isAnimated, setIsAnimated] = useState(true);
 
@@ -109,16 +94,7 @@ const ComponentsPage = () => {
             Data Visualizer
           </DataVisualizerHeader>
         </StyledLink>
-        <ImageContainer>
-          <ImageWrapper>
-            <StaticImage
-              src="../../../images/otter-friend.png"
-              alt="otter"
-              width={400}
-              placeholder="tracedSVG"
-            />
-          </ImageWrapper>
-        </ImageContainer>
+        <SpinningOtter margin={"0"} />
       </Container>
     </Layout>
   );

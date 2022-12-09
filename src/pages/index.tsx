@@ -7,6 +7,7 @@ import Seo from "src/components/Seo/Seo";
 import Intro from "src/components/homepage/Intro";
 import Expertise from "src/components/homepage/Expertise/Expertise";
 import Work from "src/components/homepage/Work/Work";
+import SpinningOtter from "src/components/SpinningOtter/SpinningOtter";
 
 interface IndexPageProps {
   location: {
@@ -41,9 +42,11 @@ const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
       <Intro />
       <Expertise ref={expertiseRef} inView={isExpertiseVisible} />
       <Work ref={workRef} inView={isWorkVisible} />
+      <SpinningOtter margin="75px 0" />
     </Layout>
   );
 };
+
 export const Head = () => <Seo />;
 
 export default IndexPage;

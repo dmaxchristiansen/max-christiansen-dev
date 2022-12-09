@@ -1,12 +1,16 @@
 import placeholderIcon from "src/images/otter-icon-nav-white.png";
+import hhIcon from "src/images/hh-icon.png";
 import { SectionProps } from "../types/accordion";
 
 export const accordionConfig: SectionProps[] = [
   {
     sectionId: "foundry",
     header: {
-      position: "Software Engineer @ Foundry Interactive / Hinge Health",
-      timeframe: "Feb 2020 - Oct 2022",
+      position: "Software Engineer - Hinge Health via Foundry Interactive",
+      timeframe: {
+        begin: "2020",
+        end: "2022",
+      },
     },
     collapse: {
       location: "Boise, ID & San Francisco, CA",
@@ -17,16 +21,20 @@ export const accordionConfig: SectionProps[] = [
       },
 
       description: [
-        "Principal contributor to three repos for hingehealth.com",
-        "Hand-rolled animation and user-interaction heavy frontend features in HTML, CSS, and JS/TS without using any third-party dependencies",
-        "Overhauled obsolete legacy code and implemented React best practices across the app resulting in increased usability, portability, and reduced load time",
-        "Lead developer on greenfielding a new React repository written solely in TS ahead of company rebrand",
+        "Principal contributor to three repos",
+        "Hand-rolled frontend features in HTML, CSS, and JS/TS without any dependencies",
+        "Overhauled legacy code and implemented React best practices",
+        "Increased code usability, portability, and reduced load time",
+        "Greenfielded a new React repo written in TS",
         "Wrote unit and E2E tests against components and pages",
         "Collaborated extensively with designers to achieve intuitive UI/UX",
         "Touches to over 150,000 lines of code",
         "Specialized in web accessibility",
       ],
-      graphic: placeholderIcon,
+      graphic: {
+        src: hhIcon,
+        altText: "Hinge Health",
+      },
       technologies: [
         "TS",
         "JS",
@@ -41,8 +49,11 @@ export const accordionConfig: SectionProps[] = [
   {
     sectionId: "dojo",
     header: {
-      position: "Assistant Instructor @ Coding Dojo",
-      timeframe: "Jan 2020 - March 2020",
+      position: "Assistant Instructor - Coding Dojo",
+      timeframe: {
+        begin: "2019",
+        end: "2020",
+      },
     },
     collapse: {
       location: "Boise, ID",
@@ -53,11 +64,16 @@ export const accordionConfig: SectionProps[] = [
       },
 
       description: [
-        "Created and delivered comprehensive lectures to further student understanding across three stacks",
-        "Collaborated with school leadership for the development of new curricular content",
-        "Supported student learning on an individual basis with one-on-one tutoring",
+        "Furthered student understanding across three stacks",
+        "Created and delivered comprehensive lectures",
+        "Collaborated with school leadership",
+        "Developed new curricular content",
+        "Supported student learning on an individual basis",
       ],
-      graphic: placeholderIcon,
+      graphic: {
+        src: placeholderIcon,
+        altText: "Coding Dojo",
+      },
       technologies: [
         "Python",
         "C#",
@@ -67,19 +83,22 @@ export const accordionConfig: SectionProps[] = [
         "ASP.NET",
         "React",
         "Angular",
+        "AWS",
         "Node",
         "Express",
         "SQL",
         "Mongo",
-        "AWS",
       ],
     },
   },
   {
     sectionId: "hills",
     header: {
-      position: "Computer Science Teacher @ The Seven Hills School",
-      timeframe: "Aug 2018 - Jun 2019",
+      position: "Computer Science Teacher - The Seven Hills School",
+      timeframe: {
+        begin: "2018",
+        end: "2019",
+      },
     },
     collapse: {
       location: "Cincinnati, OH",
@@ -95,7 +114,10 @@ export const accordionConfig: SectionProps[] = [
         "Computer Architecture & Quantum Computing",
         "Ethics in Technology & Women in Programming",
       ],
-      graphic: placeholderIcon,
+      graphic: {
+        src: placeholderIcon,
+        altText: "Seven Hills School",
+      },
       technologies: ["Python", "Java", "HTML", "CSS", "JS"],
     },
   },

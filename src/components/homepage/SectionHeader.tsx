@@ -7,15 +7,18 @@ interface SectionHeaderProps {
 }
 
 const Header = styled.h1<InViewProps>`
+  position: relative;
+  margin: 0;
   text-align: center;
   font-size: 80px;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
+  z-index: 20;
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: transform, opacity;
   transition-duration: ${EX_MEDIUM};
   @media (max-width: 991px) {
-    font-size: 60px;
+    font-size: 70px;
   }
   @media (max-width: 520px) {
     font-size: 44px;

@@ -11,7 +11,7 @@ import Subheader from "src/components/homepage/Expertise/Subheader";
 
 const Container = styled.div`
   position: relative;
-  height: 1000px;
+  height: 800px;
   padding: 0 30px;
   @media (max-width: 991px) {
     height: unset;
@@ -89,9 +89,16 @@ const Content = styled.h3`
 const ImageContainer = styled.div<InViewProps>`
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 110px;
+  position: relative;
+  top: -400px;
   width: 100%;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #fff 0%,
+    #fff 40%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to bottom, #fff 0%, #fff 40%, transparent 100%);
   opacity: ${({ inView }) => (inView ? "0.17" : "0")};
   z-index: 10;
   transition: opacity ${EX_SLOW};

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { WHITE } from "src/styles/colors";
 import { MEDIUM } from "src/utils/constants/transition-speeds";
 import {
-  IdProps,
+  SectionIdProps,
   AccordionStateProps,
 } from "src/components/homepage/Work/Accordion/types/accordion";
 
@@ -10,7 +10,7 @@ interface ChevronProps {
   isExpanded: AccordionStateProps;
 }
 
-const StyledSvg = styled.svg<IdProps & ChevronProps>`
+const StyledSvg = styled.svg<SectionIdProps & ChevronProps>`
   height: 15px;
   width: 15px;
   transform: ${({ sectionId, isExpanded }) =>
@@ -18,7 +18,7 @@ const StyledSvg = styled.svg<IdProps & ChevronProps>`
   transition: transform ${MEDIUM};
 `;
 
-const Chevron: React.FC<IdProps & ChevronProps> = ({
+const Chevron: React.FC<SectionIdProps & ChevronProps> = ({
   sectionId,
   isExpanded,
 }) => (
