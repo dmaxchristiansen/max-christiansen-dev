@@ -1,10 +1,13 @@
 import { useEffect } from "react";
+import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import queryString from "query-string";
-import styled from "styled-components";
 import { scrollToTargetElement } from "src/utils/helpers";
 import Layout from "src/components/Layout/Layout";
 import Seo from "src/components/Seo/Seo";
 import Intro from "src/components/homepage/Intro";
+import Expertise from "src/components/homepage/Expertise/Expertise";
+import Work from "src/components/homepage/Work/Work";
+import SpinningOtter from "src/components/SpinningOtter/SpinningOtter";
 
 interface IndexPageProps {
   location: {
@@ -12,37 +15,38 @@ interface IndexPageProps {
   };
 }
 
-const Container = styled.div`
-  max-width: 1350px;
-  margin: 0 auto;
-  padding: 0 30px 0;
-`;
-
-const Placeholder = styled.div`
-  height: 800px;
-  width: 100%;
-  margin-bottom: 50px;
-  outline: 1px solid red;
-`;
-
 const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
   const activeParam = queryString.parse(location.search).active?.toString();
 
   useEffect(() => {
     if (!activeParam) return;
-    scrollToTargetElement(activeParam, 70);
+    scrollToTargetElement(activeParam, 60);
+  });
+
+  defaultFallbackInView(true);
+
+  const { ref: expertiseRef, inView: isExpertiseVisible } = useInView({
+    threshold: 0.5,
+    delay: 100,
+    triggerOnce: true,
+  });
+
+  const { ref: workRef, inView: isWorkVisible } = useInView({
+    threshold: 0.5,
+    delay: 100,
+    triggerOnce: true,
   });
 
   return (
     <Layout isHomeNav>
-      <Container>
-        <Intro />
-        <Placeholder id="expertise">expertise</Placeholder>
-        <Placeholder id="work">work</Placeholder>
-      </Container>
+      <Intro />
+      <Expertise ref={expertiseRef} inView={isExpertiseVisible} />
+      <Work ref={workRef} inView={isWorkVisible} />
+      <SpinningOtter margin="75px 0" />
     </Layout>
   );
 };
+
 export const Head = () => <Seo />;
 
 export default IndexPage;

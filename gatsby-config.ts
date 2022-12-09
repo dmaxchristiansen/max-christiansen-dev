@@ -50,6 +50,11 @@ const config: GatsbyConfig = {
               variants: ["500", "900"],
               strategy: "selfHosted",
             },
+            {
+              family: "Roboto Mono",
+              variants: ["400"],
+              strategy: "selfHosted",
+            },
           ],
         },
         useMinify: true,

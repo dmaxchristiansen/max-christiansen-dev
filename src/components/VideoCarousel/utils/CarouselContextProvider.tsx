@@ -153,7 +153,6 @@ export const CarouselContextProvider: React.FC<
     thirdAltText,
     animatedActiveThumbnailUrl,
     animatedActivePreviewUrl,
-
     animatedSecondThumbnailUrl,
     animatedSecondPreviewUrl,
     animatedThirdThumbnailUrl,

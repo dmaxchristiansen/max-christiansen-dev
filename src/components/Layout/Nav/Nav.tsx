@@ -171,7 +171,7 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
 
   const handleItemButtonClick = (activeElement: string) => {
     if (isHomeNav) {
-      scrollToTargetElement(activeElement, 70);
+      scrollToTargetElement(activeElement, 60);
     } else {
       void navigate(`/?active=${activeElement}`);
     }

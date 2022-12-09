@@ -4,6 +4,12 @@ import downArrow from "src/images/down-arrow.gif";
 import { scrollToTargetElement } from "src/utils/helpers";
 
 const Container = styled.div`
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 30px 0;
+`;
+
+const Wrapper = styled.div`
   position: relative;
   height: calc(100vh - 105px);
   margin-top: 40px;
@@ -100,34 +106,36 @@ const DownArrow = styled.img`
 
 const Intro = () => (
   <Container>
-    <Header>Max Christiansen</Header>
-    <Subheader>Software Engineer</Subheader>
-    <MobileImageContainer>
-      <StaticImage
-        style={{ borderRadius: "16px" }}
-        src="../../images/dmc-brick-profile.jpg"
-        alt="Max Christiansen"
-      />
-    </MobileImageContainer>
-    <Copy>
-      devoted to creating beautifully simple, accessible web experiences
-    </Copy>
-    <ImageContainer>
-      <StaticImage
-        style={{ borderRadius: "16px" }}
-        src="../../images/dmc-brick-profile.jpg"
-        alt="Max Christiansen"
-      />
-    </ImageContainer>
-    <ScrollDownButtonWrapper>
-      <ScrollDownButton
-        type="button"
-        aria-label="scroll down"
-        onClick={() => scrollToTargetElement("expertise", 70)}
-      >
-        <DownArrow src={downArrow} alt="scroll down arrow" />
-      </ScrollDownButton>
-    </ScrollDownButtonWrapper>
+    <Wrapper>
+      <Header>Max Christiansen</Header>
+      <Subheader>Software Engineer</Subheader>
+      <MobileImageContainer>
+        <StaticImage
+          style={{ borderRadius: "16px" }}
+          src="../../images/dmc-brick-profile.jpg"
+          alt="Max Christiansen"
+        />
+      </MobileImageContainer>
+      <Copy>
+        devoted to creating beautifully simple, accessible web experiences
+      </Copy>
+      <ImageContainer>
+        <StaticImage
+          style={{ borderRadius: "16px" }}
+          src="../../images/dmc-brick-profile.jpg"
+          alt="Max Christiansen"
+        />
+      </ImageContainer>
+      <ScrollDownButtonWrapper>
+        <ScrollDownButton
+          type="button"
+          aria-label="scroll down"
+          onClick={() => scrollToTargetElement("expertise", 60)}
+        >
+          <DownArrow src={downArrow} alt="scroll down arrow" />
+        </ScrollDownButton>
+      </ScrollDownButtonWrapper>
+    </Wrapper>
   </Container>
 );
 
