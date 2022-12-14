@@ -2,11 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Link, navigate, useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
-// import {
-//   disableBodyScroll,
-//   enableBodyScroll,
-//   clearAllBodyScrollLocks,
-// } from "body-scroll-lock";
 import styled from "styled-components";
 import { NAV_Z_INDEX } from "src/utils/constants/layer-constants";
 import { FAST } from "src/utils/constants/transition-speeds";
@@ -18,7 +13,7 @@ import { GRIMACE } from "src/styles/colors";
 const SCROLL_REACTION_THRESHOLD = 5;
 
 const NAV_BACKGROUND_COLOR = "rgba(26, 26, 26, 0.7)";
-const NAV_BOX_SHADOW = "0 0 8px 0 rgba(0, 0, 0, 0.3)";
+const NAV_BOX_SHADOW = "0 0 8px 0 rgba(0, 0, 0, 0.8)";
 const NAV_BACKDROP_FILTER = "saturate(180%) blur(20px)";
 
 interface NavProps {
@@ -121,7 +116,7 @@ interface MobileCollapseListProps {
 const MobileCollapseList = styled.ul<MobileCollapseListProps>`
   position: fixed;
   top: 41px;
-  right: ${({ isCollapseOpen }) => (isCollapseOpen ? "0" : "-192px")};
+  right: ${({ isCollapseOpen }) => (isCollapseOpen ? "0" : "-204px")};
   margin: 0;
   padding: 0;
   z-index: ${NAV_Z_INDEX};
@@ -166,16 +161,13 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
     };
   });
 
-  // useEffect(() => {
-  //   if (isCollapseOpen && navRef.current) {
-  //     disableBodyScroll(navRef.current);
-  //   } else if (navRef.current) {
-  //     enableBodyScroll(navRef.current);
-  //   }
-  //   return () => {
-  //     clearAllBodyScrollLocks();
-  //   };
-  // }, [isCollapseOpen]);
+  useEffect(() => {
+    if (isCollapseOpen && navRef.current) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isCollapseOpen]);
 
   const handleItemButtonClick = (activeElement: string) => {
     if (isHomeNav) {
@@ -217,10 +209,10 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
             <Item>
               <ItemButton
                 type="button"
-                aria-label="navigate or scroll to work section"
-                onClick={() => handleItemButtonClick("work")}
+                aria-label="navigate or scroll to experience section"
+                onClick={() => handleItemButtonClick("experience")}
               >
-                &#x2f;&#x2f;&nbsp;work
+                &#x2f;&#x2f;&nbsp;experience
               </ItemButton>
             </Item>
             <Item>
@@ -231,7 +223,6 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
             </Item>
           </List>
         </Wrapper>
-
         <MobileCollapseList isCollapseOpen={isCollapseOpen}>
           <Item>
             <ItemButton
@@ -248,13 +239,13 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
           <Item>
             <ItemButton
               type="button"
-              aria-label="navigate or scroll to work section"
+              aria-label="navigate or scroll to experience section"
               onClick={() => {
-                handleItemButtonClick("work");
+                handleItemButtonClick("experience");
                 setIsCollapseOpen(false);
               }}
             >
-              &#x2f;&#x2f;&nbsp;work
+              &#x2f;&#x2f;&nbsp;experience
             </ItemButton>
           </Item>
           <Item>

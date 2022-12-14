@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
 import { InViewProps } from "src/components/homepage/types/homepage";
-import { accordionConfig } from "src/components/homepage/Work/Accordion/utils/accordionConfig";
+import { accordionConfig } from "src/components/homepage/Experience/Accordion/utils/accordionConfig";
 import { EX_MEDIUM } from "src/components/homepage/Expertise/utils/constants";
 import SectionHeader from "src/components/homepage/SectionHeader";
-import Accordion from "src/components/homepage/Work/Accordion/Accordion";
+import Accordion from "src/components/homepage/Experience/Accordion/Accordion";
 
 const Container = styled.div`
   margin-top: 50px;
@@ -27,12 +27,15 @@ const AccordionWrapper = styled.div<InViewProps>`
   }
 `;
 
-const Work = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => (
-  <Container id="work" ref={ref}>
-    <SectionHeader text="Professional Experience" inView={inView} />
-    <AccordionWrapper inView={inView}>
-      <Accordion config={accordionConfig} />
-    </AccordionWrapper>
-  </Container>
-));
-export default Work;
+const Experience = forwardRef<HTMLDivElement, InViewProps>(
+  ({ inView }, ref) => (
+    <Container id="experience" ref={ref}>
+      <SectionHeader text="Professional Experience" inView={inView} />
+      <AccordionWrapper inView={inView}>
+        <Accordion config={accordionConfig} />
+      </AccordionWrapper>
+    </Container>
+  ),
+);
+
+export default Experience;

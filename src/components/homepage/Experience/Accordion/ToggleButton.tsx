@@ -3,10 +3,11 @@ import {
   HeaderProps,
   SectionIdProps,
   AccordionStateProps,
-} from "src/components/homepage/Work/Accordion/types/accordion";
-import { OBSIDIAN } from "src/styles/colors";
+} from "src/components/homepage/Experience/Accordion/types/accordion";
+import { GRIMACE_LIGHTLY, PURPLE_HAZE } from "src/styles/colors";
 import { MEDIUM } from "src/utils/constants/transition-speeds";
-import Chevron from "src/components/homepage/Work/Accordion/Chevron";
+import Chevron from "src/components/homepage/Experience/Accordion/Chevron";
+import { ACCORDION_BOX_SHADOW } from "./utils/constants";
 
 interface ButtonProps {
   isExpanded: AccordionStateProps;
@@ -26,9 +27,10 @@ const Button = styled.button<SectionIdProps & ButtonProps>`
   text-align: left;
   border: none;
   border-radius: 5px;
+
   background-color: ${({ sectionId, isExpanded }) =>
-    isExpanded[sectionId] ? "#2c3599" : OBSIDIAN};
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+    isExpanded[sectionId] ? PURPLE_HAZE : GRIMACE_LIGHTLY};
+  box-shadow: ${ACCORDION_BOX_SHADOW};
   cursor: pointer;
   transition: all ${MEDIUM} cubic-bezier(0.4, 0, 0.2, 1);
   @media (max-width: 520px) {

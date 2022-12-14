@@ -6,7 +6,7 @@ import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import Intro from "src/components/homepage/Intro";
 import Expertise from "src/components/homepage/Expertise/Expertise";
-import Work from "src/components/homepage/Work/Work";
+import Experience from "src/components/homepage/Experience/Experience";
 import SpinningOtter from "src/components/global/SpinningOtter/SpinningOtter";
 
 interface IndexPageProps {
@@ -31,7 +31,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
     triggerOnce: true,
   });
 
-  const { ref: workRef, inView: isWorkVisible } = useInView({
+  const { ref: experienceRef, inView: isExperienceVisible } = useInView({
     threshold: 0.3,
     delay: 250,
     triggerOnce: true,
@@ -41,7 +41,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
     <Layout isHomeNav>
       <Intro />
       <Expertise ref={expertiseRef} inView={isExpertiseVisible} />
-      <Work ref={workRef} inView={isWorkVisible} />
+      <Experience ref={experienceRef} inView={isExperienceVisible} />
       <SpinningOtter margin="75px 0" />
     </Layout>
   );

@@ -4,7 +4,7 @@ import { MEDIUM } from "src/utils/constants/transition-speeds";
 import {
   SectionIdProps,
   AccordionStateProps,
-} from "src/components/homepage/Work/Accordion/types/accordion";
+} from "src/components/homepage/Experience/Accordion/types/accordion";
 
 interface ChevronProps {
   isExpanded: AccordionStateProps;
