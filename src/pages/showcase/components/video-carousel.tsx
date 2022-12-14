@@ -1,10 +1,10 @@
-import Layout from "src/components/Layout/Layout";
-import Seo from "src/components/Seo/Seo";
-import VideoCarousel from "src/components/VideoCarousel/VideoCarousel";
+import Layout from "src/components/global/Layout/Layout";
+import Seo from "src/components/global/Seo/Seo";
+import VideoCarousel from "src/components/showcase/VideoCarousel/VideoCarousel";
 import {
   twoCarouselConfig,
   carouselConfig,
-} from "src/components/VideoCarousel/utils/configs";
+} from "src/components/showcase/VideoCarousel/utils/configs";
 
 const VideoCarouselPage = () => (
   <Layout headerText="Video Carousel" hasBackButton>

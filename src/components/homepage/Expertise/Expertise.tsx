@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
-import { StaticImage } from "gatsby-plugin-image";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled, { css } from "styled-components";
 import { WHITE } from "src/styles/colors";
 import { InViewProps } from "src/components/homepage/types/homepage";
@@ -14,6 +16,7 @@ const Container = styled.div`
   height: 800px;
   padding: 0 30px;
   @media (max-width: 991px) {
+    margin-top: 30px;
     height: unset;
   }
 `;
@@ -108,37 +111,44 @@ const ImageContainer = styled.div<InViewProps>`
   }
 `;
 
-const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => (
-  <Container id="expertise" ref={ref}>
-    <SectionHeader text="My Expertise" inView={inView} />
-    <FlexRow>
-      {colConfig.map(col => (
-        <Col key={col.topLineText} index={col.index} inView={inView}>
-          <SubheaderWrapper>
-            <SvgWrapper>
-              <col.SvgComponent />
-            </SvgWrapper>
-            <Subheader
-              topLineText={col.topLineText}
-              bottomLineText={col.bottomLineText}
-              backgroundColor={col.backgroundColor}
-            />
-          </SubheaderWrapper>
-          <ContentWrapper>
-            <Content>{col.contentText}</Content>
-          </ContentWrapper>
-        </Col>
-      ))}
-    </FlexRow>
-    <ImageContainer inView={inView}>
-      <StaticImage
-        src="../../../images/code-snapshot.png"
-        alt=""
-        width={700}
-        placeholder="tracedSVG"
-      />
-    </ImageContainer>
-  </Container>
-));
+const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
+  const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "code-snapshot.png" }) {
+        childImageSharp {
+          gatsbyImageData(quality: 100, placeholder: TRACED_SVG, width: 700)
+        }
+      }
+    }
+  `);
+
+  return (
+    <Container id="expertise" ref={ref}>
+      <SectionHeader text="My Expertise" inView={inView} />
+      <FlexRow>
+        {colConfig.map(col => (
+          <Col key={col.topLineText} index={col.index} inView={inView}>
+            <SubheaderWrapper>
+              <SvgWrapper>
+                <col.SvgComponent />
+              </SvgWrapper>
+              <Subheader
+                topLineText={col.topLineText}
+                bottomLineText={col.bottomLineText}
+                backgroundColor={col.backgroundColor}
+              />
+            </SubheaderWrapper>
+            <ContentWrapper>
+              <Content>{col.contentText}</Content>
+            </ContentWrapper>
+          </Col>
+        ))}
+      </FlexRow>
+      <ImageContainer inView={inView}>
+        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="" />
+      </ImageContainer>
+    </Container>
+  );
+});
 
 export default Expertise;

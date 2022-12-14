@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import GlobalStyle from "../../styles/GlobalStyle";
+import GlobalStyle from "../../../styles/GlobalStyle";
 import { ELECTRIC_PURPLE, OBSIDIAN, JELLYBEAN } from "src/styles/colors";
 import ComponentHeader from "./ComponentHeader";
 import Footer from "./Footer";
 import Nav from "./Nav/Nav";
-import ButtonLink from "src/components/ButtonLink/ButtonLink";
+import ButtonLink from "src/components/global/ButtonLink/ButtonLink";
 
 interface LayoutProps {
   hideNav?: boolean;

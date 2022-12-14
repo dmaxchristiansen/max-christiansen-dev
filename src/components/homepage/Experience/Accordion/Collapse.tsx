@@ -4,11 +4,15 @@ import {
   CollapseProps,
   SectionIdProps,
   AccordionStateProps,
-} from "src/components/homepage/Work/Accordion/types/accordion";
+} from "src/components/homepage/Experience/Accordion/types/accordion";
 import { MEDIUM } from "src/utils/constants/transition-speeds";
-import { GRIMACE, OBSIDIAN } from "src/styles/colors";
+import { GRIMACE, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
 import GeoPinSvg from "../svg-components/GeoPinSvg";
 import NewTabLinkSvg from "../svg-components/NewTabLinkSvg";
+import {
+  ACCORDION_BOX_SHADOW,
+  ACCORDION_TRANSITION_TIMING,
+} from "./utils/constants";
 
 interface ContainerProps {
   isExpanded: AccordionStateProps;
@@ -21,29 +25,34 @@ interface ToggleButtonProps extends ContainerProps {
 const Container = styled.div<SectionIdProps & ContainerProps>`
   max-height: ${({ sectionId, isExpanded }) =>
     isExpanded[sectionId] ? "500px" : "10px"};
+  width: calc(100% + 20px);
+  margin-left: -10px;
   visibility: ${({ sectionId, isExpanded }) =>
     isExpanded[sectionId] ? "visible" : "hidden"};
   opacity: ${({ sectionId, isExpanded }) =>
     isExpanded[sectionId] ? "1" : "0"};
   overflow: hidden;
-  transition: all ${MEDIUM} cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: max-height, opacity, visibility;
+  transition-duration: ${MEDIUM};
+  transition-timing-function: ${ACCORDION_TRANSITION_TIMING};
   @media (max-width: 767px) {
     max-height: ${({ sectionId, isExpanded }) =>
-      isExpanded[sectionId] ? "720px" : "10px"};
+      isExpanded[sectionId] ? "840px" : "10px"};
   }
 `;
 
 const Wrapper = styled.div`
-  padding: 20px 0;
+  width: calc(100% - 20px);
+  margin: 20px auto;
   @media (max-width: 520px) {
-    padding: 15px 0;
+    margin: 15px auto;
   }
 `;
 
 const InternalWrapper = styled.div`
   padding: 20px 25px;
   background-color: ${GRIMACE};
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: ${ACCORDION_BOX_SHADOW};
   border-radius: 5px;
   @media (max-width: 520px) {
     padding: 12px 16px;
@@ -140,7 +149,7 @@ const TechnologyList = styled.ul`
 const TechnologyItem = styled.li`
   margin: 0 4px 8px;
   padding: 10px 16px 11px;
-  background-color: #2c3599;
+  background-color: ${ROYAL_BLUE};
   border-radius: 16px;
   font-family: Roboto Mono;
   line-height: 16px;
@@ -162,9 +171,9 @@ const CloseButtonRow = styled.div`
 const CloseButton = styled.button`
   padding: 8px 16px;
   background-color: ${OBSIDIAN};
-  border: 2px solid #2c3599;
+  border: 2px solid ${ROYAL_BLUE};
   border-radius: 5px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: ${ACCORDION_BOX_SHADOW};
   font-weight: 900;
   letter-spacing: 4px;
 `;

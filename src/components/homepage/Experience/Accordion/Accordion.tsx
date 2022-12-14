@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { AccordionProps } from "src/components/homepage/Work/Accordion/types/accordion";
-import { INITIAL_STATE } from "src/components/homepage/Work/Accordion/utils/constants";
-import ToggleButton from "src/components/homepage/Work/Accordion/ToggleButton";
-import Collapse from "src/components/homepage/Work/Accordion/Collapse";
+import { AccordionProps } from "src/components/homepage/Experience/Accordion/types/accordion";
+import { INITIAL_STATE } from "src/components/homepage/Experience/Accordion/utils/constants";
+import ToggleButton from "src/components/homepage/Experience/Accordion/ToggleButton";
+import Collapse from "src/components/homepage/Experience/Accordion/Collapse";
 
 const Accordion: React.FC<AccordionProps> = ({ config }) => {
   const [isExpanded, setIsExpanded] = useState(INITIAL_STATE);

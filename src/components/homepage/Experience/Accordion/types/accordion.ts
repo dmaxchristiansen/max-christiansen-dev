@@ -1,4 +1,4 @@
-import { INITIAL_STATE } from "src/components/homepage/Work/Accordion/utils/constants";
+import { INITIAL_STATE } from "src/components/homepage/Experience/Accordion/utils/constants";
 
 export interface SectionIdProps {
   sectionId: keyof AccordionStateProps;

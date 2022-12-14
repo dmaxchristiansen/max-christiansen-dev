@@ -1,7 +1,12 @@
-import styled from "styled-components";
-import { StaticImage } from "gatsby-plugin-image";
+import styled, { css } from "styled-components";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import downArrow from "src/images/down-arrow.gif";
 import { scrollToTargetElement } from "src/utils/helpers";
+import { BLUE_EYES } from "src/styles/colors";
+
+const PROFILE_IMAGE_BOX_SHADOW = ` 0 0 24px 6px ${BLUE_EYES}`;
 
 const Container = styled.div`
   max-width: 1350px;
@@ -20,8 +25,8 @@ const Wrapper = styled.div`
     margin-bottom: 60px;
   }
   @media (max-width: 520px) {
-    height: calc(100vh - 95px);
-    margin-top: 30px;
+    height: calc(100vh - 75px);
+    margin-top: 0;
   }
 `;
 
@@ -51,10 +56,16 @@ const Subheader = styled.h2`
   }
 `;
 
-const MobileImageContainer = styled.div`
+const SharedProfileImageContainerStyles = css`
   display: flex;
-  max-width: 150px;
   margin: 0 auto;
+  box-shadow: ${PROFILE_IMAGE_BOX_SHADOW};
+  border-radius: 16px;
+`;
+
+const MobileProfileImageContainer = styled.div`
+  max-width: 150px;
+  ${SharedProfileImageContainerStyles}
   @media (min-width: 521px) {
     display: none;
   }
@@ -73,10 +84,9 @@ const Copy = styled.p`
   }
 `;
 
-const ImageContainer = styled.div`
-  display: flex;
+const ProfileImageContainer = styled.div`
   max-width: 350px;
-  margin: 0 auto;
+  ${SharedProfileImageContainerStyles}
   @media (max-width: 520px) {
     display: none;
   }
@@ -88,6 +98,9 @@ const ScrollDownButtonWrapper = styled.div`
   position: absolute;
   bottom: 10%;
   width: 100%;
+  @media (max-width: 520px) {
+    bottom: 16%;
+  }
 `;
 
 const ScrollDownButton = styled.button`
@@ -104,39 +117,53 @@ const DownArrow = styled.img`
   width: 140px;
 `;
 
-const Intro = () => (
-  <Container>
-    <Wrapper>
-      <Header>Max Christiansen</Header>
-      <Subheader>Software Engineer</Subheader>
-      <MobileImageContainer>
-        <StaticImage
-          style={{ borderRadius: "16px" }}
-          src="../../images/dmc-brick-profile.jpg"
-          alt="Max Christiansen"
-        />
-      </MobileImageContainer>
-      <Copy>
-        devoted to creating beautifully simple, accessible web experiences
-      </Copy>
-      <ImageContainer>
-        <StaticImage
-          style={{ borderRadius: "16px" }}
-          src="../../images/dmc-brick-profile.jpg"
-          alt="Max Christiansen"
-        />
-      </ImageContainer>
-      <ScrollDownButtonWrapper>
-        <ScrollDownButton
-          type="button"
-          aria-label="scroll down"
-          onClick={() => scrollToTargetElement("expertise", 60)}
-        >
-          <DownArrow src={downArrow} alt="scroll down arrow" />
-        </ScrollDownButton>
-      </ScrollDownButtonWrapper>
-    </Wrapper>
-  </Container>
-);
+const Intro = () => {
+  const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "dmc-brick-profile.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(quality: 100)
+        }
+      }
+    }
+  `);
+
+  return (
+    <Container>
+      <Wrapper>
+        <Header>Max Christiansen</Header>
+        <Subheader>Software Engineer</Subheader>
+        <MobileProfileImageContainer>
+          <GatsbyImage
+            style={{ borderRadius: 16 }}
+            imgStyle={{ borderRadius: 16 }}
+            image={data.file.childImageSharp.gatsbyImageData}
+            alt="Max Christiansen"
+          />
+        </MobileProfileImageContainer>
+        <Copy>
+          devoted to creating beautifully simple, modern web experiences
+        </Copy>
+        <ProfileImageContainer>
+          <GatsbyImage
+            style={{ borderRadius: 16 }}
+            imgStyle={{ borderRadius: 16 }}
+            image={data.file.childImageSharp.gatsbyImageData}
+            alt="Max Christiansen"
+          />
+        </ProfileImageContainer>
+        <ScrollDownButtonWrapper>
+          <ScrollDownButton
+            type="button"
+            aria-label="scroll down"
+            onClick={() => scrollToTargetElement("expertise", 60)}
+          >
+            <DownArrow src={downArrow} alt="scroll down arrow" />
+          </ScrollDownButton>
+        </ScrollDownButtonWrapper>
+      </Wrapper>
+    </Container>
+  );
+};
 
 export default Intro;
