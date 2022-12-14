@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { Link, navigate, useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from "body-scroll-lock";
+// import {
+//   disableBodyScroll,
+//   enableBodyScroll,
+//   clearAllBodyScrollLocks,
+// } from "body-scroll-lock";
 import styled from "styled-components";
 import { NAV_Z_INDEX } from "src/utils/constants/layer-constants";
 import { FAST } from "src/utils/constants/transition-speeds";
@@ -166,16 +166,16 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
     };
   });
 
-  useEffect(() => {
-    if (isCollapseOpen && navRef.current) {
-      disableBodyScroll(navRef.current);
-    } else if (navRef.current) {
-      enableBodyScroll(navRef.current);
-    }
-    return () => {
-      clearAllBodyScrollLocks();
-    };
-  }, [isCollapseOpen]);
+  // useEffect(() => {
+  //   if (isCollapseOpen && navRef.current) {
+  //     disableBodyScroll(navRef.current);
+  //   } else if (navRef.current) {
+  //     enableBodyScroll(navRef.current);
+  //   }
+  //   return () => {
+  //     clearAllBodyScrollLocks();
+  //   };
+  // }, [isCollapseOpen]);
 
   const handleItemButtonClick = (activeElement: string) => {
     if (isHomeNav) {
