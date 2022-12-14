@@ -1,4 +1,6 @@
-import { StaticImage } from "gatsby-plugin-image";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled from "styled-components";
 import { SNAIL } from "src/utils/constants/transition-speeds";
 import { SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
@@ -46,31 +48,41 @@ const Message = styled.p`
   }
 `;
 
-const NotFoundPage = () => (
-  <Layout hideNav hideFooter>
-    <Container>
-      <ImageContainer>
-        <ImageWrapper>
-          <StaticImage
-            src="../images/four-o-four.png"
-            alt="sad face"
-            placeholder="tracedSVG"
-            width={300}
-          />
-        </ImageWrapper>
-      </ImageContainer>
-      <Header>404</Header>
-      <Message>THIS PAGE IS UNAVAILABLE OR DOES NOT EXIST</Message>
-      <ButtonLink
-        href="/"
-        text="BACK TO HOME"
-        fontSize="32px"
-        py="6px"
-        px="12px"
-      />
-    </Container>
-  </Layout>
-);
+const NotFoundPage = () => {
+  const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "four-o-four.png" }) {
+        childImageSharp {
+          gatsbyImageData(quality: 100, placeholder: TRACED_SVG, width: 300)
+        }
+      }
+    }
+  `);
+
+  return (
+    <Layout hideNav hideFooter>
+      <Container>
+        <ImageContainer>
+          <ImageWrapper>
+            <GatsbyImage
+              image={data.file.childImageSharp.gatsbyImageData}
+              alt="sad face"
+            />
+          </ImageWrapper>
+        </ImageContainer>
+        <Header>404</Header>
+        <Message>THIS PAGE IS UNAVAILABLE OR DOES NOT EXIST</Message>
+        <ButtonLink
+          href="/"
+          text="BACK TO HOME"
+          fontSize="32px"
+          py="6px"
+          px="12px"
+        />
+      </Container>
+    </Layout>
+  );
+};
 
 export const Head = () => <Seo title="Page Not Found" noIndex />;
 
