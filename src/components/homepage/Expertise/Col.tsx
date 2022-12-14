@@ -6,7 +6,7 @@ import {
   EX_MEDIUM,
   EX_SLOW,
 } from "src/components/homepage/Expertise/utils/constants";
-import { InViewProps } from "src/components/homepage/types/homepage";
+import { InViewProps } from "src/utils/types/inView";
 
 interface ColProps {
   index: number;

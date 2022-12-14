@@ -4,7 +4,7 @@ import queryString from "query-string";
 import { scrollToTargetElement } from "src/utils/helpers";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
-import Intro from "src/components/homepage/Intro";
+import Intro from "src/components/homepage/Intro/Intro";
 import Expertise from "src/components/homepage/Expertise/Expertise";
 import Experience from "src/components/homepage/Experience/Experience";
 import SpinningOtter from "src/components/global/SpinningOtter/SpinningOtter";

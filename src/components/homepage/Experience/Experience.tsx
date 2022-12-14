@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
-import { InViewProps } from "src/components/homepage/types/homepage";
+import { InViewProps } from "src/utils/types/inView";
 import { accordionConfig } from "src/components/homepage/Experience/Accordion/utils/accordionConfig";
 import { EX_MEDIUM } from "src/components/homepage/Expertise/utils/constants";
-import SectionHeader from "src/components/homepage/SectionHeader";
+import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Accordion from "src/components/homepage/Experience/Accordion/Accordion";
 
 const Container = styled.div`

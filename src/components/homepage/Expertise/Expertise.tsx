@@ -4,10 +4,10 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled, { css } from "styled-components";
 import { WHITE } from "src/styles/colors";
-import { InViewProps } from "src/components/homepage/types/homepage";
+import { InViewProps } from "src/utils/types/inView";
 import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
 import { EX_MEDIUM, EX_SLOW } from "./utils/constants";
-import SectionHeader from "src/components/homepage/SectionHeader";
+import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader";
 
