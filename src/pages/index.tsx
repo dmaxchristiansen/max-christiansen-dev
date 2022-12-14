@@ -26,14 +26,14 @@ const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
   defaultFallbackInView(true);
 
   const { ref: expertiseRef, inView: isExpertiseVisible } = useInView({
-    threshold: 0.5,
-    delay: 100,
+    threshold: 0.3,
+    delay: 250,
     triggerOnce: true,
   });
 
   const { ref: workRef, inView: isWorkVisible } = useInView({
-    threshold: 0.5,
-    delay: 100,
+    threshold: 0.3,
+    delay: 250,
     triggerOnce: true,
   });
 
