@@ -5,17 +5,16 @@ import {
   SectionIdProps,
   AccordionStateProps,
 } from "src/components/homepage/Experience/Accordion/types/accordion";
+import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
 
 interface ChevronProps {
   isExpanded: AccordionStateProps;
 }
 
 const StyledSvg = styled.svg<SectionIdProps & ChevronProps>`
-  height: 15px;
-  width: 15px;
   transform: ${({ sectionId, isExpanded }) =>
     isExpanded[sectionId] ? "rotate(0deg)" : "rotate(-90deg)"};
-  transition: transform ${MEDIUM};
+  transition: transform ${MEDIUM} ${ACCORDION_TRANSITION_TIMING};
 `;
 
 const Chevron: React.FC<SectionIdProps & ChevronProps> = ({
@@ -23,16 +22,17 @@ const Chevron: React.FC<SectionIdProps & ChevronProps> = ({
   isExpanded,
 }) => (
   <StyledSvg
-    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
-    focusable="false"
+    height={24}
+    width={24}
+    fill="none"
+    stroke={WHITE}
+    strokeWidth={3}
+    strokeLinecap="round"
     sectionId={sectionId}
     isExpanded={isExpanded}
   >
-    <path
-      d="M0 7.33L2.829 4.5l9.175 9.339L21.171 4.5 24 7.33 12.004 19.5z"
-      fill={WHITE}
-    />
+    <polyline points="6 9 12 15 18 9" />
   </StyledSvg>
 );
 

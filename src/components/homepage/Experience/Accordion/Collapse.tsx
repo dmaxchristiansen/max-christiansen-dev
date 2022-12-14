@@ -9,7 +9,10 @@ import { MEDIUM } from "src/utils/constants/transition-speeds";
 import { GRIMACE, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
 import GeoPinSvg from "../svg-components/GeoPinSvg";
 import NewTabLinkSvg from "../svg-components/NewTabLinkSvg";
-import { ACCORDION_BOX_SHADOW } from "./utils/constants";
+import {
+  ACCORDION_BOX_SHADOW,
+  ACCORDION_TRANSITION_TIMING,
+} from "./utils/constants";
 
 interface ContainerProps {
   isExpanded: AccordionStateProps;
@@ -29,10 +32,12 @@ const Container = styled.div<SectionIdProps & ContainerProps>`
   opacity: ${({ sectionId, isExpanded }) =>
     isExpanded[sectionId] ? "1" : "0"};
   overflow: hidden;
-  transition: all ${MEDIUM} cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: max-height, opacity, visibility;
+  transition-duration: ${MEDIUM};
+  transition-timing-function: ${ACCORDION_TRANSITION_TIMING};
   @media (max-width: 767px) {
     max-height: ${({ sectionId, isExpanded }) =>
-      isExpanded[sectionId] ? "800px" : "10px"};
+      isExpanded[sectionId] ? "840px" : "10px"};
   }
 `;
 

@@ -7,7 +7,10 @@ import {
 import { GRIMACE_LIGHTLY, PURPLE_HAZE } from "src/styles/colors";
 import { MEDIUM } from "src/utils/constants/transition-speeds";
 import Chevron from "src/components/homepage/Experience/Accordion/Chevron";
-import { ACCORDION_BOX_SHADOW } from "./utils/constants";
+import {
+  ACCORDION_BOX_SHADOW,
+  ACCORDION_TRANSITION_TIMING,
+} from "./utils/constants";
 
 interface ButtonProps {
   isExpanded: AccordionStateProps;
@@ -27,12 +30,11 @@ const Button = styled.button<SectionIdProps & ButtonProps>`
   text-align: left;
   border: none;
   border-radius: 5px;
-
   background-color: ${({ sectionId, isExpanded }) =>
     isExpanded[sectionId] ? PURPLE_HAZE : GRIMACE_LIGHTLY};
   box-shadow: ${ACCORDION_BOX_SHADOW};
   cursor: pointer;
-  transition: all ${MEDIUM} cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color ${MEDIUM} ${ACCORDION_TRANSITION_TIMING};
   @media (max-width: 520px) {
     padding: 12px 16px;
   }

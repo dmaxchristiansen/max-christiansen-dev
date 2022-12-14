@@ -116,7 +116,7 @@ interface MobileCollapseListProps {
 const MobileCollapseList = styled.ul<MobileCollapseListProps>`
   position: fixed;
   top: 41px;
-  right: ${({ isCollapseOpen }) => (isCollapseOpen ? "0" : "-204px")};
+  right: ${({ isCollapseOpen }) => (isCollapseOpen ? "0" : "-210px")};
   margin: 0;
   padding: 0;
   z-index: ${NAV_Z_INDEX};
