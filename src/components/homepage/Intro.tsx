@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   }
   @media (max-width: 520px) {
     height: calc(100vh - 75px);
-    margin: 0;
+    margin-top: 0;
   }
 `;
 
@@ -135,7 +135,8 @@ const Intro = () => {
         <Subheader>Software Engineer</Subheader>
         <MobileProfileImageContainer>
           <GatsbyImage
-            style={{ borderRadius: "16px" }}
+            style={{ borderRadius: 16 }}
+            imgStyle={{ borderRadius: 16 }}
             image={data.file.childImageSharp.gatsbyImageData}
             alt="Max Christiansen"
           />
@@ -145,7 +146,8 @@ const Intro = () => {
         </Copy>
         <ProfileImageContainer>
           <GatsbyImage
-            style={{ borderRadius: "16px" }}
+            style={{ borderRadius: 16 }}
+            imgStyle={{ borderRadius: 16 }}
             image={data.file.childImageSharp.gatsbyImageData}
             alt="Max Christiansen"
           />

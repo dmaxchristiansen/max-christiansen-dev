@@ -29,6 +29,7 @@ const Button = styled.button<SectionIdProps & ButtonProps>`
   background-color: ${({ sectionId, isExpanded }) =>
     isExpanded[sectionId] ? "#2c3599" : OBSIDIAN};
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
   transition: all ${MEDIUM} cubic-bezier(0.4, 0, 0.2, 1);
   @media (max-width: 520px) {
     padding: 12px 16px;
