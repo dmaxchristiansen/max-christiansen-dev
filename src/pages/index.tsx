@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import queryString from "query-string";
 import { scrollToTargetElement } from "src/utils/helpers";
-import Layout from "src/components/Layout/Layout";
-import Seo from "src/components/Seo/Seo";
+import Layout from "src/components/global/Layout/Layout";
+import Seo from "src/components/global/Seo/Seo";
 import Intro from "src/components/homepage/Intro";
 import Expertise from "src/components/homepage/Expertise/Expertise";
 import Work from "src/components/homepage/Work/Work";
-import SpinningOtter from "src/components/SpinningOtter/SpinningOtter";
+import SpinningOtter from "src/components/global/SpinningOtter/SpinningOtter";
 
 interface IndexPageProps {
   location: {

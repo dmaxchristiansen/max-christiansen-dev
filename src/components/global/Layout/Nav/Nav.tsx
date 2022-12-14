@@ -187,7 +187,7 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
         <Wrapper>
           <StyledHomeLink to="/">
             <StaticImage
-              src="../../../images/otter-icon-nav-white.png"
+              src="../../../../images/otter-icon-nav-white.png"
               width={36}
               placeholder="tracedSVG"
               alt="otter"

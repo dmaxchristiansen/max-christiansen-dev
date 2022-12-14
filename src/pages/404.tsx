@@ -2,9 +2,9 @@ import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { SNAIL } from "src/utils/constants/transition-speeds";
 import { SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
-import Layout from "../components/Layout/Layout";
-import Seo from "../components/Seo/Seo";
-import ButtonLink from "src/components/ButtonLink/ButtonLink";
+import Layout from "../components/global/Layout/Layout";
+import Seo from "../components/global/Seo/Seo";
+import ButtonLink from "src/components/global/ButtonLink/ButtonLink";
 
 const Container = styled.div`
   min-height: 100vh;

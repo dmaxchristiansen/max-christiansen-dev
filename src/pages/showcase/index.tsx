@@ -19,8 +19,8 @@ import {
 } from "src/styles/colors";
 import { MEDIUM, TURTLE } from "src/utils/constants/transition-speeds";
 import { TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
-import Layout from "src/components/Layout/Layout";
-import Seo from "src/components/Seo/Seo";
+import Layout from "src/components/global/Layout/Layout";
+import Seo from "src/components/global/Seo/Seo";
 
 const Container = styled.div`
   display: flex;

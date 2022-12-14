@@ -1,7 +1,7 @@
-import Layout from "src/components/Layout/Layout";
-import Seo from "src/components/Seo/Seo";
-import Marquee from "src/components/Marquee/Marquee";
-import { emojiConfig } from "src/components/Marquee/utils/configs";
+import Layout from "src/components/global/Layout/Layout";
+import Seo from "src/components/global/Seo/Seo";
+import Marquee from "src/components/showcase/Marquee/Marquee";
+import { emojiConfig } from "src/components/showcase/Marquee/utils/configs";
 
 const MarqueePage = () => (
   <Layout headerText="Marquee" hasBackButton>

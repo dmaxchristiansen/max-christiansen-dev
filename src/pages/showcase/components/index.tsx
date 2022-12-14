@@ -4,9 +4,9 @@ import styled, { css } from "styled-components";
 import { HOT_PINK, BLUE_SKY } from "src/styles/colors";
 import { SLOW, TURTLE } from "src/utils/constants/transition-speeds";
 import { TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
-import Layout from "src/components/Layout/Layout";
-import Seo from "src/components/Seo/Seo";
-import SpinningOtter from "src/components/SpinningOtter/SpinningOtter";
+import Layout from "src/components/global/Layout/Layout";
+import Seo from "src/components/global/Seo/Seo";
+import SpinningOtter from "src/components/global/SpinningOtter/SpinningOtter";
 
 const Container = styled.div`
   display: flex;
