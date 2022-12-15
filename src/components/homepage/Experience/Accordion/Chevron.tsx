@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { WHITE } from "src/styles/colors";
-import { MEDIUM } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED } from "src/utils/constants/transition-speeds";
 import {
   SectionIdProps,
   AccordionStateProps,
@@ -14,7 +14,7 @@ interface ChevronProps {
 const StyledSvg = styled.svg<SectionIdProps & ChevronProps>`
   transform: ${({ sectionId, isExpanded }) =>
     isExpanded[sectionId] ? "rotate(0deg)" : "rotate(-90deg)"};
-  transition: transform ${MEDIUM} ${ACCORDION_TRANSITION_TIMING};
+  transition: transform ${FIVE_HUNDRED} ${ACCORDION_TRANSITION_TIMING};
 `;
 
 const Chevron: React.FC<SectionIdProps & ChevronProps> = ({

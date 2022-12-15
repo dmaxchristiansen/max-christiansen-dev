@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import { HOT_PINK, BLUE_SKY } from "src/styles/colors";
-import { SLOW, TURTLE } from "src/utils/constants/transition-speeds";
+import {
+  EIGHT_HUNDRED,
+  TWO_THOUSAND,
+} from "src/utils/constants/transition-speeds";
 import { TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
@@ -24,9 +27,9 @@ const SHARED_HEADER_STYLES = css`
   font-family: "Mr Dafoe";
   font-size: 120px;
   text-shadow: 0 0 16px ${HOT_PINK}, 0 0 18px ${HOT_PINK};
-  animation: ${TEXT_GLOW_KEYFRAMES} ${TURTLE};
+  animation: ${TEXT_GLOW_KEYFRAMES} ${TWO_THOUSAND};
   animation-iteration-count: infinite;
-  transition: color ${SLOW};
+  transition: color ${EIGHT_HUNDRED};
   &:hover {
     color: ${BLUE_SKY};
   }

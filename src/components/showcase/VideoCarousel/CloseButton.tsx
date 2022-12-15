@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FAST } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
 import { OPACITY_FADE } from "src/utils/constants/animation-constants";
 import { CLEAR, WHITE } from "src/styles/colors";
 import CloseIcon from "./CloseIcon";
@@ -19,7 +19,7 @@ const Button = styled.button`
   border: 2px solid ${CLEAR};
   border-radius: 5px;
   cursor: pointer;
-  transition: opacity, border ${FAST};
+  transition: opacity, border ${TWO_FIFTY};
 
   &:hover {
     opacity: ${OPACITY_FADE};

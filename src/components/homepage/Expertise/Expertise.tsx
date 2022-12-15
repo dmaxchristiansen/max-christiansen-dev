@@ -4,17 +4,19 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled, { css } from "styled-components";
 import { WHITE } from "src/styles/colors";
-import { InViewProps } from "src/components/homepage/types/homepage";
+import { InViewProps } from "src/utils/types/inView";
 import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
-import { EX_MEDIUM, EX_SLOW } from "./utils/constants";
-import SectionHeader from "src/components/homepage/SectionHeader";
+import { FOUR_FIFTY } from "src/utils/constants/transition-speeds";
+import { NINE_HUNDRED } from "src/utils/constants/transition-speeds";
+import { Z_TEN, Z_TWENTY } from "src/utils/constants/layer-constants";
+import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader";
 
 const Container = styled.div`
   position: relative;
   height: 800px;
-  padding: 0 30px;
+  padding: 50px 30px 0;
   @media (max-width: 991px) {
     margin-top: 30px;
     height: unset;
@@ -27,7 +29,7 @@ const FlexRow = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   padding-top: 30px;
-  z-index: 20;
+  z-index: ${Z_TWENTY};
   @media (max-width: 991px) {
     flex-direction: column;
     padding-bottom: 30px;
@@ -103,9 +105,9 @@ const ImageContainer = styled.div<InViewProps>`
   );
   mask-image: linear-gradient(to bottom, #fff 0%, #fff 40%, transparent 100%);
   opacity: ${({ inView }) => (inView ? "0.17" : "0")};
-  z-index: 10;
-  transition: opacity ${EX_SLOW};
-  transition-delay: ${EX_MEDIUM};
+  z-index: ${Z_TEN};
+  transition: opacity ${NINE_HUNDRED};
+  transition-delay: ${FOUR_FIFTY};
   @media (max-width: 991px) {
     display: none;
   }
