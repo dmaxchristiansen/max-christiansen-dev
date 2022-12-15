@@ -1,5 +1,7 @@
-export const FAST = "250ms";
-export const MEDIUM = "500ms";
-export const SLOW = "800ms";
-export const TURTLE = "2000ms";
-export const SNAIL = "5000ms";
+export const TWO_FIFTY = "250ms";
+export const FIVE_HUNDRED = "500ms";
+export const FOUR_FIFTY = "450ms";
+export const EIGHT_HUNDRED = "800ms";
+export const NINE_HUNDRED = "900ms";
+export const TWO_THOUSAND = "2000ms";
+export const FIVE_THOUSAND = "5000ms";

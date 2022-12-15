@@ -1,7 +1,4 @@
-import { useEffect } from "react";
 import { useInView, defaultFallbackInView } from "react-intersection-observer";
-import queryString from "query-string";
-import { scrollToTargetElement } from "src/utils/helpers";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import Intro from "src/components/homepage/Intro/Intro";
@@ -9,20 +6,7 @@ import Expertise from "src/components/homepage/Expertise/Expertise";
 import Experience from "src/components/homepage/Experience/Experience";
 import SpinningOtter from "src/components/global/SpinningOtter/SpinningOtter";
 
-interface IndexPageProps {
-  location: {
-    search: string;
-  };
-}
-
-const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
-  const activeParam = queryString.parse(location.search).active?.toString();
-
-  useEffect(() => {
-    if (!activeParam) return;
-    scrollToTargetElement(activeParam, 60);
-  });
-
+const IndexPage: React.FC = () => {
   defaultFallbackInView(true);
 
   const { ref: expertiseRef, inView: isExpertiseVisible } = useInView({
@@ -38,7 +22,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ location }) => {
   });
 
   return (
-    <Layout isHomeNav>
+    <Layout>
       <Intro />
       <Expertise ref={expertiseRef} inView={isExpertiseVisible} />
       <Experience ref={experienceRef} inView={isExperienceVisible} />

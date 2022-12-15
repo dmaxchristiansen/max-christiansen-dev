@@ -3,9 +3,11 @@ import { TRANSLUCENT_BLACK, BLUE_GRAY, CLEAR } from "src/styles/colors";
 import {
   COL_DELAY_ONE,
   COL_DELAY_TWO,
-  EX_MEDIUM,
-  EX_SLOW,
 } from "src/components/homepage/Expertise/utils/constants";
+import {
+  NINE_HUNDRED,
+  FOUR_FIFTY,
+} from "src/utils/constants/transition-speeds";
 import { InViewProps } from "src/utils/types/inView";
 
 interface ColProps {
@@ -32,7 +34,7 @@ const ColContainer = styled.div<ColProps & InViewProps>`
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition-property: background-color, opacity, transform;
-  transition-duration: ${EX_SLOW}, ${EX_SLOW}, ${EX_MEDIUM};
+  transition-duration: ${NINE_HUNDRED}, ${NINE_HUNDRED}, ${FOUR_FIFTY};
   transition-delay: ${({ index }) =>
     index === 0 ? "0" : index === 1 ? COL_DELAY_ONE : COL_DELAY_TWO};
   @media (max-width: 991px) {

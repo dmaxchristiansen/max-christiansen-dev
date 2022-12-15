@@ -5,14 +5,12 @@ import {
   SectionIdProps,
   AccordionStateProps,
 } from "src/components/homepage/Experience/Accordion/types/accordion";
-import { MEDIUM } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED } from "src/utils/constants/transition-speeds";
 import { GRIMACE, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
+import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
+import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
 import GeoPinSvg from "../svg-components/GeoPinSvg";
 import NewTabLinkSvg from "../svg-components/NewTabLinkSvg";
-import {
-  ACCORDION_BOX_SHADOW,
-  ACCORDION_TRANSITION_TIMING,
-} from "./utils/constants";
 
 interface ContainerProps {
   isExpanded: AccordionStateProps;
@@ -33,7 +31,7 @@ const Container = styled.div<SectionIdProps & ContainerProps>`
     isExpanded[sectionId] ? "1" : "0"};
   overflow: hidden;
   transition-property: max-height, opacity, visibility;
-  transition-duration: ${MEDIUM};
+  transition-duration: ${FIVE_HUNDRED};
   transition-timing-function: ${ACCORDION_TRANSITION_TIMING};
   @media (max-width: 767px) {
     max-height: ${({ sectionId, isExpanded }) =>
@@ -52,7 +50,7 @@ const Wrapper = styled.div`
 const InternalWrapper = styled.div`
   padding: 20px 25px;
   background-color: ${GRIMACE};
-  box-shadow: ${ACCORDION_BOX_SHADOW};
+  box-shadow: ${DARK_SHADOW};
   border-radius: 5px;
   @media (max-width: 520px) {
     padding: 12px 16px;
@@ -173,7 +171,7 @@ const CloseButton = styled.button`
   background-color: ${OBSIDIAN};
   border: 2px solid ${ROYAL_BLUE};
   border-radius: 5px;
-  box-shadow: ${ACCORDION_BOX_SHADOW};
+  box-shadow: ${DARK_SHADOW};
   font-weight: 900;
   letter-spacing: 4px;
 `;

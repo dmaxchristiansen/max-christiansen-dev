@@ -1,7 +1,8 @@
 import styled, { css, keyframes } from "styled-components";
-import { CAROUSEL_NAV_BUTTON_Z_INDEX } from "src/utils/constants/layer-constants";
+import { Z_TEN } from "src/utils/constants/layer-constants";
 import { BLACK } from "src/styles/colors";
-import { FAST } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
+import { LIGHT_SHADOW } from "src/utils/constants/shadow-constants";
 
 export const NEXT = "next";
 export const PREV = "prev";
@@ -14,13 +15,11 @@ export const ACTION_KEYFRAMES = keyframes`
   100% { opacity: 1; }
 `;
 
-const NAV_BUTTON_BOX_SHADOW = "0 0 8px 0 rgba(0, 0, 0, 0.3)";
-
 export const SHARED_NAV_BUTTON_ROW_STYLES = css`
   display: flex;
   justify-content: center;
   position: absolute;
-  z-index: ${CAROUSEL_NAV_BUTTON_Z_INDEX};
+  z-index: ${Z_TEN};
 `;
 
 export const SHARED_NAV_BUTTON_STYLES = css`
@@ -29,8 +28,8 @@ export const SHARED_NAV_BUTTON_STYLES = css`
   border-radius: 4px;
   color: ${BLACK};
   cursor: pointer;
-  box-shadow: ${NAV_BUTTON_BOX_SHADOW};
-  transition: background ${FAST};
+  box-shadow: ${LIGHT_SHADOW};
+  transition: background ${TWO_FIFTY};
 `;
 
 export const Quote = styled.p`

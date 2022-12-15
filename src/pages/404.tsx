@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled from "styled-components";
-import { SNAIL } from "src/utils/constants/transition-speeds";
+import { FIVE_THOUSAND } from "src/utils/constants/transition-speeds";
 import { SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
 import Layout from "../components/global/Layout/Layout";
 import Seo from "../components/global/Seo/Seo";
@@ -25,7 +25,7 @@ const ImageContainer = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  animation: ${SPIN_KEYFRAMES} ${SNAIL} linear infinite;
+  animation: ${SPIN_KEYFRAMES} ${FIVE_THOUSAND} linear infinite;
 `;
 
 const Header = styled.h1`

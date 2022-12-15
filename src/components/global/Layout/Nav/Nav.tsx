@@ -1,24 +1,20 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, navigate, useStaticQuery, graphql } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled from "styled-components";
-import { NAV_Z_INDEX } from "src/utils/constants/layer-constants";
-import { FAST } from "src/utils/constants/transition-speeds";
+import { Z_ONE_THOUSAND } from "src/utils/constants/layer-constants";
+import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
 import { OPACITY_FADE } from "src/utils/constants/animation-constants";
-import { scrollToTargetElement } from "src/utils/helpers";
-import Hamburger from "./Hamburger";
 import { GRIMACE } from "src/styles/colors";
+import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
+import { navConfig } from "./utils/navConfig";
+import Hamburger from "./Hamburger";
 
 const SCROLL_REACTION_THRESHOLD = 5;
 
 const NAV_BACKGROUND_COLOR = "rgba(26, 26, 26, 0.7)";
-const NAV_BOX_SHADOW = "0 0 8px 0 rgba(0, 0, 0, 0.8)";
 const NAV_BACKDROP_FILTER = "saturate(180%) blur(20px)";
-
-interface NavProps {
-  isHomeNav: boolean | undefined;
-}
 
 interface NavContainerProps {
   isScrolled: boolean;
@@ -29,12 +25,12 @@ const NavContainer = styled.nav<NavContainerProps>`
   position: fixed;
   width: 100%;
   background-color: ${GRIMACE};
-  box-shadow: ${NAV_BOX_SHADOW};
-  z-index: ${NAV_Z_INDEX};
+  box-shadow: ${DARK_SHADOW};
+  z-index: ${Z_ONE_THOUSAND};
   @media (min-width: 992px) {
     background-color: ${({ isScrolled }) =>
       isScrolled ? NAV_BACKGROUND_COLOR : "transparent"};
-    box-shadow: ${({ isScrolled }) => (isScrolled ? NAV_BOX_SHADOW : "none")};
+    box-shadow: ${({ isScrolled }) => (isScrolled ? DARK_SHADOW : "none")};
     backdrop-filter: ${({ isScrolled }) =>
       isScrolled ? NAV_BACKDROP_FILTER : "none"};
   }
@@ -54,7 +50,7 @@ const StyledHomeLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  transition: opacity ${FAST};
+  transition: opacity ${TWO_FIFTY};
   &:hover {
     opacity: ${OPACITY_FADE};
   }
@@ -81,7 +77,7 @@ const List = styled.ul`
 const Item = styled.li`
   list-style: none;
   margin: 30px 30px;
-  transition: opacity ${FAST};
+  transition: opacity ${TWO_FIFTY};
   &:hover {
     opacity: ${OPACITY_FADE};
   }
@@ -98,17 +94,6 @@ const ItemLink = styled(Link)`
   }
 `;
 
-const ItemButton = styled.button`
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  @media (min-width: 992px) {
-    font-size: 20px;
-  }
-`;
-
 interface MobileCollapseListProps {
   isCollapseOpen: boolean;
 }
@@ -119,19 +104,19 @@ const MobileCollapseList = styled.ul<MobileCollapseListProps>`
   right: ${({ isCollapseOpen }) => (isCollapseOpen ? "0" : "-210px")};
   margin: 0;
   padding: 0;
-  z-index: ${NAV_Z_INDEX};
+  z-index: ${Z_ONE_THOUSAND};
   background-color: black;
   background-color: ${GRIMACE};
-  box-shadow: ${NAV_BOX_SHADOW};
+  box-shadow: ${DARK_SHADOW};
   border-bottom-left-radius: 20px;
   clip-path: inset(-0px -12px -12px -12px);
-  transition: right ${FAST} linear;
+  transition: right ${TWO_FIFTY} linear;
   @media (min-width: 992px) {
     display: none;
   }
 `;
 
-const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
+const Nav: React.FC = () => {
   const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "otter-icon-nav-white.png" }) {
@@ -169,14 +154,6 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
     }
   }, [isCollapseOpen]);
 
-  const handleItemButtonClick = (activeElement: string) => {
-    if (isHomeNav) {
-      scrollToTargetElement(activeElement, 60);
-    } else {
-      void navigate(`/?active=${activeElement}`);
-    }
-  };
-
   return (
     <>
       <NavContainer
@@ -185,7 +162,7 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
         isCollapseOpen={isCollapseOpen}
       >
         <Wrapper>
-          <StyledHomeLink to="/">
+          <StyledHomeLink to="/" onClick={() => setIsCollapseOpen(false)}>
             <GatsbyImage
               image={data.file.childImageSharp.gatsbyImageData}
               alt="otter"
@@ -197,63 +174,26 @@ const Nav: React.FC<NavProps> = ({ isHomeNav }) => {
             setIsCollapseOpen={setIsCollapseOpen}
           />
           <List>
-            <Item>
-              <ItemButton
-                type="button"
-                aria-label="navigate or scroll to expertise section"
-                onClick={() => handleItemButtonClick("expertise")}
-              >
-                &#x2f;&#x2f;&nbsp;expertise
-              </ItemButton>
-            </Item>
-            <Item>
-              <ItemButton
-                type="button"
-                aria-label="navigate or scroll to experience section"
-                onClick={() => handleItemButtonClick("experience")}
-              >
-                &#x2f;&#x2f;&nbsp;experience
-              </ItemButton>
-            </Item>
-            <Item>
-              <ItemLink to="/showcase">&#x2f;&#x2f;&nbsp;showcase</ItemLink>
-            </Item>
-            <Item>
-              <ItemLink to="/contact">&#x2f;&#x2f;&nbsp;contact</ItemLink>
-            </Item>
+            {navConfig.map(navItem => (
+              <Item key={navItem.label}>
+                <ItemLink to={navItem.destination}>
+                  &#x2f;&#x2f;&nbsp;{navItem.label}
+                </ItemLink>
+              </Item>
+            ))}
           </List>
         </Wrapper>
         <MobileCollapseList isCollapseOpen={isCollapseOpen}>
-          <Item>
-            <ItemButton
-              type="button"
-              aria-label="navigate or scroll to expertise section"
-              onClick={() => {
-                handleItemButtonClick("expertise");
-                setIsCollapseOpen(false);
-              }}
-            >
-              &#x2f;&#x2f;&nbsp;expertise
-            </ItemButton>
-          </Item>
-          <Item>
-            <ItemButton
-              type="button"
-              aria-label="navigate or scroll to experience section"
-              onClick={() => {
-                handleItemButtonClick("experience");
-                setIsCollapseOpen(false);
-              }}
-            >
-              &#x2f;&#x2f;&nbsp;experience
-            </ItemButton>
-          </Item>
-          <Item>
-            <ItemLink to="/showcase">&#x2f;&#x2f;&nbsp;showcase</ItemLink>
-          </Item>
-          <Item>
-            <ItemLink to="/contact">&#x2f;&#x2f;&nbsp;contact</ItemLink>
-          </Item>
+          {navConfig.map(mobileNavItem => (
+            <Item key={mobileNavItem.label}>
+              <ItemLink
+                to={mobileNavItem.destination}
+                onClick={() => setIsCollapseOpen(false)}
+              >
+                &#x2f;&#x2f;&nbsp;{mobileNavItem.label}
+              </ItemLink>
+            </Item>
+          ))}
         </MobileCollapseList>
       </NavContainer>
     </>

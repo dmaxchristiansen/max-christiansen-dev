@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { InViewProps } from "src/utils/types/inView";
-import { EX_MEDIUM } from "src/components/homepage/Expertise/utils/constants";
+import { FOUR_FIFTY } from "src/utils/constants/transition-speeds";
+import { Z_TWENTY } from "src/utils/constants/layer-constants";
 
 interface TransitionProps {
   delayTransition?: boolean;
@@ -16,11 +17,11 @@ const Header = styled.h1<TransitionProps & InViewProps>`
   text-align: center;
   font-size: 80px;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
-  z-index: 20;
+  z-index: ${Z_TWENTY};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: transform, opacity;
-  transition-duration: ${EX_MEDIUM};
+  transition-duration: ${FOUR_FIFTY};
   transition-delay: ${({ delayTransition }) =>
     delayTransition ? "250ms" : "0s"};
   @media (max-width: 991px) {

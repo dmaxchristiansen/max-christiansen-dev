@@ -17,8 +17,16 @@ import {
   BLUE_GRIMLY,
   GRIMACE,
 } from "src/styles/colors";
-import { MEDIUM, TURTLE } from "src/utils/constants/transition-speeds";
+import {
+  FIVE_HUNDRED,
+  TWO_THOUSAND,
+} from "src/utils/constants/transition-speeds";
 import { TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
+import {
+  WIDE_BLUE_GLOW,
+  WIDE_PINK_GLOW,
+} from "src/utils/constants/shadow-constants";
+import { Z_ONE_HUNDRED } from "src/utils/constants/layer-constants";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 
@@ -160,10 +168,10 @@ const Subheader = styled.h2`
   position: absolute;
   top: 40%;
   margin: 0;
-  z-index: 100;
+  z-index: ${Z_ONE_HUNDRED};
   font-family: "Mr Dafoe";
   font-size: 172px;
-  animation: ${TEXT_GLOW_KEYFRAMES} ${TURTLE};
+  animation: ${TEXT_GLOW_KEYFRAMES} ${TWO_THOUSAND};
   animation-iteration-count: infinite;
   @media (max-width: 1000px) {
     font-size: 86px;
@@ -181,8 +189,8 @@ const StyledLink = styled(Link)`
   position: absolute;
   top: 70%;
   padding: 15px 25px;
-  z-index: 100;
-  box-shadow: 0 0 24px 6px ${BLUE_EYES};
+  z-index: ${Z_ONE_HUNDRED};
+  box-shadow: ${WIDE_BLUE_GLOW};
   background-color: ${BLUE_EYES};
   border: 2px solid ${PEACHY};
   border-radius: 16px;
@@ -192,9 +200,9 @@ const StyledLink = styled(Link)`
   letter-spacing: 2px;
   text-decoration: none;
   transition: color, background-color, box-shadow;
-  transition-duration: ${MEDIUM};
+  transition-duration: ${FIVE_HUNDRED};
   &:hover {
-    box-shadow: 0 0 48px 12px ${HOT_PINK};
+    box-shadow: ${WIDE_PINK_GLOW};
     background-color: ${PURPLE_HAZE};
     color: ${HOT_PINK};
   }

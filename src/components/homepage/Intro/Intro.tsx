@@ -4,9 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import downArrow from "src/images/down-arrow.gif";
 import { scrollToTargetElement } from "src/utils/helpers";
-import { BLUE_EYES } from "src/styles/colors";
-
-const PROFILE_IMAGE_BOX_SHADOW = ` 0 0 24px 6px ${BLUE_EYES}`;
+import { WIDE_BLUE_GLOW } from "src/utils/constants/shadow-constants";
 
 const Container = styled.div`
   max-width: 1350px;
@@ -59,7 +57,7 @@ const Subheader = styled.h2`
 const SharedProfileImageContainerStyles = css`
   display: flex;
   margin: 0 auto;
-  box-shadow: ${PROFILE_IMAGE_BOX_SHADOW};
+  box-shadow: ${WIDE_BLUE_GLOW};
   border-radius: 16px;
 `;
 
