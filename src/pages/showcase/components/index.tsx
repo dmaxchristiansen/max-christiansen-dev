@@ -57,6 +57,8 @@ const MarqueeHeader = styled.h1<HeaderProps>`
   animation-delay: 0.5s;
 `;
 
+// TODO: Add DataVisualizer component
+// SEE: https://github.com/dmaxchristiansen/max-christiansen-dev/issues/14
 const DataVisualizerHeader = styled.h1<HeaderProps>`
   ${SHARED_HEADER_STYLES}
   animation-play-state: ${({ isAnimated }) =>
@@ -94,7 +96,7 @@ const ComponentsPage = () => {
             onMouseOver={() => setIsAnimated(false)}
             onMouseLeave={() => setIsAnimated(true)}
           >
-            Data Visualizer
+            Coming soon!
           </DataVisualizerHeader>
         </StyledLink>
         <SpinningOtter margin={"0"} />
