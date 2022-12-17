@@ -9,6 +9,7 @@ export const GRAY = "#bcbcbc";
 
 export const BLUE_GRAY = "#94a0b9";
 export const DUSKY_BLUE = "#8ba2d0";
+export const REACT_BLUE = "#61dafb";
 export const CANDY_BLUE = "#59c1fe";
 export const BLUE_EYES = "#00a1ef";
 export const BLUE_DREAM = "rgba(89, 193, 254, 0.4)";

@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled from "styled-components";
 import { FIVE_THOUSAND } from "src/utils/constants/transition-speeds";
-import { SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
+import { Y_SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
 import Layout from "../components/global/Layout/Layout";
 import Seo from "../components/global/Seo/Seo";
 import ButtonLink from "src/components/global/ButtonLink/ButtonLink";
@@ -25,7 +25,7 @@ const ImageContainer = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  animation: ${SPIN_KEYFRAMES} ${FIVE_THOUSAND} linear infinite;
+  animation: ${Y_SPIN_KEYFRAMES} ${FIVE_THOUSAND} linear infinite;
 `;
 
 const Header = styled.h1`
