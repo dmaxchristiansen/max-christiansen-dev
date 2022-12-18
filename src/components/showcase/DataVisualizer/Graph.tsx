@@ -47,15 +47,6 @@ interface BarFillProps {
   barKeyframes: Keyframes;
 }
 
-const BarKeyframes = keyframes`
-  0% { 
-    height: 45px; 
-  }
-  100% { 
-    height: 80%; 
-  }
-`;
-
 const BarFill = styled.div<BarFillProps>`
   position: absolute;
   display: flex;
@@ -69,7 +60,7 @@ const BarFill = styled.div<BarFillProps>`
   animation-fill-mode: forwards;
   animation-delay: ${BAR_ANIMATION_DELAY};
   animation-duration: ${BAR_ANIMATION_DURATION};
-  animation-name: ${BarKeyframes};
+  animation-name: ${({ barKeyframes }) => barKeyframes};
 `;
 
 const Metric = styled.div`
@@ -117,8 +108,36 @@ const ArrowPoint = styled.div`
 
 const Graph: React.FC<GraphProps> = ({ activeGraph, graphData }) => {
   const painBarKeyframes = keyframes`
-    from { height: ${BAR_ANIMATION_START_HEIGHT}; }
-    to { height: ${graphData.pain}; }
+    0% {
+      height: ${BAR_ANIMATION_START_HEIGHT};
+    }
+    100% {
+      height: ${graphData.pain};
+    }
+  `;
+  const depressionBarKeyframes = keyframes`
+    0% {
+      height: ${BAR_ANIMATION_START_HEIGHT};
+    }
+    100% {
+      height: ${graphData.depression};
+    }
+  `;
+  const anxietyBarKeyframes = keyframes`
+    0% {
+      height: ${BAR_ANIMATION_START_HEIGHT};
+    }
+    100% {
+      height: ${graphData.anxiety};
+    }
+  `;
+  const surgeryBarKeyframes = keyframes`
+    0% {
+      height: ${BAR_ANIMATION_START_HEIGHT};
+    }
+    100% {
+      height: ${graphData.surgery};
+    }
   `;
 
   const barsConfig = [
@@ -134,21 +153,21 @@ const Graph: React.FC<GraphProps> = ({ activeGraph, graphData }) => {
       metric: graphData.depression,
       copy: "Depression reduction",
       backgroundColor: BAR_BACKGROUND_PINK,
-      barKeyframes: painBarKeyframes,
+      barKeyframes: depressionBarKeyframes,
     },
     {
       id: "anxiety",
       metric: graphData.anxiety,
       copy: "Anxiety reduction",
       backgroundColor: BAR_BACKGROUND_LIGHT_BLUE,
-      barKeyframes: painBarKeyframes,
+      barKeyframes: anxietyBarKeyframes,
     },
     {
       id: "surgery",
       metric: graphData.surgery,
       copy: "Surgeries avoided",
       backgroundColor: BAR_BACKGROUND_DARK_BLUE,
-      barKeyframes: painBarKeyframes,
+      barKeyframes: surgeryBarKeyframes,
     },
   ];
 

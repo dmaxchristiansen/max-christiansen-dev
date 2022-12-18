@@ -4,6 +4,7 @@ import { dataConfig } from "./utils/dataConfig";
 import Header from "./Header";
 import Graph from "./Graph";
 import NavButton from "./NavButton";
+import { BLUE_GRIMLY } from "src/styles/colors";
 
 const SectionWrapper = styled.div`
   width: 100%;
@@ -14,15 +15,14 @@ const SectionContainer = styled.div`
   max-width: 1020px;
   margin: 0 auto;
   padding: 60px 90px;
-  background-color: #432448;
+  background-color: ${BLUE_GRIMLY};
   border-radius: 6px;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
 `;
 
 const NavRow = styled.div`
   display: flex;
-  width: 80%;
-  margin: 0 auto;
+  margin: 0 50px;
   justify-content: space-between;
 `;
 

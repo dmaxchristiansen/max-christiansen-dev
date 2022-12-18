@@ -1,9 +1,11 @@
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
+import ComponentHeader from "src/components/showcase/ComponentHeader/ComponentHeader";
 import DataVisualizer from "src/components/showcase/DataVisualizer/DataVisualizer";
 
 const DataVisualizerPage = () => (
   <Layout>
+    <ComponentHeader text="Data Visualizer" />
     <DataVisualizer />
   </Layout>
 );

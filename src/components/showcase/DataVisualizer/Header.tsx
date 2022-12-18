@@ -50,7 +50,7 @@ const OrangePinkSpan = styled.span`
 `;
 
 const BoldSpan = styled.span`
-  font-weight: 900;
+  font-weight: 700;
 `;
 
 const Header: React.FC<HeaderProps> = ({ headerCopy, clients, members }) => (
