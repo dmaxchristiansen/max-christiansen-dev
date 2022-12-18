@@ -4,11 +4,13 @@ import styled, { css } from "styled-components";
 import { HOT_PINK, BLUE_EYES, ROYAL_BLUE } from "src/styles/colors";
 import {
   TEN_THOUSAND,
+  ONE_THOUSAND,
   TWO_THOUSAND,
+  THREE_THOUSAND,
 } from "src/utils/constants/transition-speeds";
 import {
   WHEEL_SPIN_KEYFRAMES,
-  BLUE_SHADOW_GLOW_KEYFRAMES,
+  BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES,
 } from "src/utils/constants/animation-constants";
 import {
   NARROW_PINK_GLOW,
@@ -17,7 +19,6 @@ import {
 import reactLogo from "src/images/reactLogo.svg";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
-import SpinningOtter from "src/components/global/SpinningOtter/SpinningOtter";
 
 const Container = styled.div`
   max-width: 1350px;
@@ -77,10 +78,10 @@ const LinksContainer = styled.div`
   margin-top: 42px;
   a {
     &:nth-child(2) {
-      animation-delay: 0.5s;
+      animation-delay: ${ONE_THOUSAND};
     }
     &:nth-child(3) {
-      animation-delay: 1s;
+      animation-delay: ${TWO_THOUSAND};
     }
   }
 `;
@@ -97,25 +98,23 @@ const StyledLink = styled(Link).withConfig({
   border-radius: 16px;
   text-decoration: none;
   box-shadow: ${DARK_SHADOW};
-  // animation-timing-function: cubic-bezier(0.1, -0.6, 0.2, 0);
   &:hover {
     box-shadow: ${NARROW_PINK_GLOW};
   }
   ${({ isAnimated }) =>
     isAnimated
       ? css`
-          animation: ${BLUE_SHADOW_GLOW_KEYFRAMES} ${TWO_THOUSAND};
+          animation: ${BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES} ${THREE_THOUSAND};
           animation-iteration-count: infinite;
           animation-timing-function: linear;
           animation-fill-mode: both;
-          animation-play-state: running;
         `
       : css`
           animation: none;
         `}
 `;
 
-const LameAss = styled.div`
+const LinkContent = styled.div`
   margin-bottom: 30px;
   padding: 16px 28px;
   border-radius: 16px;
@@ -155,31 +154,30 @@ const ComponentsPage = () => {
             to="/showcase/components/video-carousel"
             isAnimated={isAnimated}
           >
-            <LameAss
+            <LinkContent
               onMouseOver={() => setIsAnimated(false)}
               onMouseLeave={() => setIsAnimated(true)}
             >
               VIDEO CAROUSEL
-            </LameAss>
+            </LinkContent>
           </StyledLink>
           <StyledLink to="/showcase/components/marquee" isAnimated={isAnimated}>
-            <LameAss
+            <LinkContent
               onMouseOver={() => setIsAnimated(false)}
               onMouseLeave={() => setIsAnimated(true)}
             >
               MARQUEE
-            </LameAss>
+            </LinkContent>
           </StyledLink>
           <StyledLink to="#" isAnimated={isAnimated}>
-            <LameAss
+            <LinkContent
               onMouseOver={() => setIsAnimated(false)}
               onMouseLeave={() => setIsAnimated(true)}
             >
               COMING SOON
-            </LameAss>
+            </LinkContent>
           </StyledLink>
         </LinksContainer>
-        <SpinningOtter margin={"0"} />
       </Container>
     </Layout>
   );

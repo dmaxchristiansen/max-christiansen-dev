@@ -21,7 +21,7 @@ import {
   FIVE_HUNDRED,
   TWO_THOUSAND,
 } from "src/utils/constants/transition-speeds";
-import { TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
+import { PINK_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
 import {
   WIDE_BLUE_GLOW,
   WIDE_PINK_GLOW,
@@ -171,7 +171,7 @@ const Subheader = styled.h2`
   z-index: ${Z_ONE_HUNDRED};
   font-family: "Mr Dafoe";
   font-size: 172px;
-  animation: ${TEXT_GLOW_KEYFRAMES} ${TWO_THOUSAND};
+  animation: ${PINK_GLOW_KEYFRAMES} ${TWO_THOUSAND};
   animation-iteration-count: infinite;
   @media (max-width: 1000px) {
     font-size: 86px;

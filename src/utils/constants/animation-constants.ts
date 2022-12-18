@@ -2,7 +2,7 @@ import { keyframes } from "styled-components";
 import { HOT_PINK, BLUE_EYES } from "src/styles/colors";
 import { NARROW_BLUE_GLOW, DARK_SHADOW } from "./shadow-constants";
 
-export const TEXT_GLOW_KEYFRAMES = keyframes`
+export const PINK_GLOW_KEYFRAMES = keyframes`
   0% {
     text-shadow: 0 0 16px ${HOT_PINK}, 0 0 18px ${HOT_PINK};
   }
@@ -14,7 +14,7 @@ export const TEXT_GLOW_KEYFRAMES = keyframes`
   }
 `;
 
-export const BLUE_SHADOW_GLOW_KEYFRAMES = keyframes`
+export const BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES = keyframes`
   0% {
     box-shadow: ${DARK_SHADOW};
   }
