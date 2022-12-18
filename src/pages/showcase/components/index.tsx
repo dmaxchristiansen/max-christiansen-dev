@@ -20,6 +20,12 @@ import reactLogo from "src/images/reactLogo.svg";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 
+const linksConfig = [
+  { label: "VIDEO CAROUSEL", href: "/showcase/components/video-carousel" },
+  { label: "MARQUEE", href: "/showcase/components/marquee" },
+  { label: "DATA VISUALIZER", href: "/showcase/components/data-visualizer" },
+];
+
 const Container = styled.div`
   max-width: 1350px;
   margin: 0 auto;
@@ -150,33 +156,16 @@ const ComponentsPage = () => {
         </MidLineWrapper>
         <BottomLine>...with no dependencies</BottomLine>
         <LinksContainer>
-          <StyledLink
-            to="/showcase/components/video-carousel"
-            isAnimated={isAnimated}
-          >
-            <LinkContent
-              onMouseOver={() => setIsAnimated(false)}
-              onMouseLeave={() => setIsAnimated(true)}
-            >
-              VIDEO CAROUSEL
-            </LinkContent>
-          </StyledLink>
-          <StyledLink to="/showcase/components/marquee" isAnimated={isAnimated}>
-            <LinkContent
-              onMouseOver={() => setIsAnimated(false)}
-              onMouseLeave={() => setIsAnimated(true)}
-            >
-              MARQUEE
-            </LinkContent>
-          </StyledLink>
-          <StyledLink to="#" isAnimated={isAnimated}>
-            <LinkContent
-              onMouseOver={() => setIsAnimated(false)}
-              onMouseLeave={() => setIsAnimated(true)}
-            >
-              COMING SOON
-            </LinkContent>
-          </StyledLink>
+          {linksConfig.map(link => (
+            <StyledLink key={link.label} to={link.href} isAnimated={isAnimated}>
+              <LinkContent
+                onMouseOver={() => setIsAnimated(false)}
+                onMouseLeave={() => setIsAnimated(true)}
+              >
+                {link.label}
+              </LinkContent>
+            </StyledLink>
+          ))}
         </LinksContainer>
       </Container>
     </Layout>
