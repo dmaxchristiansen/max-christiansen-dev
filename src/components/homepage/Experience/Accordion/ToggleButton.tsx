@@ -5,7 +5,7 @@ import {
   AccordionStateProps,
 } from "src/components/homepage/Experience/Accordion/types/accordion";
 import { GRIMACE_LIGHTLY, PURPLE_HAZE } from "src/styles/colors";
-import { FIVE_HUNDRED } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
 import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
 import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
 import Chevron from "src/components/homepage/Experience/Accordion/Chevron";
@@ -32,7 +32,7 @@ const Button = styled.button<SectionIdProps & ButtonProps>`
     isExpanded[sectionId] ? PURPLE_HAZE : GRIMACE_LIGHTLY};
   box-shadow: ${DARK_SHADOW};
   cursor: pointer;
-  transition: background-color ${FIVE_HUNDRED} ${ACCORDION_TRANSITION_TIMING};
+  transition: background-color ${FIVE_HUNDRED_MS} ${ACCORDION_TRANSITION_TIMING};
   @media (max-width: 520px) {
     padding: 12px 16px;
   }

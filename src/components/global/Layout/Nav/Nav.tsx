@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled from "styled-components";
 import { Z_ONE_THOUSAND } from "src/utils/constants/layer-constants";
-import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { OPACITY_FADE } from "src/utils/constants/animation-constants";
 import { GRIMACE } from "src/styles/colors";
 import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
@@ -50,7 +50,7 @@ const StyledHomeLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  transition: opacity ${TWO_FIFTY};
+  transition: opacity ${TWO_FIFTY_MS};
   &:hover {
     opacity: ${OPACITY_FADE};
   }
@@ -77,7 +77,7 @@ const List = styled.ul`
 const Item = styled.li`
   list-style: none;
   margin: 30px 30px;
-  transition: opacity ${TWO_FIFTY};
+  transition: opacity ${TWO_FIFTY_MS};
   &:hover {
     opacity: ${OPACITY_FADE};
   }
@@ -110,7 +110,7 @@ const MobileCollapseList = styled.ul<MobileCollapseListProps>`
   box-shadow: ${DARK_SHADOW};
   border-bottom-left-radius: 20px;
   clip-path: inset(-0px -12px -12px -12px);
-  transition: right ${TWO_FIFTY} linear;
+  transition: right ${TWO_FIFTY_MS} linear;
   @media (min-width: 992px) {
     display: none;
   }

@@ -47,7 +47,7 @@ const config: GatsbyConfig = {
             },
             {
               family: "Exo",
-              variants: ["500", "900"],
+              variants: ["500", "700", "900"],
               strategy: "selfHosted",
             },
             {

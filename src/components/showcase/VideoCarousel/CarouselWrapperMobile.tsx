@@ -9,7 +9,10 @@ import {
   SHARED_NAV_BUTTON_STYLES,
 } from "./utils/constants";
 import { LIGHT_GRAY, GRAY } from "src/styles/colors";
-import { FIVE_HUNDRED, TWO_FIFTY } from "src/utils/constants/transition-speeds";
+import {
+  FIVE_HUNDRED_MS,
+  TWO_FIFTY_MS,
+} from "src/utils/constants/transition-speeds";
 import { Z_TEN } from "src/utils/constants/layer-constants";
 import { OPACITY_FADE } from "src/utils/constants/animation-constants";
 import MuxVideo from "@mux/mux-video-react";
@@ -53,7 +56,7 @@ const SHARED_INACTIVE_SLIDE_STYLES = css`
 const PrevClone = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_INACTIVE_SLIDE_STYLES}
   left: ${({ action }) => (action === PREV ? "25%" : "calc(0% - 5px)")};
-  transition: left ${TWO_FIFTY};
+  transition: left ${TWO_FIFTY_MS};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -76,7 +79,7 @@ const AnimatedThird = styled.div<ActionProps & VisibilityProps>`
       : action === PREV
       ? "calc(50% + 5px)"
       : "25%"};
-  transition: left ${TWO_FIFTY};
+  transition: left ${TWO_FIFTY_MS};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -94,7 +97,7 @@ const AnimatedSecond = styled.div<ActionProps & VisibilityProps>`
   height: ${({ action }) => (action === PREV ? "200%" : "100%")};
   width: ${({ action }) => (action === PREV ? "50%" : "calc(25% - 5px)")};
   transition-property: top, left, height, width;
-  transition-duration: ${TWO_FIFTY};
+  transition-duration: ${TWO_FIFTY_MS};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -126,7 +129,7 @@ const ActiveClone = styled.div<ActionProps & VisibilityProps>`
   left: ${({ action }) => (action === NEXT ? "0%" : "calc(-100% - 10px)")};
   width: 100%;
   height: 100%;
-  transition: left ${TWO_FIFTY};
+  transition: left ${TWO_FIFTY_MS};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -137,7 +140,7 @@ const Active = styled.div<TransitionProps & VisibilityProps>`
   width: 100%;
   height: 100%;
   z-index: ${Z_TEN};
-  transition: top ${FIVE_HUNDRED} ease-in-out;
+  transition: top ${FIVE_HUNDRED_MS} ease-in-out;
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -154,7 +157,7 @@ const AnimatedActive = styled.div<ActionProps & VisibilityProps>`
   height: ${({ action }) => (action === NEXT ? "50%" : "100%")};
   width: ${({ action }) => (action === NEXT ? "calc(50% - 5px)" : "100%")};
   transition-property: top, left, height, width;
-  transition-duration: ${TWO_FIFTY};
+  transition-duration: ${TWO_FIFTY_MS};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 

@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import { Z_TEN } from "src/utils/constants/layer-constants";
 import { BLACK } from "src/styles/colors";
-import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { LIGHT_SHADOW } from "src/utils/constants/shadow-constants";
 
 export const NEXT = "next";
@@ -29,7 +29,7 @@ export const SHARED_NAV_BUTTON_STYLES = css`
   color: ${BLACK};
   cursor: pointer;
   box-shadow: ${LIGHT_SHADOW};
-  transition: background ${TWO_FIFTY};
+  transition: background ${TWO_FIFTY_MS};
 `;
 
 export const Quote = styled.p`

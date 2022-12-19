@@ -5,11 +5,11 @@ import {
   NARROW_BLUE_GLOW,
 } from "src/utils/constants/shadow-constants";
 import { BLACK, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
-import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { InViewProps } from "src/utils/types/inView";
-import { FOUR_FIFTY } from "src/utils/constants/transition-speeds";
+import { FOUR_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { ACTION_KEYFRAMES } from "src/components/showcase/VideoCarousel/utils/constants";
-import { TWO_THOUSAND } from "src/utils/constants/transition-speeds";
+import { TWO_THOUSAND_MS } from "src/utils/constants/transition-speeds";
 
 interface SubmitProps {
   isSubmitted: boolean;
@@ -29,7 +29,7 @@ const SuccessContent = styled.div<SubmitProps>`
   display: ${({ isSubmitted }) => (isSubmitted ? "block" : "none")};
   padding-top: 50px;
   animation-name: ${ACTION_KEYFRAMES};
-  animation-duration: ${TWO_THOUSAND};
+  animation-duration: ${TWO_THOUSAND_MS};
   font-size: 60px;
   text-align: center;
   @media (max-width: 991px) {
@@ -44,7 +44,7 @@ const Form = styled.form<InViewProps & SubmitProps>`
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: transform, opacity;
-  transition-duration: ${FOUR_FIFTY};
+  transition-duration: ${FOUR_FIFTY_MS};
   transition-delay: 500ms;
 `;
 
@@ -87,7 +87,7 @@ const SharedInputStyles = css`
   outline: none;
   color: ${BLACK};
   font-size: 18px;
-  transition: box-shadow ${TWO_FIFTY};
+  transition: box-shadow ${TWO_FIFTY_MS};
   &:focus {
     box-shadow: ${NARROW_BLUE_GLOW};
   }
@@ -124,7 +124,7 @@ const SubmitButton = styled.button`
   font-size: 18px;
   letter-spacing: 4px;
   cursor: pointer;
-  transition: box-shadow ${TWO_FIFTY}, background-color ${TWO_FIFTY};
+  transition: box-shadow ${TWO_FIFTY_MS}, background-color ${TWO_FIFTY_MS};
   &:hover {
     background-color: ${OBSIDIAN};
     box-shadow: ${NARROW_BLUE_GLOW};

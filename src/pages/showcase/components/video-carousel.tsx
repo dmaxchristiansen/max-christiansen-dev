@@ -1,5 +1,6 @@
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
+import ComponentHeader from "src/components/showcase/ComponentHeader/ComponentHeader";
 import VideoCarousel from "src/components/showcase/VideoCarousel/VideoCarousel";
 import {
   twoCarouselConfig,
@@ -7,7 +8,8 @@ import {
 } from "src/components/showcase/VideoCarousel/utils/configs";
 
 const VideoCarouselPage = () => (
-  <Layout headerText="Video Carousel" hasBackButton>
+  <Layout>
+    <ComponentHeader text="Video Carousel" />
     <VideoCarousel {...carouselConfig} />
     <VideoCarousel {...twoCarouselConfig} />
   </Layout>

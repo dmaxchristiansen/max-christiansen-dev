@@ -9,6 +9,7 @@ export const GRAY = "#bcbcbc";
 
 export const BLUE_GRAY = "#94a0b9";
 export const DUSKY_BLUE = "#8ba2d0";
+export const REACT_BLUE = "#61dafb";
 export const CANDY_BLUE = "#59c1fe";
 export const BLUE_EYES = "#00a1ef";
 export const BLUE_DREAM = "rgba(89, 193, 254, 0.4)";
@@ -18,6 +19,8 @@ export const FUTURE_BLUE = "rgba(46, 38, 255, 0.4)";
 export const ROYAL_BLUE = "#2c3599";
 export const JELLYBEAN = "#202076";
 export const BLUE_GRIMLY = "#032d50";
+
+export const SEABED = "#32797b";
 
 export const PEACHY = "#ff61af";
 export const HOT_PINK = "#fe05e1";

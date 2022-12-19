@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { Z_TEN } from "src/utils/constants/layer-constants";
 import { OPACITY_FADE } from "src/utils/constants/animation-constants";
 import PlayIcon from "./PlayIcon";
@@ -19,7 +19,7 @@ const Button = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  transition: opacity ${TWO_FIFTY};
+  transition: opacity ${TWO_FIFTY_MS};
   &:hover {
     opacity: ${OPACITY_FADE};
   }

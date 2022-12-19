@@ -5,7 +5,7 @@ import {
   SectionIdProps,
   AccordionStateProps,
 } from "src/components/homepage/Experience/Accordion/types/accordion";
-import { FIVE_HUNDRED } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
 import { GRIMACE, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
 import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
 import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
@@ -31,7 +31,7 @@ const Container = styled.div<SectionIdProps & ContainerProps>`
     isExpanded[sectionId] ? "1" : "0"};
   overflow: hidden;
   transition-property: max-height, opacity, visibility;
-  transition-duration: ${FIVE_HUNDRED};
+  transition-duration: ${FIVE_HUNDRED_MS};
   transition-timing-function: ${ACCORDION_TRANSITION_TIMING};
   @media (max-width: 767px) {
     max-height: ${({ sectionId, isExpanded }) =>

@@ -5,8 +5,8 @@ import {
   COL_DELAY_TWO,
 } from "src/components/homepage/Expertise/utils/constants";
 import {
-  NINE_HUNDRED,
-  FOUR_FIFTY,
+  NINE_HUNDRED_MS,
+  FOUR_FIFTY_MS,
 } from "src/utils/constants/transition-speeds";
 import { InViewProps } from "src/utils/types/inView";
 
@@ -34,7 +34,7 @@ const ColContainer = styled.div<ColProps & InViewProps>`
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition-property: background-color, opacity, transform;
-  transition-duration: ${NINE_HUNDRED}, ${NINE_HUNDRED}, ${FOUR_FIFTY};
+  transition-duration: ${NINE_HUNDRED_MS}, ${NINE_HUNDRED_MS}, ${FOUR_FIFTY_MS};
   transition-delay: ${({ index }) =>
     index === 0 ? "0" : index === 1 ? COL_DELAY_ONE : COL_DELAY_TWO};
   @media (max-width: 991px) {

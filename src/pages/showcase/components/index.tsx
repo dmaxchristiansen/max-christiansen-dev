@@ -1,70 +1,139 @@
 import { useState } from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
-import { HOT_PINK, BLUE_SKY } from "src/styles/colors";
+import { HOT_PINK, BLUE_EYES, ROYAL_BLUE } from "src/styles/colors";
 import {
-  EIGHT_HUNDRED,
-  TWO_THOUSAND,
+  TEN_THOUSAND_MS,
+  ONE_THOUSAND_MS,
+  TWO_THOUSAND_MS,
+  THREE_THOUSAND_MS,
 } from "src/utils/constants/transition-speeds";
-import { TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
+import {
+  WHEEL_SPIN_KEYFRAMES,
+  BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES,
+} from "src/utils/constants/animation-constants";
+import {
+  NARROW_PINK_GLOW,
+  DARK_SHADOW,
+} from "src/utils/constants/shadow-constants";
+import reactLogo from "src/images/reactLogo.svg";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
-import SpinningOtter from "src/components/global/SpinningOtter/SpinningOtter";
+
+const linksConfig = [
+  { label: "VIDEO CAROUSEL", href: "/showcase/components/video-carousel" },
+  { label: "MARQUEE", href: "/showcase/components/marquee" },
+  { label: "DATA VISUALIZER", href: "/showcase/components/data-visualizer" },
+];
 
 const Container = styled.div`
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 30px 0;
+  text-align: center;
+`;
+
+const Header = styled.h1`
+  margin: 0 0 40px;
+  font-size: 80px;
+  @media (max-width: 991px) {
+    font-size: 70px;
+  }
+  @media (max-width: 520px) {
+    font-size: 44px;
+  }
+`;
+
+const TopLine = styled.p`
+  margin: 0;
+  font-size: 30px;
+`;
+
+const MidLineWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
+const ReactImg = styled.img`
+  height: 50px;
+  pointer-events: none;
+  animation: ${WHEEL_SPIN_KEYFRAMES} infinite ${TEN_THOUSAND_MS} linear;
 `;
 
-const SHARED_HEADER_STYLES = css`
-  margin: 0 0 32px;
-  text-align: center;
-  font-family: "Mr Dafoe";
-  font-size: 120px;
-  text-shadow: 0 0 16px ${HOT_PINK}, 0 0 18px ${HOT_PINK};
-  animation: ${TEXT_GLOW_KEYFRAMES} ${TWO_THOUSAND};
-  animation-iteration-count: infinite;
-  transition: color ${EIGHT_HUNDRED};
-  &:hover {
-    color: ${BLUE_SKY};
+const MidLine = styled.p`
+  margin: 0;
+  font-size: 50px;
+  font-weight: 900;
+  text-shadow: 0 0 16px ${BLUE_EYES}, 0 0 18px ${BLUE_EYES};
+  span {
+    margin-right: 10px;
   }
-  @media (max-width: 991px) {
-    margin: 0 0 75px;
-    font-size: 80px;
-    line-height: 1;
+  span:last-child {
+    margin-right: 0;
   }
 `;
 
-interface HeaderProps {
+const BottomLine = styled.p`
+  margin: 0;
+  font-size: 30px;
+`;
+
+const LinksContainer = styled.div`
+  display: inline-block;
+  margin-top: 42px;
+  a {
+    &:nth-child(2) {
+      animation-delay: ${ONE_THOUSAND_MS};
+    }
+    &:nth-child(3) {
+      animation-delay: ${TWO_THOUSAND_MS};
+    }
+  }
+`;
+
+interface AnimationProps {
   isAnimated: boolean;
 }
 
-const VideoCarouselHeader = styled.h1<HeaderProps>`
-  ${SHARED_HEADER_STYLES}
-  animation-play-state: ${({ isAnimated }) =>
-    isAnimated ? "running" : "paused"};
+const StyledLink = styled(Link).withConfig({
+  shouldForwardProp: prop => !["isAnimated"].includes(prop),
+})<AnimationProps>`
+  display: block;
+  background-color: ${ROYAL_BLUE};
+  border-radius: 16px;
+  text-decoration: none;
+  box-shadow: ${DARK_SHADOW};
+  &:hover {
+    box-shadow: ${NARROW_PINK_GLOW};
+  }
+  ${({ isAnimated }) =>
+    isAnimated
+      ? css`
+          animation: ${BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES} ${THREE_THOUSAND_MS};
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+          animation-fill-mode: both;
+        `
+      : css`
+          animation: none;
+        `}
 `;
 
-const MarqueeHeader = styled.h1<HeaderProps>`
-  ${SHARED_HEADER_STYLES}
-  animation-play-state: ${({ isAnimated }) =>
-    isAnimated ? "running" : "paused"};
-  animation-delay: 0.5s;
+const LinkContent = styled.div`
+  margin-bottom: 30px;
+  padding: 16px 28px;
+  border-radius: 16px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 30px;
+  &:hover {
+    color: ${HOT_PINK};
+  }
 `;
 
 // TODO: Add DataVisualizer component
 // SEE: https://github.com/dmaxchristiansen/max-christiansen-dev/issues/14
-const DataVisualizerHeader = styled.h1<HeaderProps>`
-  ${SHARED_HEADER_STYLES}
-  animation-play-state: ${({ isAnimated }) =>
-    isAnimated ? "running" : "paused"};
-  animation-delay: 1s;
-`;
 
 const ComponentsPage = () => {
   const [isAnimated, setIsAnimated] = useState(true);
@@ -72,34 +141,32 @@ const ComponentsPage = () => {
   return (
     <Layout>
       <Container>
-        <StyledLink to="/showcase/components/video-carousel">
-          <VideoCarouselHeader
-            isAnimated={isAnimated}
-            onMouseOver={() => setIsAnimated(false)}
-            onMouseLeave={() => setIsAnimated(true)}
-          >
-            Video Carousel
-          </VideoCarouselHeader>
-        </StyledLink>
-        <StyledLink to="/showcase/components/marquee">
-          <MarqueeHeader
-            isAnimated={isAnimated}
-            onMouseOver={() => setIsAnimated(false)}
-            onMouseLeave={() => setIsAnimated(true)}
-          >
-            Marquee
-          </MarqueeHeader>
-        </StyledLink>
-        <StyledLink to="#">
-          <DataVisualizerHeader
-            isAnimated={isAnimated}
-            onMouseOver={() => setIsAnimated(false)}
-            onMouseLeave={() => setIsAnimated(true)}
-          >
-            Coming soon!
-          </DataVisualizerHeader>
-        </StyledLink>
-        <SpinningOtter margin={"0"} />
+        <Header>Custom Components</Header>
+        <TopLine>Written in...</TopLine>
+        <MidLineWrapper>
+          <ReactImg src={reactLogo} alt="React logo" />
+          <MidLine>
+            <span>R</span>
+            <span>E</span>
+            <span>A</span>
+            <span>C</span>
+            <span>T</span>
+          </MidLine>
+          <ReactImg src={reactLogo} alt="React logo" />
+        </MidLineWrapper>
+        <BottomLine>...with no dependencies</BottomLine>
+        <LinksContainer>
+          {linksConfig.map(link => (
+            <StyledLink key={link.label} to={link.href} isAnimated={isAnimated}>
+              <LinkContent
+                onMouseOver={() => setIsAnimated(false)}
+                onMouseLeave={() => setIsAnimated(true)}
+              >
+                {link.label}
+              </LinkContent>
+            </StyledLink>
+          ))}
+        </LinksContainer>
       </Container>
     </Layout>
   );
