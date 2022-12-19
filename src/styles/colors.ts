@@ -20,6 +20,8 @@ export const ROYAL_BLUE = "#2c3599";
 export const JELLYBEAN = "#202076";
 export const BLUE_GRIMLY = "#032d50";
 
+export const SEABED = "#32797b";
+
 export const PEACHY = "#ff61af";
 export const HOT_PINK = "#fe05e1";
 

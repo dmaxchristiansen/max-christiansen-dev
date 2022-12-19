@@ -5,24 +5,21 @@ import {
   BAR_ANIMATION_DELAY,
   METRIC_ANIMATION_DELAY,
   METRIC_KEYFRAMES,
-  BAR_BACKGROUND_DARK_BLUE,
-  BAR_BACKGROUND_LIGHT_BLUE,
-  BAR_BACKGROUND_PINK,
 } from "./utils/constants";
-import { CLEAR, WHITE } from "src/styles/colors";
+import {
+  BLUE_SKY,
+  CLEAR,
+  PURPLE_PASTEL,
+  ROYAL_BLUE,
+  WHITE,
+  SEABED,
+  OBSIDIAN,
+  GRIMACE,
+} from "src/styles/colors";
+import { ActiveProps, GraphProps } from "./types/dataVisualizer";
 
-interface GraphProps {
-  activeGraph: string;
-  graphData: {
-    id: string;
-    label: string;
-    clients: string;
-    members: string;
-    pain: string;
-    depression: string;
-    anxiety: string;
-    surgery: string;
-  };
+interface GraphComponentProps {
+  graphData: GraphProps;
 }
 
 const GraphContainer = styled.div`
@@ -66,7 +63,7 @@ const BarFill = styled.div<BarFillProps>`
 const Metric = styled.div`
   position: absolute;
   top: 20px;
-  color: ${WHITE};
+  color: ${OBSIDIAN};
   text-align: center;
   opacity: 0;
   animation-duration: ${BAR_ANIMATION_DURATION};
@@ -95,7 +92,7 @@ const ArrowBase = styled.div`
   width: 18px;
   height: 22px;
   margin: 0px auto;
-  background-color: #432448;
+  background-color: ${GRIMACE};
 `;
 
 const ArrowPoint = styled.div`
@@ -103,77 +100,80 @@ const ArrowPoint = styled.div`
   height: 0px;
   border-left: 20px solid ${CLEAR};
   border-right: 20px solid ${CLEAR};
-  border-top: 18px solid #432448;
+  border-top: 18px solid ${GRIMACE};
 `;
 
-const Graph: React.FC<GraphProps> = ({ activeGraph, graphData }) => {
-  const painBarKeyframes = keyframes`
+const Graph: React.FC<GraphComponentProps & ActiveProps> = ({
+  active,
+  graphData,
+}) => {
+  const barOneKeyframes = keyframes`
     0% {
       height: ${BAR_ANIMATION_START_HEIGHT};
     }
     100% {
-      height: ${graphData.pain};
+      height: ${graphData.barOne};
     }
   `;
-  const depressionBarKeyframes = keyframes`
+  const barTwoKeyframes = keyframes`
     0% {
       height: ${BAR_ANIMATION_START_HEIGHT};
     }
     100% {
-      height: ${graphData.depression};
+      height: ${graphData.barTwo};
     }
   `;
-  const anxietyBarKeyframes = keyframes`
+  const barThreeKeyframes = keyframes`
     0% {
       height: ${BAR_ANIMATION_START_HEIGHT};
     }
     100% {
-      height: ${graphData.anxiety};
+      height: ${graphData.barThree};
     }
   `;
-  const surgeryBarKeyframes = keyframes`
+  const barFourKeyframes = keyframes`
     0% {
       height: ${BAR_ANIMATION_START_HEIGHT};
     }
     100% {
-      height: ${graphData.surgery};
+      height: ${graphData.barFour};
     }
   `;
 
   const barsConfig = [
     {
-      id: "pain",
-      metric: graphData.pain,
-      copy: "Pain reduction per participant",
-      backgroundColor: BAR_BACKGROUND_DARK_BLUE,
-      barKeyframes: painBarKeyframes,
+      id: "barOne",
+      metric: graphData.barOne,
+      copy: "placeholder",
+      backgroundColor: SEABED,
+      barKeyframes: barOneKeyframes,
     },
     {
-      id: "depression",
-      metric: graphData.depression,
-      copy: "Depression reduction",
-      backgroundColor: BAR_BACKGROUND_PINK,
-      barKeyframes: depressionBarKeyframes,
+      id: "barTwo",
+      metric: graphData.barTwo,
+      copy: "placeholder",
+      backgroundColor: BLUE_SKY,
+      barKeyframes: barTwoKeyframes,
     },
     {
-      id: "anxiety",
-      metric: graphData.anxiety,
-      copy: "Anxiety reduction",
-      backgroundColor: BAR_BACKGROUND_LIGHT_BLUE,
-      barKeyframes: anxietyBarKeyframes,
+      id: "barThree",
+      metric: graphData.barThree,
+      copy: "placeholder",
+      backgroundColor: ROYAL_BLUE,
+      barKeyframes: barThreeKeyframes,
     },
     {
-      id: "surgery",
-      metric: graphData.surgery,
-      copy: "Surgeries avoided",
-      backgroundColor: BAR_BACKGROUND_DARK_BLUE,
-      barKeyframes: surgeryBarKeyframes,
+      id: "barFour",
+      metric: graphData.barFour,
+      copy: "placeholder",
+      backgroundColor: PURPLE_PASTEL,
+      barKeyframes: barFourKeyframes,
     },
   ];
 
   return (
     <>
-      {activeGraph === graphData.id && (
+      {active === graphData.id && (
         <GraphContainer>
           <BarsContainer>
             {barsConfig.map(bar => (

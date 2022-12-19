@@ -1,33 +1,34 @@
 import styled from "styled-components";
+import { ActiveProps } from "./types/dataVisualizer";
 import {
   DARK_SHADOW,
   LIGHT_BLUE_SHADOW,
 } from "src/utils/constants/shadow-constants";
 import { OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
-import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
+import { ONE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
 
-interface ButtonProps {
-  activeButton: string;
-  buttonId: string;
-}
-
-interface NavButtonProps extends ButtonProps {
+interface NavButtonProps {
   buttonLabel: string;
   setActiveButton: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Button = styled.button<ButtonProps>`
+interface ButtonIdProps {
+  buttonId: string;
+}
+
+const Button = styled.button<ActiveProps & ButtonIdProps>`
   display: block;
   padding: 6px 12px;
-  background-color: ${({ activeButton, buttonId }) =>
-    activeButton === buttonId ? OBSIDIAN : ROYAL_BLUE};
+  box-shadow: ${({ active, buttonId }) =>
+    active === buttonId ? LIGHT_BLUE_SHADOW : DARK_SHADOW};
   border: none;
   border-radius: 6px;
-  box-shadow: ${DARK_SHADOW};
+  background-color: ${({ active, buttonId }) =>
+    active === buttonId ? OBSIDIAN : ROYAL_BLUE};
   outline: none;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color ${TWO_FIFTY}, box-shadow ${TWO_FIFTY};
+  transition: background-color ${ONE_HUNDRED_MS}, box-shadow ${ONE_HUNDRED_MS};
   &:hover {
     background-color: ${OBSIDIAN};
     box-shadow: ${LIGHT_BLUE_SHADOW};
@@ -38,17 +39,17 @@ const Button = styled.button<ButtonProps>`
   }
 `;
 
-const NavButton: React.FC<NavButtonProps> = ({
+const NavButton: React.FC<NavButtonProps & ButtonIdProps & ActiveProps> = ({
   buttonId,
   buttonLabel,
-  activeButton,
+  active,
   setActiveButton,
 }) => (
   <Button
     type="button"
-    activeButton={activeButton}
-    buttonId={buttonId}
-    onClick={() => setActiveButton(buttonId)}
+    active={active}
+    buttonId={buttonId ?? ""}
+    onClick={() => setActiveButton(buttonId ?? "")}
   >
     {buttonLabel}
   </Button>

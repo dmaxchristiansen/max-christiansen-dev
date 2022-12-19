@@ -6,8 +6,8 @@ import styled, { css } from "styled-components";
 import { WHITE } from "src/styles/colors";
 import { InViewProps } from "src/utils/types/inView";
 import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
-import { FOUR_FIFTY } from "src/utils/constants/transition-speeds";
-import { NINE_HUNDRED } from "src/utils/constants/transition-speeds";
+import { FOUR_FIFTY_MS } from "src/utils/constants/transition-speeds";
+import { NINE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
 import { Z_TEN, Z_TWENTY } from "src/utils/constants/layer-constants";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col";
@@ -106,8 +106,8 @@ const ImageContainer = styled.div<InViewProps>`
   mask-image: linear-gradient(to bottom, #fff 0%, #fff 40%, transparent 100%);
   opacity: ${({ inView }) => (inView ? "0.17" : "0")};
   z-index: ${Z_TEN};
-  transition: opacity ${NINE_HUNDRED};
-  transition-delay: ${FOUR_FIFTY};
+  transition: opacity ${NINE_HUNDRED_MS};
+  transition-delay: ${FOUR_FIFTY_MS};
   @media (max-width: 991px) {
     display: none;
   }

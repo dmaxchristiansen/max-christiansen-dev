@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { TWO_FIFTY } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { ROYAL_BLUE, OBSIDIAN } from "src/styles/colors";
 import {
   DARK_SHADOW,
@@ -30,7 +30,7 @@ const StyledLink = styled(Link).withConfig({
   font-size: ${({ fontSize }) => fontSize};
   letter-spacing: 2px;
   text-decoration: none;
-  transition: box-shadow ${TWO_FIFTY}, background-color ${TWO_FIFTY};
+  transition: box-shadow ${TWO_FIFTY_MS}, background-color ${TWO_FIFTY_MS};
   &:hover {
     box-shadow: ${NARROW_BLUE_GLOW};
     background-color: ${OBSIDIAN};

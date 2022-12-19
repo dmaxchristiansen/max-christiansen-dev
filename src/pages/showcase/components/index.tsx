@@ -3,10 +3,10 @@ import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import { HOT_PINK, BLUE_EYES, ROYAL_BLUE } from "src/styles/colors";
 import {
-  TEN_THOUSAND,
-  ONE_THOUSAND,
-  TWO_THOUSAND,
-  THREE_THOUSAND,
+  TEN_THOUSAND_MS,
+  ONE_THOUSAND_MS,
+  TWO_THOUSAND_MS,
+  THREE_THOUSAND_MS,
 } from "src/utils/constants/transition-speeds";
 import {
   WHEEL_SPIN_KEYFRAMES,
@@ -58,7 +58,7 @@ const MidLineWrapper = styled.div`
 const ReactImg = styled.img`
   height: 50px;
   pointer-events: none;
-  animation: ${WHEEL_SPIN_KEYFRAMES} infinite ${TEN_THOUSAND} linear;
+  animation: ${WHEEL_SPIN_KEYFRAMES} infinite ${TEN_THOUSAND_MS} linear;
 `;
 
 const MidLine = styled.p`
@@ -84,10 +84,10 @@ const LinksContainer = styled.div`
   margin-top: 42px;
   a {
     &:nth-child(2) {
-      animation-delay: ${ONE_THOUSAND};
+      animation-delay: ${ONE_THOUSAND_MS};
     }
     &:nth-child(3) {
-      animation-delay: ${TWO_THOUSAND};
+      animation-delay: ${TWO_THOUSAND_MS};
     }
   }
 `;
@@ -110,7 +110,7 @@ const StyledLink = styled(Link).withConfig({
   ${({ isAnimated }) =>
     isAnimated
       ? css`
-          animation: ${BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES} ${THREE_THOUSAND};
+          animation: ${BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES} ${THREE_THOUSAND_MS};
           animation-iteration-count: infinite;
           animation-timing-function: linear;
           animation-fill-mode: both;

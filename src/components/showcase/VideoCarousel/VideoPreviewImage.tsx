@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FIVE_HUNDRED } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
 import { Z_TEN } from "src/utils/constants/layer-constants";
 
 export interface VideoPreviewImageProps {
@@ -16,7 +16,7 @@ const VideoPreview = styled.div<VideoPreviewImageProps>`
   border-radius: 16px;
   background-image: ${({ backgroundUrl }) => `url(${backgroundUrl})`};
   background-size: cover;
-  transition: top ${FIVE_HUNDRED} ease-in-out;
+  transition: top ${FIVE_HUNDRED_MS} ease-in-out;
 `;
 
 const VideoPreviewImage: React.FC<

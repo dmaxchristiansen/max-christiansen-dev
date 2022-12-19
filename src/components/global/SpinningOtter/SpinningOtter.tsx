@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import { Y_SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
-import { FIVE_THOUSAND } from "src/utils/constants/transition-speeds";
+import { FIVE_THOUSAND_MS } from "src/utils/constants/transition-speeds";
 
 interface SpinningOtterProps {
   margin: string;
@@ -20,7 +20,7 @@ const Container = styled.div<SpinningOtterProps>`
 
 const Wrapper = styled.div`
   max-width: 400px;
-  animation: ${Y_SPIN_KEYFRAMES} ${FIVE_THOUSAND} linear infinite;
+  animation: ${Y_SPIN_KEYFRAMES} ${FIVE_THOUSAND_MS} linear infinite;
   @media (max-width: 520px) {
     max-width: 300px;
   }

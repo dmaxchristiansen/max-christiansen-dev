@@ -22,7 +22,3 @@ export const HEADER_COPY_KEYFRAMES = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
 `;
-
-export const BAR_BACKGROUND_DARK_BLUE = "#32797b";
-export const BAR_BACKGROUND_LIGHT_BLUE = "#519ea4";
-export const BAR_BACKGROUND_PINK = "#e96d77";

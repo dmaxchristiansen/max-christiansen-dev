@@ -18,8 +18,8 @@ import {
   GRIMACE,
 } from "src/styles/colors";
 import {
-  FIVE_HUNDRED,
-  TWO_THOUSAND,
+  FIVE_HUNDRED_MS,
+  TWO_THOUSAND_MS,
 } from "src/utils/constants/transition-speeds";
 import { PINK_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
 import {
@@ -171,7 +171,7 @@ const Subheader = styled.h2`
   z-index: ${Z_ONE_HUNDRED};
   font-family: "Mr Dafoe";
   font-size: 172px;
-  animation: ${PINK_GLOW_KEYFRAMES} ${TWO_THOUSAND};
+  animation: ${PINK_GLOW_KEYFRAMES} ${TWO_THOUSAND_MS};
   animation-iteration-count: infinite;
   @media (max-width: 1000px) {
     font-size: 86px;
@@ -200,7 +200,7 @@ const StyledLink = styled(Link)`
   letter-spacing: 2px;
   text-decoration: none;
   transition: color, background-color, box-shadow;
-  transition-duration: ${FIVE_HUNDRED};
+  transition-duration: ${FIVE_HUNDRED_MS};
   &:hover {
     box-shadow: ${WIDE_PINK_GLOW};
     background-color: ${PURPLE_HAZE};

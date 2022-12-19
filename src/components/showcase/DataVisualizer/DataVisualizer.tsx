@@ -1,23 +1,30 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { dataConfig } from "./utils/dataConfig";
-import Header from "./Header";
+import { DataVisualizerProps } from "./types/dataVisualizer";
+import { BLUE_GRIMLY } from "src/styles/colors";
+import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
+import Title from "./Title";
+import GraphInfo from "./GraphInfo";
 import Graph from "./Graph";
 import NavButton from "./NavButton";
-import { BLUE_GRIMLY } from "src/styles/colors";
 
-const SectionWrapper = styled.div`
+interface MarginProps {
+  margin: string;
+}
+
+const SectionWrapper = styled.div<MarginProps>`
   width: 100%;
-  padding: 60px 30px 0px;
+  margin: ${({ margin }) => margin};
+  padding: 0 30px;
 `;
 
 const SectionContainer = styled.div`
   max-width: 1020px;
   margin: 0 auto;
-  padding: 60px 90px;
+  padding: 30px 60px;
   background-color: ${BLUE_GRIMLY};
   border-radius: 6px;
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: ${DARK_SHADOW};
 `;
 
 const NavRow = styled.div`
@@ -26,32 +33,33 @@ const NavRow = styled.div`
   justify-content: space-between;
 `;
 
-const DataVisualizer = () => {
-  const [activeGraph, setActiveGraph] = useState("manufacturing");
+const DataVisualizer: React.FC<DataVisualizerProps & MarginProps> = ({
+  data,
+  margin,
+}) => {
+  const { graphData } = data;
+
+  const [active, setActive] = useState("manufacturing");
 
   return (
-    <SectionWrapper>
+    <SectionWrapper margin={margin}>
       <SectionContainer>
-        {dataConfig.map(data => (
-          <Header
-            key={data.id}
-            headerCopy={activeGraph === data.id ? data.label : ""}
-            clients={activeGraph === data.id ? data.clients : ""}
-            members={activeGraph === data.id ? data.members : ""}
-          />
+        <Title>{data.graphTitle}</Title>
+        {graphData.map(data => (
+          <GraphInfo key={data.id} graphData={data} active={active} />
         ))}
-        {dataConfig.map(data => (
-          <Graph key={data.id} graphData={data} activeGraph={activeGraph} />
+        {graphData.map(data => (
+          <Graph key={data.id} graphData={data} active={active} />
         ))}
 
         <NavRow>
-          {dataConfig.map(data => (
+          {graphData.map(data => (
             <NavButton
               key={data.id}
               buttonId={data.id}
               buttonLabel={data.label}
-              activeButton={activeGraph}
-              setActiveButton={setActiveGraph}
+              active={active}
+              setActiveButton={setActive}
             />
           ))}
         </NavRow>
