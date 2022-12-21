@@ -1,6 +1,6 @@
-import ComputerSvg from "src/components/homepage/Expertise/svg-components/ComputerSvg";
-import ReactSvg from "src/components/homepage/Expertise/svg-components/ReactSvg";
-import BrainSvg from "src/components/homepage/Expertise/svg-components/BrainSvg";
+import ComputerSvg from "src/components/svgs/ComputerSvg";
+import ReactSvg from "src/components/svgs/ReactSvg";
+import BrainSvg from "src/components/svgs/BrainSvg";
 import { HOT_PINK, BLUE_SKY, PURPLE_HAZE } from "src/styles/colors";
 
 export const colConfig = [

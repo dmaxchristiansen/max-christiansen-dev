@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
+import SocialMedia from "src/components/contact/SocialMedia/SocialMedia";
 import ContactForm from "src/components/contact/ContactForm/ContactForm";
 
 const Container = styled.div`
@@ -33,6 +34,7 @@ const ContactPage = () => {
             delayTransition
           />
         </HeaderWrapper>
+        <SocialMedia />
         <ContactForm inView={isPageVisible} />
       </Container>
     </Layout>

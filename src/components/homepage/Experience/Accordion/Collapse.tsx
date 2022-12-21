@@ -9,8 +9,8 @@ import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
 import { GRIMACE, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
 import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
 import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
-import GeoPinSvg from "../svg-components/GeoPinSvg";
-import NewTabLinkSvg from "../svg-components/NewTabLinkSvg";
+import GeoPinSvg from "src/components/svgs/GeoPinSvg";
+import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
 
 interface ContainerProps {
   isExpanded: AccordionStateProps;
