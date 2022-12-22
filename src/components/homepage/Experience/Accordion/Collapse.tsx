@@ -6,10 +6,10 @@ import {
   AccordionStateProps,
 } from "src/components/homepage/Experience/Accordion/types/accordion";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
-import { GRIMACE, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
+import { GRIMACE, OBSIDIAN, ROYAL_BLUE, PEACHY } from "src/styles/colors";
 import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
 import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
-import GeoPinSvg from "src/components/svgs/GeoPinSvg";
+import LocationSvg from "src/components/svgs/LocationSvg";
 import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
 
 interface ContainerProps {
@@ -69,8 +69,6 @@ const LeftCol = styled.div``;
 
 const InfoList = styled.ul`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -87,7 +85,7 @@ const InfoList = styled.ul`
 
 const LocationItem = styled.li`
   display: flex;
-  max-height: 50px;
+  align-items: center;
   margin: 0 30px 0 0;
   padding: 0;
   @media (max-width: 767px) {
@@ -97,13 +95,15 @@ const LocationItem = styled.li`
 
 const LocationText = styled.div`
   margin: 0 0 0 10px;
-  padding: 0;
   font-family: Roboto Mono;
+  font-size: 18px;
+  line-height: 1;
 `;
 
 const LinkItem = styled.li`
   display: flex;
-  margin: 0 0 -1px;
+  align-items: center;
+  margin: 0;
   padding: 0;
 `;
 
@@ -111,6 +111,9 @@ const Link = styled.a`
   display: flex;
   margin: 0 0 0 10px;
   font-family: Roboto Mono;
+  font-size: 18px;
+  line-height: 1;
+  text-decoration: none;
 `;
 
 const DescriptionList = styled.ul`
@@ -203,11 +206,11 @@ const Collapse: React.FC<
             <LeftCol>
               <InfoList>
                 <LocationItem>
-                  <GeoPinSvg />
+                  <LocationSvg />
                   <LocationText>{location}</LocationText>
                 </LocationItem>
                 <LinkItem>
-                  <NewTabLinkSvg />
+                  <NewTabLinkSvg fillColor={PEACHY} />
                   <Link href={link.href} target="_blank" rel="noreferrer">
                     {link.text}
                   </Link>

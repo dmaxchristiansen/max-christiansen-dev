@@ -8,8 +8,8 @@ const Container = styled.div`
 
 const SocialMedia = () => (
   <Container>
-    <GitHubSvg />
-    <LinkedInSvg />
+    <GitHubSvg height={96} />
+    <LinkedInSvg height={96} />
   </Container>
 );
 

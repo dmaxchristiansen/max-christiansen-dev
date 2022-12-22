@@ -1,10 +1,16 @@
-import { PEACHY } from "src/styles/colors";
+interface NewTabLinkSvgProps {
+  fillColor: string;
+  height?: number;
+}
 
-const NewTabLinkSvg = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="22px">
+const NewTabLinkSvg: React.FC<NewTabLinkSvgProps> = ({
+  fillColor,
+  height = 24,
+}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={height}>
     <path
-      d="M448 80v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48zm-88 16H248.029c-21.313 0-32.08 25.861-16.971 40.971l31.984 31.987L67.515 364.485c-4.686 4.686-4.686 12.284 0 16.971l31.029 31.029c4.687 4.686 12.285 4.686 16.971 0l195.526-195.526 31.988 31.991C358.058 263.977 384 253.425 384 231.979V120c0-13.255-10.745-24-24-24z"
-      fill={PEACHY}
+      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+      fill={fillColor}
     />
   </svg>
 );
