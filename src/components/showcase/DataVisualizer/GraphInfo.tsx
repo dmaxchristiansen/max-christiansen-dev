@@ -35,7 +35,7 @@ const RightCol = styled.div`
   width: 50%;
 `;
 
-const OrangePinkSpan = styled.span`
+const BlueSpan = styled.span`
   color: ${BLUE_EYES};
 `;
 
@@ -53,11 +53,11 @@ const GraphInfo: React.FC<GraphInfoProps & ActiveProps> = ({
         <DataRow>
           <LeftCol>
             <div>
-              <OrangePinkSpan>Data sets:&nbsp;</OrangePinkSpan>
+              <BlueSpan>Data sets:&nbsp;</BlueSpan>
               <BoldSpan>{graphData.dataGroups}</BoldSpan>
             </div>
             <div>
-              <OrangePinkSpan>Sample size:&nbsp;</OrangePinkSpan>
+              <BlueSpan>Sample size:&nbsp;</BlueSpan>
               <BoldSpan>{graphData.sampleSize}</BoldSpan>
             </div>
           </LeftCol>

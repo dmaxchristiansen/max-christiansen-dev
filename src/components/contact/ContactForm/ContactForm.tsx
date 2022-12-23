@@ -5,23 +5,24 @@ import {
   NARROW_BLUE_GLOW,
 } from "src/utils/constants/shadow-constants";
 import { BLACK, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { InViewProps } from "src/utils/types/inView";
-import { FOUR_FIFTY_MS } from "src/utils/constants/transition-speeds";
+import {
+  FOUR_FIFTY_MS,
+  TWO_THOUSAND_MS,
+  TWO_FIFTY_MS,
+  FIVE_HUNDRED_MS,
+} from "src/utils/constants/transition-speeds";
 import { ACTION_KEYFRAMES } from "src/components/showcase/VideoCarousel/utils/constants";
-import { TWO_THOUSAND_MS } from "src/utils/constants/transition-speeds";
 
 interface SubmitProps {
   isSubmitted: boolean;
 }
 
 const Container = styled.div`
-  height: 354px;
-  max-width: 800px;
-  margin: 60px auto 0;
+  width: 100%;
+  max-width: 860px;
   @media (max-width: 991px) {
-    height: 414px;
-    margin: 30px auto;
+    max-width: unset;
   }
 `;
 
@@ -32,8 +33,7 @@ const SuccessContent = styled.div<SubmitProps>`
   animation-duration: ${TWO_THOUSAND_MS};
   font-size: 60px;
   text-align: center;
-  @media (max-width: 991px) {
-    padding: 40px 30px 0;
+  @media (max-width: 767px) {
     font-size: 30px;
   }
 `;
@@ -45,24 +45,30 @@ const Form = styled.form<InViewProps & SubmitProps>`
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: transform, opacity;
   transition-duration: ${FOUR_FIFTY_MS};
-  transition-delay: 500ms;
+  transition-delay: ${FIVE_HUNDRED_MS};
 `;
 
-const FormRow = styled.div`
+const FlexRow = styled.div`
   display: flex;
-  padding: 0 15px 30px;
-  @media (max-width: 991px) {
+  margin-bottom: 30px;
+  @media (max-width: 767px) {
     flex-direction: column;
-    padding: 0 15px 0;
+    margin-bottom: 0;
   }
 `;
 
 const InputWrapper = styled.div`
   width: 50%;
-  padding: 0px 15px;
+  margin-right: 30px;
   @media (max-width: 991px) {
+    margin-right: 0;
+    &:first-child {
+      margin-right: 30px;
+    }
+  }
+  @media (max-width: 767px) {
     width: 100%;
-    padding-bottom: 15px;
+    margin: 0 0 15px 0;
   }
 `;
 
@@ -71,7 +77,7 @@ const InputLabel = styled.label`
   margin-bottom: 8px;
   font-size: 20px;
   font-weight: 500;
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     font-size: 18px;
   }
 `;
@@ -91,7 +97,7 @@ const SharedInputStyles = css`
   &:focus {
     box-shadow: ${NARROW_BLUE_GLOW};
   }
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     padding: 12px;
     font-size: 16px;
   }
@@ -102,13 +108,15 @@ const Input = styled.input`
 `;
 
 const TextAreaWrapper = styled.div`
-  padding: 0px 30px 30px;
+  margin: 0 30px 30px 0;
+  @media (max-width: 991px) {
+    margin: 0 0 30px 0;
+  }
 `;
 
 const TextArea = styled.textarea`
   ${SharedInputStyles}
-
-  resize: vertical;
+  resize: none;
 `;
 
 const SubmitButton = styled.button`
@@ -189,7 +197,7 @@ const ContactForm: React.FC<InViewProps> = ({ inView }) => {
       >
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="bot-field" />
-        <FormRow>
+        <FlexRow>
           <InputWrapper>
             <InputLabel>Name</InputLabel>
             <Input
@@ -208,7 +216,7 @@ const ContactForm: React.FC<InViewProps> = ({ inView }) => {
               onChange={e => handleChange(e)}
             />
           </InputWrapper>
-        </FormRow>
+        </FlexRow>
         <TextAreaWrapper>
           <InputLabel>Message</InputLabel>
           <TextArea
