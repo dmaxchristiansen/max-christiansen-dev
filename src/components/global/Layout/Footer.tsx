@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { BLUE_EYES, WHITE } from "src/styles/colors";
-import { OPACITY_FADE } from "src/utils/constants/animation-constants";
 import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import GitHubSvg from "src/components/svgs/GitHubSvg";
 import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
@@ -40,9 +39,19 @@ const Link = styled.a`
   align-items: center;
   margin-right: 50px;
   text-decoration: none;
-  transition: opacity ${TWO_FIFTY_MS};
+  div {
+    transition: color ${TWO_FIFTY_MS};
+  }
+  svg {
+    transition: fill ${TWO_FIFTY_MS};
+  }
   &:hover {
-    opacity: ${OPACITY_FADE};
+    svg {
+      fill: ${BLUE_EYES};
+    }
+    div {
+      color: ${BLUE_EYES};
+    }
   }
   @media (max-width: 991px) {
     margin-bottom: 15px;
@@ -55,19 +64,22 @@ const Link = styled.a`
   }
 `;
 
+const SharedTypographyStyles = css`
+  font-family: Roboto Mono;
+  font-size: 20px;
+`;
+
 const LinkText = styled.div`
   display: flex;
   margin: 0 6px;
   line-height: 1;
-  font-size: 20px;
-  font-family: Roboto Mono;
+  ${SharedTypographyStyles}
 `;
 
 const Text = styled.div`
   display: flex;
   line-height: 1;
-  font-family: Roboto Mono;
-  font-size: 20px;
+  ${SharedTypographyStyles}
   @media (max-width: 520px) {
     display: none;
   }
@@ -77,10 +89,9 @@ const MobileText = styled.div`
   display: none;
   @media (max-width: 520px) {
     display: block;
+    margin-top: 12px;
     text-align: center;
-    // line-height: 1;
-    font-family: Roboto Mono;
-    font-size: 20px;
+    ${SharedTypographyStyles}
   }
 `;
 
@@ -109,11 +120,9 @@ const Footer: React.FC = () => (
       </LinksWrapper>
       <Text>© Daniel Max Christiansen&nbsp;{new Date().getFullYear()}</Text>
       <MobileText>
-        Daniel Max
+        ©{new Date().getFullYear()}
         <br />
-        Christiansen
-        <br />
-        ©&nbsp;{new Date().getFullYear()}
+        Daniel Max Christiansen
       </MobileText>
     </Wrapper>
   </Container>

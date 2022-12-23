@@ -1,5 +1,6 @@
 import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import styled from "styled-components";
+import WindowResizeContextProvider from "src/utils/providers/WindowResizeContextProvider";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
@@ -22,24 +23,26 @@ const ContactPage = () => {
   });
 
   return (
-    <Layout>
-      <Container ref={contactRef}>
-        <SectionHeader
-          text="Reach out and say hello!"
-          inView={isPageVisible}
-          textAlign="left"
-          transitionDelay="250ms"
-        />
-        <FormRow inView={isPageVisible} />
-        <SectionHeader
-          text="See more of my work"
-          inView={isPageVisible}
-          textAlign="left"
-          transitionDelay="750ms"
-        />
-        <SocialMedia inView={isPageVisible} />
-      </Container>
-    </Layout>
+    <WindowResizeContextProvider>
+      <Layout>
+        <Container ref={contactRef}>
+          <SectionHeader
+            text="Reach out and say hello!"
+            inView={isPageVisible}
+            textAlign="left"
+            transitionDelay="250ms"
+          />
+          <FormRow inView={isPageVisible} />
+          <SectionHeader
+            text="See more of my work"
+            inView={isPageVisible}
+            textAlign="left"
+            transitionDelay="750ms"
+          />
+          <SocialMedia inView={isPageVisible} />
+        </Container>
+      </Layout>
+    </WindowResizeContextProvider>
   );
 };
 

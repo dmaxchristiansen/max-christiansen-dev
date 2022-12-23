@@ -10,6 +10,7 @@ import {
   FOUR_FIFTY_MS,
   TWO_THOUSAND_MS,
   TWO_FIFTY_MS,
+  FIVE_HUNDRED_MS,
 } from "src/utils/constants/transition-speeds";
 import { ACTION_KEYFRAMES } from "src/components/showcase/VideoCarousel/utils/constants";
 
@@ -44,7 +45,7 @@ const Form = styled.form<InViewProps & SubmitProps>`
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: transform, opacity;
   transition-duration: ${FOUR_FIFTY_MS};
-  transition-delay: 500ms;
+  transition-delay: ${FIVE_HUNDRED_MS};
 `;
 
 const FlexRow = styled.div`
