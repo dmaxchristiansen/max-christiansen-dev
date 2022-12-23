@@ -34,7 +34,7 @@ const ContactPage = () => {
           />
           <FormRow inView={isPageVisible} />
           <SectionHeader
-            text="See more of my work"
+            text="See more of my work..."
             inView={isPageVisible}
             textAlign="left"
             transitionDelay="750ms"

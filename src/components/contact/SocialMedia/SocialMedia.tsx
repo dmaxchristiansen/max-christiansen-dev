@@ -62,14 +62,15 @@ const LinkText = styled.div`
 const SocialMedia: React.FC<InViewProps> = ({ inView }) => {
   const isMobile = useHandleWindowResize(isLessThanWidthThreshold(520));
 
-  console.log(isMobile);
-
   return (
     <Container inView={inView}>
       <div>
-        <Link href="#" target="_blank">
+        <Link
+          href="https://max-christiansen-dev.netlify.app/dmc_resume.pdf"
+          target="_blank"
+        >
           <ResumeSvg height={isMobile ? 50 : 60} />
-          <LinkText>resume download</LinkText>
+          <LinkText>download resume</LinkText>
           <NewTabLinkSvg fillColor={WHITE} height={isMobile ? 18 : 25} />
         </Link>
       </div>
