@@ -3,18 +3,19 @@ import { InViewProps } from "src/utils/types/inView";
 import { FOUR_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { Z_TWENTY } from "src/utils/constants/layer-constants";
 
-interface TransitionProps {
+interface StyleProps {
+  textAlign?: string;
   transitionDelay?: string;
 }
 
-interface SectionHeaderProps extends TransitionProps {
+interface SectionHeaderProps extends StyleProps {
   text: string;
 }
 
-const Header = styled.h1<TransitionProps & InViewProps>`
+const Header = styled.h1<StyleProps & InViewProps>`
   position: relative;
   margin: 0;
-  text-align: center;
+  text-align: ${({ textAlign }) => textAlign};
   font-size: 80px;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   z-index: ${Z_TWENTY};
@@ -36,8 +37,13 @@ const SectionHeader: React.FC<SectionHeaderProps & InViewProps> = ({
   text,
   inView,
   transitionDelay,
+  textAlign = "center",
 }) => (
-  <Header inView={inView} transitionDelay={transitionDelay}>
+  <Header
+    inView={inView}
+    textAlign={textAlign}
+    transitionDelay={transitionDelay}
+  >
     {text}
   </Header>
 );

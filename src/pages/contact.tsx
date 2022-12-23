@@ -27,12 +27,14 @@ const ContactPage = () => {
         <SectionHeader
           text="Reach out and say hello!"
           inView={isPageVisible}
+          textAlign="left"
           transitionDelay="250ms"
         />
         <FormRow inView={isPageVisible} />
         <SectionHeader
           text="See more of my work"
           inView={isPageVisible}
+          textAlign="left"
           transitionDelay="750ms"
         />
         <SocialMedia inView={isPageVisible} />
