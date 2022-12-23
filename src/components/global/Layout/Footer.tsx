@@ -4,6 +4,7 @@ import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import GitHubSvg from "src/components/svgs/GitHubSvg";
 import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
 import LinkedInSvg from "src/components/svgs/LinkedInSvg";
+import ResumeSvg from "src/components/svgs/ResumeSvg";
 
 const Container = styled.div`
   width: 100%;
@@ -17,8 +18,11 @@ const Wrapper = styled.div`
   align-items: center;
   max-width: 1290px;
   margin: 0 auto;
-  padding: 20px 30px;
+  padding: 20px 0;
   border-top: 1px solid ${BLUE_EYES};
+  @media (max-width: 1290px) {
+    padding: 20px 30px;
+  }
   @media (max-width: 991px) {
     flex-direction: column;
     padding: 30px;
@@ -27,7 +31,7 @@ const Wrapper = styled.div`
 
 const LinksWrapper = styled.div`
   display: flex;
-  @media (max-width: 520px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -54,12 +58,12 @@ const Link = styled.a`
     }
   }
   @media (max-width: 991px) {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     &:last-child {
       margin-right: 0;
     }
   }
-  @media (max-width: 520px) {
+  @media (max-width: 767px) {
     margin-right: 0;
   }
 `;
@@ -78,20 +82,11 @@ const LinkText = styled.div`
 
 const Text = styled.div`
   display: flex;
+  text-align: right;
   line-height: 1;
   ${SharedTypographyStyles}
-  @media (max-width: 520px) {
-    display: none;
-  }
-`;
-
-const MobileText = styled.div`
-  display: none;
-  @media (max-width: 520px) {
-    display: block;
-    margin-top: 12px;
-    text-align: center;
-    ${SharedTypographyStyles}
+  @media (max-width: 991px) {
+    padding-top: 20px;
   }
 `;
 
@@ -117,13 +112,16 @@ const Footer: React.FC = () => (
           <LinkText>dmaxdev</LinkText>
           <NewTabLinkSvg fillColor={WHITE} height={18} />
         </Link>
+        <Link
+          href="https://max-christiansen-dev.netlify.app/dmc_resume.pdf"
+          target="_blank"
+        >
+          <ResumeSvg />
+          <LinkText>resume</LinkText>
+          <NewTabLinkSvg fillColor={WHITE} height={18} />
+        </Link>
       </LinksWrapper>
-      <Text>© Daniel Max Christiansen&nbsp;{new Date().getFullYear()}</Text>
-      <MobileText>
-        ©{new Date().getFullYear()}
-        <br />
-        Daniel Max Christiansen
-      </MobileText>
+      <Text>©{new Date().getFullYear()}</Text>
     </Wrapper>
   </Container>
 );

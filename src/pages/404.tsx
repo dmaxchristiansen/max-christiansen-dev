@@ -1,12 +1,19 @@
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled from "styled-components";
-import { FIVE_THOUSAND_MS } from "src/utils/constants/transition-speeds";
+import {
+  FIVE_THOUSAND_MS,
+  TWO_FIFTY_MS,
+} from "src/utils/constants/transition-speeds";
 import { Y_SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
+import {
+  DARK_SHADOW,
+  NARROW_BLUE_GLOW,
+} from "src/utils/constants/shadow-constants";
+import { ROYAL_BLUE, OBSIDIAN } from "src/styles/colors";
 import Layout from "../components/global/Layout/Layout";
 import Seo from "../components/global/Seo/Seo";
-import ButtonLink from "src/components/global/ButtonLink/ButtonLink";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -48,6 +55,29 @@ const Message = styled.p`
   }
 `;
 
+const StyledLink = styled(Link)`
+  padding: 12px 24px;
+  box-shadow: ${DARK_SHADOW};
+  background-color: ${ROYAL_BLUE};
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: box-shadow ${TWO_FIFTY_MS}, background-color ${TWO_FIFTY_MS};
+  &:hover {
+    box-shadow: ${NARROW_BLUE_GLOW};
+    background-color: ${OBSIDIAN};
+  }
+  &:focus {
+    box-shadow: ${NARROW_BLUE_GLOW};
+    background-color: ${OBSIDIAN};
+  }
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+`;
+
 const NotFoundPage = () => {
   const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
     query {
@@ -72,13 +102,7 @@ const NotFoundPage = () => {
         </ImageContainer>
         <Header>404</Header>
         <Message>THIS PAGE IS UNAVAILABLE OR DOES NOT EXIST</Message>
-        <ButtonLink
-          href="/"
-          text="BACK TO HOME"
-          fontSize="32px"
-          py="6px"
-          px="12px"
-        />
+        <StyledLink to="/">BACK TO HOME</StyledLink>
       </Container>
     </Layout>
   );
