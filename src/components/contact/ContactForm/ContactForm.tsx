@@ -5,11 +5,13 @@ import {
   NARROW_BLUE_GLOW,
 } from "src/utils/constants/shadow-constants";
 import { BLACK, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { InViewProps } from "src/utils/types/inView";
-import { FOUR_FIFTY_MS } from "src/utils/constants/transition-speeds";
+import {
+  FOUR_FIFTY_MS,
+  TWO_THOUSAND_MS,
+  TWO_FIFTY_MS,
+} from "src/utils/constants/transition-speeds";
 import { ACTION_KEYFRAMES } from "src/components/showcase/VideoCarousel/utils/constants";
-import { TWO_THOUSAND_MS } from "src/utils/constants/transition-speeds";
 
 interface SubmitProps {
   isSubmitted: boolean;
@@ -18,7 +20,7 @@ interface SubmitProps {
 const Container = styled.div`
   height: 354px;
   max-width: 800px;
-  margin: 60px auto 0;
+  margin: 60px auto;
   @media (max-width: 991px) {
     height: 414px;
     margin: 30px auto;

@@ -4,14 +4,11 @@ import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import SocialMedia from "src/components/contact/SocialMedia/SocialMedia";
-import ContactForm from "src/components/contact/ContactForm/ContactForm";
+import FormRow from "src/components/contact/ContactForm/FormRow";
 
 const Container = styled.div`
   max-width: 1350px;
   margin: 0 auto;
-`;
-
-const HeaderWrapper = styled.div`
   padding: 0 30px 0;
 `;
 
@@ -27,15 +24,18 @@ const ContactPage = () => {
   return (
     <Layout>
       <Container ref={contactRef}>
-        <HeaderWrapper>
-          <SectionHeader
-            text="Reach out and say hello!"
-            inView={isPageVisible}
-            delayTransition
-          />
-        </HeaderWrapper>
-        <SocialMedia />
-        <ContactForm inView={isPageVisible} />
+        <SectionHeader
+          text="Reach out and say hello!"
+          inView={isPageVisible}
+          transitionDelay="250ms"
+        />
+        <FormRow inView={isPageVisible} />
+        <SectionHeader
+          text="See more of my work"
+          inView={isPageVisible}
+          transitionDelay="750ms"
+        />
+        <SocialMedia inView={isPageVisible} />
       </Container>
     </Layout>
   );
@@ -44,7 +44,7 @@ const ContactPage = () => {
 export const Head = () => (
   <Seo
     title="Contact"
-    description="Reach-out to get more information!"
+    description="Reach-out and get more information!"
     pathname="/contact"
   />
 );
