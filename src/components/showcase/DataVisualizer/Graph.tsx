@@ -12,12 +12,15 @@ import {
   WHITE,
   SEABED,
   OBSIDIAN,
-  GRIMACE,
 } from "src/styles/colors";
 import { OPACITY_KEYFRAMES } from "src/utils/constants/animation-constants";
 import { ActiveProps, GraphProps } from "./types/dataVisualizer";
 
-interface GraphComponentProps {
+interface ArrowProps {
+  arrowColor: string;
+}
+
+interface GraphComponentProps extends ArrowProps {
   graphData: GraphProps;
 }
 
@@ -87,24 +90,25 @@ const ArrowWrapper = styled.div`
   margin-top: auto;
 `;
 
-const ArrowBase = styled.div`
+const ArrowBase = styled.div<ArrowProps>`
   width: 18px;
   height: 22px;
   margin: 0px auto;
-  background-color: ${GRIMACE};
+  background-color: ${({ arrowColor }) => arrowColor};
 `;
 
-const ArrowPoint = styled.div`
+const ArrowPoint = styled.div<ArrowProps>`
   width: 0px;
   height: 0px;
   border-left: 20px solid ${CLEAR};
   border-right: 20px solid ${CLEAR};
-  border-top: 18px solid ${GRIMACE};
+  border-top: 18px solid ${({ arrowColor }) => arrowColor};
 `;
 
 const Graph: React.FC<GraphComponentProps & ActiveProps> = ({
   active,
   graphData,
+  arrowColor,
 }) => {
   const barOneKeyframes = keyframes`
     0% {
@@ -187,8 +191,8 @@ const Graph: React.FC<GraphComponentProps & ActiveProps> = ({
                       <MetricCopy>{bar.copy}</MetricCopy>
                     </Metric>
                     <ArrowWrapper>
-                      <ArrowBase />
-                      <ArrowPoint />
+                      <ArrowBase arrowColor={arrowColor} />
+                      <ArrowPoint arrowColor={arrowColor} />
                     </ArrowWrapper>
                   </BarFill>
                 </Bar>

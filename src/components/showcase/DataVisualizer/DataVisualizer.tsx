@@ -39,7 +39,7 @@ const DataVisualizer: React.FC<DataVisualizerProps & MarginProps> = ({
   data,
   margin,
 }) => {
-  const { graphData } = data;
+  const { graphTitle, graphBackgroundColor, graphData } = data;
 
   const firstGraphId: string = graphData[0].id;
 
@@ -47,13 +47,18 @@ const DataVisualizer: React.FC<DataVisualizerProps & MarginProps> = ({
 
   return (
     <SectionWrapper margin={margin}>
-      <SectionContainer backgroundColor={data.graphBackgroundColor}>
-        <Title>{data.graphTitle}</Title>
+      <SectionContainer backgroundColor={graphBackgroundColor}>
+        <Title>{graphTitle}</Title>
         {graphData.map(data => (
           <GraphInfo key={data.id} graphData={data} active={active} />
         ))}
         {graphData.map(data => (
-          <Graph key={data.id} graphData={data} active={active} />
+          <Graph
+            key={data.id}
+            graphData={data}
+            active={active}
+            arrowColor={graphBackgroundColor}
+          />
         ))}
 
         <NavRow>

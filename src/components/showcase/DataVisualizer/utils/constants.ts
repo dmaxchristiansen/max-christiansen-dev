@@ -1,3 +1,1 @@
 export const BAR_ANIMATION_START_HEIGHT = "45px";
-
-export const GRAPH_INFO_ANIMATION_DURATION = "1s";
