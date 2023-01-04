@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { DataVisualizerProps } from "./types/dataVisualizer";
-import { BLUE_GRIMLY } from "src/styles/colors";
+import {
+  DataVisualizerProps,
+  BackgroundColorProps,
+} from "./types/dataVisualizer";
 import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
 import Title from "./Title";
 import GraphInfo from "./GraphInfo";
@@ -18,11 +20,11 @@ const SectionWrapper = styled.div<MarginProps>`
   padding: 0 30px;
 `;
 
-const SectionContainer = styled.div`
+const SectionContainer = styled.div<BackgroundColorProps>`
   max-width: 1020px;
   margin: 0 auto;
   padding: 30px 60px;
-  background-color: ${BLUE_GRIMLY};
+  background-color: ${({ backgroundColor }) => backgroundColor};
   border-radius: 6px;
   box-shadow: ${DARK_SHADOW};
 `;
@@ -39,11 +41,13 @@ const DataVisualizer: React.FC<DataVisualizerProps & MarginProps> = ({
 }) => {
   const { graphData } = data;
 
-  const [active, setActive] = useState("manufacturing");
+  const firstGraphId: string = graphData[0].id;
+
+  const [active, setActive] = useState(firstGraphId);
 
   return (
     <SectionWrapper margin={margin}>
-      <SectionContainer>
+      <SectionContainer backgroundColor={data.graphBackgroundColor}>
         <Title>{data.graphTitle}</Title>
         {graphData.map(data => (
           <GraphInfo key={data.id} graphData={data} active={active} />

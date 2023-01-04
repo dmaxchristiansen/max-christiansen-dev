@@ -1,7 +1,7 @@
 export interface GraphProps {
   id: string;
   label: string;
-  dataGroups: string;
+  dataSets: string;
   sampleSize: string;
   barOne: string;
   barTwo: string;
@@ -12,10 +12,15 @@ export interface GraphProps {
 export interface DataVisualizerProps {
   data: {
     graphTitle: string;
+    graphBackgroundColor: string;
     graphData: GraphProps[];
   };
 }
 
 export interface ActiveProps {
   active: string;
+}
+
+export interface BackgroundColorProps {
+  backgroundColor: string;
 }

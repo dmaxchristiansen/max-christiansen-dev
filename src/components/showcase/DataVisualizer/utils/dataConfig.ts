@@ -1,11 +1,14 @@
+import { BLUE_GRIMLY } from "src/styles/colors";
+
 export const initDataConfig = {
-  graphTitle: "Data set title thank you",
+  graphTitle: "Disease Reduction by Species",
+  graphBackgroundColor: BLUE_GRIMLY,
   graphData: [
     {
       id: "lowar",
       label: "Lowar",
-      dataGroups: "131",
-      sampleSize: "2.3M+",
+      dataSets: "25",
+      sampleSize: "2.3M",
       barOne: "54%",
       barTwo: "72%",
       barThree: "76%",
@@ -14,8 +17,8 @@ export const initDataConfig = {
     {
       id: "Amards",
       label: "Amards",
-      dataGroups: "27",
-      sampleSize: "660,000+",
+      dataSets: "20",
+      sampleSize: "660,000",
       barOne: "50%",
       barTwo: "71%",
       barThree: "76%",
@@ -24,8 +27,8 @@ export const initDataConfig = {
     {
       id: "decent",
       label: "Decent",
-      dataGroups: "140",
-      sampleSize: "2.3M+",
+      dataSets: "14",
+      sampleSize: "2.3M",
       barOne: "53%",
       barTwo: "69%",
       barThree: "74%",
@@ -34,8 +37,8 @@ export const initDataConfig = {
     {
       id: "uppar",
       label: "Uppar",
-      dataGroups: "21",
-      sampleSize: "600,000+",
+      dataSets: "21",
+      sampleSize: "600,000",
       barOne: "54%",
       barTwo: "79%",
       barThree: "82%",
@@ -44,8 +47,8 @@ export const initDataConfig = {
     {
       id: "control",
       label: "Control",
-      dataGroups: "24",
-      sampleSize: "800,000+",
+      dataSets: "24",
+      sampleSize: "800,000",
       barOne: "53%",
       barTwo: "73%",
       barThree: "77%",

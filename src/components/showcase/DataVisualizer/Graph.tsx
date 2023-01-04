@@ -1,11 +1,9 @@
 import styled, { Keyframes, keyframes } from "styled-components";
+import { BAR_ANIMATION_START_HEIGHT } from "./utils/constants";
 import {
-  BAR_ANIMATION_START_HEIGHT,
-  BAR_ANIMATION_DURATION,
-  BAR_ANIMATION_DELAY,
-  METRIC_ANIMATION_DELAY,
-  METRIC_KEYFRAMES,
-} from "./utils/constants";
+  TWO_FIFTY_MS,
+  ONE_THOUSAND_MS,
+} from "src/utils/constants/transition-speeds";
 import {
   BLUE_SKY,
   CLEAR,
@@ -16,6 +14,7 @@ import {
   OBSIDIAN,
   GRIMACE,
 } from "src/styles/colors";
+import { OPACITY_KEYFRAMES } from "src/utils/constants/animation-constants";
 import { ActiveProps, GraphProps } from "./types/dataVisualizer";
 
 interface GraphComponentProps {
@@ -23,7 +22,7 @@ interface GraphComponentProps {
 }
 
 const GraphContainer = styled.div`
-  margin: 80px 40px 0;
+  margin: 40px 40px 0;
   border-top: 4px solid ${WHITE};
 `;
 
@@ -55,8 +54,8 @@ const BarFill = styled.div<BarFillProps>`
   border-bottom-right-radius: 6px;
   background-color: ${({ barBackgroundColor }) => barBackgroundColor};
   animation-fill-mode: forwards;
-  animation-delay: ${BAR_ANIMATION_DELAY};
-  animation-duration: ${BAR_ANIMATION_DURATION};
+  animation-delay: ${TWO_FIFTY_MS};
+  animation-duration: ${ONE_THOUSAND_MS};
   animation-name: ${({ barKeyframes }) => barKeyframes};
 `;
 
@@ -66,10 +65,10 @@ const Metric = styled.div`
   color: ${OBSIDIAN};
   text-align: center;
   opacity: 0;
-  animation-duration: ${BAR_ANIMATION_DURATION};
+  animation-duration: ${ONE_THOUSAND_MS};
   animation-fill-mode: forwards;
-  animation-delay: ${METRIC_ANIMATION_DELAY};
-  animation-name: ${METRIC_KEYFRAMES};
+  animation-delay: ${ONE_THOUSAND_MS};
+  animation-name: ${OPACITY_KEYFRAMES};
 `;
 
 const MetricTypography = styled.div`

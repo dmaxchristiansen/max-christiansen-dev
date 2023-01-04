@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { ActiveProps, GraphProps } from "./types/dataVisualizer";
 import { BLUE_EYES } from "src/styles/colors";
+import { OPACITY_KEYFRAMES } from "src/utils/constants/animation-constants";
+import {
+  ONE_THOUSAND_MS,
+  TWO_FIFTY_MS,
+} from "src/utils/constants/transition-speeds";
 
 interface GraphInfoProps {
   graphData: GraphProps;
@@ -8,12 +13,17 @@ interface GraphInfoProps {
 
 const DataHeader = styled.h3`
   margin: 0;
+  opacity: 0;
   color: ${BLUE_EYES};
   font-size: 40px;
   font-weight: 900;
   text-align: center;
   line-height: 40px;
   letter-spacing: 2px;
+  animation-duration: ${ONE_THOUSAND_MS};
+  animation-fill-mode: forwards;
+  animation-delay: ${TWO_FIFTY_MS};
+  animation-name: ${OPACITY_KEYFRAMES};
 `;
 
 const DataRow = styled.div`
@@ -35,12 +45,18 @@ const RightCol = styled.div`
   width: 50%;
 `;
 
-const BlueSpan = styled.span`
+const BoldBlueSpan = styled.span`
   color: ${BLUE_EYES};
+  font-weight: 700;
 `;
 
 const BoldSpan = styled.span`
+  opacity: 0;
   font-weight: 700;
+  animation-duration: ${ONE_THOUSAND_MS};
+  animation-fill-mode: forwards;
+  animation-delay: ${TWO_FIFTY_MS};
+  animation-name: ${OPACITY_KEYFRAMES};
 `;
 
 const GraphInfo: React.FC<GraphInfoProps & ActiveProps> = ({
@@ -53,11 +69,11 @@ const GraphInfo: React.FC<GraphInfoProps & ActiveProps> = ({
         <DataRow>
           <LeftCol>
             <div>
-              <BlueSpan>Data sets:&nbsp;</BlueSpan>
-              <BoldSpan>{graphData.dataGroups}</BoldSpan>
+              <BoldBlueSpan>Data sets:&nbsp;</BoldBlueSpan>
+              <BoldSpan>{graphData.dataSets}</BoldSpan>
             </div>
             <div>
-              <BlueSpan>Sample size:&nbsp;</BlueSpan>
+              <BoldBlueSpan>Sample size:&nbsp;</BoldBlueSpan>
               <BoldSpan>{graphData.sampleSize}</BoldSpan>
             </div>
           </LeftCol>

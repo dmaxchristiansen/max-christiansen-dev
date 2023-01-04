@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const H2 = styled.h2`
-  margin: 0 0 10px;
+  margin: 0 0 20px;
   text-align: center;
-  font-size: 28px;
+  font-size: 45px;
 `;
 
 const Title: React.FC<React.PropsWithChildren> = ({ children }) => (
