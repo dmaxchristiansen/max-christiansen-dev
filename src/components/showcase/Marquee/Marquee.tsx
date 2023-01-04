@@ -48,7 +48,7 @@ const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding 0 ${IMAGE_WRAPPER_PADDING_X / 2}px 0;
+  padding: 0 ${IMAGE_WRAPPER_PADDING_X / 2}px 0;
 `;
 
 const Image = styled.img`

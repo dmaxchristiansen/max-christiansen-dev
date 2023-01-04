@@ -4,6 +4,9 @@ const H2 = styled.h2`
   margin: 0 0 20px;
   text-align: center;
   font-size: 45px;
+  @media (max-width: 991px) {
+    font-size: 36px;
+  }
 `;
 
 const Title: React.FC<React.PropsWithChildren> = ({ children }) => (

@@ -11,24 +11,12 @@ interface GraphInfoProps {
   graphData: GraphProps;
 }
 
-const DataHeader = styled.h3`
-  margin: 0;
-  opacity: 0;
-  color: ${BLUE_EYES};
-  font-size: 40px;
-  font-weight: 900;
-  text-align: center;
-  line-height: 40px;
-  letter-spacing: 2px;
-  animation-duration: ${ONE_THOUSAND_MS};
-  animation-fill-mode: forwards;
-  animation-delay: ${TWO_FIFTY_MS};
-  animation-name: ${OPACITY_KEYFRAMES};
-`;
-
 const DataRow = styled.div`
   display: flex;
   margin: 0 50px;
+  @media (max-width: 991px) {
+    margin: 0;
+  }
 `;
 
 const LeftCol = styled.div`
@@ -36,13 +24,6 @@ const LeftCol = styled.div`
   flex-direction: column;
   width: 50%;
   font-size: 20px;
-`;
-
-const RightCol = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 50%;
 `;
 
 const BoldBlueSpan = styled.span`
@@ -57,6 +38,32 @@ const BoldSpan = styled.span`
   animation-fill-mode: forwards;
   animation-delay: ${TWO_FIFTY_MS};
   animation-name: ${OPACITY_KEYFRAMES};
+`;
+
+const RightCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 50%;
+`;
+
+const DataHeader = styled.h3`
+  margin: 0;
+  opacity: 0;
+  color: ${BLUE_EYES};
+  font-size: 40px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 40px;
+  letter-spacing: 2px;
+  animation-duration: ${ONE_THOUSAND_MS};
+  animation-fill-mode: forwards;
+  animation-delay: ${TWO_FIFTY_MS};
+  animation-name: ${OPACITY_KEYFRAMES};
+  @media (max-width: 991px) {
+    font-size: 30px;
+    line-height: 30px;
+  }
 `;
 
 const GraphInfo: React.FC<GraphInfoProps & ActiveProps> = ({

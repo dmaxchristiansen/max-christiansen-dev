@@ -1,18 +1,11 @@
 import styled, { Keyframes, keyframes } from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import { BAR_ANIMATION_START_HEIGHT } from "./utils/constants";
 import {
   TWO_FIFTY_MS,
   ONE_THOUSAND_MS,
 } from "src/utils/constants/transition-speeds";
-import {
-  BLUE_SKY,
-  CLEAR,
-  PURPLE_PASTEL,
-  ROYAL_BLUE,
-  WHITE,
-  SEABED,
-  OBSIDIAN,
-} from "src/styles/colors";
+import { CLEAR, WHITE, OBSIDIAN } from "src/styles/colors";
 import { OPACITY_KEYFRAMES } from "src/utils/constants/animation-constants";
 import { ActiveProps, GraphProps } from "./types/dataVisualizer";
 
@@ -22,11 +15,16 @@ interface ArrowProps {
 
 interface GraphComponentProps extends ArrowProps {
   graphData: GraphProps;
+  barBackgroundColors: string[];
+  barLabels: string[];
 }
 
 const GraphContainer = styled.div`
   margin: 40px 40px 0;
   border-top: 4px solid ${WHITE};
+  @media (max-width: 991px) {
+    margin: 30px 0 0;
+  }
 `;
 
 const BarsContainer = styled.div`
@@ -39,6 +37,10 @@ const Bar = styled.div`
   position: relative;
   width: 150px;
   height: 360px;
+  @media (max-width: 991px) {
+    width: 100px;
+    height: 360px;
+  }
 `;
 
 interface BarFillProps {
@@ -60,6 +62,9 @@ const BarFill = styled.div<BarFillProps>`
   animation-delay: ${TWO_FIFTY_MS};
   animation-duration: ${ONE_THOUSAND_MS};
   animation-name: ${({ barKeyframes }) => barKeyframes};
+  @media (max-width: 991px) {
+    width: 100px;
+  }
 `;
 
 const Metric = styled.div`
@@ -78,12 +83,21 @@ const MetricTypography = styled.div`
   position: relative;
   font-size: 40px;
   line-height: 40px;
+  @media (max-width: 991px) {
+    font-size: 30px;
+    line-height: 30px;
+  }
 `;
 
-const MetricCopy = styled.div`
+const MetricLabel = styled.div`
   max-width: 130px;
-  font-size: 19px;
-  line-height: 21px;
+  margin-top: 5px;
+  font-size: 20px;
+  line-height: 20px;
+  @media (max-width: 991px) {
+    font-size: 16px;
+    line-height: 16px;
+  }
 `;
 
 const ArrowWrapper = styled.div`
@@ -109,70 +123,22 @@ const Graph: React.FC<GraphComponentProps & ActiveProps> = ({
   active,
   graphData,
   arrowColor,
+  barBackgroundColors,
+  barLabels,
 }) => {
-  const barOneKeyframes = keyframes`
-    0% {
-      height: ${BAR_ANIMATION_START_HEIGHT};
-    }
-    100% {
-      height: ${graphData.barOne};
-    }
-  `;
-  const barTwoKeyframes = keyframes`
-    0% {
-      height: ${BAR_ANIMATION_START_HEIGHT};
-    }
-    100% {
-      height: ${graphData.barTwo};
-    }
-  `;
-  const barThreeKeyframes = keyframes`
-    0% {
-      height: ${BAR_ANIMATION_START_HEIGHT};
-    }
-    100% {
-      height: ${graphData.barThree};
-    }
-  `;
-  const barFourKeyframes = keyframes`
-    0% {
-      height: ${BAR_ANIMATION_START_HEIGHT};
-    }
-    100% {
-      height: ${graphData.barFour};
-    }
-  `;
-
-  const barsConfig = [
-    {
-      id: "barOne",
-      metric: graphData.barOne,
-      copy: "placeholder",
-      backgroundColor: SEABED,
-      barKeyframes: barOneKeyframes,
-    },
-    {
-      id: "barTwo",
-      metric: graphData.barTwo,
-      copy: "placeholder",
-      backgroundColor: BLUE_SKY,
-      barKeyframes: barTwoKeyframes,
-    },
-    {
-      id: "barThree",
-      metric: graphData.barThree,
-      copy: "placeholder",
-      backgroundColor: ROYAL_BLUE,
-      barKeyframes: barThreeKeyframes,
-    },
-    {
-      id: "barFour",
-      metric: graphData.barFour,
-      copy: "placeholder",
-      backgroundColor: PURPLE_PASTEL,
-      barKeyframes: barFourKeyframes,
-    },
-  ];
+  const barsConfig = graphData.barMetrics.map((object, i) => ({
+    ...object,
+    backgroundColor: barBackgroundColors[i],
+    label: barLabels[i],
+    barKeyframes: keyframes`
+      0% {
+        height: ${BAR_ANIMATION_START_HEIGHT};
+      }
+      100% {
+        height: ${graphData.barMetrics[i].metric};
+      }
+    `,
+  }));
 
   return (
     <>
@@ -180,23 +146,21 @@ const Graph: React.FC<GraphComponentProps & ActiveProps> = ({
         <GraphContainer>
           <BarsContainer>
             {barsConfig.map(bar => (
-              <div key={bar.id}>
-                <Bar>
-                  <BarFill
-                    barBackgroundColor={bar.backgroundColor}
-                    barKeyframes={bar.barKeyframes}
-                  >
-                    <Metric>
-                      <MetricTypography>-{bar.metric}</MetricTypography>
-                      <MetricCopy>{bar.copy}</MetricCopy>
-                    </Metric>
-                    <ArrowWrapper>
-                      <ArrowBase arrowColor={arrowColor} />
-                      <ArrowPoint arrowColor={arrowColor} />
-                    </ArrowWrapper>
-                  </BarFill>
-                </Bar>
-              </div>
+              <Bar key={uuidv4()}>
+                <BarFill
+                  barBackgroundColor={bar.backgroundColor}
+                  barKeyframes={bar.barKeyframes}
+                >
+                  <Metric>
+                    <MetricTypography>-{bar.metric}</MetricTypography>
+                    <MetricLabel>{bar.label}</MetricLabel>
+                  </Metric>
+                  <ArrowWrapper>
+                    <ArrowBase arrowColor={arrowColor} />
+                    <ArrowPoint arrowColor={arrowColor} />
+                  </ArrowWrapper>
+                </BarFill>
+              </Bar>
             ))}
           </BarsContainer>
         </GraphContainer>

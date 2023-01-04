@@ -27,19 +27,31 @@ const SectionContainer = styled.div<BackgroundColorProps>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   border-radius: 6px;
   box-shadow: ${DARK_SHADOW};
+  @media (max-width: 991px) {
+    padding: 30px;
+  }
 `;
 
 const NavRow = styled.div`
   display: flex;
-  margin: 0 50px;
+  margin: 20px 50px 0;
   justify-content: space-between;
+  @media (max-width: 991px) {
+    margin: 20px 10px 0;
+  }
 `;
 
 const DataVisualizer: React.FC<DataVisualizerProps & MarginProps> = ({
   data,
   margin,
 }) => {
-  const { graphTitle, graphBackgroundColor, graphData } = data;
+  const {
+    graphTitle,
+    graphBackgroundColor,
+    barBackgroundColors,
+    barLabels,
+    graphData,
+  } = data;
 
   const firstGraphId: string = graphData[0].id;
 
@@ -58,6 +70,8 @@ const DataVisualizer: React.FC<DataVisualizerProps & MarginProps> = ({
             graphData={data}
             active={active}
             arrowColor={graphBackgroundColor}
+            barBackgroundColors={barBackgroundColors}
+            barLabels={barLabels}
           />
         ))}
 
