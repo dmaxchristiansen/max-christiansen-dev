@@ -4,7 +4,7 @@ import {
   DARK_SHADOW,
   LIGHT_BLUE_SHADOW,
 } from "src/utils/constants/shadow-constants";
-import { OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
+import { OBSIDIAN, ROYAL_BLUE, GRIMACE_LIGHTLY } from "src/styles/colors";
 import { ONE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
 
 interface NavButtonProps {
@@ -30,12 +30,19 @@ const Button = styled.button<ActiveProps & ButtonIdProps>`
   cursor: pointer;
   transition: background-color ${ONE_HUNDRED_MS}, box-shadow ${ONE_HUNDRED_MS};
   &:hover {
-    background-color: ${OBSIDIAN};
+    background-color: ${GRIMACE_LIGHTLY};
     box-shadow: ${LIGHT_BLUE_SHADOW};
   }
   &:focus {
     background-color: ${OBSIDIAN};
     box-shadow: ${LIGHT_BLUE_SHADOW};
+  }
+  @media (max-width: 768px) {
+    padding: 4px 10px;
+  }
+  @media (max-width: 520px) {
+    margin: 0px 4px 14px;
+    font-size: 15px;
   }
 `;
 

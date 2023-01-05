@@ -1,24 +1,25 @@
 import styled from "styled-components";
 import { ActiveProps, GraphProps } from "./types/dataVisualizer";
 import { BLUE_EYES } from "src/styles/colors";
+import { OPACITY_KEYFRAMES } from "src/utils/constants/animation-constants";
+import {
+  ONE_THOUSAND_MS,
+  TWO_FIFTY_MS,
+} from "src/utils/constants/transition-speeds";
 
 interface GraphInfoProps {
   graphData: GraphProps;
 }
 
-const DataHeader = styled.h3`
-  margin: 0;
-  color: ${BLUE_EYES};
-  font-size: 40px;
-  font-weight: 900;
-  text-align: center;
-  line-height: 40px;
-  letter-spacing: 2px;
-`;
-
 const DataRow = styled.div`
   display: flex;
   margin: 0 50px;
+  @media (max-width: 991px) {
+    margin: 0;
+  }
+  @media (max-width: 520px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const LeftCol = styled.div`
@@ -26,6 +27,31 @@ const LeftCol = styled.div`
   flex-direction: column;
   width: 50%;
   font-size: 20px;
+  @media (max-width: 520px) {
+    flex-direction: row;
+    width: 100%;
+    font-size: 16px;
+  }
+`;
+
+const BoldBlueSpan = styled.span`
+  color: ${BLUE_EYES};
+  font-weight: 700;
+`;
+
+const BoldSpan = styled.span`
+  opacity: 0;
+  font-weight: 700;
+  animation-duration: ${ONE_THOUSAND_MS};
+  animation-fill-mode: forwards;
+  animation-delay: ${TWO_FIFTY_MS};
+  animation-name: ${OPACITY_KEYFRAMES};
+`;
+
+const SampleWrapper = styled.div`
+  @media (max-width: 520px) {
+    margin-left: 20px;
+  }
 `;
 
 const RightCol = styled.div`
@@ -33,14 +59,33 @@ const RightCol = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   width: 50%;
+  @media (max-width: 520px) {
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 8px;
+  }
 `;
 
-const BlueSpan = styled.span`
+const DataHeader = styled.h3`
+  margin: 0;
+  opacity: 0;
   color: ${BLUE_EYES};
-`;
-
-const BoldSpan = styled.span`
-  font-weight: 700;
+  text-align: center;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 2px;
+  animation-duration: ${ONE_THOUSAND_MS};
+  animation-fill-mode: forwards;
+  animation-delay: ${TWO_FIFTY_MS};
+  animation-name: ${OPACITY_KEYFRAMES};
+  @media (max-width: 991px) {
+    font-size: 30px;
+  }
+  @media (max-width: 520px) {
+    text-align: left;
+    font-size: 20px;
+  }
 `;
 
 const GraphInfo: React.FC<GraphInfoProps & ActiveProps> = ({
@@ -53,13 +98,13 @@ const GraphInfo: React.FC<GraphInfoProps & ActiveProps> = ({
         <DataRow>
           <LeftCol>
             <div>
-              <BlueSpan>Data sets:&nbsp;</BlueSpan>
-              <BoldSpan>{graphData.dataGroups}</BoldSpan>
+              <BoldBlueSpan>Data sets:&nbsp;</BoldBlueSpan>
+              <BoldSpan>{graphData.dataSets}</BoldSpan>
             </div>
-            <div>
-              <BlueSpan>Sample size:&nbsp;</BlueSpan>
+            <SampleWrapper>
+              <BoldBlueSpan>Sample size:&nbsp;</BoldBlueSpan>
               <BoldSpan>{graphData.sampleSize}</BoldSpan>
-            </div>
+            </SampleWrapper>
           </LeftCol>
           <RightCol>
             <DataHeader>{graphData.label}</DataHeader>

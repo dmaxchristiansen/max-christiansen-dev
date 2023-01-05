@@ -45,4 +45,13 @@ export const WHEEL_SPIN_KEYFRAMES = keyframes`
   }
 `;
 
+export const OPACITY_KEYFRAMES = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 export const OPACITY_FADE = "0.75";

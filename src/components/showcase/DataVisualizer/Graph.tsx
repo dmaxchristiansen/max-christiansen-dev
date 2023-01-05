@@ -1,42 +1,60 @@
 import styled, { Keyframes, keyframes } from "styled-components";
+import { v4 as uuidv4 } from "uuid";
+import { BAR_ANIMATION_START_HEIGHT } from "./utils/constants";
 import {
-  BAR_ANIMATION_START_HEIGHT,
-  BAR_ANIMATION_DURATION,
-  BAR_ANIMATION_DELAY,
-  METRIC_ANIMATION_DELAY,
-  METRIC_KEYFRAMES,
-} from "./utils/constants";
-import {
-  BLUE_SKY,
-  CLEAR,
-  PURPLE_PASTEL,
-  ROYAL_BLUE,
-  WHITE,
-  SEABED,
-  OBSIDIAN,
-  GRIMACE,
-} from "src/styles/colors";
+  TWO_FIFTY_MS,
+  ONE_THOUSAND_MS,
+} from "src/utils/constants/transition-speeds";
+import { CLEAR, WHITE, OBSIDIAN } from "src/styles/colors";
+import { OPACITY_KEYFRAMES } from "src/utils/constants/animation-constants";
 import { ActiveProps, GraphProps } from "./types/dataVisualizer";
 
-interface GraphComponentProps {
+interface ArrowProps {
+  arrowColor: string;
+}
+
+interface GraphComponentProps extends ArrowProps {
   graphData: GraphProps;
+  barBackgroundColors: string[];
+  barLabels: string[];
 }
 
 const GraphContainer = styled.div`
-  margin: 80px 40px 0;
+  margin: 40px 40px 0;
   border-top: 4px solid ${WHITE};
+  @media (max-width: 991px) {
+    margin: 30px 0 0;
+  }
+  @media (max-width: 520px) {
+    margin: 15px 0 0;
+  }
 `;
 
 const BarsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
+  @media (max-width: 520px) {
+    padding: 0;
+  }
 `;
 
 const Bar = styled.div`
   position: relative;
   width: 150px;
   height: 360px;
+  @media (max-width: 991px) {
+    width: 134px;
+    height: 360px;
+  }
+  @media (max-width: 768px) {
+    width: 90px;
+    height: 300px;
+  }
+  @media (max-width: 520px) {
+    width: 75px;
+    height: 250px;
+  }
 `;
 
 interface BarFillProps {
@@ -55,9 +73,18 @@ const BarFill = styled.div<BarFillProps>`
   border-bottom-right-radius: 6px;
   background-color: ${({ barBackgroundColor }) => barBackgroundColor};
   animation-fill-mode: forwards;
-  animation-delay: ${BAR_ANIMATION_DELAY};
-  animation-duration: ${BAR_ANIMATION_DURATION};
+  animation-delay: ${TWO_FIFTY_MS};
+  animation-duration: ${ONE_THOUSAND_MS};
   animation-name: ${({ barKeyframes }) => barKeyframes};
+  @media (max-width: 991px) {
+    width: 134px;
+  }
+  @media (max-width: 768px) {
+    width: 90px;
+  }
+  @media (max-width: 520px) {
+    width: 75px;
+  }
 `;
 
 const Metric = styled.div`
@@ -66,110 +93,91 @@ const Metric = styled.div`
   color: ${OBSIDIAN};
   text-align: center;
   opacity: 0;
-  animation-duration: ${BAR_ANIMATION_DURATION};
+  animation-duration: ${ONE_THOUSAND_MS};
   animation-fill-mode: forwards;
-  animation-delay: ${METRIC_ANIMATION_DELAY};
-  animation-name: ${METRIC_KEYFRAMES};
+  animation-delay: ${ONE_THOUSAND_MS};
+  animation-name: ${OPACITY_KEYFRAMES};
+  @media (max-width: 520px) {
+    top: 16px;
+  }
 `;
 
 const MetricTypography = styled.div`
   position: relative;
   font-size: 40px;
-  line-height: 40px;
+  line-height: 1;
+  @media (max-width: 991px) {
+    font-size: 30px;
+  }
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
-const MetricCopy = styled.div`
+const MetricLabel = styled.div`
   max-width: 130px;
-  font-size: 19px;
-  line-height: 21px;
+  margin-top: 5px;
+  font-size: 20px;
+  line-height: 1;
+  @media (max-width: 991px) {
+    font-size: 16px;
+  }
+  @media (max-width: 520px) {
+    font-size: 14px;
+  }
 `;
 
 const ArrowWrapper = styled.div`
   margin-top: auto;
 `;
 
-const ArrowBase = styled.div`
-  width: 18px;
+const ArrowBase = styled.div<ArrowProps>`
   height: 22px;
+  width: 18px;
   margin: 0px auto;
-  background-color: ${GRIMACE};
+  background-color: ${({ arrowColor }) => arrowColor};
+  @media (max-width: 520px) {
+    height: 16px;
+    width: 12px;
+  }
 `;
 
-const ArrowPoint = styled.div`
+const ArrowPoint = styled.div<ArrowProps>`
   width: 0px;
   height: 0px;
   border-left: 20px solid ${CLEAR};
   border-right: 20px solid ${CLEAR};
-  border-top: 18px solid ${GRIMACE};
+  border-top: 18px solid ${({ arrowColor }) => arrowColor};
+  @media (max-width: 520px) {
+    border-left: 14px solid ${CLEAR};
+    border-right: 14px solid ${CLEAR};
+    border-top: 12px solid ${({ arrowColor }) => arrowColor};
+  }
 `;
 
 const Graph: React.FC<GraphComponentProps & ActiveProps> = ({
   active,
   graphData,
+  arrowColor,
+  barBackgroundColors,
+  barLabels,
 }) => {
-  const barOneKeyframes = keyframes`
-    0% {
-      height: ${BAR_ANIMATION_START_HEIGHT};
-    }
-    100% {
-      height: ${graphData.barOne};
-    }
-  `;
-  const barTwoKeyframes = keyframes`
-    0% {
-      height: ${BAR_ANIMATION_START_HEIGHT};
-    }
-    100% {
-      height: ${graphData.barTwo};
-    }
-  `;
-  const barThreeKeyframes = keyframes`
-    0% {
-      height: ${BAR_ANIMATION_START_HEIGHT};
-    }
-    100% {
-      height: ${graphData.barThree};
-    }
-  `;
-  const barFourKeyframes = keyframes`
-    0% {
-      height: ${BAR_ANIMATION_START_HEIGHT};
-    }
-    100% {
-      height: ${graphData.barFour};
-    }
-  `;
-
-  const barsConfig = [
-    {
-      id: "barOne",
-      metric: graphData.barOne,
-      copy: "placeholder",
-      backgroundColor: SEABED,
-      barKeyframes: barOneKeyframes,
-    },
-    {
-      id: "barTwo",
-      metric: graphData.barTwo,
-      copy: "placeholder",
-      backgroundColor: BLUE_SKY,
-      barKeyframes: barTwoKeyframes,
-    },
-    {
-      id: "barThree",
-      metric: graphData.barThree,
-      copy: "placeholder",
-      backgroundColor: ROYAL_BLUE,
-      barKeyframes: barThreeKeyframes,
-    },
-    {
-      id: "barFour",
-      metric: graphData.barFour,
-      copy: "placeholder",
-      backgroundColor: PURPLE_PASTEL,
-      barKeyframes: barFourKeyframes,
-    },
-  ];
+  const barsConfig = graphData.barMetrics.map((object, i) => ({
+    ...object,
+    backgroundColor: barBackgroundColors[i],
+    label: barLabels[i],
+    barKeyframes: keyframes`
+      0% {
+        height: ${BAR_ANIMATION_START_HEIGHT};
+      }
+      100% {
+        height: ${graphData.barMetrics[i].metric};
+      }
+    `,
+  }));
 
   return (
     <>
@@ -177,23 +185,21 @@ const Graph: React.FC<GraphComponentProps & ActiveProps> = ({
         <GraphContainer>
           <BarsContainer>
             {barsConfig.map(bar => (
-              <div key={bar.id}>
-                <Bar>
-                  <BarFill
-                    barBackgroundColor={bar.backgroundColor}
-                    barKeyframes={bar.barKeyframes}
-                  >
-                    <Metric>
-                      <MetricTypography>-{bar.metric}</MetricTypography>
-                      <MetricCopy>{bar.copy}</MetricCopy>
-                    </Metric>
-                    <ArrowWrapper>
-                      <ArrowBase />
-                      <ArrowPoint />
-                    </ArrowWrapper>
-                  </BarFill>
-                </Bar>
-              </div>
+              <Bar key={uuidv4()}>
+                <BarFill
+                  barBackgroundColor={bar.backgroundColor}
+                  barKeyframes={bar.barKeyframes}
+                >
+                  <Metric>
+                    <MetricTypography>-{bar.metric}</MetricTypography>
+                    <MetricLabel>{bar.label}</MetricLabel>
+                  </Metric>
+                  <ArrowWrapper>
+                    <ArrowBase arrowColor={arrowColor} />
+                    <ArrowPoint arrowColor={arrowColor} />
+                  </ArrowWrapper>
+                </BarFill>
+              </Bar>
             ))}
           </BarsContainer>
         </GraphContainer>
