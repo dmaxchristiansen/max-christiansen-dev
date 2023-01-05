@@ -17,6 +17,9 @@ const DataRow = styled.div`
   @media (max-width: 991px) {
     margin: 0;
   }
+  @media (max-width: 520px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const LeftCol = styled.div`
@@ -24,6 +27,11 @@ const LeftCol = styled.div`
   flex-direction: column;
   width: 50%;
   font-size: 20px;
+  @media (max-width: 520px) {
+    flex-direction: row;
+    width: 100%;
+    font-size: 16px;
+  }
 `;
 
 const BoldBlueSpan = styled.span`
@@ -40,21 +48,32 @@ const BoldSpan = styled.span`
   animation-name: ${OPACITY_KEYFRAMES};
 `;
 
+const SampleWrapper = styled.div`
+  @media (max-width: 520px) {
+    margin-left: 20px;
+  }
+`;
+
 const RightCol = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   width: 50%;
+  @media (max-width: 520px) {
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 8px;
+  }
 `;
 
 const DataHeader = styled.h3`
   margin: 0;
   opacity: 0;
   color: ${BLUE_EYES};
-  font-size: 40px;
-  font-weight: 900;
   text-align: center;
-  line-height: 40px;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 900;
   letter-spacing: 2px;
   animation-duration: ${ONE_THOUSAND_MS};
   animation-fill-mode: forwards;
@@ -62,7 +81,10 @@ const DataHeader = styled.h3`
   animation-name: ${OPACITY_KEYFRAMES};
   @media (max-width: 991px) {
     font-size: 30px;
-    line-height: 30px;
+  }
+  @media (max-width: 520px) {
+    text-align: left;
+    font-size: 20px;
   }
 `;
 
@@ -79,10 +101,10 @@ const GraphInfo: React.FC<GraphInfoProps & ActiveProps> = ({
               <BoldBlueSpan>Data sets:&nbsp;</BoldBlueSpan>
               <BoldSpan>{graphData.dataSets}</BoldSpan>
             </div>
-            <div>
+            <SampleWrapper>
               <BoldBlueSpan>Sample size:&nbsp;</BoldBlueSpan>
               <BoldSpan>{graphData.sampleSize}</BoldSpan>
-            </div>
+            </SampleWrapper>
           </LeftCol>
           <RightCol>
             <DataHeader>{graphData.label}</DataHeader>

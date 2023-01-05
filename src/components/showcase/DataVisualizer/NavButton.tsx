@@ -37,6 +37,13 @@ const Button = styled.button<ActiveProps & ButtonIdProps>`
     background-color: ${OBSIDIAN};
     box-shadow: ${LIGHT_BLUE_SHADOW};
   }
+  @media (max-width: 768px) {
+    padding: 4px 10px;
+  }
+  @media (max-width: 520px) {
+    margin: 0px 4px 14px;
+    font-size: 15px;
+  }
 `;
 
 const NavButton: React.FC<NavButtonProps & ButtonIdProps & ActiveProps> = ({

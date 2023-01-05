@@ -25,12 +25,18 @@ const GraphContainer = styled.div`
   @media (max-width: 991px) {
     margin: 30px 0 0;
   }
+  @media (max-width: 520px) {
+    margin: 15px 0 0;
+  }
 `;
 
 const BarsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
+  @media (max-width: 520px) {
+    padding: 0;
+  }
 `;
 
 const Bar = styled.div`
@@ -38,8 +44,16 @@ const Bar = styled.div`
   width: 150px;
   height: 360px;
   @media (max-width: 991px) {
-    width: 100px;
+    width: 134px;
     height: 360px;
+  }
+  @media (max-width: 768px) {
+    width: 90px;
+    height: 300px;
+  }
+  @media (max-width: 520px) {
+    width: 75px;
+    height: 250px;
   }
 `;
 
@@ -63,7 +77,13 @@ const BarFill = styled.div<BarFillProps>`
   animation-duration: ${ONE_THOUSAND_MS};
   animation-name: ${({ barKeyframes }) => barKeyframes};
   @media (max-width: 991px) {
-    width: 100px;
+    width: 134px;
+  }
+  @media (max-width: 768px) {
+    width: 90px;
+  }
+  @media (max-width: 520px) {
+    width: 75px;
   }
 `;
 
@@ -77,15 +97,23 @@ const Metric = styled.div`
   animation-fill-mode: forwards;
   animation-delay: ${ONE_THOUSAND_MS};
   animation-name: ${OPACITY_KEYFRAMES};
+  @media (max-width: 520px) {
+    top: 16px;
+  }
 `;
 
 const MetricTypography = styled.div`
   position: relative;
   font-size: 40px;
-  line-height: 40px;
+  line-height: 1;
   @media (max-width: 991px) {
     font-size: 30px;
-    line-height: 30px;
+  }
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+  @media (max-width: 768px) {
+    font-size: 20px;
   }
 `;
 
@@ -93,10 +121,12 @@ const MetricLabel = styled.div`
   max-width: 130px;
   margin-top: 5px;
   font-size: 20px;
-  line-height: 20px;
+  line-height: 1;
   @media (max-width: 991px) {
     font-size: 16px;
-    line-height: 16px;
+  }
+  @media (max-width: 520px) {
+    font-size: 14px;
   }
 `;
 
@@ -105,10 +135,14 @@ const ArrowWrapper = styled.div`
 `;
 
 const ArrowBase = styled.div<ArrowProps>`
-  width: 18px;
   height: 22px;
+  width: 18px;
   margin: 0px auto;
   background-color: ${({ arrowColor }) => arrowColor};
+  @media (max-width: 520px) {
+    height: 16px;
+    width: 12px;
+  }
 `;
 
 const ArrowPoint = styled.div<ArrowProps>`
@@ -117,6 +151,11 @@ const ArrowPoint = styled.div<ArrowProps>`
   border-left: 20px solid ${CLEAR};
   border-right: 20px solid ${CLEAR};
   border-top: 18px solid ${({ arrowColor }) => arrowColor};
+  @media (max-width: 520px) {
+    border-left: 14px solid ${CLEAR};
+    border-right: 14px solid ${CLEAR};
+    border-top: 12px solid ${({ arrowColor }) => arrowColor};
+  }
 `;
 
 const Graph: React.FC<GraphComponentProps & ActiveProps> = ({

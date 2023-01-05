@@ -18,6 +18,9 @@ const SectionWrapper = styled.div<MarginProps>`
   width: 100%;
   margin: ${({ margin }) => margin};
   padding: 0 30px;
+  @media (max-width: 520px) {
+    padding: 0;
+  }
 `;
 
 const SectionContainer = styled.div<BackgroundColorProps>`
@@ -30,6 +33,9 @@ const SectionContainer = styled.div<BackgroundColorProps>`
   @media (max-width: 991px) {
     padding: 30px;
   }
+  @media (max-width: 520px) {
+    padding: 20px 20px 14px;
+  }
 `;
 
 const NavRow = styled.div`
@@ -38,6 +44,14 @@ const NavRow = styled.div`
   justify-content: space-between;
   @media (max-width: 991px) {
     margin: 20px 10px 0;
+  }
+  @media (max-width: 768px) {
+    margin: 20px 0 0;
+  }
+  @media (max-width: 520px) {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 12px 0 0;
   }
 `;
 
@@ -74,7 +88,6 @@ const DataVisualizer: React.FC<DataVisualizerProps & MarginProps> = ({
             barLabels={barLabels}
           />
         ))}
-
         <NavRow>
           {graphData.map(data => (
             <NavButton
