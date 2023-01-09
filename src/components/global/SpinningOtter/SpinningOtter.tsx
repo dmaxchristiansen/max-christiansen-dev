@@ -31,7 +31,7 @@ const SpinningOtter: React.FC<SpinningOtterProps> = ({ margin }) => {
     query {
       file(relativePath: { eq: "otter-friend.png" }) {
         childImageSharp {
-          gatsbyImageData(quality: 100, placeholder: TRACED_SVG, width: 400)
+          gatsbyImageData(quality: 100, placeholder: BLURRED, width: 400)
         }
       }
     }

@@ -83,7 +83,7 @@ const NotFoundPage = () => {
     query {
       file(relativePath: { eq: "four-o-four.png" }) {
         childImageSharp {
-          gatsbyImageData(quality: 100, placeholder: TRACED_SVG, width: 300)
+          gatsbyImageData(quality: 100, placeholder: BLURRED, width: 300)
         }
       }
     }

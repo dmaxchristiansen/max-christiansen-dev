@@ -118,7 +118,7 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
     query {
       file(relativePath: { eq: "code-snapshot.png" }) {
         childImageSharp {
-          gatsbyImageData(quality: 100, placeholder: TRACED_SVG, width: 700)
+          gatsbyImageData(quality: 100, placeholder: BLURRED, width: 700)
         }
       }
     }

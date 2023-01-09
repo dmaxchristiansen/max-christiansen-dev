@@ -121,7 +121,7 @@ const Nav: React.FC = () => {
     query {
       file(relativePath: { eq: "otter-icon-nav-white.png" }) {
         childImageSharp {
-          gatsbyImageData(quality: 100, placeholder: TRACED_SVG, width: 36)
+          gatsbyImageData(quality: 100, placeholder: BLURRED, width: 36)
         }
       }
     }
