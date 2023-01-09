@@ -1,15 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import { Z_ONE_THOUSAND } from "src/utils/constants/layer-constants";
 import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
-import { OPACITY_FADE } from "src/utils/constants/animation-constants";
-import { GRIMACE } from "src/styles/colors";
+import { BLUE_EYES, GRIMACE } from "src/styles/colors";
 import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
 import { navConfig } from "./utils/navConfig";
 import Hamburger from "./Hamburger";
+import OtterSvg from "./OtterSvg";
 
 const SCROLL_REACTION_THRESHOLD = 5;
 
@@ -39,7 +37,6 @@ const NavContainer = styled.nav<NavContainerProps>`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   max-width: 1350px;
   margin: 0 auto;
   padding: 6px 30px;
@@ -50,14 +47,25 @@ const StyledHomeLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  transition: opacity ${TWO_FIFTY_MS};
+  div {
+    transition: color ${TWO_FIFTY_MS};
+  }
+  svg {
+    transition: fill ${TWO_FIFTY_MS};
+  }
   &:hover {
-    opacity: ${OPACITY_FADE};
+    svg {
+      fill: ${BLUE_EYES};
+    }
+    div {
+      color: ${BLUE_EYES};
+    }
   }
 `;
 
 const HomeLinkText = styled.div`
   display: none;
+  margin-top: auto;
   @media (min-width: 992px) {
     display: block;
     margin-left: 12px;
@@ -77,10 +85,6 @@ const List = styled.ul`
 const Item = styled.li`
   list-style: none;
   margin: 30px 30px;
-  transition: opacity ${TWO_FIFTY_MS};
-  &:hover {
-    opacity: ${OPACITY_FADE};
-  }
   @media (min-width: 992px) {
     margin: 0 0 0 18px;
   }
@@ -89,6 +93,10 @@ const Item = styled.li`
 const ItemLink = styled(Link)`
   text-decoration: none;
   font-size: 24px;
+  transition: color ${TWO_FIFTY_MS};
+  &:hover {
+    color: ${BLUE_EYES};
+  }
   @media (min-width: 992px) {
     font-size: 20px;
   }
@@ -117,16 +125,6 @@ const MobileCollapseList = styled.ul<MobileCollapseListProps>`
 `;
 
 const Nav: React.FC = () => {
-  const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "otter-icon-nav-white.png" }) {
-        childImageSharp {
-          gatsbyImageData(quality: 100, placeholder: BLURRED, width: 36)
-        }
-      }
-    }
-  `);
-
   const navRef = useRef<HTMLElement | null>(null);
 
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
@@ -163,10 +161,7 @@ const Nav: React.FC = () => {
       >
         <Wrapper>
           <StyledHomeLink to="/" onClick={() => setIsCollapseOpen(false)}>
-            <GatsbyImage
-              image={data.file.childImageSharp.gatsbyImageData}
-              alt="otter"
-            />
+            <OtterSvg />
             <HomeLinkText>Max Christiansen Dev</HomeLinkText>
           </StyledHomeLink>
           <Hamburger

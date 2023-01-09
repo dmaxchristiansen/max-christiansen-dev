@@ -1,5 +1,6 @@
-import placeholderIcon from "src/images/otter-icon-nav-white.png";
 import hhIcon from "src/images/hh-icon.png";
+import codingDojoIcon from "src/images/coding-dojo-icon.png";
+import sevenHillsIcon from "src/images/seven-hills-icon.jpg";
 import { SectionProps } from "../types/accordion";
 
 export const accordionConfig: SectionProps[] = [
@@ -71,7 +72,7 @@ export const accordionConfig: SectionProps[] = [
         "Supported student learning on an individual basis",
       ],
       graphic: {
-        src: placeholderIcon,
+        src: codingDojoIcon,
         altText: "Coding Dojo",
       },
       technologies: [
@@ -115,7 +116,7 @@ export const accordionConfig: SectionProps[] = [
         "Ethics in Technology & Women in Programming",
       ],
       graphic: {
-        src: placeholderIcon,
+        src: sevenHillsIcon,
         altText: "Seven Hills School",
       },
       technologies: ["Python", "Java", "HTML", "CSS", "JS"],
