@@ -3,12 +3,14 @@ import { HeightProps } from "src/utils/types/height";
 
 const GitHubSvg: React.FC<HeightProps> = ({ height = 30 }) => (
   <svg
+    role="img"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 98 96"
-    role="img"
     height={height}
     fill={WHITE}
+    focusable="false"
   >
+    <title>GitHub</title>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

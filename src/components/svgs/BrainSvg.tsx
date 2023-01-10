@@ -2,12 +2,13 @@ import { WHITE } from "src/styles/colors";
 
 const BrainSvg = () => (
   <svg
+    role="img"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 463 463"
-    role="img"
     height="45"
     width="42"
     fill={WHITE}
+    focusable="false"
   >
     <g>
       <path

@@ -18,7 +18,7 @@ const ExternalWrapper = styled.div`
   padding: 0 30px;
 `;
 
-const InternalWrapper = styled.div`
+const Row = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,15 +87,12 @@ const Text = styled.div`
   display: flex;
   text-align: right;
   ${SharedTypographyStyles}
-  @media (max-width: 991px) {
-    /* padding-top: 20px; */
-  }
 `;
 
 const Footer: React.FC = () => (
   <Container>
     <ExternalWrapper>
-      <InternalWrapper>
+      <Row>
         <LinksWrapper>
           <Link
             href="https://github.com/dmaxchristiansen"
@@ -125,7 +122,7 @@ const Footer: React.FC = () => (
           </Link>
         </LinksWrapper>
         <Text>©{new Date().getFullYear()}</Text>
-      </InternalWrapper>
+      </Row>
     </ExternalWrapper>
   </Container>
 );
