@@ -32,7 +32,6 @@ const FlexRow = styled.div`
   z-index: ${Z_TWENTY};
   @media (max-width: 991px) {
     flex-direction: column;
-    padding-bottom: 30px;
   }
 `;
 

@@ -2,11 +2,13 @@ import { PEACHY } from "src/styles/colors";
 
 const LocationSvg = () => (
   <svg
+    role="img"
     xmlns="http://www.w3.org/2000/svg"
     fillRule="evenodd"
     clipRule="evenodd"
     height="24"
     width="24"
+    focusable="false"
   >
     <path
       fill={PEACHY}

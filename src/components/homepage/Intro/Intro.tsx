@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   letter-spacing: 4px;
   @media (max-width: 991px) {
     height: unset;
-    margin-bottom: 60px;
+    margin-bottom: 110px;
   }
   @media (max-width: 520px) {
     height: calc(100vh - 75px);
@@ -154,7 +154,7 @@ const Intro = () => {
           <ScrollDownButton
             type="button"
             aria-label="scroll down"
-            onClick={() => scrollToTargetElement("expertise", 60)}
+            onClick={() => scrollToTargetElement("expertise", 10)}
           >
             <DownArrow src={downArrow} alt="scroll down arrow" />
           </ScrollDownButton>
