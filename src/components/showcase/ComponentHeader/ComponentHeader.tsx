@@ -6,7 +6,7 @@ interface ComponentHeaderProps {
 }
 
 const H1 = styled.h1`
-  margin: 50px 0;
+  margin: 40px 0 50px;
   padding: 0 30px;
   text-align: center;
   font-size: 110px;

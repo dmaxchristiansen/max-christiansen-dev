@@ -35,6 +35,7 @@ const SectionContainer = styled.div<BackgroundColorProps>`
   }
   @media (max-width: 520px) {
     padding: 20px 20px 14px;
+    border-radius: 0;
   }
 `;
 

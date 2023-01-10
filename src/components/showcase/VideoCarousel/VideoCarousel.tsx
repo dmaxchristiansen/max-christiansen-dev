@@ -7,9 +7,12 @@ import TwoCarousel from "./TwoCarousel";
 import Carousel from "./Carousel";
 
 const Container = styled.div`
-  padding-top: 32px;
+  padding: 0 30px 50px;
   @media (min-width: 768px) {
-    padding-top: 64px;
+    padding: 0 30px 80px;
+  }
+  @media (min-width: 992px) {
+    padding: 0 30px 100px;
   }
 `;
 
@@ -24,11 +27,11 @@ const Header = styled.h2`
   font-size: 30px;
   text-align: center;
   @media (min-width: 768px) {
-    margin-bottom: 64px;
+    margin-bottom: 32px;
     font-size: 40px;
   }
   @media (min-width: 992px) {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
   }
 `;
 

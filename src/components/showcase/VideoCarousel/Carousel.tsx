@@ -15,14 +15,9 @@ const Container = styled.div`
   flex-direction: column;
   max-width: 640px;
   margin: 0 auto;
-  padding: 0 16px 24px;
   @media (min-width: 768px) {
     flex-direction: row;
-    max-width: unset;
-    padding: 0 32px 64px;
-  }
-  @media (min-width: 992px) {
-    padding: 0 64px 64px;
+    max-width: 1100px;
   }
 `;
 
@@ -30,16 +25,16 @@ const CopyContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 182px;
-  margin: 0 0 0 16px;
+  margin: 0;
   animation: ${ACTION_KEYFRAMES} ${TWO_FIFTY_MS};
   @media (min-width: 768px) {
     max-width: 180px;
     min-height: unset;
-    margin: 0 20px 0 0;
+    margin-right: 20px;
   }
   @media (min-width: 992px) {
     max-width: 240px;
-    margin: 0 64px 0 0;
+    margin-right: 64px;
   }
 `;
 
