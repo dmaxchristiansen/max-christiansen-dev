@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 import useHandleScroll from "src/utils/hooks/useHandleScroll";
 import {
@@ -10,7 +10,7 @@ import {
   NARROW_BLUE_GLOW,
   DARK_SHADOW,
 } from "src/utils/constants/shadow-constants";
-import { Z_ONE_THOUSAND } from "src/utils/constants/layer-constants";
+import { Z_FIVE_HUNDRED } from "src/utils/constants/layer-constants";
 
 interface VisibilityProps {
   isVisible: boolean;
@@ -21,29 +21,43 @@ interface TypographyProps {
   mobileFontSize?: string;
 }
 
-interface FixedLinkProps extends TypographyProps {
+interface LayoutProps {
+  isTopAligned?: boolean;
+  padding?: string;
+}
+
+interface FixedLinkProps extends TypographyProps, LayoutProps {
   scrollReactionThreshold: number;
   href: string;
   text: string;
 }
 
-const FixedWrapper = styled.div`
+const FixedWrapper = styled.div<LayoutProps>`
   display: flex;
   position: fixed;
-  top: 0;
-  height: calc(100% - 66px);
+  ${({ isTopAligned }) =>
+    isTopAligned
+      ? css`
+          bottom: 0;
+          height: calc(100% - 52px);
+        `
+      : css`
+          top: 0;
+          height: calc(100% - 66px);
+          @media (max-width: 767px) {
+            height: calc(100% - 30px);
+          }
+        `}
   width: 100%;
   pointer-events: none;
-  z-index: ${Z_ONE_THOUSAND};
-  @media (max-width: 767px) {
-    height: calc(100% - 30px);
-  }
+  z-index: ${Z_FIVE_HUNDRED};
 `;
 
-const InternalWrapper = styled.div`
+const InternalWrapper = styled.div<LayoutProps>`
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: ${({ isTopAligned }) =>
+    isTopAligned ? "flex-start" : "flex-end"};
   width: 100%;
   max-width: 1350px;
   margin: 0 auto 0 auto;
@@ -52,9 +66,11 @@ const InternalWrapper = styled.div`
 
 const StyledLink = styled(Link).withConfig({
   shouldForwardProp: prop =>
-    !["isVisible", "desktopFontSize", "mobileFontSize"].includes(prop),
-})<VisibilityProps & TypographyProps>`
-  padding: 14px;
+    !["isVisible", "desktopFontSize", "mobileFontSize", "padding"].includes(
+      prop,
+    ),
+})<VisibilityProps & TypographyProps & LayoutProps>`
+  padding: ${({ padding }) => padding};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
   background-color: ${ROYAL_BLUE};
@@ -78,22 +94,25 @@ const StyledLink = styled(Link).withConfig({
 `;
 
 const FixedLink: React.FC<FixedLinkProps> = ({
+  isTopAligned = false,
   scrollReactionThreshold,
   href,
   text,
   desktopFontSize,
   mobileFontSize,
+  padding = "14px",
 }) => {
   const isVisible = useHandleScroll(scrollReactionThreshold);
 
   return (
-    <FixedWrapper>
-      <InternalWrapper>
+    <FixedWrapper isTopAligned={isTopAligned}>
+      <InternalWrapper isTopAligned={isTopAligned}>
         <StyledLink
           isVisible={isVisible}
           to={href}
           desktopFontSize={desktopFontSize}
           mobileFontSize={mobileFontSize}
+          padding={padding}
         >
           {text}
         </StyledLink>

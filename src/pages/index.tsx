@@ -34,6 +34,7 @@ const IndexPage: React.FC = () => {
         text="⬆"
         desktopFontSize="30px"
         mobileFontSize="20px"
+        // isTopAligned
       />
     </Layout>
   );
