@@ -1,7 +1,7 @@
 import { WHITE } from "src/styles/colors";
 import styled from "styled-components";
 
-interface HamburgerProps {
+interface HamburgerButtonProps {
   isCollapseOpen: boolean;
   setIsCollapseOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -59,7 +59,7 @@ const Button = styled.button<ButtonProps>`
   }
 `;
 
-const Hamburger: React.FC<HamburgerProps> = ({
+const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   isCollapseOpen,
   setIsCollapseOpen,
 }) => (
@@ -74,4 +74,4 @@ const Hamburger: React.FC<HamburgerProps> = ({
   </Button>
 );
 
-export default Hamburger;
+export default HamburgerButton;

@@ -9,23 +9,23 @@ import ResumeSvg from "src/components/svgs/ResumeSvg";
 const Container = styled.div`
   width: 100%;
   margin-top: auto;
-  padding-top: 40px;
+  padding-top: 60px;
 `;
 
-const Wrapper = styled.div`
+const ExternalWrapper = styled.div`
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 30px;
+`;
+
+const InternalWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1290px;
-  margin: 0 auto;
-  padding: 20px 0;
+  padding: 14px 0;
   border-top: 1px solid ${BLUE_EYES};
-  @media (max-width: 1290px) {
-    padding: 20px 30px;
-  }
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     flex-direction: column;
-    padding: 30px;
   }
 `;
 
@@ -58,71 +58,75 @@ const Link = styled.a`
     }
   }
   @media (max-width: 991px) {
-    margin-bottom: 20px;
     &:last-child {
       margin-right: 0;
     }
   }
   @media (max-width: 767px) {
-    margin-right: 0;
+    margin: 0 0 20px 0;
   }
 `;
 
 const SharedTypographyStyles = css`
   font-family: Roboto Mono;
   font-size: 20px;
+  line-height: 1;
+  @media (max-width: 991px) {
+    font-size: 18px;
+  }
 `;
 
 const LinkText = styled.div`
   display: flex;
   margin: 0 6px;
-  line-height: 1;
+
   ${SharedTypographyStyles}
 `;
 
 const Text = styled.div`
   display: flex;
   text-align: right;
-  line-height: 1;
   ${SharedTypographyStyles}
   @media (max-width: 991px) {
-    padding-top: 20px;
+    /* padding-top: 20px; */
   }
 `;
 
 const Footer: React.FC = () => (
   <Container>
-    <Wrapper>
-      <LinksWrapper>
-        <Link
-          href="https://github.com/dmaxchristiansen"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <GitHubSvg />
-          <LinkText>dmaxchristiansen</LinkText>
-          <NewTabLinkSvg fillColor={WHITE} height={18} />
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/dmaxdev/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <LinkedInSvg />
-          <LinkText>dmaxdev</LinkText>
-          <NewTabLinkSvg fillColor={WHITE} height={18} />
-        </Link>
-        <Link
-          href="https://max-christiansen-dev.netlify.app/dmc_resume.pdf"
-          target="_blank"
-        >
-          <ResumeSvg />
-          <LinkText>resume</LinkText>
-          <NewTabLinkSvg fillColor={WHITE} height={18} />
-        </Link>
-      </LinksWrapper>
-      <Text>©{new Date().getFullYear()}</Text>
-    </Wrapper>
+    <ExternalWrapper>
+      <InternalWrapper>
+        <LinksWrapper>
+          <Link
+            href="https://github.com/dmaxchristiansen"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GitHubSvg />
+            <LinkText>dmaxchristiansen</LinkText>
+            <NewTabLinkSvg fillColor={WHITE} height={18} />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/dmaxdev/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <LinkedInSvg />
+            <LinkText>dmaxdev</LinkText>
+            <NewTabLinkSvg fillColor={WHITE} height={18} />
+          </Link>
+          <Link
+            href="https://max-christiansen-dev.netlify.app/dmc_resume.pdf"
+            target="_blank"
+          >
+            <ResumeSvg />
+            <LinkText>resume</LinkText>
+            <NewTabLinkSvg fillColor={WHITE} height={18} />
+          </Link>
+        </LinksWrapper>
+        <Text>©{new Date().getFullYear()}</Text>
+      </InternalWrapper>
+    </ExternalWrapper>
   </Container>
 );
 

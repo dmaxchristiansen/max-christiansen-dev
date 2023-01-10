@@ -7,7 +7,6 @@ import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Accordion from "src/components/homepage/Experience/Accordion/Accordion";
 
 const Container = styled.div`
-  // margin-top: 50px;
   padding: 50px 30px 0;
   @media (max-width: 520px) {
     padding-top: 100px;

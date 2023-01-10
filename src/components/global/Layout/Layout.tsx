@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import GlobalStyle from "../../../styles/GlobalStyle";
 import { ELECTRIC_PURPLE, OBSIDIAN, JELLYBEAN } from "src/styles/colors";
-import Footer from "./Footer";
 import Nav from "./Nav/Nav";
+import Footer from "./Footer";
 
 interface LayoutProps {
   hideNav?: boolean;
@@ -32,8 +32,8 @@ const Layout: React.FC<LayoutProps & React.PropsWithChildren> = ({
 }) => (
   <>
     <GlobalStyle />
-    {!hideNav && <Nav />}
     <Background>
+      {!hideNav && <Nav />}
       <Main hasTopPadding={!hideNav}>{children}</Main>
       {!hideFooter && <Footer />}
     </Background>

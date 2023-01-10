@@ -17,13 +17,15 @@ import TwoCarouselSlide from "./TwoCarouselSlide";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 16px 56px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: 24px;
   @media (min-width: 768px) {
     flex-direction: row;
-    padding: 0 32px 88px 40px;
+    max-width: 1100px;
   }
   @media (min-width: 992px) {
-    padding: 0 64px 104px;
+    padding-bottom: 40px;
   }
 `;
 

@@ -1,20 +1,22 @@
 import styled from "styled-components";
-import { BLUE_SKY, HOT_PINK } from "src/styles/colors";
+import { BLUE_SKY } from "src/styles/colors";
 
 interface ComponentHeaderProps {
   text: string;
 }
 
 const H1 = styled.h1`
-  margin: 0;
+  margin: 40px 0 50px;
+  padding: 0 30px;
   text-align: center;
-  color: ${BLUE_SKY};
-  font-family: "Mr Dafoe";
-  font-size: 120px;
-  text-shadow: 0 0 16px ${HOT_PINK}, 0 0 18px ${HOT_PINK};
+  font-size: 110px;
+  line-height: 1;
+  text-shadow: 0 0 16px ${BLUE_SKY}, 0 0 18px ${BLUE_SKY};
   @media (max-width: 991px) {
-    font-size: 80px;
-    line-height: 1;
+    font-size: 90px;
+  }
+  @media (max-width: 767px) {
+    font-size: 70px;
   }
 `;
 
