@@ -5,6 +5,7 @@ import Intro from "src/components/homepage/Intro/Intro";
 import Expertise from "src/components/homepage/Expertise/Expertise";
 import Experience from "src/components/homepage/Experience/Experience";
 import SpinningOtter from "src/components/global/SpinningOtter/SpinningOtter";
+import FixedLink from "src/components/global/FixedLink/FixedLink";
 
 const IndexPage: React.FC = () => {
   defaultFallbackInView(true);
@@ -27,6 +28,13 @@ const IndexPage: React.FC = () => {
       <Expertise ref={expertiseRef} inView={isExpertiseVisible} />
       <Experience ref={experienceRef} inView={isExperienceVisible} />
       <SpinningOtter margin="75px 0" />
+      <FixedLink
+        scrollReactionThreshold={680}
+        href="#"
+        text="⬆"
+        desktopFontSize="30px"
+        mobileFontSize="20px"
+      />
     </Layout>
   );
 };

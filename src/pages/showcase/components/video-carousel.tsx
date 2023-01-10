@@ -6,12 +6,20 @@ import {
   twoCarouselConfig,
   carouselConfig,
 } from "src/components/showcase/VideoCarousel/utils/configs";
+// import FixedLink from "src/components/global/FixedLink/FixedLink";
 
 const VideoCarouselPage = () => (
   <Layout>
     <ComponentHeader text="Video Carousel" />
     <VideoCarousel {...carouselConfig} />
     <VideoCarousel {...twoCarouselConfig} />
+    {/* <FixedLink
+      scrollReactionThreshold={0}
+      href="/showcase/components/"
+      text="⬅ component list"
+      desktopFontSize="24px"
+      mobileFontSize="18px"
+    /> */}
   </Layout>
 );
 

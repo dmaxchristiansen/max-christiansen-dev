@@ -6,10 +6,9 @@ import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
 import { BLUE_EYES, GRIMACE } from "src/styles/colors";
 import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
 import { navConfig } from "./utils/navConfig";
-import Hamburger from "./Hamburger";
-import OtterSvg from "./OtterSvg";
-
-const SCROLL_REACTION_THRESHOLD = 5;
+import useHandleScroll from "src/utils/hooks/useHandleScroll";
+import HamburgerButton from "./HamburgerButton";
+import OtterSvg from "src/components/svgs/OtterSvg";
 
 const NAV_BACKGROUND_COLOR = "rgba(26, 26, 26, 0.7)";
 const NAV_BACKDROP_FILTER = "saturate(180%) blur(20px)";
@@ -128,21 +127,8 @@ const Nav: React.FC = () => {
   const navRef = useRef<HTMLElement | null>(null);
 
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleScroll = () => {
-    const userScrollY = window.scrollY;
-    setIsScrolled(SCROLL_REACTION_THRESHOLD <= userScrollY);
-    return isScrolled;
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
+  const isScrolled = useHandleScroll(5);
 
   useEffect(() => {
     if (isCollapseOpen && navRef.current) {
@@ -164,7 +150,7 @@ const Nav: React.FC = () => {
             <OtterSvg />
             <HomeLinkText>Max Christiansen Dev</HomeLinkText>
           </StyledHomeLink>
-          <Hamburger
+          <HamburgerButton
             isCollapseOpen={isCollapseOpen}
             setIsCollapseOpen={setIsCollapseOpen}
           />
