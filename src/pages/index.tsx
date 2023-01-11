@@ -10,6 +10,12 @@ import FixedLink from "src/components/global/FixedLink/FixedLink";
 const IndexPage: React.FC = () => {
   defaultFallbackInView(true);
 
+  const { ref: introRef, inView: isIntroVisible } = useInView({
+    threshold: 0.3,
+    delay: 250,
+    triggerOnce: true,
+  });
+
   const { ref: expertiseRef, inView: isExpertiseVisible } = useInView({
     threshold: 0.3,
     delay: 250,
@@ -30,7 +36,7 @@ const IndexPage: React.FC = () => {
 
   return (
     <Layout>
-      <Intro />
+      <Intro ref={introRef} inView={isIntroVisible} />
       <Expertise ref={expertiseRef} inView={isExpertiseVisible} />
       <Experience ref={experienceRef} inView={isExperienceVisible} />
       <Stack ref={stackRef} inView={isStackVisible} />
