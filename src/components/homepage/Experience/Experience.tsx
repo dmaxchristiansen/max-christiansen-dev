@@ -10,8 +10,8 @@ import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Accordion from "src/components/homepage/Experience/Accordion/Accordion";
 
 const Container = styled.div`
-  padding: 0 30px;
-  margin-top: 100px;
+  padding: 50px 30px 0;
+  margin-top: 50px;
   @media (max-width: 520px) {
     padding-top: 30px;
   }
@@ -33,7 +33,7 @@ const AccordionWrapper = styled.div<InViewProps>`
 
 const Experience = forwardRef<HTMLDivElement, InViewProps>(
   ({ inView }, ref) => (
-    <Container ref={ref}>
+    <Container id="experience" ref={ref}>
       <SectionHeader text="Professional Experience" inView={inView} />
       <AccordionWrapper inView={inView}>
         <Accordion config={accordionConfig} />
