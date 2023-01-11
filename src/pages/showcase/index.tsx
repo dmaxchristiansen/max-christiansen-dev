@@ -1,3 +1,4 @@
+import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import {
@@ -11,7 +12,7 @@ import {
   BLUE_EYES,
   WHITE,
   PEACHY,
-  HOT_PINK,
+  GRIMACE_LIGHTLY,
   PURPLE_HAZE,
   BLUE_GRAY,
   BLUE_GRIMLY,
@@ -19,7 +20,15 @@ import {
 } from "src/styles/colors";
 import {
   FIVE_HUNDRED_MS,
+  TWO_FIFTY_MS,
   TWO_THOUSAND_MS,
+  TWENTY_FIVE_HUNDRED_MS,
+  ONE_THOUSAND_MS,
+  THREE_THOUSAND_MS,
+  ONE_TWENTY_FIVE_MS,
+  FOUR_THOUSAND_MS,
+  FORTY_FIVE_HUNDRED_MS,
+  FIFTY_FIVE_HUNDRED_MS,
 } from "src/utils/constants/transition-speeds";
 import { PINK_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
 import {
@@ -27,6 +36,7 @@ import {
   WIDE_PINK_GLOW,
 } from "src/utils/constants/shadow-constants";
 import { Z_ONE_HUNDRED } from "src/utils/constants/layer-constants";
+import { InViewProps } from "src/utils/types/inView";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 
@@ -41,7 +51,7 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
-const Grid = styled.div`
+const Grid = styled.div<InViewProps>`
   position: absolute;
   bottom: -120%;
   height: 300%;
@@ -63,13 +73,11 @@ const Grid = styled.div`
     );
   background-size: 30px 30px;
   mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
-  transform: rotateX(-100deg);
-  @media (max-width: 1000px) {
-    display: none;
-  }
+  transform: ${({ inView }) => inView && "rotateX(-100deg)"};
+  transition: transform ${TWO_THOUSAND_MS};
 `;
 
-const Lines = styled.div`
+const Lines = styled.div<InViewProps>`
   position: fixed;
   height: 72px;
   width: 100%;
@@ -81,21 +89,21 @@ const Lines = styled.div`
   );
   background-size: 1px 8px;
   box-shadow: 0 0 16px ${BLUE_DREAM};
-  transform: translateY(-26px);
-  @media (max-width: 520px) {
-    position: relative;
-    transform: translateY(-100px);
-    height: 24px;
-  }
+  transform: ${({ inView }) =>
+    inView ? "translateY(-26px)" : "translateY(-1000px)"};
+  transition: transform ${TWO_THOUSAND_MS} ${TWO_FIFTY_MS};
 `;
 
-const Header = styled.h1`
+const Header = styled.h1<InViewProps>`
   position: relative;
   top: -58px;
   margin: 0;
   font-size: 180px;
   letter-spacing: 4px;
-  transform: skew(-15deg);
+  transform: ${({ inView }) => inView && "skew(-15deg)"};
+  opacity: ${({ inView }) => (inView ? "1" : "0")};
+  transition: opacity ${FIVE_HUNDRED_MS} ${TWENTY_FIVE_HUNDRED_MS},
+    transform ${ONE_THOUSAND_MS} ${THREE_THOUSAND_MS};
   &:after {
     content: "";
     position: absolute;
@@ -114,6 +122,8 @@ const Header = styled.h1`
       radial-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 60%) 50% 50% /
         70% 5%;
     background-repeat: no-repeat;
+    opacity: ${({ inView }) => (inView ? "1" : "0")};
+    transition: opacity ${ONE_TWENTY_FIVE_MS} ${FOUR_THOUSAND_MS};
   }
   @media (max-width: 1000px) {
     font-size: 90px;
@@ -125,7 +135,6 @@ const Header = styled.h1`
     }
   }
   @media (max-width: 520px) {
-    top: -150px;
     font-size: 60px;
     &:after {
       top: -2px;
@@ -156,6 +165,7 @@ const SecondSpan = styled.span`
     ${PURPLE_HAZE} 55%,
     ${PEACHY} 75%
   );
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-stroke: 1.6px ${BLUE_GRAY};
   -webkit-text-fill-color: transparent;
@@ -164,13 +174,15 @@ const SecondSpan = styled.span`
   }
 `;
 
-const Subheader = styled.h2`
+const Subheader = styled.h2<InViewProps>`
   position: absolute;
   top: 40%;
   margin: 0;
   z-index: ${Z_ONE_HUNDRED};
   font-family: "Mr Dafoe";
   font-size: 172px;
+  opacity: ${({ inView }) => (inView ? "1" : "0")};
+  transition: opacity ${ONE_THOUSAND_MS} ${FORTY_FIVE_HUNDRED_MS};
   animation: ${PINK_GLOW_KEYFRAMES} ${TWO_THOUSAND_MS};
   animation-iteration-count: infinite;
   @media (max-width: 1000px) {
@@ -178,13 +190,13 @@ const Subheader = styled.h2`
     top: 45%;
   }
   @media (max-width: 520px) {
-    position: relative;
-    top: -150px;
     font-size: 72px;
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link).withConfig({
+  shouldForwardProp: prop => !["inView"].includes(prop),
+})<InViewProps>`
   display: block;
   position: absolute;
   top: 70%;
@@ -194,37 +206,53 @@ const StyledLink = styled(Link)`
   background-color: ${BLUE_EYES};
   border: 2px solid ${PEACHY};
   border-radius: 16px;
-  color: ${PURPLE_HAZE};
+  color: ${GRIMACE_LIGHTLY};
   font-weight: 700;
   font-size: 20px;
   letter-spacing: 2px;
   text-decoration: none;
-  transition: color, background-color, box-shadow;
-  transition-duration: ${FIVE_HUNDRED_MS};
+  opacity: ${({ inView }) => (inView ? "1" : "0")};
+  transition: color ${FIVE_HUNDRED_MS}, background-color ${FIVE_HUNDRED_MS},
+    box-shadow ${FIVE_HUNDRED_MS}, border ${FIVE_HUNDRED_MS},
+    opacity ${FIVE_HUNDRED_MS} ${FIFTY_FIVE_HUNDRED_MS};
   &:hover {
     box-shadow: ${WIDE_PINK_GLOW};
-    background-color: ${PURPLE_HAZE};
-    color: ${HOT_PINK};
+    background-color: ${GRIMACE_LIGHTLY};
+    border: 2px solid ${BLUE_EYES};
+    color: ${BLUE_EYES};
   }
   @media (max-width: 520px) {
     top: 65%;
+    padding: 10px 20px;
   }
 `;
 
-const FrontendShowcasePage = () => (
-  <Layout hideNav hideFooter>
-    <Container>
-      <Grid />
-      <Lines />
-      <Header>
-        <FirstSpan>FRONTEND</FirstSpan>
-        <SecondSpan>FRONTEND</SecondSpan>
-      </Header>
-      <Subheader>Showcase</Subheader>
-      <StyledLink to="/showcase/components">ENTER</StyledLink>
-    </Container>
-  </Layout>
-);
+const FrontendShowcasePage = () => {
+  defaultFallbackInView(true);
+
+  const { ref: containerRef, inView: isContainerVisible } = useInView({
+    threshold: 0.3,
+    delay: 250,
+    triggerOnce: true,
+  });
+
+  return (
+    <Layout hideNav hideFooter>
+      <Container ref={containerRef}>
+        <Grid inView={isContainerVisible} />
+        <Lines inView={isContainerVisible} />
+        <Header inView={isContainerVisible}>
+          <FirstSpan>FRONTEND</FirstSpan>
+          <SecondSpan>FRONTEND</SecondSpan>
+        </Header>
+        <Subheader inView={isContainerVisible}>Showcase</Subheader>
+        <StyledLink to="/showcase/components" inView={isContainerVisible}>
+          ENTER
+        </StyledLink>
+      </Container>
+    </Layout>
+  );
+};
 
 export const Head = () => (
   <Seo
