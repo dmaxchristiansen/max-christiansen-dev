@@ -33,7 +33,7 @@ const AccordionWrapper = styled.div<InViewProps>`
 
 const Experience = forwardRef<HTMLDivElement, InViewProps>(
   ({ inView }, ref) => (
-    <Container ref={ref}>
+    <Container id="experience" ref={ref}>
       <SectionHeader text="Professional Experience" inView={inView} />
       <AccordionWrapper inView={inView}>
         <Accordion config={accordionConfig} />
