@@ -1,3 +1,4 @@
+export {};
 /*
  * Anchor link bug encountered when updating from Gatsby v4 to v5
  *
@@ -8,34 +9,34 @@
  *
  */
 
-interface LocationProps {
-  location: {
-    hash: string;
-  };
-}
+// interface LocationProps {
+//   location: {
+//     hash: string;
+//   };
+// }
 
-interface TargetElementProps extends Element {
-  offsetTop: number;
-}
+// interface TargetElementProps extends Element {
+//   offsetTop: number;
+// }
 
-const scrollToAnchor = (location: { hash: string }) => {
-  if (location && location.hash) {
-    const targetElement: TargetElementProps | null = document.querySelector(
-      location.hash,
-    );
+// const scrollToAnchor = (location: { hash: string }) => {
+//   if (location && location.hash) {
+//     const targetElement: TargetElementProps | null = document.querySelector(
+//       location.hash,
+//     );
 
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop,
-        behavior: "smooth",
-      });
-    }
-  } else {
-    window.scrollTo(0, 0);
-  }
+//     if (targetElement) {
+//       window.scrollTo({
+//         top: targetElement.offsetTop,
+//         behavior: "smooth",
+//       });
+//     }
+//   } else {
+//     window.scrollTo(0, 0);
+//   }
 
-  return true;
-};
+//   return true;
+// };
 
-export const onRouteUpdate = ({ location }: LocationProps) =>
-  scrollToAnchor(location);
+// export const onRouteUpdate = ({ location }: LocationProps) =>
+//   scrollToAnchor(location);
