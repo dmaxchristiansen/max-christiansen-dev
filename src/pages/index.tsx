@@ -5,7 +5,7 @@ import Intro from "src/components/homepage/Intro/Intro";
 import Expertise from "src/components/homepage/Expertise/Expertise";
 import Experience from "src/components/homepage/Experience/Experience";
 import Stack from "src/components/homepage/Stack/Stack";
-import FixedLink from "src/components/global/FixedLink/FixedLink";
+import ScrollTopLink from "src/components/homepage/ScrollTopLink/ScrollTopLink";
 
 const IndexPage: React.FC = () => {
   defaultFallbackInView(true);
@@ -34,13 +34,7 @@ const IndexPage: React.FC = () => {
       <Expertise ref={expertiseRef} inView={isExpertiseVisible} />
       <Experience ref={experienceRef} inView={isExperienceVisible} />
       <Stack ref={stackRef} inView={isStackVisible} />
-      <FixedLink
-        scrollReactionThreshold={680}
-        href="#"
-        text="⬆"
-        desktopFontSize="30px"
-        mobileFontSize="20px"
-      />
+      <ScrollTopLink />
     </Layout>
   );
 };

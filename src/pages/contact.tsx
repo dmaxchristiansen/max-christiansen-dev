@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import styled from "styled-components";
 import WindowResizeContextProvider from "src/utils/providers/WindowResizeContextProvider";
@@ -20,6 +21,10 @@ const ContactPage = () => {
     threshold: 0.3,
     delay: 250,
     triggerOnce: true,
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   });
 
   return (
