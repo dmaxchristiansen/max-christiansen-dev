@@ -29,8 +29,6 @@ const scrollToAnchor = (location: { hash: string }) => {
         top: targetElement.offsetTop,
       });
     }
-  } else {
-    window.scrollTo(0, 0);
   }
 
   return true;
