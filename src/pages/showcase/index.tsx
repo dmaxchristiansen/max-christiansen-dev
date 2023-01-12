@@ -7,8 +7,6 @@ import {
   CANDY_BLUE,
   MAVEN_BLUE,
   BLUE_DREAM,
-  DUSKY_BLUE,
-  BLUE_SKY,
   BLUE_EYES,
   WHITE,
   PEACHY,
@@ -35,7 +33,6 @@ import {
   WIDE_BLUE_GLOW,
   WIDE_PINK_GLOW,
 } from "src/utils/constants/shadow-constants";
-import { Z_ONE_HUNDRED } from "src/utils/constants/layer-constants";
 import { InViewProps } from "src/utils/types/inView";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
@@ -95,11 +92,12 @@ const Lines = styled.div<InViewProps>`
 `;
 
 const Header = styled.h1<InViewProps>`
-  position: relative;
-  top: -58px;
+  position: fixed;
+  top: calc(50% - 147px);
   margin: 0;
   font-size: 180px;
   letter-spacing: 4px;
+  line-height: 1;
   transform: ${({ inView }) => inView && "skew(-15deg)"};
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transition: opacity ${FIVE_HUNDRED_MS} ${TWENTY_FIVE_HUNDRED_MS},
@@ -107,8 +105,8 @@ const Header = styled.h1<InViewProps>`
   &:after {
     content: "";
     position: absolute;
-    top: 10px;
-    right: 0;
+    top: -14px;
+    right: -4px;
     height: 72px;
     width: 72px;
     background: radial-gradient(
@@ -126,29 +124,53 @@ const Header = styled.h1<InViewProps>`
     transition: opacity ${ONE_TWENTY_FIVE_MS} ${FOUR_THOUSAND_MS};
   }
   @media (max-width: 1000px) {
-    font-size: 90px;
-    top: -25px;
+    top: calc(50% - 112px);
+    font-size: 140px;
     &:after {
-      top: 6px;
-      height: 36px;
-      width: 36px;
+      right: -8px;
+      height: 64px;
+      width: 64px;
     }
   }
-  @media (max-width: 520px) {
-    font-size: 60px;
+  @media (max-width: 800px) {
+    top: calc(50% - 82px);
+    font-size: 104px;
     &:after {
-      top: -2px;
+      top: -12px;
+      height: 52px;
+      width: 52px;
+    }
+  }
+  @media (max-width: 600px) {
+    top: calc(50% - 52px);
+    font-size: 68px;
+    &:after {
+      top: -9px;
       right: -6px;
+      height: 38px;
+      width: 38px;
+    }
+  }
+  @media (max-width: 400px) {
+    top: calc(50% - 46px);
+    font-size: 63px;
+    &:after {
+      top: -12px;
+      right: -7px;
     }
   }
 `;
 
 const FirstSpan = styled.span`
   display: block;
-  text-shadow: 0 0 18px ${DUSKY_BLUE}, 0 0 36px black, 0 0 200px ${BLUE_SKY};
   -webkit-text-stroke: 12px rgba(0, 0, 0, 0.5);
   @media (max-width: 1000px) {
-    text-shadow: 0 0 9px ${DUSKY_BLUE}, 0 0 18px black, 0 0 100px ${BLUE_SKY};
+    -webkit-text-stroke: 10px rgba(0, 0, 0, 0.5);
+  }
+  @media (max-width: 800px) {
+    -webkit-text-stroke: 8px rgba(0, 0, 0, 0.5);
+  }
+  @media (max-width: 600px) {
     -webkit-text-stroke: 6px rgba(0, 0, 0, 0.5);
   }
 `;
@@ -169,46 +191,67 @@ const SecondSpan = styled.span`
   -webkit-background-clip: text;
   -webkit-text-stroke: 1.6px ${BLUE_GRAY};
   -webkit-text-fill-color: transparent;
-  @media (max-width: 1000px) {
-    -webkit-text-stroke: 1px ${BLUE_GRAY};
+  @media (max-width: 800px) {
+    -webkit-text-stroke: 1.4px ${BLUE_GRAY};
   }
 `;
 
 const Subheader = styled.h2<InViewProps>`
-  position: absolute;
-  top: 40%;
+  position: fixed;
+  top: calc(50% - 50px);
+  width: 100%;
   margin: 0;
-  z-index: ${Z_ONE_HUNDRED};
+  text-align: center;
   font-family: "Mr Dafoe";
   font-size: 172px;
+  line-height: 1;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transition: opacity ${ONE_THOUSAND_MS} ${FORTY_FIVE_HUNDRED_MS};
   animation: ${PINK_GLOW_KEYFRAMES} ${TWO_THOUSAND_MS};
   animation-iteration-count: infinite;
   @media (max-width: 1000px) {
-    font-size: 86px;
-    top: 45%;
+    top: calc(50% - 30px);
+    font-size: 132px;
   }
-  @media (max-width: 520px) {
-    font-size: 72px;
+  @media (max-width: 800px) {
+    top: calc(50% - 20px);
+    font-size: 100px;
+  }
+  @media (max-width: 600px) {
+    top: calc(50% - 14px);
+    font-size: 70px;
+  }
+  @media (max-width: 400px) {
+    top: calc(50% - 12px);
+    font-size: 60px;
+  }
+`;
+
+const LinkContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: calc(50% + 180px);
+  width: 100%;
+  @media (max-width: 600px) {
+    top: calc(50% + 110px);
+  }
+  @media (max-width: 400px) {
+    top: calc(50% + 80px);
   }
 `;
 
 const StyledLink = styled(Link).withConfig({
   shouldForwardProp: prop => !["inView"].includes(prop),
 })<InViewProps>`
-  display: block;
-  position: absolute;
-  top: 70%;
   padding: 15px 25px;
-  z-index: ${Z_ONE_HUNDRED};
   box-shadow: ${WIDE_BLUE_GLOW};
   background-color: ${BLUE_EYES};
-  border: 2px solid ${PEACHY};
+  border: 4px solid ${GRIMACE_LIGHTLY};
   border-radius: 16px;
   color: ${GRIMACE_LIGHTLY};
   font-weight: 700;
-  font-size: 20px;
+  font-size: 28px;
   letter-spacing: 2px;
   text-decoration: none;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
@@ -218,12 +261,12 @@ const StyledLink = styled(Link).withConfig({
   &:hover {
     box-shadow: ${WIDE_PINK_GLOW};
     background-color: ${GRIMACE_LIGHTLY};
-    border: 2px solid ${BLUE_EYES};
+    border: 4px solid ${BLUE_EYES};
     color: ${BLUE_EYES};
   }
-  @media (max-width: 520px) {
-    top: 65%;
+  @media (max-width: 600px) {
     padding: 10px 20px;
+    font-size: 20px;
   }
 `;
 
@@ -244,10 +287,12 @@ const FrontendShowcasePage = () => {
           <SecondSpan>FRONTEND</SecondSpan>
         </Header>
         <Subheader inView={isMounted}>Showcase</Subheader>
+      </Container>
+      <LinkContainer>
         <StyledLink to="/showcase/components" inView={isMounted}>
           ENTER
         </StyledLink>
-      </Container>
+      </LinkContainer>
     </Layout>
   );
 };
