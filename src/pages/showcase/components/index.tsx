@@ -36,6 +36,7 @@ const Container = styled.div`
 const Header = styled.h1`
   margin: 0 0 40px;
   font-size: 80px;
+  line-height: 1.2;
   @media (max-width: 991px) {
     font-size: 70px;
   }
@@ -44,9 +45,16 @@ const Header = styled.h1`
   }
 `;
 
-const TopLine = styled.p`
+const SharedTypographyStyles = css`
   margin: 0;
   font-size: 30px;
+  @media (max-width: 520px) {
+    font-size: 24px;
+  }
+`;
+
+const TopLine = styled.p`
+  ${SharedTypographyStyles}
 `;
 
 const MidLineWrapper = styled.div`
@@ -59,11 +67,15 @@ const ReactImg = styled.img`
   height: 50px;
   pointer-events: none;
   animation: ${WHEEL_SPIN_KEYFRAMES} infinite ${TEN_THOUSAND_MS} linear;
+  @media (max-width: 520px) {
+    height: 46px;
+  }
 `;
 
 const MidLine = styled.p`
-  margin: 0;
+  margin: 10px 0;
   font-size: 50px;
+  line-height: 1;
   font-weight: 900;
   text-shadow: 0 0 16px ${BLUE_EYES}, 0 0 18px ${BLUE_EYES};
   span {
@@ -72,11 +84,13 @@ const MidLine = styled.p`
   span:last-child {
     margin-right: 0;
   }
+  @media (max-width: 520px) {
+    font-size: 46px;
+  }
 `;
 
 const BottomLine = styled.p`
-  margin: 0;
-  font-size: 30px;
+  ${SharedTypographyStyles}
 `;
 
 const LinksContainer = styled.div`
@@ -134,11 +148,19 @@ const LinkContent = styled.div`
   font-weight: 900;
   letter-spacing: 2px;
   font-size: 30px;
+  line-height: 1;
   &:hover {
     color: ${HOT_PINK};
     @media (max-width: 991px) {
       color: ${WHITE};
     }
+  }
+  @media (max-width: 991px) {
+    margin-bottom: 20px;
+    padding: 14px 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 24px;
   }
 `;
 
