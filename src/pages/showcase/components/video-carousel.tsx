@@ -2,26 +2,18 @@ import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import ComponentHeader from "src/components/showcase/ComponentHeader/ComponentHeader";
 import VideoCarousel from "src/components/showcase/VideoCarousel/VideoCarousel";
+import BackLink from "src/components/showcase/BackLink/BackLink";
 import {
   twoCarouselConfig,
   carouselConfig,
 } from "src/components/showcase/VideoCarousel/utils/configs";
-import FixedLink from "src/components/global/FixedLink/FixedLink";
 
 const VideoCarouselPage = () => (
   <Layout>
     <ComponentHeader text="Video Carousel" />
     <VideoCarousel {...carouselConfig} />
     <VideoCarousel {...twoCarouselConfig} />
-    <FixedLink
-      isTopAligned
-      scrollReactionThreshold={0}
-      href="/showcase/components/"
-      text="⬅ components"
-      desktopFontSize="18px"
-      mobileFontSize="18px"
-      padding="10px"
-    />
+    <BackLink />
   </Layout>
 );
 
