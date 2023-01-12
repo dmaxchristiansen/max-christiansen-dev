@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { useState, useEffect } from "react";
 import { InViewProps } from "src/utils/types/inView";
 import styled, { css } from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
@@ -161,7 +161,7 @@ const DownArrow = styled.img`
   width: 140px;
 `;
 
-const Intro = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
+const Intro = () => {
   const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "dmc-brick-profile.jpg" }) {
@@ -172,12 +172,18 @@ const Intro = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
     }
   `);
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, [setIsMounted]);
+
   return (
-    <Container ref={ref}>
+    <Container>
       <Wrapper>
-        <Header inView={inView}>Max Christiansen</Header>
-        <Subheader inView={inView}>Software Engineer</Subheader>
-        <MobileProfileImageContainer inView={inView}>
+        <Header inView={isMounted}>Max Christiansen</Header>
+        <Subheader inView={isMounted}>Software Engineer</Subheader>
+        <MobileProfileImageContainer inView={isMounted}>
           <GatsbyImage
             style={{ borderRadius: 16 }}
             imgStyle={{ borderRadius: 16 }}
@@ -185,10 +191,10 @@ const Intro = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
             alt="Max Christiansen"
           />
         </MobileProfileImageContainer>
-        <Copy inView={inView}>
+        <Copy inView={isMounted}>
           devoted to creating beautifully simple, modern web experiences
         </Copy>
-        <ProfileImageContainer inView={inView}>
+        <ProfileImageContainer inView={isMounted}>
           <GatsbyImage
             style={{ borderRadius: 16 }}
             imgStyle={{ borderRadius: 16 }}
@@ -196,7 +202,7 @@ const Intro = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
             alt="Max Christiansen"
           />
         </ProfileImageContainer>
-        <ScrollDownButtonWrapper inView={inView}>
+        <ScrollDownButtonWrapper inView={isMounted}>
           <ScrollDownButton
             type="button"
             aria-label="scroll down"
@@ -208,6 +214,6 @@ const Intro = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
       </Wrapper>
     </Container>
   );
-});
+};
 
 export default Intro;

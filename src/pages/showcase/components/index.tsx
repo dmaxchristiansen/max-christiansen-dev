@@ -132,9 +132,6 @@ const LinkContent = styled.div`
   }
 `;
 
-// TODO: Add DataVisualizer component
-// SEE: https://github.com/dmaxchristiansen/max-christiansen-dev/issues/14
-
 const ComponentsPage = () => {
   const [isAnimated, setIsAnimated] = useState(true);
 

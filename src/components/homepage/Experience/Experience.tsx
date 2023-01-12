@@ -10,10 +10,11 @@ import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Accordion from "src/components/homepage/Experience/Accordion/Accordion";
 
 const Container = styled.div`
-  padding: 50px 30px 0;
   margin-top: 50px;
+  padding: 50px 30px 0;
   @media (max-width: 520px) {
-    padding-top: 30px;
+    margin-top: 30px;
+    padding-top: 60px;
   }
 `;
 

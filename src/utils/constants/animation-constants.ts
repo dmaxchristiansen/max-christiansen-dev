@@ -31,7 +31,7 @@ export const Y_SPIN_KEYFRAMES = keyframes`
   from { 
     transform: rotateY(0deg); 
   }
-  to { 
+  to {
     transform: rotateY(360deg);
   }
 `;
