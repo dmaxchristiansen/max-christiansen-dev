@@ -36,6 +36,7 @@ const NavContainer = styled.nav<NavContainerProps>`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   max-width: 1350px;
   margin: 0 auto;
   padding: 6px 30px;
@@ -63,10 +64,8 @@ const StyledHomeLink = styled(Link)`
 `;
 
 const HomeLinkText = styled.div`
-  display: none;
-  margin-top: auto;
+  margin: auto 0 0 8px;
   @media (min-width: 992px) {
-    display: block;
     margin-left: 12px;
   }
 `;

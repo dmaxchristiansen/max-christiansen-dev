@@ -1,4 +1,4 @@
-import { useInView, defaultFallbackInView } from "react-intersection-observer";
+import { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import {
@@ -228,25 +228,23 @@ const StyledLink = styled(Link).withConfig({
 `;
 
 const FrontendShowcasePage = () => {
-  defaultFallbackInView(true);
+  const [isMounted, setIsMounted] = useState(false);
 
-  const { ref: containerRef, inView: isContainerVisible } = useInView({
-    threshold: 0.3,
-    delay: 250,
-    triggerOnce: true,
-  });
+  useEffect(() => {
+    setIsMounted(true);
+  }, [setIsMounted]);
 
   return (
     <Layout hideNav hideFooter>
-      <Container ref={containerRef}>
-        <Grid inView={isContainerVisible} />
-        <Lines inView={isContainerVisible} />
-        <Header inView={isContainerVisible}>
+      <Container>
+        <Grid inView={isMounted} />
+        <Lines inView={isMounted} />
+        <Header inView={isMounted}>
           <FirstSpan>FRONTEND</FirstSpan>
           <SecondSpan>FRONTEND</SecondSpan>
         </Header>
-        <Subheader inView={isContainerVisible}>Showcase</Subheader>
-        <StyledLink to="/showcase/components" inView={isContainerVisible}>
+        <Subheader inView={isMounted}>Showcase</Subheader>
+        <StyledLink to="/showcase/components" inView={isMounted}>
           ENTER
         </StyledLink>
       </Container>
