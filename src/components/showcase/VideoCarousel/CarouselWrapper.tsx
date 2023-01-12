@@ -47,6 +47,7 @@ const SlidesContainer = styled.div`
 const SHARED_SLIDE_STYLES = css`
   display: flex;
   position: absolute;
+  aspect-ratio: 367 / 550;
 `;
 
 const NextClone = styled.div<ActionProps & VisibilityProps>`
@@ -60,6 +61,7 @@ const NextClone = styled.div<ActionProps & VisibilityProps>`
 const SlideImage = styled.img`
   width: 100%;
   border-radius: 16px;
+  aspect-ratio: 367 / 550;
 `;
 
 const Active = styled.div<VisibilityProps>`
