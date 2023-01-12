@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import styled from "styled-components";
 import WindowResizeContextProvider from "src/utils/providers/WindowResizeContextProvider";
 import Layout from "src/components/global/Layout/Layout";
@@ -14,31 +15,36 @@ const Container = styled.div`
 `;
 
 const ContactPage = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  defaultFallbackInView(true);
+
+  const { ref: contactRef, inView: isPageVisible } = useInView({
+    threshold: 0.3,
+    delay: 250,
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setIsMounted(true);
-  }, [setIsMounted]);
+  });
 
   return (
     <WindowResizeContextProvider>
       <Layout>
-        <Container>
+        <Container ref={contactRef}>
           <SectionHeader
             text="Reach out and say hello!"
-            inView={isMounted}
+            inView={isPageVisible}
             textAlign="left"
             transitionDelay="250ms"
           />
-          <FormRow inView={isMounted} />
+          <FormRow inView={isPageVisible} />
           <SectionHeader
             text="See more of my work..."
-            inView={isMounted}
+            inView={isPageVisible}
             textAlign="left"
             transitionDelay="750ms"
           />
-          <SocialMedia inView={isMounted} />
+          <SocialMedia inView={isPageVisible} />
         </Container>
       </Layout>
     </WindowResizeContextProvider>
