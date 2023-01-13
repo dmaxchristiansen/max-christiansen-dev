@@ -11,7 +11,7 @@ const IndexPage: React.FC = () => {
   defaultFallbackInView(true);
 
   const { ref: expertiseRef, inView: isExpertiseVisible } = useInView({
-    threshold: 0.3,
+    threshold: 0.5,
     delay: 250,
     triggerOnce: true,
   });

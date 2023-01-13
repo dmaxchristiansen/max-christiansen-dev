@@ -51,6 +51,10 @@ const StyledLink = styled(Link)<VisibilityProps>`
   &:hover {
     background-color: ${OBSIDIAN};
     box-shadow: ${NARROW_BLUE_GLOW};
+    @media (max-width: 991px) {
+      background-color: ${ROYAL_BLUE};
+      box-shadow: ${DARK_SHADOW};
+    }
   }
 `;
 

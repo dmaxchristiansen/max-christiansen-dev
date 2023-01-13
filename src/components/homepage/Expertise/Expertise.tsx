@@ -1,14 +1,18 @@
 import { forwardRef } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled, { css } from "styled-components";
-import { WHITE } from "src/styles/colors";
+import { WHITE, BLUE_EYES } from "src/styles/colors";
 import { InViewProps } from "src/utils/types/inView";
 import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
-import { FOUR_FIFTY_MS } from "src/utils/constants/transition-speeds";
-import { NINE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
-import { Z_TEN, Z_TWENTY } from "src/utils/constants/layer-constants";
+import {
+  ONE_THOUSAND_MS,
+  FIVE_HUNDRED_MS,
+  TWO_FIFTY_MS,
+  FIFTEEN_HUNDRED_MS,
+} from "src/utils/constants/transition-speeds";
+import { Z_TWENTY } from "src/utils/constants/layer-constants";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader";
@@ -90,11 +94,41 @@ const Content = styled.h3`
   }
 `;
 
+const LinkWrapper = styled.div<InViewProps>`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 40px;
+  z-index: ${Z_TWENTY};
+  opacity: ${({ inView }) => (inView ? "1" : "0")};
+  transition: opacity ${FIVE_HUNDRED_MS} ${FIFTEEN_HUNDRED_MS};
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const LinkText = styled.div`
+  font-family: Roboto Mono;
+  font-size: 28px;
+  line-height: 1;
+  transition: text-shadow ${TWO_FIFTY_MS};
+  &:hover {
+    text-shadow: 0 0 16px ${BLUE_EYES}, 0 0 18px ${BLUE_EYES};
+    @media (max-width: 991px) {
+      text-shadow: none;
+    }
+  }
+  @media (max-width: 520px) {
+    font-size: 20px;
+  }
+`;
+
 const ImageContainer = styled.div<InViewProps>`
   display: flex;
   justify-content: center;
   position: relative;
-  top: -400px;
+  top: -468px;
   width: 100%;
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -104,9 +138,7 @@ const ImageContainer = styled.div<InViewProps>`
   );
   mask-image: linear-gradient(to bottom, #fff 0%, #fff 40%, transparent 100%);
   opacity: ${({ inView }) => (inView ? "0.17" : "0")};
-  z-index: ${Z_TEN};
-  transition: opacity ${NINE_HUNDRED_MS};
-  transition-delay: ${FOUR_FIFTY_MS};
+  transition: opacity ${FIVE_HUNDRED_MS} ${ONE_THOUSAND_MS};
   @media (max-width: 991px) {
     display: none;
   }
@@ -145,6 +177,11 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
           </Col>
         ))}
       </FlexRow>
+      <LinkWrapper inView={inView}>
+        <StyledLink to="/showcase">
+          <LinkText>&gt;&gt;&nbsp;see my work&nbsp;&lt;&lt;</LinkText>
+        </StyledLink>
+      </LinkWrapper>
       <ImageContainer inView={inView}>
         <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="" />
       </ImageContainer>
