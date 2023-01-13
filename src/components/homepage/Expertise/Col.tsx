@@ -3,10 +3,11 @@ import { TRANSLUCENT_BLACK, BLUE_GRAY, CLEAR } from "src/styles/colors";
 import {
   COL_DELAY_ONE,
   COL_DELAY_TWO,
+  COL_DELAY_THREE,
 } from "src/components/homepage/Expertise/utils/constants";
 import {
-  NINE_HUNDRED_MS,
-  FOUR_FIFTY_MS,
+  FIVE_HUNDRED_MS,
+  ONE_THOUSAND_MS,
 } from "src/utils/constants/transition-speeds";
 import { InViewProps } from "src/utils/types/inView";
 
@@ -32,11 +33,16 @@ const ColContainer = styled.div<ColProps & InViewProps>`
     index === 0 ? "16px 0 0 2px" : index === 2 ? "0 2px 16px 0" : "none"};
   background-color: ${({ inView }) => (inView ? TRANSLUCENT_BLACK : CLEAR)};
   transform: ${({ inView }) =>
-    inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
+    inView ? "translate3d(0, 0, 0)" : "translate3d(0, 70px, 0)"};
   transition-property: background-color, opacity, transform;
-  transition-duration: ${NINE_HUNDRED_MS}, ${NINE_HUNDRED_MS}, ${FOUR_FIFTY_MS};
+  transition-duration: ${FIVE_HUNDRED_MS}, ${FIVE_HUNDRED_MS},
+    ${ONE_THOUSAND_MS};
   transition-delay: ${({ index }) =>
-    index === 0 ? "0" : index === 1 ? COL_DELAY_ONE : COL_DELAY_TWO};
+    index === 0
+      ? COL_DELAY_ONE
+      : index === 1
+      ? COL_DELAY_TWO
+      : COL_DELAY_THREE};
   @media (max-width: 991px) {
     width: 100%;
     border-width: ${({ index }) =>

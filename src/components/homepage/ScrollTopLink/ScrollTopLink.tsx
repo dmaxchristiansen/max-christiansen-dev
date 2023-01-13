@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import styled from "styled-components";
 import useHandleScroll from "src/utils/hooks/useHandleScroll";
 import { ROYAL_BLUE, OBSIDIAN, WHITE, CLEAR } from "src/styles/colors";
@@ -40,7 +41,9 @@ const InternalWrapper = styled.div`
   padding: 0 30px;
 `;
 
-const Link = styled.a<VisibilityProps>`
+const StyledLink = styled(Link).withConfig({
+  shouldForwardProp: prop => !["isVisible"].includes(prop),
+})<VisibilityProps>`
   padding: 13px 12px 14px;
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
@@ -56,6 +59,10 @@ const Link = styled.a<VisibilityProps>`
   &:hover {
     background-color: ${OBSIDIAN};
     box-shadow: ${NARROW_BLUE_GLOW};
+    @media (max-width: 991px) {
+      background-color: ${ROYAL_BLUE};
+      box-shadow: ${DARK_SHADOW};
+    }
   }
   @media (max-width: 767px) {
     padding: 12px 11px 13px;
@@ -92,10 +99,14 @@ const ScrollTopLink = () => {
   return (
     <FixedWrapper>
       <InternalWrapper>
-        <Link isVisible={isVisible} href="#" aria-label="scroll to page top">
+        <StyledLink
+          isVisible={isVisible}
+          to="#"
+          aria-label="scroll to page top"
+        >
           <ArrowPoint />
           <ArrowBase />
-        </Link>
+        </StyledLink>
       </InternalWrapper>
     </FixedWrapper>
   );

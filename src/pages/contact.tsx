@@ -23,6 +23,13 @@ const ContactPage = () => {
     triggerOnce: true,
   });
 
+  /*
+   * Reset window scroll position on page component mount
+   * Resolves Gatsby v5 scroll preservation issue when navigating
+   * here from anchor linked sections on main landing page
+   *
+   * See more in gatsby-browser.js
+   */
   useEffect(() => {
     window.scrollTo(0, 0);
   });

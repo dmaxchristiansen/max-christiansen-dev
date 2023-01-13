@@ -15,6 +15,7 @@ import {
   THREE_THOUSAND_MS,
   FOUR_THOUSAND_MS,
   THIRTY_FIVE_HUNDRED_MS,
+  TWENTY_FIVE_HUNDRED_MS,
 } from "src/utils/constants/transition-speeds";
 
 const Container = styled.div`
@@ -44,7 +45,9 @@ const Header = styled.h1<InViewProps>`
   font-size: 80px;
   line-height: 1;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
-  transition: opacity;
+  transform: ${({ inView }) =>
+    inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
+  transition: opacity, transform;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_FIFTY_MS};
   @media (max-width: 991px) {
@@ -82,21 +85,18 @@ const SharedProfileImageContainerStyles = css`
 `;
 
 const MobileProfileImageContainer = styled.div<InViewProps>`
-  max-width: 150px;
-  box-shadow: ${WIDE_BLUE_GLOW};
+  max-width: 170px;
   ${SharedProfileImageContainerStyles}
+  box-shadow: ${({ inView }) => (inView ? WIDE_BLUE_GLOW : "none")};
   opacity: ${({ inView }) => (inView ? "1" : "0")};
-  transform: ${({ inView }) =>
-    inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
-  transition: transform, opacity;
-  transition-duration: ${FIVE_HUNDRED_MS};
-  transition-delay: ${TWO_THOUSAND_MS};
+  transition: opacity ${FIVE_HUNDRED_MS} ${TWO_THOUSAND_MS},
+    box-shadow ${FIVE_HUNDRED_MS} ${TWENTY_FIVE_HUNDRED_MS};
   @media (min-width: 521px) {
     display: none;
   }
 `;
 
-const Copy = styled.p<InViewProps>`
+const Devotion = styled.p<InViewProps>`
   margin: 40px 0 60px;
   font-size: 24px;
   letter-spacing: 2px;
@@ -110,7 +110,7 @@ const Copy = styled.p<InViewProps>`
     font-size: 20px;
   }
   @media (max-width: 520px) {
-    margin: 30px 0 0;
+    margin: 30px 0 0px;
     font-size: 18px;
     transition-duration: ${FIVE_HUNDRED_MS};
     transition-delay: ${THREE_THOUSAND_MS};
@@ -134,7 +134,7 @@ const ScrollDownButtonWrapper = styled.div<InViewProps>`
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 10%;
+  bottom: 30px;
   width: 100%;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
@@ -142,19 +142,20 @@ const ScrollDownButtonWrapper = styled.div<InViewProps>`
   transition: transform, opacity;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${FOUR_THOUSAND_MS};
-  @media (max-width: 520px) {
-    bottom: 16%;
+  @media (max-width: 991px) {
+    position: relative;
+    bottom: 0;
+    margin-top: 30px;
   }
 `;
 
 const ScrollDownButton = styled.button`
+  display: flex;
   padding: 0;
   background: none;
   border: none;
+  line-height: 1;
   cursor: pointer;
-  @media (min-width: 521px) and (max-width: 991px) {
-    display: none;
-  }
 `;
 
 const DownArrow = styled.img`
@@ -191,9 +192,9 @@ const Intro = () => {
             alt="Max Christiansen"
           />
         </MobileProfileImageContainer>
-        <Copy inView={isMounted}>
+        <Devotion inView={isMounted}>
           devoted to creating beautifully simple, modern web experiences
-        </Copy>
+        </Devotion>
         <ProfileImageContainer inView={isMounted}>
           <GatsbyImage
             style={{ borderRadius: 16 }}

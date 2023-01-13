@@ -46,6 +46,7 @@ const Container = styled.div`
   height: 100vh;
   perspective: 700px;
   overflow: hidden;
+  pointer-events: none;
 `;
 
 const Grid = styled.div<InViewProps>`
@@ -72,6 +73,7 @@ const Grid = styled.div<InViewProps>`
   mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
   transform: ${({ inView }) => inView && "rotateX(-100deg)"};
   transition: transform ${TWO_THOUSAND_MS};
+  pointer-events: none;
 `;
 
 const Lines = styled.div<InViewProps>`
@@ -89,6 +91,7 @@ const Lines = styled.div<InViewProps>`
   transform: ${({ inView }) =>
     inView ? "translateY(-26px)" : "translateY(-1000px)"};
   transition: transform ${TWO_THOUSAND_MS} ${TWO_FIFTY_MS};
+  pointer-events: none;
 `;
 
 const Header = styled.h1<InViewProps>`
