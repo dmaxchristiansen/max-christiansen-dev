@@ -34,6 +34,7 @@ const AccordionWrapper = styled.div<InViewProps>`
     margin-top: 40px;
   }
 `;
+
 const LinkWrapper = styled.div<InViewProps>`
   display: flex;
   justify-content: center;
@@ -80,10 +81,7 @@ const Experience = forwardRef<HTMLDivElement, InViewProps>(
         <Accordion config={accordionConfig} />
       </AccordionWrapper>
       <LinkWrapper inView={inView}>
-        <Link
-          href="https://max-christiansen-dev.netlify.app/dmc_resume.pdf"
-          target="_blank"
-        >
+        <Link href="/max_christiansen_resume.pdf" target="_blank">
           <ResumeSvg />
           <LinkText>&nbsp;download resume&nbsp;</LinkText>
           <ResumeSvg />

@@ -112,10 +112,7 @@ const Footer: React.FC = () => (
             <LinkText>dmaxdev</LinkText>
             <NewTabLinkSvg fillColor={WHITE} height={18} />
           </Link>
-          <Link
-            href="https://max-christiansen-dev.netlify.app/dmc_resume.pdf"
-            target="_blank"
-          >
+          <Link href="/max_christiansen_resume.pdf" target="_blank">
             <ResumeSvg />
             <LinkText>resume</LinkText>
             <NewTabLinkSvg fillColor={WHITE} height={18} />
