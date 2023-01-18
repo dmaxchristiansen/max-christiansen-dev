@@ -27,7 +27,6 @@ const WindowResizeContextProvider: React.FC<React.PropsWithChildren> = ({
     windowHeight,
   };
 
-  // Establish the window dimensions once the context is available in a browser.
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     setWindowHeight(window.innerHeight);

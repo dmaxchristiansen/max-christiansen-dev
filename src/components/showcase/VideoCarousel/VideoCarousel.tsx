@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { VideoCarouselProps, SlideProps } from "./types/videoCarousel";
-import WindowResizeContextProvider from "src/utils/providers/WindowResizeContextProvider";
 import CarouselContextProvider from "./utils/CarouselContextProvider";
 import Single from "./Single";
 import TwoCarousel from "./TwoCarousel";
@@ -54,14 +53,12 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({
   };
 
   return (
-    <WindowResizeContextProvider>
-      <Container>
-        <Wrapper>
-          {header && <Header>{header}</Header>}
-          {renderVariants(slideConfig)}
-        </Wrapper>
-      </Container>
-    </WindowResizeContextProvider>
+    <Container>
+      <Wrapper>
+        {header && <Header>{header}</Header>}
+        {renderVariants(slideConfig)}
+      </Wrapper>
+    </Container>
   );
 };
 

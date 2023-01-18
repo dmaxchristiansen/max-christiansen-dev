@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { InViewProps } from "src/utils/types/inView";
 import styled, { css } from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import downArrow from "src/images/down-arrow.gif";
-import { scrollToTargetElement } from "src/utils/helpers";
+import { scrollToTargetElement } from "src/utils/scrollToTargetElement";
 import { WIDE_BLUE_GLOW } from "src/utils/constants/shadow-constants";
 import {
   FIVE_HUNDRED_MS,
@@ -17,6 +17,14 @@ import {
   THIRTY_FIVE_HUNDRED_MS,
   TWENTY_FIVE_HUNDRED_MS,
 } from "src/utils/constants/transition-speeds";
+import {
+  ComponentViewContext,
+  INTRO_TIMEOUT,
+} from "src/utils/providers/ComponentViewContextProvider";
+
+interface ComponentViewProps {
+  hasBeenViewed: boolean;
+}
 
 const Container = styled.div`
   max-width: 1350px;
@@ -40,14 +48,15 @@ const Wrapper = styled.div`
   }
 `;
 
-const Header = styled.h1<InViewProps>`
+const Header = styled.h1<InViewProps & ComponentViewProps>`
   margin: 0 0 10px;
   font-size: 80px;
   line-height: 1;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
-  transition: opacity, transform;
+  transition: ${({ hasBeenViewed }) =>
+    hasBeenViewed ? "none" : "opacity, transform"};
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_FIFTY_MS};
   @media (max-width: 991px) {
@@ -59,14 +68,15 @@ const Header = styled.h1<InViewProps>`
   }
 `;
 
-const Subheader = styled.h2<InViewProps>`
+const Subheader = styled.h2<InViewProps & ComponentViewProps>`
   margin: 0;
   font-size: 40px;
   line-height: 1;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
-  transition: transform, opacity;
+  transition: ${({ hasBeenViewed }) =>
+    hasBeenViewed ? "none" : "opacity, transform"};
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${ONE_THOUSAND_MS};
   @media (max-width: 991px) {
@@ -84,26 +94,31 @@ const SharedProfileImageContainerStyles = css`
   border-radius: 16px;
 `;
 
-const MobileProfileImageContainer = styled.div<InViewProps>`
+const MobileProfileImageContainer = styled.div<
+  InViewProps & ComponentViewProps
+>`
   max-width: 170px;
   ${SharedProfileImageContainerStyles}
   box-shadow: ${({ inView }) => (inView ? WIDE_BLUE_GLOW : "none")};
   opacity: ${({ inView }) => (inView ? "1" : "0")};
-  transition: opacity ${FIVE_HUNDRED_MS} ${TWO_THOUSAND_MS},
-    box-shadow ${FIVE_HUNDRED_MS} ${TWENTY_FIVE_HUNDRED_MS};
+  transition: ${({ hasBeenViewed }) =>
+    hasBeenViewed ? "none" : "opacity, box-shadow"};
+  transition-duration: ${FIVE_HUNDRED_MS};
+  transition-delay: ${TWO_THOUSAND_MS}, ${TWENTY_FIVE_HUNDRED_MS};
   @media (min-width: 521px) {
     display: none;
   }
 `;
 
-const Devotion = styled.p<InViewProps>`
+const Devotion = styled.p<InViewProps & ComponentViewProps>`
   margin: 40px 0 60px;
   font-size: 24px;
   letter-spacing: 2px;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
-  transition: transform, opacity;
+  transition: ${({ hasBeenViewed }) =>
+    hasBeenViewed ? "none" : "opacity, transform"};
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_THOUSAND_MS};
   @media (max-width: 991px) {
@@ -117,12 +132,13 @@ const Devotion = styled.p<InViewProps>`
   }
 `;
 
-const ProfileImageContainer = styled.div<InViewProps>`
+const ProfileImageContainer = styled.div<InViewProps & ComponentViewProps>`
   max-width: 350px;
   ${SharedProfileImageContainerStyles}
-  box-shadow: ${({ inView }) => (inView ? WIDE_BLUE_GLOW : "none")};
   opacity: ${({ inView }) => (inView ? "1" : "0")};
-  transition: opacity, box-shadow;
+  box-shadow: ${({ inView }) => (inView ? WIDE_BLUE_GLOW : "none")};
+  transition: ${({ hasBeenViewed }) =>
+    hasBeenViewed ? "none" : "opacity, box-shadow"};
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${THREE_THOUSAND_MS}, ${THIRTY_FIVE_HUNDRED_MS};
   @media (max-width: 520px) {
@@ -130,7 +146,7 @@ const ProfileImageContainer = styled.div<InViewProps>`
   }
 `;
 
-const ScrollDownButtonWrapper = styled.div<InViewProps>`
+const ScrollDownButtonWrapper = styled.div<InViewProps & ComponentViewProps>`
   display: flex;
   justify-content: center;
   position: absolute;
@@ -139,7 +155,8 @@ const ScrollDownButtonWrapper = styled.div<InViewProps>`
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, -100px, 0)"};
-  transition: transform, opacity;
+  transition: ${({ hasBeenViewed }) =>
+    hasBeenViewed ? "none" : "opacity, transform"};
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${FOUR_THOUSAND_MS};
   @media (max-width: 991px) {
@@ -175,16 +192,34 @@ const Intro = () => {
 
   const [isMounted, setIsMounted] = useState(false);
 
+  const componentViewContext = useContext(ComponentViewContext);
+
   useEffect(() => {
     setIsMounted(true);
-  }, [setIsMounted]);
+    setTimeout(() => {
+      componentViewContext.setHasIntroBeenViewed(true);
+    }, INTRO_TIMEOUT);
+  }, [setIsMounted, componentViewContext]);
 
   return (
     <Container>
       <Wrapper>
-        <Header inView={isMounted}>Max Christiansen</Header>
-        <Subheader inView={isMounted}>Software Engineer</Subheader>
-        <MobileProfileImageContainer inView={isMounted}>
+        <Header
+          inView={isMounted}
+          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+        >
+          Max Christiansen
+        </Header>
+        <Subheader
+          inView={isMounted}
+          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+        >
+          Software Engineer
+        </Subheader>
+        <MobileProfileImageContainer
+          inView={isMounted}
+          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+        >
           <GatsbyImage
             style={{ borderRadius: 16 }}
             imgStyle={{ borderRadius: 16 }}
@@ -192,10 +227,16 @@ const Intro = () => {
             alt="Max Christiansen"
           />
         </MobileProfileImageContainer>
-        <Devotion inView={isMounted}>
+        <Devotion
+          inView={isMounted}
+          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+        >
           devoted to creating beautifully simple, modern web experiences
         </Devotion>
-        <ProfileImageContainer inView={isMounted}>
+        <ProfileImageContainer
+          inView={isMounted}
+          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+        >
           <GatsbyImage
             style={{ borderRadius: 16 }}
             imgStyle={{ borderRadius: 16 }}
@@ -203,7 +244,10 @@ const Intro = () => {
             alt="Max Christiansen"
           />
         </ProfileImageContainer>
-        <ScrollDownButtonWrapper inView={isMounted}>
+        <ScrollDownButtonWrapper
+          inView={isMounted}
+          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+        >
           <ScrollDownButton
             type="button"
             aria-label="scroll down"

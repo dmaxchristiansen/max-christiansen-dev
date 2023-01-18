@@ -1,3 +1,7 @@
+import { wrapWithWindowResizeContext } from "src/utils/providers/WindowResizeContextProvider";
+import { wrapWithComponentViewContext } from "src/utils/providers/ComponentViewContextProvider";
+import { wrapRootWithProviders } from "src/utils/wrapRootWithProviders";
+
 /*
  * Anchor link bug encountered when updating from Gatsby v4 to v5
  *
@@ -36,3 +40,8 @@ const scrollToAnchor = (location: { hash: string }) => {
 
 export const onRouteUpdate = ({ location }: LocationProps) =>
   scrollToAnchor(location);
+
+export const wrapRootElement = wrapRootWithProviders([
+  wrapWithWindowResizeContext,
+  wrapWithComponentViewContext,
+]);
