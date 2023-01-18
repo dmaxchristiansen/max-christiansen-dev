@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useContext, useEffect } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
@@ -13,6 +13,11 @@ import {
   FIFTEEN_HUNDRED_MS,
 } from "src/utils/constants/transition-speeds";
 import { Z_TWENTY } from "src/utils/constants/layer-constants";
+import {
+  // ComponentViewProps,
+  ComponentViewContext,
+  EXPERTISE_TIMEOUT,
+} from "src/utils/providers/ComponentViewContextProvider";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader";
@@ -155,12 +160,29 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
     }
   `);
 
+  const componentViewContext = useContext(ComponentViewContext);
+
+  useEffect(() => {
+    if (inView) {
+      setTimeout(() => {
+        componentViewContext.setHasExpertiseBeenViewed(true);
+      }, EXPERTISE_TIMEOUT);
+    }
+  });
+
   return (
     <Container id="expertise" ref={ref}>
-      <SectionHeader text="My Expertise" inView={inView} />
+      <SectionHeader
+        text="My Expertise"
+        inView={inView || componentViewContext.hasExpertiseBeenViewed}
+      />
       <FlexRow>
         {colConfig.map(col => (
-          <Col key={col.topLineText} index={col.index} inView={inView}>
+          <Col
+            key={col.topLineText}
+            index={col.index}
+            inView={inView || componentViewContext.hasExpertiseBeenViewed}
+          >
             <SubheaderWrapper>
               <SvgWrapper>
                 <col.SvgComponent />
@@ -177,12 +199,16 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
           </Col>
         ))}
       </FlexRow>
-      <LinkWrapper inView={inView}>
+      <LinkWrapper
+        inView={inView || componentViewContext.hasExpertiseBeenViewed}
+      >
         <StyledLink to="/showcase">
           <LinkText>&gt;&gt;&nbsp;see my work&nbsp;&lt;&lt;</LinkText>
         </StyledLink>
       </LinkWrapper>
-      <ImageContainer inView={inView}>
+      <ImageContainer
+        inView={inView || componentViewContext.hasExpertiseBeenViewed}
+      >
         <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="" />
       </ImageContainer>
     </Container>

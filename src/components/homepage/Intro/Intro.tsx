@@ -22,10 +22,6 @@ import {
   INTRO_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
 
-interface ComponentViewProps {
-  hasBeenViewed: boolean;
-}
-
 const Container = styled.div`
   max-width: 1350px;
   margin: 0 auto;
@@ -48,15 +44,14 @@ const Wrapper = styled.div`
   }
 `;
 
-const Header = styled.h1<InViewProps & ComponentViewProps>`
+const Header = styled.h1<InViewProps>`
   margin: 0 0 10px;
   font-size: 80px;
   line-height: 1;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
-  transition: ${({ hasBeenViewed }) =>
-    hasBeenViewed ? "none" : "opacity, transform"};
+  transition: opacity, transform;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_FIFTY_MS};
   @media (max-width: 991px) {
@@ -68,15 +63,14 @@ const Header = styled.h1<InViewProps & ComponentViewProps>`
   }
 `;
 
-const Subheader = styled.h2<InViewProps & ComponentViewProps>`
+const Subheader = styled.h2<InViewProps>`
   margin: 0;
   font-size: 40px;
   line-height: 1;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
-  transition: ${({ hasBeenViewed }) =>
-    hasBeenViewed ? "none" : "opacity, transform"};
+  transition: opacity, transform;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${ONE_THOUSAND_MS};
   @media (max-width: 991px) {
@@ -94,15 +88,12 @@ const SharedProfileImageContainerStyles = css`
   border-radius: 16px;
 `;
 
-const MobileProfileImageContainer = styled.div<
-  InViewProps & ComponentViewProps
->`
+const MobileProfileImageContainer = styled.div<InViewProps>`
   max-width: 170px;
   ${SharedProfileImageContainerStyles}
   box-shadow: ${({ inView }) => (inView ? WIDE_BLUE_GLOW : "none")};
   opacity: ${({ inView }) => (inView ? "1" : "0")};
-  transition: ${({ hasBeenViewed }) =>
-    hasBeenViewed ? "none" : "opacity, box-shadow"};
+  transition: opacity, box-shadow;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_THOUSAND_MS}, ${TWENTY_FIVE_HUNDRED_MS};
   @media (min-width: 521px) {
@@ -110,15 +101,14 @@ const MobileProfileImageContainer = styled.div<
   }
 `;
 
-const Devotion = styled.p<InViewProps & ComponentViewProps>`
+const Devotion = styled.p<InViewProps>`
   margin: 40px 0 60px;
   font-size: 24px;
   letter-spacing: 2px;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
-  transition: ${({ hasBeenViewed }) =>
-    hasBeenViewed ? "none" : "opacity, transform"};
+  transition: opacity, transform;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_THOUSAND_MS};
   @media (max-width: 991px) {
@@ -132,13 +122,12 @@ const Devotion = styled.p<InViewProps & ComponentViewProps>`
   }
 `;
 
-const ProfileImageContainer = styled.div<InViewProps & ComponentViewProps>`
+const ProfileImageContainer = styled.div<InViewProps>`
   max-width: 350px;
   ${SharedProfileImageContainerStyles}
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   box-shadow: ${({ inView }) => (inView ? WIDE_BLUE_GLOW : "none")};
-  transition: ${({ hasBeenViewed }) =>
-    hasBeenViewed ? "none" : "opacity, box-shadow"};
+  transition: opacity, box-shadow;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${THREE_THOUSAND_MS}, ${THIRTY_FIVE_HUNDRED_MS};
   @media (max-width: 520px) {
@@ -146,7 +135,7 @@ const ProfileImageContainer = styled.div<InViewProps & ComponentViewProps>`
   }
 `;
 
-const ScrollDownButtonWrapper = styled.div<InViewProps & ComponentViewProps>`
+const ScrollDownButtonWrapper = styled.div<InViewProps>`
   display: flex;
   justify-content: center;
   position: absolute;
@@ -155,8 +144,7 @@ const ScrollDownButtonWrapper = styled.div<InViewProps & ComponentViewProps>`
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, -100px, 0)"};
-  transition: ${({ hasBeenViewed }) =>
-    hasBeenViewed ? "none" : "opacity, transform"};
+  transition: opacity, transform;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${FOUR_THOUSAND_MS};
   @media (max-width: 991px) {
@@ -191,7 +179,6 @@ const Intro = () => {
   `);
 
   const [isMounted, setIsMounted] = useState(false);
-
   const componentViewContext = useContext(ComponentViewContext);
 
   useEffect(() => {
@@ -204,21 +191,16 @@ const Intro = () => {
   return (
     <Container>
       <Wrapper>
-        <Header
-          inView={isMounted}
-          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
-        >
+        <Header inView={isMounted || componentViewContext.hasIntroBeenViewed}>
           Max Christiansen
         </Header>
         <Subheader
-          inView={isMounted}
-          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+          inView={isMounted || componentViewContext.hasIntroBeenViewed}
         >
           Software Engineer
         </Subheader>
         <MobileProfileImageContainer
-          inView={isMounted}
-          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+          inView={isMounted || componentViewContext.hasIntroBeenViewed}
         >
           <GatsbyImage
             style={{ borderRadius: 16 }}
@@ -227,15 +209,11 @@ const Intro = () => {
             alt="Max Christiansen"
           />
         </MobileProfileImageContainer>
-        <Devotion
-          inView={isMounted}
-          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
-        >
+        <Devotion inView={isMounted || componentViewContext.hasIntroBeenViewed}>
           devoted to creating beautifully simple, modern web experiences
         </Devotion>
         <ProfileImageContainer
-          inView={isMounted}
-          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+          inView={isMounted || componentViewContext.hasIntroBeenViewed}
         >
           <GatsbyImage
             style={{ borderRadius: 16 }}
@@ -245,8 +223,7 @@ const Intro = () => {
           />
         </ProfileImageContainer>
         <ScrollDownButtonWrapper
-          inView={isMounted}
-          hasBeenViewed={componentViewContext.hasIntroBeenViewed}
+          inView={isMounted || componentViewContext.hasIntroBeenViewed}
         >
           <ScrollDownButton
             type="button"
