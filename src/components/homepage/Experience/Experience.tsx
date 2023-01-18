@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { InViewProps } from "src/utils/types/inView";
 import { accordionConfig } from "src/components/homepage/Experience/Accordion/utils/accordionConfig";
@@ -8,6 +8,10 @@ import {
   TWO_FIFTY_MS,
 } from "src/utils/constants/transition-speeds";
 import { BLUE_EYES } from "src/styles/colors";
+import {
+  ComponentViewContext,
+  EXPERIENCE_TIMEOUT,
+} from "src/utils/providers/ComponentViewContextProvider";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Accordion from "src/components/homepage/Experience/Accordion/Accordion";
 import ResumeSvg from "src/components/svgs/ResumeSvg";
@@ -27,7 +31,7 @@ const AccordionWrapper = styled.div<InViewProps>`
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
-  transition: transform, opacity;
+  transition: opacity, transform;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_FIFTY_MS};
   @media (max-width: 991px) {
@@ -40,7 +44,9 @@ const LinkWrapper = styled.div<InViewProps>`
   justify-content: center;
   margin-top: 40px;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
-  transition: opacity ${FIVE_HUNDRED_MS} ${ONE_THOUSAND_MS};
+  transition: opacity;
+  transition-duration: ${FIVE_HUNDRED_MS};
+  transition-delay: ${ONE_THOUSAND_MS};
 `;
 
 const Link = styled.a`
@@ -67,28 +73,46 @@ const LinkText = styled.div`
   font-family: Roboto Mono;
   font-size: 28px;
   line-height: 1;
-  transition: text-shadow ${TWO_FIFTY_MS};
   @media (max-width: 520px) {
     font-size: 20px;
   }
 `;
 
 const Experience = forwardRef<HTMLDivElement, InViewProps>(
-  ({ inView }, ref) => (
-    <Container id="experience" ref={ref}>
-      <SectionHeader text="Professional Experience" inView={inView} />
-      <AccordionWrapper inView={inView}>
-        <Accordion config={accordionConfig} />
-      </AccordionWrapper>
-      <LinkWrapper inView={inView}>
-        <Link href="/max_christiansen_resume.pdf" target="_blank">
-          <ResumeSvg />
-          <LinkText>&nbsp;download resume&nbsp;</LinkText>
-          <ResumeSvg />
-        </Link>
-      </LinkWrapper>
-    </Container>
-  ),
+  ({ inView }, ref) => {
+    const componentViewContext = useContext(ComponentViewContext);
+
+    useEffect(() => {
+      if (inView) {
+        setTimeout(() => {
+          componentViewContext.setHasExperienceBeenViewed(true);
+        }, EXPERIENCE_TIMEOUT);
+      }
+    });
+
+    return (
+      <Container id="experience" ref={ref}>
+        <SectionHeader
+          text="Professional Experience"
+          inView={inView || componentViewContext.hasExperienceBeenViewed}
+        />
+        <AccordionWrapper
+          inView={inView || componentViewContext.hasExperienceBeenViewed}
+        >
+          <Accordion config={accordionConfig} />
+        </AccordionWrapper>
+        <LinkWrapper
+          inView={inView || componentViewContext.hasExperienceBeenViewed}
+        >
+          <Link href="/max_christiansen_resume.pdf" target="_blank">
+            <ResumeSvg />
+            <LinkText>&nbsp;download resume&nbsp;</LinkText>
+            <ResumeSvg />
+          </Link>
+        </LinkWrapper>
+      </Container>
+    );
+  },
 );
 
 export default Experience;

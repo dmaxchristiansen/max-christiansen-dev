@@ -117,12 +117,9 @@ const LinkText = styled.div`
   font-family: Roboto Mono;
   font-size: 28px;
   line-height: 1;
-  transition: text-shadow ${TWO_FIFTY_MS};
+  transition: color ${TWO_FIFTY_MS};
   &:hover {
-    text-shadow: 0 0 16px ${BLUE_EYES}, 0 0 18px ${BLUE_EYES};
-    @media (max-width: 991px) {
-      text-shadow: none;
-    }
+    color: ${BLUE_EYES};
   }
   @media (max-width: 520px) {
     font-size: 20px;
