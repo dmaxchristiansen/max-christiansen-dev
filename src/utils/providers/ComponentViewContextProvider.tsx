@@ -1,9 +1,5 @@
 import React, { createContext, useState } from "react";
 
-export interface ComponentViewProps {
-  hasBeenViewed: boolean;
-}
-
 interface ComponentViewContextProps {
   hasIntroBeenViewed: boolean;
   setHasIntroBeenViewed: React.Dispatch<React.SetStateAction<boolean>>;
@@ -63,5 +59,6 @@ export const wrapWithComponentViewContext = ({
 export const INTRO_TIMEOUT = 4501;
 export const EXPERTISE_TIMEOUT = 2001;
 export const EXPERIENCE_TIMEOUT = 1501;
+export const STACK_TIMEOUT = 751;
 
 export default ComponentViewContextProvider;
