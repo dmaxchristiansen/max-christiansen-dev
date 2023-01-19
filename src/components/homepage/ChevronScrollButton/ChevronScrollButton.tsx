@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { WHITE } from "src/styles/colors";
 import { scrollToTargetElement } from "src/utils/scrollToTargetElement";
+import { BLUE_TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
+import { THREE_THOUSAND_MS } from "src/utils/constants/transition-speeds";
+
+import { OBSIDIAN } from "src/styles/colors";
 
 interface ChevronScrollButtonProps {
   targetElementId: string;
@@ -8,20 +11,17 @@ interface ChevronScrollButtonProps {
 }
 
 const Button = styled.button`
-  margin: 0;
-  padding: 2px 14px 18px;
+  padding: 0px 10px 40px;
   background: none;
   border: none;
-  line-height: 1;
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 25%;
   cursor: pointer;
-`;
-
-const Chevron = styled.div`
-  width: 24px;
-  height: 24px;
-  border-right: 4px solid ${WHITE};
-  border-bottom: 4px solid ${WHITE};
-  transform: rotate(45deg);
+  -webkit-text-stroke: 2.5px ${OBSIDIAN};
+  animation: ${BLUE_TEXT_GLOW_KEYFRAMES} ${THREE_THOUSAND_MS};
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 `;
 
 const ChevronScrollButton: React.FC<ChevronScrollButtonProps> = ({
@@ -35,7 +35,7 @@ const ChevronScrollButton: React.FC<ChevronScrollButtonProps> = ({
       scrollToTargetElement(targetElementId, targetElementOffsetTopValue)
     }
   >
-    <Chevron />
+    &#x2304;
   </Button>
 );
 

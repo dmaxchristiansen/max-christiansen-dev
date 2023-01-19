@@ -1,5 +1,5 @@
 import { keyframes } from "styled-components";
-import { BLUE_EYES } from "src/styles/colors";
+import { BLUE_EYES, OBSIDIAN } from "src/styles/colors";
 import { NARROW_BLUE_GLOW, DARK_SHADOW } from "./shadow-constants";
 
 export const BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES = keyframes`
@@ -12,6 +12,18 @@ export const BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES = keyframes`
   }
   100% {
     box-shadow: ${DARK_SHADOW};
+  }
+`;
+
+export const BLUE_TEXT_GLOW_KEYFRAMES = keyframes`
+  0% {
+    text-shadow: 0 0 2px ${OBSIDIAN}, 0 0 6px ${BLUE_EYES};
+  }
+  50% {
+    text-shadow: 0 0 2px ${OBSIDIAN}, 0 0 6px ${BLUE_EYES}, 0 0 18px ${BLUE_EYES};
+  }
+  100% {
+    text-shadow: 0 0 2px ${OBSIDIAN}, 0 0 6px ${BLUE_EYES};
   }
 `;
 
