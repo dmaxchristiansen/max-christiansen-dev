@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import {
@@ -15,6 +15,7 @@ import {
   BLUE_GRAY,
   BLUE_GRIMLY,
   GRIMACE,
+  HOT_PINK,
 } from "src/styles/colors";
 import {
   FIVE_HUNDRED_MS,
@@ -28,12 +29,15 @@ import {
   FORTY_FIVE_HUNDRED_MS,
   FIFTY_FIVE_HUNDRED_MS,
 } from "src/utils/constants/transition-speeds";
-import { PINK_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
 import {
   WIDE_BLUE_GLOW,
   WIDE_PINK_GLOW,
 } from "src/utils/constants/shadow-constants";
 import { InViewProps } from "src/utils/types/inView";
+import {
+  ComponentViewContext,
+  SHOWCASE_TIMEOUT,
+} from "src/utils/providers/ComponentViewContextProvider";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 
@@ -71,8 +75,9 @@ const Grid = styled.div<InViewProps>`
     );
   background-size: 30px 30px;
   mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
+  opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) => inView && "rotateX(-100deg)"};
-  transition: transform ${TWO_THOUSAND_MS};
+  transition: opacity ${FIVE_HUNDRED_MS}, transform ${TWO_THOUSAND_MS};
   pointer-events: none;
 `;
 
@@ -208,10 +213,9 @@ const Subheader = styled.h2<InViewProps>`
   font-family: "Mr Dafoe";
   font-size: 172px;
   line-height: 1;
+  text-shadow: 0 0 16px ${HOT_PINK}, 0 0 18px ${HOT_PINK};
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transition: opacity ${ONE_THOUSAND_MS} ${FORTY_FIVE_HUNDRED_MS};
-  animation: ${PINK_GLOW_KEYFRAMES} ${TWO_THOUSAND_MS};
-  animation-iteration-count: infinite;
   @media (max-width: 1000px) {
     top: calc(50% - 30px);
     font-size: 132px;
@@ -230,7 +234,7 @@ const Subheader = styled.h2<InViewProps>`
   }
 `;
 
-const LinkContainer = styled.div`
+const LinkWrapper = styled.div`
   display: flex;
   justify-content: center;
   position: fixed;
@@ -273,29 +277,88 @@ const StyledLink = styled(Link).withConfig({
   }
 `;
 
+const ReplayButtonWrapper = styled.div<InViewProps>`
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: calc(100% - 24px);
+  width: 100%;
+  opacity: ${({ inView }) => (inView ? "1" : "0")};
+  transition: opacity ${FIVE_HUNDRED_MS};
+`;
+
+const ReplayButton = styled.button`
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+`;
+
 const FrontendShowcasePage = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const componentViewContext = useContext(ComponentViewContext);
 
   useEffect(() => {
     setIsMounted(true);
-  }, [setIsMounted]);
+    setTimeout(() => {
+      componentViewContext.setHasShowcaseBeenViewed(true);
+    }, SHOWCASE_TIMEOUT);
+  }, [setIsMounted, componentViewContext]);
 
   return (
     <Layout hideNav hideFooter>
       <Container>
-        <Grid inView={isMounted} />
-        <Lines inView={isMounted} />
-        <Header inView={isMounted}>
+        <Grid
+          key={componentViewContext.hasShowcaseBeenViewed ? "grid" : "fireGrid"}
+          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
+        />
+        <Lines
+          key={
+            componentViewContext.hasShowcaseBeenViewed ? "lines" : "fireLines"
+          }
+          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
+        />
+        <Header
+          key={
+            componentViewContext.hasShowcaseBeenViewed ? "header" : "fireHeader"
+          }
+          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
+        >
           <FirstSpan>FRONTEND</FirstSpan>
           <SecondSpan>FRONTEND</SecondSpan>
         </Header>
-        <Subheader inView={isMounted}>Showcase</Subheader>
+        <Subheader
+          key={
+            componentViewContext.hasShowcaseBeenViewed
+              ? "subheader"
+              : "fireSubheader"
+          }
+          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
+        >
+          Showcase
+        </Subheader>
       </Container>
-      <LinkContainer>
-        <StyledLink to="/showcase/components" inView={isMounted}>
+      <LinkWrapper>
+        <StyledLink
+          to="/showcase/components"
+          key={componentViewContext.hasShowcaseBeenViewed ? "link" : "fireLink"}
+          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
+        >
           ENTER
         </StyledLink>
-      </LinkContainer>
+      </LinkWrapper>
+      <ReplayButtonWrapper inView={componentViewContext.hasShowcaseBeenViewed}>
+        <ReplayButton
+          type="button"
+          aria-label="replay animation"
+          onClick={() => window.location.reload()}
+        >
+          replay animation
+        </ReplayButton>
+      </ReplayButtonWrapper>
     </Layout>
   );
 };

@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useContext, useEffect } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
@@ -13,6 +13,10 @@ import {
   FIFTEEN_HUNDRED_MS,
 } from "src/utils/constants/transition-speeds";
 import { Z_TWENTY } from "src/utils/constants/layer-constants";
+import {
+  ComponentViewContext,
+  EXPERTISE_TIMEOUT,
+} from "src/utils/providers/ComponentViewContextProvider";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader";
@@ -32,7 +36,7 @@ const FlexRow = styled.div`
   display: flex;
   max-width: 1100px;
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 40px;
   z-index: ${Z_TWENTY};
   @media (max-width: 991px) {
     flex-direction: column;
@@ -110,14 +114,11 @@ const StyledLink = styled(Link)`
 
 const LinkText = styled.div`
   font-family: Roboto Mono;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
-  transition: text-shadow ${TWO_FIFTY_MS};
+  transition: color ${TWO_FIFTY_MS};
   &:hover {
-    text-shadow: 0 0 16px ${BLUE_EYES}, 0 0 18px ${BLUE_EYES};
-    @media (max-width: 991px) {
-      text-shadow: none;
-    }
+    color: ${BLUE_EYES};
   }
   @media (max-width: 520px) {
     font-size: 20px;
@@ -155,12 +156,29 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
     }
   `);
 
+  const componentViewContext = useContext(ComponentViewContext);
+
+  useEffect(() => {
+    if (inView) {
+      setTimeout(() => {
+        componentViewContext.setHasExpertiseBeenViewed(true);
+      }, EXPERTISE_TIMEOUT);
+    }
+  });
+
   return (
     <Container id="expertise" ref={ref}>
-      <SectionHeader text="My Expertise" inView={inView} />
+      <SectionHeader
+        text="My Expertise"
+        inView={inView || componentViewContext.hasExpertiseBeenViewed}
+      />
       <FlexRow>
         {colConfig.map(col => (
-          <Col key={col.topLineText} index={col.index} inView={inView}>
+          <Col
+            key={col.topLineText}
+            index={col.index}
+            inView={inView || componentViewContext.hasExpertiseBeenViewed}
+          >
             <SubheaderWrapper>
               <SvgWrapper>
                 <col.SvgComponent />
@@ -177,12 +195,18 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
           </Col>
         ))}
       </FlexRow>
-      <LinkWrapper inView={inView}>
+      <LinkWrapper
+        inView={inView || componentViewContext.hasExpertiseBeenViewed}
+      >
         <StyledLink to="/showcase">
-          <LinkText>&gt;&gt;&nbsp;see my work&nbsp;&lt;&lt;</LinkText>
+          <LinkText>
+            &gt;&gt;&nbsp;checkout my frontend showcase&nbsp;&lt;&lt;
+          </LinkText>
         </StyledLink>
       </LinkWrapper>
-      <ImageContainer inView={inView}>
+      <ImageContainer
+        inView={inView || componentViewContext.hasExpertiseBeenViewed}
+      >
         <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="" />
       </ImageContainer>
     </Container>

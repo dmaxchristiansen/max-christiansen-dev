@@ -1,14 +1,18 @@
-import { forwardRef } from "react";
+import { forwardRef, useContext, useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { InViewProps } from "src/utils/types/inView";
 import {
-  FOUR_FIFTY_MS,
+  FIVE_HUNDRED_MS,
   TWO_FIFTY_MS,
   SIX_THOUSAND_MS,
   FIFTEEN_HUNDRED_MS,
   THREE_THOUSAND_MS,
   FORTY_FIVE_HUNDRED_MS,
 } from "src/utils/constants/transition-speeds";
+import {
+  ComponentViewContext,
+  STACK_TIMEOUT,
+} from "src/utils/providers/ComponentViewContextProvider";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import GatsbySvg from "src/components/svgs/GatsbySvg";
 import TypescriptSvg from "src/components/svgs/TypescriptSvg";
@@ -32,7 +36,7 @@ const Row = styled.div<InViewProps>`
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: transform, opacity;
-  transition-duration: ${FOUR_FIFTY_MS};
+  transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_FIFTY_MS};
 `;
 
@@ -79,32 +83,47 @@ const NetlifySvgWrapper = styled.div`
   animation-delay: ${FORTY_FIVE_HUNDRED_MS};
 `;
 
-const Stack = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => (
-  <Container ref={ref}>
-    <SectionHeader text="this site built with" inView={inView} />
-    <Row inView={inView}>
-      <SvgContainer>
-        <GatsbySvgWrapper>
-          <GatsbySvg />
-        </GatsbySvgWrapper>
-      </SvgContainer>
-      <SvgContainer>
-        <TypescriptSvgWrapper>
-          <TypescriptSvg />
-        </TypescriptSvgWrapper>
-      </SvgContainer>
-      <SvgContainer>
-        <StyledComponentsSvgWrapper>
-          <StyledComponentsSvg />
-        </StyledComponentsSvgWrapper>
-      </SvgContainer>
-      <SvgContainer>
-        <NetlifySvgWrapper>
-          <NetlifySvg />
-        </NetlifySvgWrapper>
-      </SvgContainer>
-    </Row>
-  </Container>
-));
+const Stack = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
+  const componentViewContext = useContext(ComponentViewContext);
+
+  useEffect(() => {
+    if (inView) {
+      setTimeout(() => {
+        componentViewContext.setHasStackBeenViewed(true);
+      }, STACK_TIMEOUT);
+    }
+  });
+
+  return (
+    <Container ref={ref}>
+      <SectionHeader
+        text="this site built with"
+        inView={inView || componentViewContext.hasStackBeenViewed}
+      />
+      <Row inView={inView || componentViewContext.hasStackBeenViewed}>
+        <SvgContainer>
+          <GatsbySvgWrapper>
+            <GatsbySvg />
+          </GatsbySvgWrapper>
+        </SvgContainer>
+        <SvgContainer>
+          <TypescriptSvgWrapper>
+            <TypescriptSvg />
+          </TypescriptSvgWrapper>
+        </SvgContainer>
+        <SvgContainer>
+          <StyledComponentsSvgWrapper>
+            <StyledComponentsSvg />
+          </StyledComponentsSvgWrapper>
+        </SvgContainer>
+        <SvgContainer>
+          <NetlifySvgWrapper>
+            <NetlifySvg />
+          </NetlifySvgWrapper>
+        </SvgContainer>
+      </Row>
+    </Container>
+  );
+});
 
 export default Stack;

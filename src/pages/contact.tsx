@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import styled from "styled-components";
-import WindowResizeContextProvider from "src/utils/providers/WindowResizeContextProvider";
+import {
+  ComponentViewContext,
+  CONTACT_TIMEOUT,
+} from "src/utils/providers/ComponentViewContextProvider";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
@@ -23,6 +26,8 @@ const ContactPage = () => {
     triggerOnce: true,
   });
 
+  const componentViewContext = useContext(ComponentViewContext);
+
   /*
    * Reset window scroll position on page component mount
    * Resolves Gatsby v5 scroll preservation issue when navigating
@@ -32,29 +37,34 @@ const ContactPage = () => {
    */
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTimeout(() => {
+      componentViewContext.setHasContactBeenViewed(true);
+    }, CONTACT_TIMEOUT);
   });
 
   return (
-    <WindowResizeContextProvider>
-      <Layout>
-        <Container ref={contactRef}>
-          <SectionHeader
-            text="Reach out and say hello!"
-            inView={isPageVisible}
-            textAlign="left"
-            transitionDelay="250ms"
-          />
-          <FormRow inView={isPageVisible} />
-          <SectionHeader
-            text="See more of my work..."
-            inView={isPageVisible}
-            textAlign="left"
-            transitionDelay="750ms"
-          />
-          <SocialMedia inView={isPageVisible} />
-        </Container>
-      </Layout>
-    </WindowResizeContextProvider>
+    <Layout>
+      <Container ref={contactRef}>
+        <SectionHeader
+          text="Reach out and say hello!"
+          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+          textAlign="left"
+          transitionDelay="250ms"
+        />
+        <FormRow
+          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+        />
+        <SectionHeader
+          text="See more from me..."
+          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+          textAlign="left"
+          transitionDelay="1000ms"
+        />
+        <SocialMedia
+          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+        />
+      </Container>
+    </Layout>
   );
 };
 
