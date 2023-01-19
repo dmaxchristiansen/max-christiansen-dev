@@ -4,8 +4,6 @@ import styled, { css } from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
-import downArrow from "src/images/down-arrow.gif";
-import { scrollToTargetElement } from "src/utils/scrollToTargetElement";
 import { WIDE_BLUE_GLOW } from "src/utils/constants/shadow-constants";
 import {
   FIVE_HUNDRED_MS,
@@ -21,6 +19,7 @@ import {
   ComponentViewContext,
   INTRO_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
+import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
 
 const Container = styled.div`
   max-width: 1350px;
@@ -139,7 +138,7 @@ const ScrollDownButtonWrapper = styled.div<InViewProps>`
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 30px;
+  bottom: 50px;
   width: 100%;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
@@ -152,19 +151,6 @@ const ScrollDownButtonWrapper = styled.div<InViewProps>`
     bottom: 0;
     margin-top: 30px;
   }
-`;
-
-const ScrollDownButton = styled.button`
-  display: flex;
-  padding: 0;
-  background: none;
-  border: none;
-  line-height: 1;
-  cursor: pointer;
-`;
-
-const DownArrow = styled.img`
-  width: 140px;
 `;
 
 const Intro = () => {
@@ -225,13 +211,10 @@ const Intro = () => {
         <ScrollDownButtonWrapper
           inView={isMounted || componentViewContext.hasIntroBeenViewed}
         >
-          <ScrollDownButton
-            type="button"
-            aria-label="scroll down"
-            onClick={() => scrollToTargetElement("expertise", 10)}
-          >
-            <DownArrow src={downArrow} alt="scroll down arrow" />
-          </ScrollDownButton>
+          <ChevronScrollButton
+            targetElementId="expertise"
+            targetElementOffsetTopValue={10}
+          />
         </ScrollDownButtonWrapper>
       </Wrapper>
     </Container>
