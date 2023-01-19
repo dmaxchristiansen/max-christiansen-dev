@@ -10,6 +10,10 @@ import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import SocialMedia from "src/components/contact/SocialMedia/SocialMedia";
 import FormRow from "src/components/contact/ContactForm/FormRow";
+import {
+  ONE_THOUSAND_MS,
+  TWO_FIFTY_MS,
+} from "src/utils/constants/transition-speeds";
 
 const Container = styled.div`
   max-width: 1350px;
@@ -49,7 +53,7 @@ const ContactPage = () => {
           text="Reach out and say hello!"
           inView={isPageVisible || componentViewContext.hasContactBeenViewed}
           textAlign="left"
-          transitionDelay="250ms"
+          transitionDelay={TWO_FIFTY_MS}
         />
         <FormRow
           inView={isPageVisible || componentViewContext.hasContactBeenViewed}
@@ -58,7 +62,7 @@ const ContactPage = () => {
           text="See more from me..."
           inView={isPageVisible || componentViewContext.hasContactBeenViewed}
           textAlign="left"
-          transitionDelay="1000ms"
+          transitionDelay={ONE_THOUSAND_MS}
         />
         <SocialMedia
           inView={isPageVisible || componentViewContext.hasContactBeenViewed}

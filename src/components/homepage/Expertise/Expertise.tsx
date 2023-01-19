@@ -1,16 +1,11 @@
 import { forwardRef, useContext, useEffect } from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled, { css } from "styled-components";
-import { WHITE, BLUE_EYES } from "src/styles/colors";
+import { WHITE } from "src/styles/colors";
 import { InViewProps } from "src/utils/types/inView";
 import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
 import {
-  ONE_THOUSAND_MS,
-  FIVE_HUNDRED_MS,
-  TWO_FIFTY_MS,
   FIFTEEN_HUNDRED_MS,
+  TWO_THOUSAND_MS,
 } from "src/utils/constants/transition-speeds";
 import { Z_TWENTY } from "src/utils/constants/layer-constants";
 import {
@@ -20,14 +15,24 @@ import {
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader";
+import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
+import CtaLink from "src/components/homepage/CtaLink/CtaLink";
+import BackgroundImage from "src/components/homepage/Expertise/BackgroundImage";
 
 const Container = styled.div`
-  position: relative;
-  height: 800px;
+  max-width: 1350px;
+  margin: 0 auto;
   padding: 50px 30px 0;
+  @media (max-width: 520px) {
+    padding-top: 60px;
+  }
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+  min-height: calc(100vh - 60px);
   @media (max-width: 991px) {
-    margin-top: 30px;
-    height: unset;
+    min-height: unset;
   }
 `;
 
@@ -98,64 +103,7 @@ const Content = styled.h3`
   }
 `;
 
-const LinkWrapper = styled.div<InViewProps>`
-  display: flex;
-  justify-content: center;
-  position: relative;
-  margin-top: 40px;
-  z-index: ${Z_TWENTY};
-  opacity: ${({ inView }) => (inView ? "1" : "0")};
-  transition: opacity ${FIVE_HUNDRED_MS} ${FIFTEEN_HUNDRED_MS};
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
-
-const LinkText = styled.div`
-  font-family: Roboto Mono;
-  font-size: 24px;
-  line-height: 1;
-  transition: color ${TWO_FIFTY_MS};
-  &:hover {
-    color: ${BLUE_EYES};
-  }
-  @media (max-width: 520px) {
-    font-size: 20px;
-  }
-`;
-
-const ImageContainer = styled.div<InViewProps>`
-  display: flex;
-  justify-content: center;
-  position: relative;
-  top: -468px;
-  width: 100%;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #fff 0%,
-    #fff 40%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(to bottom, #fff 0%, #fff 40%, transparent 100%);
-  opacity: ${({ inView }) => (inView ? "0.17" : "0")};
-  transition: opacity ${FIVE_HUNDRED_MS} ${ONE_THOUSAND_MS};
-  @media (max-width: 991px) {
-    display: none;
-  }
-`;
-
 const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
-  const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "code-snapshot.png" }) {
-        childImageSharp {
-          gatsbyImageData(quality: 100, placeholder: BLURRED, width: 700)
-        }
-      }
-    }
-  `);
-
   const componentViewContext = useContext(ComponentViewContext);
 
   useEffect(() => {
@@ -168,47 +116,51 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
 
   return (
     <Container id="expertise" ref={ref}>
-      <SectionHeader
-        text="My Expertise"
-        inView={inView || componentViewContext.hasExpertiseBeenViewed}
-      />
-      <FlexRow>
-        {colConfig.map(col => (
-          <Col
-            key={col.topLineText}
-            index={col.index}
-            inView={inView || componentViewContext.hasExpertiseBeenViewed}
-          >
-            <SubheaderWrapper>
-              <SvgWrapper>
-                <col.SvgComponent />
-              </SvgWrapper>
-              <Subheader
-                topLineText={col.topLineText}
-                bottomLineText={col.bottomLineText}
-                backgroundColor={col.backgroundColor}
-              />
-            </SubheaderWrapper>
-            <ContentWrapper>
-              <Content>{col.contentText}</Content>
-            </ContentWrapper>
-          </Col>
-        ))}
-      </FlexRow>
-      <LinkWrapper
-        inView={inView || componentViewContext.hasExpertiseBeenViewed}
-      >
-        <StyledLink to="/showcase">
-          <LinkText>
-            &gt;&gt;&nbsp;checkout my frontend showcase&nbsp;&lt;&lt;
-          </LinkText>
-        </StyledLink>
-      </LinkWrapper>
-      <ImageContainer
-        inView={inView || componentViewContext.hasExpertiseBeenViewed}
-      >
-        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="" />
-      </ImageContainer>
+      <Wrapper>
+        <BackgroundImage
+          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+        />
+        <SectionHeader
+          text="My Expertise"
+          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+        />
+        <FlexRow>
+          {colConfig.map(col => (
+            <Col
+              key={col.topLineText}
+              index={col.index}
+              inView={inView || componentViewContext.hasExpertiseBeenViewed}
+            >
+              <SubheaderWrapper>
+                <SvgWrapper>
+                  <col.SvgComponent />
+                </SvgWrapper>
+                <Subheader
+                  topLineText={col.topLineText}
+                  bottomLineText={col.bottomLineText}
+                  backgroundColor={col.backgroundColor}
+                />
+              </SubheaderWrapper>
+              <ContentWrapper>
+                <Content>{col.contentText}</Content>
+              </ContentWrapper>
+            </Col>
+          ))}
+        </FlexRow>
+        <CtaLink
+          text="go to showcase"
+          destination="/showcase"
+          transitionDelay={FIFTEEN_HUNDRED_MS}
+          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+        />
+        <ChevronScrollButton
+          targetElementId="experience"
+          targetElementOffsetTopValue={0}
+          transitionDelay={TWO_THOUSAND_MS}
+          hideOnMobile
+          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+        />
+      </Wrapper>
     </Container>
   );
 });

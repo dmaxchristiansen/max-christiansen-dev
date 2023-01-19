@@ -312,30 +312,18 @@ const FrontendShowcasePage = () => {
     <Layout hideNav hideFooter>
       <Container>
         <Grid
-          key={componentViewContext.hasShowcaseBeenViewed ? "grid" : "fireGrid"}
           inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
         />
         <Lines
-          key={
-            componentViewContext.hasShowcaseBeenViewed ? "lines" : "fireLines"
-          }
           inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
         />
         <Header
-          key={
-            componentViewContext.hasShowcaseBeenViewed ? "header" : "fireHeader"
-          }
           inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
         >
           <FirstSpan>FRONTEND</FirstSpan>
           <SecondSpan>FRONTEND</SecondSpan>
         </Header>
         <Subheader
-          key={
-            componentViewContext.hasShowcaseBeenViewed
-              ? "subheader"
-              : "fireSubheader"
-          }
           inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
         >
           Showcase
@@ -344,7 +332,6 @@ const FrontendShowcasePage = () => {
       <LinkWrapper>
         <StyledLink
           to="/showcase/components"
-          key={componentViewContext.hasShowcaseBeenViewed ? "link" : "fireLink"}
           inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
         >
           ENTER
