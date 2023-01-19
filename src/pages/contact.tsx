@@ -1,6 +1,10 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useInView, defaultFallbackInView } from "react-intersection-observer";
 import styled from "styled-components";
+import {
+  ComponentViewContext,
+  CONTACT_TIMEOUT,
+} from "src/utils/providers/ComponentViewContextProvider";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
@@ -22,6 +26,8 @@ const ContactPage = () => {
     triggerOnce: true,
   });
 
+  const componentViewContext = useContext(ComponentViewContext);
+
   /*
    * Reset window scroll position on page component mount
    * Resolves Gatsby v5 scroll preservation issue when navigating
@@ -31,6 +37,9 @@ const ContactPage = () => {
    */
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTimeout(() => {
+      componentViewContext.setHasContactBeenViewed(true);
+    }, CONTACT_TIMEOUT);
   });
 
   return (
@@ -38,18 +47,22 @@ const ContactPage = () => {
       <Container ref={contactRef}>
         <SectionHeader
           text="Reach out and say hello!"
-          inView={isPageVisible}
+          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
           textAlign="left"
           transitionDelay="250ms"
         />
-        <FormRow inView={isPageVisible} />
-        <SectionHeader
-          text="See more of my work..."
-          inView={isPageVisible}
-          textAlign="left"
-          transitionDelay="750ms"
+        <FormRow
+          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
         />
-        <SocialMedia inView={isPageVisible} />
+        <SectionHeader
+          text="See more from me..."
+          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+          textAlign="left"
+          transitionDelay="1000ms"
+        />
+        <SocialMedia
+          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+        />
       </Container>
     </Layout>
   );

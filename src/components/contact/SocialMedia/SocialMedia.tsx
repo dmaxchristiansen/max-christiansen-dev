@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { InViewProps } from "src/utils/types/inView";
 import {
-  FOUR_FIFTY_MS,
-  ONE_THOUSAND_MS,
+  FIVE_HUNDRED_MS,
+  FIFTEEN_HUNDRED_MS,
   TWO_FIFTY_MS,
 } from "src/utils/constants/transition-speeds";
 import { BLUE_EYES, WHITE } from "src/styles/colors";
@@ -20,8 +20,8 @@ const Container = styled.div<InViewProps>`
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: transform, opacity;
-  transition-duration: ${FOUR_FIFTY_MS};
-  transition-delay: ${ONE_THOUSAND_MS};
+  transition-duration: ${FIVE_HUNDRED_MS};
+  transition-delay: ${FIFTEEN_HUNDRED_MS};
   @media (max-width: 520px) {
     margin: 30px 0 60px;
   }

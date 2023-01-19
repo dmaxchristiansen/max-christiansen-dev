@@ -14,7 +14,6 @@ import {
 } from "src/utils/constants/transition-speeds";
 import { Z_TWENTY } from "src/utils/constants/layer-constants";
 import {
-  // ComponentViewProps,
   ComponentViewContext,
   EXPERTISE_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
@@ -37,7 +36,7 @@ const FlexRow = styled.div`
   display: flex;
   max-width: 1100px;
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 40px;
   z-index: ${Z_TWENTY};
   @media (max-width: 991px) {
     flex-direction: column;
@@ -115,7 +114,7 @@ const StyledLink = styled(Link)`
 
 const LinkText = styled.div`
   font-family: Roboto Mono;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
   transition: color ${TWO_FIFTY_MS};
   &:hover {
@@ -200,7 +199,9 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
         inView={inView || componentViewContext.hasExpertiseBeenViewed}
       >
         <StyledLink to="/showcase">
-          <LinkText>&gt;&gt;&nbsp;see my work&nbsp;&lt;&lt;</LinkText>
+          <LinkText>
+            &gt;&gt;&nbsp;checkout my frontend showcase&nbsp;&lt;&lt;
+          </LinkText>
         </StyledLink>
       </LinkWrapper>
       <ImageContainer

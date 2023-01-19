@@ -9,6 +9,10 @@ interface ComponentViewContextProps {
   setHasExperienceBeenViewed: React.Dispatch<React.SetStateAction<boolean>>;
   hasStackBeenViewed: boolean;
   setHasStackBeenViewed: React.Dispatch<React.SetStateAction<boolean>>;
+  hasShowcaseBeenViewed: boolean;
+  setHasShowcaseBeenViewed: React.Dispatch<React.SetStateAction<boolean>>;
+  hasContactBeenViewed: boolean;
+  setHasContactBeenViewed: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ComponentViewContext = createContext<ComponentViewContextProps>({
@@ -20,6 +24,10 @@ export const ComponentViewContext = createContext<ComponentViewContextProps>({
   setHasExperienceBeenViewed: () => undefined,
   hasStackBeenViewed: false,
   setHasStackBeenViewed: () => undefined,
+  hasShowcaseBeenViewed: false,
+  setHasShowcaseBeenViewed: () => undefined,
+  hasContactBeenViewed: false,
+  setHasContactBeenViewed: () => undefined,
 });
 
 const ComponentViewContextProvider: React.FC<React.PropsWithChildren> = ({
@@ -29,6 +37,8 @@ const ComponentViewContextProvider: React.FC<React.PropsWithChildren> = ({
   const [hasExpertiseBeenViewed, setHasExpertiseBeenViewed] = useState(false);
   const [hasExperienceBeenViewed, setHasExperienceBeenViewed] = useState(false);
   const [hasStackBeenViewed, setHasStackBeenViewed] = useState(false);
+  const [hasShowcaseBeenViewed, setHasShowcaseBeenViewed] = useState(false);
+  const [hasContactBeenViewed, setHasContactBeenViewed] = useState(false);
 
   const state = {
     hasIntroBeenViewed,
@@ -39,6 +49,10 @@ const ComponentViewContextProvider: React.FC<React.PropsWithChildren> = ({
     setHasExperienceBeenViewed,
     hasStackBeenViewed,
     setHasStackBeenViewed,
+    hasShowcaseBeenViewed,
+    setHasShowcaseBeenViewed,
+    hasContactBeenViewed,
+    setHasContactBeenViewed,
   };
 
   return (
@@ -60,5 +74,7 @@ export const INTRO_TIMEOUT = 4501;
 export const EXPERTISE_TIMEOUT = 2001;
 export const EXPERIENCE_TIMEOUT = 1501;
 export const STACK_TIMEOUT = 751;
+export const SHOWCASE_TIMEOUT = 6501;
+export const CONTACT_TIMEOUT = 2001;
 
 export default ComponentViewContextProvider;

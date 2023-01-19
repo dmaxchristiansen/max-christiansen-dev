@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { InViewProps } from "src/utils/types/inView";
 // import { ComponentViewProps } from "src/utils/providers/ComponentViewContextProvider";
-import { FOUR_FIFTY_MS } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
 import { Z_TWENTY } from "src/utils/constants/layer-constants";
 
 interface StyleProps {
@@ -23,7 +23,7 @@ const Header = styled.h1<StyleProps & InViewProps>`
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: opacity, transform;
-  transition-duration: ${FOUR_FIFTY_MS};
+  transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${({ transitionDelay }) =>
     transitionDelay ? transitionDelay : "none"};
   @media (max-width: 991px) {

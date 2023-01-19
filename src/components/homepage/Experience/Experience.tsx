@@ -14,7 +14,6 @@ import {
 } from "src/utils/providers/ComponentViewContextProvider";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Accordion from "src/components/homepage/Experience/Accordion/Accordion";
-import ResumeSvg from "src/components/svgs/ResumeSvg";
 
 const Container = styled.div`
   margin-top: 50px;
@@ -27,16 +26,13 @@ const Container = styled.div`
 
 const AccordionWrapper = styled.div<InViewProps>`
   max-width: 800px;
-  margin: 80px auto 0;
+  margin: 40px auto 0;
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
     inView ? "translate3d(0, 0, 0)" : "translate3d(0, 50px, 0)"};
   transition: opacity, transform;
   transition-duration: ${FIVE_HUNDRED_MS};
   transition-delay: ${TWO_FIFTY_MS};
-  @media (max-width: 991px) {
-    margin-top: 40px;
-  }
 `;
 
 const LinkWrapper = styled.div<InViewProps>`
@@ -53,26 +49,16 @@ const Link = styled.a`
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  div {
-    transition: color ${TWO_FIFTY_MS};
-  }
-  svg {
-    transition: fill ${TWO_FIFTY_MS};
-  }
-  &:hover {
-    svg {
-      fill: ${BLUE_EYES};
-    }
-    div {
-      color: ${BLUE_EYES};
-    }
-  }
 `;
 
 const LinkText = styled.div`
   font-family: Roboto Mono;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
+  transition: color ${TWO_FIFTY_MS};
+  &:hover {
+    color: ${BLUE_EYES};
+  }
   @media (max-width: 520px) {
     font-size: 20px;
   }
@@ -105,9 +91,7 @@ const Experience = forwardRef<HTMLDivElement, InViewProps>(
           inView={inView || componentViewContext.hasExperienceBeenViewed}
         >
           <Link href="/max_christiansen_resume.pdf" target="_blank">
-            <ResumeSvg />
-            <LinkText>&nbsp;download resume&nbsp;</LinkText>
-            <ResumeSvg />
+            <LinkText>&gt;&gt;&nbsp;download resume&nbsp;&lt;&lt;</LinkText>
           </Link>
         </LinkWrapper>
       </Container>
