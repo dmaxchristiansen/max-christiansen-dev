@@ -19,7 +19,6 @@ const config: GatsbyConfig = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-netlify`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-tsconfig-paths`,
@@ -34,6 +33,21 @@ const config: GatsbyConfig = {
         theme_color: `#ffffff`,
         display: `standalone`,
         icon: `static/otter-icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        mergeSecurityHeaders: false,
+        headers: {
+          "/*": [
+            "X-Frame-Options: DENY",
+            "X-XSS-Protection: 1; mode=block",
+            "X-Content-Type-Options: nosniff",
+            "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
+            "Referrer-Policy: unsafe-url",
+          ],
+        },
       },
     },
     {

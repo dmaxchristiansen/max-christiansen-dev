@@ -38,7 +38,7 @@ const ImageWrapper = styled.div`
 
 const FormRow: React.FC<InViewProps> = ({ inView }) => {
   const data: IGatsbyImageDataQuery = useStaticQuery(graphql`
-    query {
+    {
       file(relativePath: { eq: "dmc-raft-profile.jpg" }) {
         childImageSharp {
           gatsbyImageData(quality: 100)

@@ -71,7 +71,7 @@ export const wrapWithComponentViewContext = ({
 };
 
 export const INTRO_TIMEOUT = 4501;
-export const EXPERTISE_TIMEOUT = 2001;
+export const EXPERTISE_TIMEOUT = 2501;
 export const EXPERIENCE_TIMEOUT = 1501;
 export const STACK_TIMEOUT = 751;
 export const SHOWCASE_TIMEOUT = 6501;

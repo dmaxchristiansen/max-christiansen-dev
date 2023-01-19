@@ -17,7 +17,7 @@ const IndexPage: React.FC = () => {
   });
 
   const { ref: experienceRef, inView: isExperienceVisible } = useInView({
-    threshold: 1,
+    threshold: 0.3,
     delay: 250,
     triggerOnce: true,
   });
