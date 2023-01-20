@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -5,7 +6,6 @@ import {
   SectionContainerProps,
   MarqueeWrapperProps,
 } from "./types/marqueeTypes";
-import { STANDARD_WIDTH } from "src/utils/constants/layouts";
 import {
   IMAGE_MAX_WIDTH,
   IMAGE_WRAPPER_PADDING_X,
@@ -16,9 +16,8 @@ import {
 
 const SectionContainer = styled.div<SectionContainerProps>`
   display: block;
-  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: ${({ pt, pb }) => `${pt} 30px ${pb}`};
+  padding: ${({ pt, pb }) => `${pt} 0 ${pb}`};
 `;
 
 const MarqueeContainer = styled.div`
@@ -30,7 +29,7 @@ const MarqueeWrapper = styled.div<MarqueeWrapperProps>`
   display: flex;
   animation-name: ${({ backwardScroll }) =>
     backwardScroll ? BACKWARD_KEYFRAMES : FORWARD_KEYFRAMES};
-  animation-duration: ${({ marqueeSpeed }) => `${marqueeSpeed.toString()}s`};
+  animation-duration: ${({ marqueeSpeed }) => `${marqueeSpeed}s`};
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 `;
@@ -61,28 +60,26 @@ const Marquee: React.FC<MarqueeProps> = ({
   backwardScroll = false,
   images,
 }) => {
-  // Derive total width of one ImageBlock
-  const imageBlockWidth = images.reduce(
-    (totalWidth, image) =>
-      // Sum widths of all ImageWrappers in one ImageBlock
-      (totalWidth +=
-        // Account for Image max-width and ImageWrapper padding
-        (image.width <= IMAGE_MAX_WIDTH ? image.width : IMAGE_MAX_WIDTH) +
-        IMAGE_WRAPPER_PADDING_X),
-    0,
-  );
+  const [speed, setSpeed] = useState(0);
 
-  // Set animation duration based on magic number divisor
-  const marqueeSpeed =
-    imageBlockWidth / IMAGE_BLOCK_PIXEL_TRANSLATE_X_PER_SECOND;
+  useEffect(() => {
+    const imageBlockWidth = images.reduce(
+      (totalWidth, image) =>
+        // Sum widths of all ImageWrappers in one ImageBlock
+        (totalWidth +=
+          // Account for Image max-width and ImageWrapper padding
+          (image.width <= IMAGE_MAX_WIDTH ? image.width : IMAGE_MAX_WIDTH) +
+          IMAGE_WRAPPER_PADDING_X),
+      0,
+    );
+    // Set animation duration based on magic number divisor
+    setSpeed(imageBlockWidth / IMAGE_BLOCK_PIXEL_TRANSLATE_X_PER_SECOND);
+  }, [images, setSpeed]);
 
   return (
     <SectionContainer pt={pt} pb={pb}>
       <MarqueeContainer>
-        <MarqueeWrapper
-          backwardScroll={backwardScroll}
-          marqueeSpeed={marqueeSpeed}
-        >
+        <MarqueeWrapper backwardScroll={backwardScroll} marqueeSpeed={speed}>
           <ImageBlock>
             <FlexRow>
               {images.map(image => (
