@@ -8,7 +8,7 @@ import {
   SHARED_NAV_BUTTON_ROW_STYLES,
   SHARED_NAV_BUTTON_STYLES,
 } from "./utils/constants";
-import { LIGHT_GRAY, GRAY } from "src/styles/colors";
+import { LIGHT_GRAY, GRAY } from "src/utils/constants/colors";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { Z_TEN } from "src/utils/constants/layers";
 import { OPACITY_FADE } from "src/utils/constants/animations";

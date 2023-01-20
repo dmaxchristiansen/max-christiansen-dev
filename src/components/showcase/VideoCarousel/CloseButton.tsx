@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { OPACITY_FADE } from "src/utils/constants/animations";
-import { CLEAR, WHITE } from "src/styles/colors";
+import { CLEAR, WHITE } from "src/utils/constants/colors";
 import CloseIcon from "./CloseIcon";
 
 interface CloseButtonProps {

@@ -5,7 +5,7 @@ import {
   FIFTEEN_HUNDRED_MS,
   TWO_FIFTY_MS,
 } from "src/utils/constants/transitions";
-import { BLUE_EYES, WHITE } from "src/styles/colors";
+import { BLUE_EYES, WHITE } from "src/utils/constants/colors";
 import useHandleWindowResize, {
   isLessThanWidthThreshold,
 } from "src/utils/hooks/useHandleWindowResize";

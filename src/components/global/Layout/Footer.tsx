@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { BLUE_EYES, WHITE } from "src/styles/colors";
+import { BLUE_EYES, WHITE } from "src/utils/constants/colors";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import GitHubSvg from "src/components/svgs/GitHubSvg";
 import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";

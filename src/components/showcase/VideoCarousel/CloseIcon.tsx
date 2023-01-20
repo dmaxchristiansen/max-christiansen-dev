@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { WHITE } from "src/styles/colors";
+import { WHITE } from "src/utils/constants/colors";
 
 const Close = styled.svg`
   display: block;

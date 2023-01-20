@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import styled from "styled-components";
-import { WHITE } from "src/styles/colors";
+import { WHITE } from "src/utils/constants/colors";
 import {
   FIVE_HUNDRED_MS,
   ONE_THOUSAND_MS,

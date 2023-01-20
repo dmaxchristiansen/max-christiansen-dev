@@ -1,4 +1,4 @@
-import { BLUE_EYES, HOT_PINK } from "src/styles/colors";
+import { BLUE_EYES, HOT_PINK } from "src/utils/constants/colors";
 
 export const LIGHT_SHADOW = "0 0 8px 0 rgba(0, 0, 0, 0.3)";
 export const DARK_SHADOW = "0 0 8px 0 rgba(0, 0, 0, 0.8)";

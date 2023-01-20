@@ -6,7 +6,7 @@ import {
   ONE_THOUSAND_MS,
   TWO_FIFTY_MS,
 } from "src/utils/constants/transitions";
-import { ROYAL_BLUE, OBSIDIAN } from "src/styles/colors";
+import { ROYAL_BLUE, OBSIDIAN } from "src/utils/constants/colors";
 import { NARROW_BLUE_GLOW, DARK_SHADOW } from "src/utils/constants/shadows";
 import { Z_FIVE_HUNDRED } from "src/utils/constants/layers";
 

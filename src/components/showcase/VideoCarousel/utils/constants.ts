@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { Z_TEN } from "src/utils/constants/layers";
-import { BLACK } from "src/styles/colors";
+import { BLACK } from "src/utils/constants/colors";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { LIGHT_SHADOW } from "src/utils/constants/shadows";
 

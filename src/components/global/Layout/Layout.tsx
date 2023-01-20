@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import GlobalStyle from "../../../styles/GlobalStyle";
-import { ELECTRIC_PURPLE, OBSIDIAN, JELLYBEAN } from "src/styles/colors";
+import {
+  ELECTRIC_PURPLE,
+  OBSIDIAN,
+  JELLYBEAN,
+} from "src/utils/constants/colors";
 import Nav from "./Nav/Nav";
 import Footer from "./Footer";
 

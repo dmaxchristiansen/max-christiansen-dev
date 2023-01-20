@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BLACK, WHITE } from "src/styles/colors";
+import { BLACK, WHITE } from "src/utils/constants/colors";
 
 const StyledSvg = styled.svg`
   height: 100px;

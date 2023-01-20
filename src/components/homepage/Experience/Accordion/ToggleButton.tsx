@@ -4,7 +4,7 @@ import {
   SectionIdProps,
   AccordionStateProps,
 } from "src/components/homepage/Experience/Accordion/types/accordion";
-import { GRIMACE_LIGHTLY, PURPLE_HAZE } from "src/styles/colors";
+import { GRIMACE_LIGHTLY, PURPLE_HAZE } from "src/utils/constants/colors";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
 import { DARK_SHADOW } from "src/utils/constants/shadows";

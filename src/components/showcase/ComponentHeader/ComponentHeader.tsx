@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BLUE_SKY } from "src/styles/colors";
+import { BLUE_SKY } from "src/utils/constants/colors";
 
 interface ComponentHeaderProps {
   text: string;

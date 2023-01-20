@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { OBSIDIAN } from "src/styles/colors";
+import { OBSIDIAN } from "src/utils/constants/colors";
 
 const StyledSvg = styled.svg`
   height: 100px;

@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
 import useHandleScroll from "src/utils/hooks/useHandleScroll";
-import { ROYAL_BLUE, OBSIDIAN, WHITE, CLEAR } from "src/styles/colors";
+import { ROYAL_BLUE, OBSIDIAN, WHITE, CLEAR } from "src/utils/constants/colors";
 import { NARROW_BLUE_GLOW, DARK_SHADOW } from "src/utils/constants/shadows";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { Z_FIVE_HUNDRED } from "src/utils/constants/layers";

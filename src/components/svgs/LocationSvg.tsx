@@ -1,4 +1,4 @@
-import { PEACHY } from "src/styles/colors";
+import { PEACHY } from "src/utils/constants/colors";
 
 const LocationSvg = () => (
   <svg

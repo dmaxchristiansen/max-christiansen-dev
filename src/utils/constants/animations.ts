@@ -1,5 +1,5 @@
 import { keyframes } from "styled-components";
-import { BLUE_EYES, OBSIDIAN } from "src/styles/colors";
+import { BLUE_EYES, OBSIDIAN } from "src/utils/constants/colors";
 import { NARROW_BLUE_GLOW, DARK_SHADOW } from "./shadows";
 
 export const BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES = keyframes`

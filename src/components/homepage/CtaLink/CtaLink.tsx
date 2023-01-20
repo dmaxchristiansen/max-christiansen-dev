@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { InViewProps } from "src/utils/types/inView";
 import { TWO_FIFTY_MS, FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import { Z_TWENTY } from "src/utils/constants/layers";
-import { BLUE_EYES } from "src/styles/colors";
+import { BLUE_EYES } from "src/utils/constants/colors";
 
 interface RenderProps {
   transitionDelay: string;

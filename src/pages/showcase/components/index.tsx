@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
-import { HOT_PINK, BLUE_EYES, ROYAL_BLUE, WHITE } from "src/styles/colors";
+import {
+  HOT_PINK,
+  BLUE_EYES,
+  ROYAL_BLUE,
+  WHITE,
+} from "src/utils/constants/colors";
 import {
   TEN_THOUSAND_MS,
   ONE_THOUSAND_MS,

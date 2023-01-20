@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { TRANSLUCENT_BLACK, BLUE_GRAY, CLEAR } from "src/styles/colors";
+import {
+  TRANSLUCENT_BLACK,
+  BLUE_GRAY,
+  CLEAR,
+} from "src/utils/constants/colors";
 import {
   COL_DELAY_ONE,
   COL_DELAY_TWO,

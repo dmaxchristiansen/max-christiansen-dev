@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { DARK_SHADOW, NARROW_BLUE_GLOW } from "src/utils/constants/shadows";
-import { BLACK, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
+import { BLACK, OBSIDIAN, ROYAL_BLUE } from "src/utils/constants/colors";
 import { InViewProps } from "src/utils/types/inView";
 import {
   FOUR_FIFTY_MS,

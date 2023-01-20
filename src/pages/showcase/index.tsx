@@ -16,7 +16,7 @@ import {
   BLUE_GRIMLY,
   GRIMACE,
   HOT_PINK,
-} from "src/styles/colors";
+} from "src/utils/constants/colors";
 import {
   FIVE_HUNDRED_MS,
   TWO_FIFTY_MS,

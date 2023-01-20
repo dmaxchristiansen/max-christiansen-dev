@@ -1,4 +1,4 @@
-import { WHITE } from "src/styles/colors";
+import { WHITE } from "src/utils/constants/colors";
 import { HeightProps } from "src/utils/types/height";
 
 const ResumeSvg: React.FC<HeightProps> = ({ height = 30 }) => (

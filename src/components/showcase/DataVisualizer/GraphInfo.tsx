@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ActiveProps, GraphProps } from "./types/dataVisualizer";
-import { BLUE_EYES } from "src/styles/colors";
+import { BLUE_EYES } from "src/utils/constants/colors";
 import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
 import { ONE_THOUSAND_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 

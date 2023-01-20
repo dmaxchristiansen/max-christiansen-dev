@@ -1,4 +1,4 @@
-import { WHITE } from "src/styles/colors";
+import { WHITE } from "src/utils/constants/colors";
 
 const BrainSvg = () => (
   <svg

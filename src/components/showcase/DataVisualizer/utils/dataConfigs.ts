@@ -4,7 +4,7 @@ import {
   PURPLE_PASTEL,
   ROYAL_BLUE,
   SEABED,
-} from "src/styles/colors";
+} from "src/utils/constants/colors";
 
 export const ungulateDataConfig = {
   graphTitle: "Disease Reduction by Species",

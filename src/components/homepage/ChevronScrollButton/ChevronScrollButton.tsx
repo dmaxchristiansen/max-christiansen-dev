@@ -8,7 +8,7 @@ import {
 import { Z_TWENTY } from "src/utils/constants/layers";
 import { InViewProps } from "src/utils/types/inView";
 
-import { GRIMACE } from "src/styles/colors";
+import { GRIMACE } from "src/utils/constants/colors";
 
 interface RenderProps {
   transitionDelay: string;

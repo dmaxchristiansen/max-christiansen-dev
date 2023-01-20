@@ -1,6 +1,6 @@
 import { forwardRef, useContext, useEffect } from "react";
 import styled, { css } from "styled-components";
-import { WHITE } from "src/styles/colors";
+import { WHITE } from "src/utils/constants/colors";
 import { InViewProps } from "src/utils/types/inView";
 import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
 import {
