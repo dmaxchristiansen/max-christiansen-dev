@@ -11,12 +11,12 @@ export interface MarqueeProps {
   images: MarqueeImageProps[];
 }
 
-export interface SectionContainerProps {
+export interface ContainerProps {
   pt: string;
   pb: string;
 }
 
-export interface MarqueeWrapperProps {
+export interface AnimatedWrapperProps {
   backwardScroll: boolean;
-  marqueeSpeed: number;
+  animationSpeed: number;
 }

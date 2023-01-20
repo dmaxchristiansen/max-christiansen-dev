@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import {
   MarqueeProps,
-  SectionContainerProps,
-  MarqueeWrapperProps,
+  ContainerProps,
+  AnimatedWrapperProps,
 } from "./types/marqueeTypes";
 import {
   IMAGE_MAX_WIDTH,
@@ -14,22 +14,22 @@ import {
   BACKWARD_KEYFRAMES,
 } from "./utils/constants";
 
-const SectionContainer = styled.div<SectionContainerProps>`
+const Container = styled.div<ContainerProps>`
   display: block;
   margin: 0 auto;
   padding: ${({ pt, pb }) => `${pt} 0 ${pb}`};
 `;
 
-const MarqueeContainer = styled.div`
+const ExternalWrapper = styled.div`
   display: flex;
   overflow: hidden;
 `;
 
-const MarqueeWrapper = styled.div<MarqueeWrapperProps>`
+const AnimatedWrapper = styled.div<AnimatedWrapperProps>`
   display: flex;
   animation-name: ${({ backwardScroll }) =>
     backwardScroll ? BACKWARD_KEYFRAMES : FORWARD_KEYFRAMES};
-  animation-duration: ${({ marqueeSpeed }) => `${marqueeSpeed}s`};
+  animation-duration: ${({ animationSpeed }) => `${animationSpeed}s`};
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 `;
@@ -72,22 +72,19 @@ const Marquee: React.FC<MarqueeProps> = ({
   );
 
   // Set animation duration based on magic number divisor
-  const marqueeSpeed =
+  const animationSpeed =
     imageBlockWidth / IMAGE_BLOCK_PIXEL_TRANSLATE_X_PER_SECOND;
 
-  const [isMounted, setIsMounted] = useState(false);
-
   useEffect(() => {
-    setIsMounted(true);
-  }, [setIsMounted]);
+    window.scrollTo(0, 0);
+  });
 
   return (
-    <SectionContainer pt={pt} pb={pb}>
-      <MarqueeContainer>
-        <MarqueeWrapper
-          key={isMounted ? "client" : "server"}
+    <Container pt={pt} pb={pb}>
+      <ExternalWrapper>
+        <AnimatedWrapper
           backwardScroll={backwardScroll}
-          marqueeSpeed={marqueeSpeed}
+          animationSpeed={animationSpeed}
         >
           <ImageBlock>
             <FlexRow>
@@ -107,9 +104,9 @@ const Marquee: React.FC<MarqueeProps> = ({
               ))}
             </FlexRow>
           </ImageBlock>
-        </MarqueeWrapper>
-      </MarqueeContainer>
-    </SectionContainer>
+        </AnimatedWrapper>
+      </ExternalWrapper>
+    </Container>
   );
 };
 
