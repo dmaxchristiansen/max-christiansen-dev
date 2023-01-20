@@ -5,8 +5,8 @@ const config: GatsbyConfig = {
     title: `Max Christiansen Dev`,
     description: `Developer devoted to creating beautifully simple, modern web experiences - meet Max Christiansen!`,
     author: `@RealMaxFaze`,
-    image: `https://max-christiansen-dev.com/otter-icon.png`,
-    siteUrl: `https://max-christiansen-dev.com`,
+    image: `https://maxchristiansen.dev/otter-icon.png`,
+    siteUrl: `https://maxchristiansen.dev`,
   },
   jsxRuntime: "automatic",
   plugins: [
