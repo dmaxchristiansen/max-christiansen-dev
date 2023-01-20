@@ -1,6 +1,6 @@
-import hhIcon from "src/images/hh-icon.png";
-import codingDojoIcon from "src/images/coding-dojo-icon.png";
-import sevenHillsIcon from "src/images/seven-hills-icon.jpg";
+import hhIcon from "src/images/Accordion/hh-icon.png";
+import codingDojoIcon from "src/images/Accordion/coding-dojo-icon.png";
+import sevenHillsIcon from "src/images/Accordion/seven-hills-icon.jpg";
 import { SectionProps } from "../types/accordion";
 
 export const accordionConfig: SectionProps[] = [
