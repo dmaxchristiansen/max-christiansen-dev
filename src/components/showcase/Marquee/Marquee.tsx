@@ -5,8 +5,8 @@ import {
   SectionContainerProps,
   MarqueeWrapperProps,
 } from "./types/marqueeTypes";
+import { STANDARD_WIDTH } from "src/utils/constants/layouts";
 import {
-  CONTAINER_MAX_WIDTH,
   IMAGE_MAX_WIDTH,
   IMAGE_WRAPPER_PADDING_X,
   IMAGE_BLOCK_PIXEL_TRANSLATE_X_PER_SECOND,
@@ -16,7 +16,7 @@ import {
 
 const SectionContainer = styled.div<SectionContainerProps>`
   display: block;
-  max-width: ${CONTAINER_MAX_WIDTH}px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
   padding: ${({ pt, pb }) => `${pt} 30px ${pb}`};
 `;
@@ -30,7 +30,7 @@ const MarqueeWrapper = styled.div<MarqueeWrapperProps>`
   display: flex;
   animation-name: ${({ backwardScroll }) =>
     backwardScroll ? BACKWARD_KEYFRAMES : FORWARD_KEYFRAMES};
-  animation-duration: ${({ marqueeSpeed }) => marqueeSpeed.toString()}s;
+  animation-duration: ${({ marqueeSpeed }) => `${marqueeSpeed.toString()}s`};
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 `;
