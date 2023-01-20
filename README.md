@@ -12,4 +12,4 @@
 </hr>
 <p align="center">
   Gatsby TypeScript Styled-Components Netlify
-</p>  
+</p>
