@@ -5,13 +5,14 @@ import {
   FIVE_HUNDRED_MS,
   ONE_THOUSAND_MS,
   TWO_FIFTY_MS,
-} from "src/utils/constants/transition-speeds";
-import { ROYAL_BLUE, OBSIDIAN } from "src/styles/colors";
+} from "src/utils/constants/transitions";
+import { ROYAL_BLUE, OBSIDIAN } from "src/utils/constants/colors";
+import { NARROW_BLUE_GLOW, DARK_SHADOW } from "src/utils/constants/shadows";
+import { Z_FIVE_HUNDRED } from "src/utils/constants/layers";
 import {
-  NARROW_BLUE_GLOW,
-  DARK_SHADOW,
-} from "src/utils/constants/shadow-constants";
-import { Z_FIVE_HUNDRED } from "src/utils/constants/layer-constants";
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 
 interface VisibilityProps {
   isVisible: boolean;
@@ -30,9 +31,9 @@ const InternalWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 0 30px;
+  padding: ${STANDARD_X_PADDING};
 `;
 
 const StyledLink = styled(Link)<VisibilityProps>`

@@ -5,13 +5,10 @@ import styled from "styled-components";
 import {
   FIVE_THOUSAND_MS,
   TWO_FIFTY_MS,
-} from "src/utils/constants/transition-speeds";
-import { Y_SPIN_KEYFRAMES } from "src/utils/constants/animation-constants";
-import {
-  DARK_SHADOW,
-  NARROW_BLUE_GLOW,
-} from "src/utils/constants/shadow-constants";
-import { ROYAL_BLUE, OBSIDIAN } from "src/styles/colors";
+} from "src/utils/constants/transitions";
+import { Y_SPIN_KEYFRAMES } from "src/utils/constants/animations";
+import { DARK_SHADOW, NARROW_BLUE_GLOW } from "src/utils/constants/shadows";
+import { ROYAL_BLUE, OBSIDIAN } from "src/utils/constants/colors";
 import Layout from "../components/global/Layout/Layout";
 import Seo from "../components/global/Seo/Seo";
 

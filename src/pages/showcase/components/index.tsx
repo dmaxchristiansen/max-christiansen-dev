@@ -1,21 +1,27 @@
 import { useState } from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
-import { HOT_PINK, BLUE_EYES, ROYAL_BLUE, WHITE } from "src/styles/colors";
+import {
+  HOT_PINK,
+  BLUE_EYES,
+  ROYAL_BLUE,
+  WHITE,
+} from "src/utils/constants/colors";
 import {
   TEN_THOUSAND_MS,
   ONE_THOUSAND_MS,
   TWO_THOUSAND_MS,
   THREE_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import {
   WHEEL_SPIN_KEYFRAMES,
   BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES,
-} from "src/utils/constants/animation-constants";
+} from "src/utils/constants/animations";
+import { NARROW_PINK_GLOW, DARK_SHADOW } from "src/utils/constants/shadows";
 import {
-  NARROW_PINK_GLOW,
-  DARK_SHADOW,
-} from "src/utils/constants/shadow-constants";
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 import reactLogo from "src/images/reactLogo.svg";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
@@ -27,9 +33,9 @@ const linksConfig = [
 ];
 
 const Container = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 0 30px 0;
+  padding: ${STANDARD_X_PADDING};
   text-align: center;
 `;
 

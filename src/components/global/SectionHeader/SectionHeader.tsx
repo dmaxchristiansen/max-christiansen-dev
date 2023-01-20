@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { InViewProps } from "src/utils/types/inView";
 // import { ComponentViewProps } from "src/utils/providers/ComponentViewContextProvider";
-import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
-import { Z_TWENTY } from "src/utils/constants/layer-constants";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
+import { Z_TWENTY } from "src/utils/constants/layers";
 
 interface StyleProps {
   textAlign?: string;

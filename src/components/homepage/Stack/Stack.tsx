@@ -8,21 +8,23 @@ import {
   THREE_THOUSAND_MS,
   FORTY_FIVE_HUNDRED_MS,
   ONE_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import {
   ComponentViewContext,
   STACK_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
-import GatsbySvg from "src/components/svgs/GatsbySvg";
-import TypescriptSvg from "src/components/svgs/TypescriptSvg";
-import StyledComponentsSvg from "src/components/svgs/StyledComponentsSvg";
-import NetlifySvg from "src/components/svgs/NetlifySvg";
+import GatsbySvg from "src/components/svgs/GatsbySvg/GatsbySvg";
+import TypescriptSvg from "src/components/svgs/TypescriptSvg/TypescriptSvg";
+import StyledComponentsSvg from "src/components/svgs/StyledComponentsSvg/StyledComponentsSvg";
+import NetlifySvg from "src/components/svgs/NetlifySvg/NetlifySvg";
 import CtaLink from "../CtaLink/CtaLink";
+import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 
 const Container = styled.div`
   margin: 50px 0 70px;
-  padding: 50px 30px 0;
+  padding: ${STANDARD_X_PADDING};
+  padding-top: 50px;
   @media (max-width: 991px) {
     margin: 30px 0 70px;
   }
@@ -86,11 +88,12 @@ const NetlifySvgWrapper = styled.div`
 
 const Stack = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasStackBeenViewed, hasStackBeenViewed } = componentViewContext;
 
   useEffect(() => {
     if (inView) {
       setTimeout(() => {
-        componentViewContext.setHasStackBeenViewed(true);
+        setHasStackBeenViewed(true);
       }, STACK_TIMEOUT);
     }
   });
@@ -99,9 +102,9 @@ const Stack = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
     <Container id="stack" ref={ref}>
       <SectionHeader
         text="this site built with"
-        inView={inView || componentViewContext.hasStackBeenViewed}
+        inView={inView || hasStackBeenViewed}
       />
-      <Row inView={inView || componentViewContext.hasStackBeenViewed}>
+      <Row inView={inView || hasStackBeenViewed}>
         <SvgContainer>
           <GatsbySvgWrapper>
             <GatsbySvg />
@@ -128,7 +131,7 @@ const Stack = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
         destination="https://github.com/dmaxchristiansen/max-christiansen-dev"
         transitionDelay={ONE_THOUSAND_MS}
         isExternal
-        inView={inView || componentViewContext.hasStackBeenViewed}
+        inView={inView || hasStackBeenViewed}
       />
     </Container>
   );

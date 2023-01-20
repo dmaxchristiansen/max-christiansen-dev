@@ -1,15 +1,15 @@
-import angry from "../images/emojis/angry.png";
-import apprehensive from "../images/emojis/apprehensive.png";
-import glasses from "../images/emojis/glasses.png";
-import grin from "../images/emojis/grin.png";
-import kiss from "../images/emojis/kiss.png";
-import cry from "../images/emojis/cry.png";
-import laugh from "../images/emojis/laugh.png";
-import money from "../images/emojis/money.png";
-import monocle from "../images/emojis/monocle.png";
-import scared from "../images/emojis/scared.png";
-import smile from "../images/emojis/smile.png";
-import worried from "../images/emojis/worried.png";
+import angry from "src/images/Marquee/angry.png";
+import apprehensive from "src/images/Marquee/apprehensive.png";
+import glasses from "src/images/Marquee/glasses.png";
+import grin from "src/images/Marquee/grin.png";
+import kiss from "src/images/Marquee/kiss.png";
+import cry from "src/images/Marquee/cry.png";
+import laugh from "src/images/Marquee/laugh.png";
+import money from "src/images/Marquee/money.png";
+import monocle from "src/images/Marquee/monocle.png";
+import scared from "src/images/Marquee/scared.png";
+import smile from "src/images/Marquee/smile.png";
+import worried from "src/images/Marquee/worried.png";
 
 export const emojiConfig = [
   {

@@ -1,17 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { Z_ONE_THOUSAND } from "src/utils/constants/layer-constants";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
-import { BLUE_EYES, GRIMACE } from "src/styles/colors";
-import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
+import { Z_ONE_THOUSAND } from "src/utils/constants/layers";
+import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import {
+  BLUE_EYES,
+  GRIMACE,
+  NAV_BACKGROUND_COLOR,
+} from "src/utils/constants/colors";
+import { DARK_SHADOW, NAV_BACKDROP_FILTER } from "src/utils/constants/shadows";
+import { NAV_PADDING, STANDARD_WIDTH } from "src/utils/constants/layouts";
+
 import { navConfig } from "./utils/navConfig";
 import useHandleScroll from "src/utils/hooks/useHandleScroll";
 import HamburgerButton from "./HamburgerButton";
-import OtterSvg from "src/components/svgs/OtterSvg";
-
-const NAV_BACKGROUND_COLOR = "rgba(26, 26, 26, 0.7)";
-const NAV_BACKDROP_FILTER = "saturate(180%) blur(20px)";
+import OtterSvg from "src/components/svgs/OtterSvg/OtterSvg";
 
 interface NavContainerProps {
   isScrolled: boolean;
@@ -37,9 +40,9 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 6px 30px;
+  padding: ${NAV_PADDING};
   font-size: 20px;
 `;
 

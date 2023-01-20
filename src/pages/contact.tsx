@@ -5,20 +5,21 @@ import {
   ComponentViewContext,
   CONTACT_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
+import { ONE_THOUSAND_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import {
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import SocialMedia from "src/components/contact/SocialMedia/SocialMedia";
-import FormRow from "src/components/contact/ContactForm/FormRow";
-import {
-  ONE_THOUSAND_MS,
-  TWO_FIFTY_MS,
-} from "src/utils/constants/transition-speeds";
+import FormRow from "src/components/contact/FormRow/FormRow";
 
 const Container = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 0 30px 0;
+  padding: ${STANDARD_X_PADDING};
 `;
 
 const ContactPage = () => {
@@ -31,6 +32,8 @@ const ContactPage = () => {
   });
 
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasContactBeenViewed, hasContactBeenViewed } =
+    componentViewContext;
 
   /*
    * Reset window scroll position on page component mount
@@ -42,7 +45,7 @@ const ContactPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => {
-      componentViewContext.setHasContactBeenViewed(true);
+      setHasContactBeenViewed(true);
     }, CONTACT_TIMEOUT);
   });
 
@@ -51,22 +54,18 @@ const ContactPage = () => {
       <Container ref={contactRef}>
         <SectionHeader
           text="Reach out and say hello!"
-          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+          inView={isPageVisible || hasContactBeenViewed}
           textAlign="left"
           transitionDelay={TWO_FIFTY_MS}
         />
-        <FormRow
-          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
-        />
+        <FormRow inView={isPageVisible || hasContactBeenViewed} />
         <SectionHeader
           text="See more from me..."
-          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+          inView={isPageVisible || hasContactBeenViewed}
           textAlign="left"
           transitionDelay={ONE_THOUSAND_MS}
         />
-        <SocialMedia
-          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
-        />
+        <SocialMedia inView={isPageVisible || hasContactBeenViewed} />
       </Container>
     </Layout>
   );

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { InViewProps } from "src/utils/types/inView";
 import styled, { css } from "styled-components";
-import { WIDE_BLUE_GLOW } from "src/utils/constants/shadow-constants";
+import { WIDE_BLUE_GLOW } from "src/utils/constants/shadows";
 import {
   FIVE_HUNDRED_MS,
   TWO_FIFTY_MS,
@@ -11,18 +11,22 @@ import {
   FOUR_THOUSAND_MS,
   THIRTY_FIVE_HUNDRED_MS,
   TWENTY_FIVE_HUNDRED_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import {
   ComponentViewContext,
   INTRO_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
-import ProfileImage from "src/components/homepage/Intro/ProfileImage";
+import {
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
+import ProfileImage from "src/components/homepage/Intro/ProfileImage/ProfileImage";
 import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
 
 const Container = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 0 30px 0;
+  padding: ${STANDARD_X_PADDING};
 `;
 
 const Wrapper = styled.div`
@@ -128,43 +132,38 @@ const DesktopProfileImageContainer = styled.div<InViewProps>`
 const Intro = () => {
   const [isMounted, setIsMounted] = useState(false);
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasIntroBeenViewed, hasIntroBeenViewed } = componentViewContext;
 
   useEffect(() => {
     setIsMounted(true);
     setTimeout(() => {
-      componentViewContext.setHasIntroBeenViewed(true);
+      setHasIntroBeenViewed(true);
     }, INTRO_TIMEOUT);
-  }, [setIsMounted, componentViewContext]);
+  }, [setIsMounted, setHasIntroBeenViewed]);
 
   return (
     <Container>
       <Wrapper>
-        <Header inView={isMounted || componentViewContext.hasIntroBeenViewed}>
+        <Header inView={isMounted || hasIntroBeenViewed}>
           Max Christiansen
         </Header>
-        <Subheader
-          inView={isMounted || componentViewContext.hasIntroBeenViewed}
-        >
+        <Subheader inView={isMounted || hasIntroBeenViewed}>
           Software Engineer
         </Subheader>
-        <MobileProfileImageContainer
-          inView={isMounted || componentViewContext.hasIntroBeenViewed}
-        >
+        <MobileProfileImageContainer inView={isMounted || hasIntroBeenViewed}>
           <ProfileImage />
         </MobileProfileImageContainer>
-        <Devotion inView={isMounted || componentViewContext.hasIntroBeenViewed}>
+        <Devotion inView={isMounted || hasIntroBeenViewed}>
           devoted to creating beautifully simple, modern web experiences
         </Devotion>
-        <DesktopProfileImageContainer
-          inView={isMounted || componentViewContext.hasIntroBeenViewed}
-        >
+        <DesktopProfileImageContainer inView={isMounted || hasIntroBeenViewed}>
           <ProfileImage />
         </DesktopProfileImageContainer>
         <ChevronScrollButton
           targetElementId="expertise"
           targetElementOffsetTopValue={0}
           transitionDelay={FOUR_THOUSAND_MS}
-          inView={isMounted || componentViewContext.hasIntroBeenViewed}
+          inView={isMounted || hasIntroBeenViewed}
         />
       </Wrapper>
     </Container>

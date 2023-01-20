@@ -1,28 +1,33 @@
 import { forwardRef, useContext, useEffect } from "react";
 import styled, { css } from "styled-components";
-import { WHITE } from "src/styles/colors";
+import { WHITE } from "src/utils/constants/colors";
 import { InViewProps } from "src/utils/types/inView";
 import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
 import {
   FIFTEEN_HUNDRED_MS,
   TWO_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
-import { Z_TWENTY } from "src/utils/constants/layer-constants";
+} from "src/utils/constants/transitions";
+import { Z_TWENTY } from "src/utils/constants/layers";
 import {
   ComponentViewContext,
   EXPERTISE_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
+import {
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
-import Col from "src/components/homepage/Expertise/Col";
-import Subheader from "src/components/homepage/Expertise/Subheader";
+import Col from "src/components/homepage/Expertise/Col/Col";
+import Subheader from "src/components/homepage/Expertise/Subheader/Subheader";
 import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
 import CtaLink from "src/components/homepage/CtaLink/CtaLink";
-import BackgroundImage from "src/components/homepage/Expertise/BackgroundImage";
+import BackgroundImage from "src/components/homepage/Expertise/BackgroundImage/BackgroundImage";
 
 const Container = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 50px 30px 0;
+  padding: ${STANDARD_X_PADDING};
+  padding-top: 50px;
   @media (max-width: 520px) {
     padding-top: 60px;
   }
@@ -105,11 +110,13 @@ const Content = styled.h3`
 
 const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasExpertiseBeenViewed, hasExpertiseBeenViewed } =
+    componentViewContext;
 
   useEffect(() => {
     if (inView) {
       setTimeout(() => {
-        componentViewContext.setHasExpertiseBeenViewed(true);
+        setHasExpertiseBeenViewed(true);
       }, EXPERTISE_TIMEOUT);
     }
   });
@@ -117,19 +124,17 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
   return (
     <Container id="expertise" ref={ref}>
       <Wrapper>
-        <BackgroundImage
-          inView={inView || componentViewContext.hasExpertiseBeenViewed}
-        />
+        <BackgroundImage inView={inView || hasExpertiseBeenViewed} />
         <SectionHeader
           text="My Expertise"
-          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+          inView={inView || hasExpertiseBeenViewed}
         />
         <FlexRow>
           {colConfig.map(col => (
             <Col
               key={col.topLineText}
               index={col.index}
-              inView={inView || componentViewContext.hasExpertiseBeenViewed}
+              inView={inView || hasExpertiseBeenViewed}
             >
               <SubheaderWrapper>
                 <SvgWrapper>
@@ -151,14 +156,14 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
           text="go to showcase"
           destination="/showcase"
           transitionDelay={FIFTEEN_HUNDRED_MS}
-          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+          inView={inView || hasExpertiseBeenViewed}
         />
         <ChevronScrollButton
           targetElementId="experience"
           targetElementOffsetTopValue={0}
           transitionDelay={TWO_THOUSAND_MS}
           hideOnMobile
-          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+          inView={inView || hasExpertiseBeenViewed}
         />
       </Wrapper>
     </Container>
