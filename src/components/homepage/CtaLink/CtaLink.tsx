@@ -41,7 +41,9 @@ const LinkText = styled.div`
   line-height: 1;
   transition: color ${TWO_FIFTY_MS};
   &:hover {
-    color: ${BLUE_EYES};
+    @media (min-width: 992px) {
+      color: ${BLUE_EYES};
+    }
   }
   @media (max-width: 520px) {
     font-size: 20px;

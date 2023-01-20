@@ -54,11 +54,13 @@ const Link = styled.a`
     transition: fill ${TWO_FIFTY_MS};
   }
   &:hover {
-    svg {
-      fill: ${BLUE_EYES};
-    }
-    div {
-      color: ${BLUE_EYES};
+    @media (min-width: 992px) {
+      svg {
+        fill: ${BLUE_EYES};
+      }
+      div {
+        color: ${BLUE_EYES};
+      }
     }
   }
   @media (max-width: 991px) {
@@ -83,7 +85,6 @@ const SharedTypographyStyles = css`
 const LinkText = styled.div`
   display: flex;
   margin: 0 6px;
-
   ${SharedTypographyStyles}
 `;
 

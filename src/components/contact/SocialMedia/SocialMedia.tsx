@@ -39,11 +39,13 @@ const Link = styled.a`
     transition: fill ${TWO_FIFTY_MS};
   }
   &:hover {
-    svg {
-      fill: ${BLUE_EYES};
-    }
-    div {
-      color: ${BLUE_EYES};
+    @media (min-width: 992px) {
+      svg {
+        fill: ${BLUE_EYES};
+      }
+      div {
+        color: ${BLUE_EYES};
+      }
     }
   }
 `;
