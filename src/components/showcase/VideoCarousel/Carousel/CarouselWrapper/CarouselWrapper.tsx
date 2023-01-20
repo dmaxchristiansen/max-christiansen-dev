@@ -1,21 +1,21 @@
 import { useContext, useRef } from "react";
 import styled, { css } from "styled-components";
-import useHandleEscapeKeypress from "./utils/useHandleEscapeKeypress";
-import { CarouselContext } from "./utils/CarouselContextProvider";
-import { buttonConfig } from "./utils/configs";
+import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
+import { CarouselContext } from "../../utils/CarouselContextProvider";
+import { buttonConfig } from "../../utils/configs";
 import {
   NEXT,
   PREV,
   SHARED_NAV_BUTTON_STYLES,
   SHARED_NAV_BUTTON_ROW_STYLES,
-} from "./utils/constants";
+} from "../../utils/constants";
 import { LIGHT_GRAY, GRAY } from "src/utils/constants/colors";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { OPACITY_FADE } from "src/utils/constants/animations";
 import { Z_TWENTY } from "src/utils/constants/layers";
 import MuxVideo from "@mux/mux-video-react";
-import CloseButton from "./CloseButton";
-import PlayButton from "./PlayButton";
+import CloseButton from "../../CloseButton/CloseButton";
+import PlayButton from "../../PlayButton/PlayButton";
 
 export interface VisibilityProps {
   isVisible: boolean | undefined;

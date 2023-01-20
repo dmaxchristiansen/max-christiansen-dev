@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 import { BLUE_EYES, WHITE } from "src/utils/constants/colors";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
-import GitHubSvg from "src/components/svgs/GitHubSvg";
-import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
-import LinkedInSvg from "src/components/svgs/LinkedInSvg";
-import ResumeSvg from "src/components/svgs/ResumeSvg";
+import GitHubSvg from "src/components/svgs/GitHubSvg/GitHubSvg";
+import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg/NewTabLinkSvg";
+import LinkedInSvg from "src/components/svgs/LinkedInSvg/LinkedInSvg";
+import ResumeSvg from "src/components/svgs/ResumeSvg/ResumeSvg";
 
 const Container = styled.div`
   width: 100%;

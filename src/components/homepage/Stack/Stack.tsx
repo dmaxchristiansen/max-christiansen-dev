@@ -14,10 +14,10 @@ import {
   STACK_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
-import GatsbySvg from "src/components/svgs/GatsbySvg";
-import TypescriptSvg from "src/components/svgs/TypescriptSvg";
-import StyledComponentsSvg from "src/components/svgs/StyledComponentsSvg";
-import NetlifySvg from "src/components/svgs/NetlifySvg";
+import GatsbySvg from "src/components/svgs/GatsbySvg/GatsbySvg";
+import TypescriptSvg from "src/components/svgs/TypescriptSvg/TypescriptSvg";
+import StyledComponentsSvg from "src/components/svgs/StyledComponentsSvg/StyledComponentsSvg";
+import NetlifySvg from "src/components/svgs/NetlifySvg/NetlifySvg";
 import CtaLink from "../CtaLink/CtaLink";
 
 const Container = styled.div`

@@ -1,14 +1,19 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { Quote, Attribution, Title, ACTION_KEYFRAMES } from "./utils/constants";
+import {
+  Quote,
+  Attribution,
+  Title,
+  ACTION_KEYFRAMES,
+} from "../utils/constants";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import useHandleWindowResize, {
   isLessThanWidthThreshold,
 } from "src/utils/hooks/useHandleWindowResize";
-import { CarouselContext } from "./utils/CarouselContextProvider";
-import QuotationMark from "./QuotationMark";
-import CarouselWrapper from "./CarouselWrapper";
-import CarouselWrapperMobile from "./CarouselWrapperMobile";
+import { CarouselContext } from "../utils/CarouselContextProvider";
+import QuotationMarkSvg from "src/components/svgs/QuotationMarkSvg/QuotationMarkSvg";
+import CarouselWrapper from "./CarouselWrapper/CarouselWrapper";
+import CarouselWrapperMobile from "./CarouselWrapperMobile/CarouselWrapperMobile";
 
 const Container = styled.div`
   display: flex;
@@ -47,7 +52,7 @@ const Carousel: React.FC = () => {
       <CopyContainer
         key={`copyContainer-${context?.activeIndex.toString() ?? ""}`}
       >
-        <QuotationMark isWhite={true} />
+        <QuotationMarkSvg />
         <Quote>{context?.activeQuote}</Quote>
         <Attribution>{context?.activeName}</Attribution>
         <Title>{context?.activeTitle}</Title>

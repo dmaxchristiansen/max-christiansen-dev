@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { TwoCarouselProps } from "./types/videoCarousel";
-import { buttonConfig } from "./utils/configs";
+import { TwoCarouselProps } from "../types/videoCarousel";
+import { buttonConfig } from "../utils/configs";
 import {
   Quote,
   Attribution,
@@ -9,10 +9,10 @@ import {
   SHARED_NAV_BUTTON_ROW_STYLES,
   SHARED_NAV_BUTTON_STYLES,
   ACTION_KEYFRAMES,
-} from "./utils/constants";
+} from "../utils/constants";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
-import QuotationMark from "./QuotationMark";
-import TwoCarouselSlide from "./TwoCarouselSlide";
+import QuotationMarkSvg from "src/components/svgs/QuotationMarkSvg/QuotationMarkSvg";
+import TwoCarouselSlide from "./TwoCarouselSlide/TwoCarouselSlide";
 
 const Container = styled.div`
   display: flex;
@@ -122,7 +122,7 @@ const TwoCarousel: React.FC<TwoCarouselProps> = ({ slideConfig }) => {
           activeIndex={activeIndex}
           slideIndex={slide.index}
         >
-          <QuotationMark isWhite={true} />
+          <QuotationMarkSvg />
           <Quote>{slide.quote}</Quote>
           <Attribution>{slide.attribution}</Attribution>
           <Title>{slide.title}</Title>

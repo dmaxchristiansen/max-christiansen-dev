@@ -9,10 +9,10 @@ import { BLUE_EYES, WHITE } from "src/utils/constants/colors";
 import useHandleWindowResize, {
   isLessThanWidthThreshold,
 } from "src/utils/hooks/useHandleWindowResize";
-import GitHubSvg from "src/components/svgs/GitHubSvg";
-import LinkedInSvg from "src/components/svgs/LinkedInSvg";
-import ResumeSvg from "src/components/svgs/ResumeSvg";
-import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
+import GitHubSvg from "src/components/svgs/GitHubSvg/GitHubSvg";
+import LinkedInSvg from "src/components/svgs/LinkedInSvg/LinkedInSvg";
+import ResumeSvg from "src/components/svgs/ResumeSvg/ResumeSvg";
+import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg/NewTabLinkSvg";
 
 const Container = styled.div<InViewProps>`
   margin: 60px 0 100px;

@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import useHandleEscapeKeypress from "./utils/useHandleEscapeKeypress";
+import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
 import MuxVideo from "@mux/mux-video-react";
-import PlayButton from "./PlayButton";
-import CloseButton from "./CloseButton";
-import VideoPreviewImage from "./VideoPreviewImage";
+import PlayButton from "../../PlayButton/PlayButton";
+import CloseButton from "../../CloseButton/CloseButton";
+import VideoPreviewImage from "../../VideoPreviewImage/VideoPreviewImage";
 
 interface TwoCarouselSlideProps {
   isSlideActive: boolean;

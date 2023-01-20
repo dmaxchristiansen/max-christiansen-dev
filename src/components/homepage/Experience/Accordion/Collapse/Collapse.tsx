@@ -14,8 +14,8 @@ import {
 } from "src/utils/constants/colors";
 import { ACCORDION_TRANSITION_TIMING } from "../utils/constants";
 import { DARK_SHADOW } from "src/utils/constants/shadows";
-import LocationSvg from "src/components/svgs/LocationSvg";
-import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
+import LocationSvg from "src/components/svgs/LocationSvg/LocationSvg";
+import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg/NewTabLinkSvg";
 
 interface ContainerProps {
   isExpanded: AccordionStateProps;

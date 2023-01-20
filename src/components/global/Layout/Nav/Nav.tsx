@@ -8,7 +8,7 @@ import { DARK_SHADOW } from "src/utils/constants/shadows";
 import { navConfig } from "./utils/navConfig";
 import useHandleScroll from "src/utils/hooks/useHandleScroll";
 import HamburgerButton from "./HamburgerButton";
-import OtterSvg from "src/components/svgs/OtterSvg";
+import OtterSvg from "src/components/svgs/OtterSvg/OtterSvg";
 
 const NAV_BACKGROUND_COLOR = "rgba(26, 26, 26, 0.7)";
 const NAV_BACKDROP_FILTER = "saturate(180%) blur(20px)";

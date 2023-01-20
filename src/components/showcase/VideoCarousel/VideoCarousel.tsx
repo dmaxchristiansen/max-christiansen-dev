@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { VideoCarouselProps, SlideProps } from "./types/videoCarousel";
 import CarouselContextProvider from "./utils/CarouselContextProvider";
-import Single from "./Single";
-import TwoCarousel from "./TwoCarousel";
-import Carousel from "./Carousel";
+import TwoCarousel from "./TwoCarousel/TwoCarousel";
+import Carousel from "./Carousel/Carousel";
 
 const Container = styled.div`
   padding: 0 30px 50px;
@@ -39,9 +38,7 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({
   slideConfig,
 }) => {
   const renderVariants = (slideConfig: SlideProps[]) => {
-    if (slideConfig.length === 1) {
-      return <Single slide={slideConfig[0]} />;
-    } else if (slideConfig.length === 2) {
+    if (slideConfig.length === 2) {
       return <TwoCarousel slideConfig={slideConfig} />;
     } else {
       return (

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { OPACITY_FADE } from "src/utils/constants/animations";
 import { CLEAR, WHITE } from "src/utils/constants/colors";
-import CloseIcon from "./CloseIcon";
+import CloseSvg from "src/components/svgs/CloseSvg/CloseSvg";
 
 interface CloseButtonProps {
   isButtonFocusable: boolean;
@@ -11,6 +11,7 @@ interface CloseButtonProps {
 }
 
 const Button = styled.button`
+  display: flex;
   position: absolute;
   top: 12px;
   right: 12px;
@@ -20,7 +21,6 @@ const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: opacity, border ${TWO_FIFTY_MS};
-
   &:hover {
     opacity: ${OPACITY_FADE};
     border: 2px solid ${WHITE};
@@ -50,7 +50,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({
       tabIndex={isButtonFocusable ? undefined : -1}
       onClick={handleOnButtonClick}
     >
-      <CloseIcon />
+      <CloseSvg />
     </Button>
   );
 };

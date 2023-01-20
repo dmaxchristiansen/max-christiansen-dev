@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { Z_TEN } from "src/utils/constants/layers";
 import { OPACITY_FADE } from "src/utils/constants/animations";
-import PlayIcon from "./PlayIcon";
+import PlaySvg from "src/components/svgs/PlaySvg/PlaySvg";
 
 interface PlayButtonProps {
   isButtonFocusable: boolean;
@@ -11,6 +11,7 @@ interface PlayButtonProps {
 }
 
 const Button = styled.button`
+  display: flex;
   position: absolute;
   left: 16px;
   bottom: 16px;
@@ -40,7 +41,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({
     tabIndex={isButtonFocusable ? undefined : -1}
     onClick={onButtonClick}
   >
-    <PlayIcon />
+    <PlaySvg />
   </Button>
 );
 
