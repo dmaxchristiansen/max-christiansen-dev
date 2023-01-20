@@ -54,6 +54,7 @@ const Button = styled.button`
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   @media (max-width: 520px) {
+    animation: none;
     font-size: 60px;
   }
 `;

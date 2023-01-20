@@ -57,11 +57,13 @@ const StyledHomeLink = styled(Link)`
     transition: fill ${TWO_FIFTY_MS};
   }
   &:hover {
-    svg {
-      fill: ${BLUE_EYES};
-    }
-    div {
-      color: ${BLUE_EYES};
+    @media (min-width: 992px) {
+      svg {
+        fill: ${BLUE_EYES};
+      }
+      div {
+        color: ${BLUE_EYES};
+      }
     }
   }
 `;
@@ -96,7 +98,9 @@ const ItemLink = styled(Link)`
   font-size: 24px;
   transition: color ${TWO_FIFTY_MS};
   &:hover {
-    color: ${BLUE_EYES};
+    @media (min-width: 992px) {
+      color: ${BLUE_EYES};
+    }
   }
   @media (min-width: 992px) {
     font-size: 20px;

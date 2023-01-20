@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
-import {
-  HOT_PINK,
-  BLUE_EYES,
-  ROYAL_BLUE,
-  WHITE,
-} from "src/utils/constants/colors";
+import { HOT_PINK, BLUE_EYES, ROYAL_BLUE } from "src/utils/constants/colors";
 import {
   TEN_THOUSAND_MS,
   ONE_THOUSAND_MS,
@@ -124,7 +119,6 @@ const StyledLink = styled(Link).withConfig({
   border-radius: 16px;
   text-decoration: none;
   box-shadow: ${DARK_SHADOW};
-
   ${({ isAnimated }) =>
     isAnimated
       ? css`
@@ -140,9 +134,8 @@ const StyledLink = styled(Link).withConfig({
           animation: none;
         `}
   &:hover {
-    box-shadow: ${NARROW_PINK_GLOW};
-    @media (max-width: 991px) {
-      box-shadow: ${DARK_SHADOW};
+    @media (min-width: 992px) {
+      box-shadow: ${NARROW_PINK_GLOW};
     }
   }
 `;
@@ -156,9 +149,8 @@ const LinkContent = styled.div`
   font-size: 30px;
   line-height: 1;
   &:hover {
-    color: ${HOT_PINK};
-    @media (max-width: 991px) {
-      color: ${WHITE};
+    @media (min-width: 992px) {
+      color: ${HOT_PINK};
     }
   }
   @media (max-width: 991px) {
