@@ -60,26 +60,35 @@ const Marquee: React.FC<MarqueeProps> = ({
   backwardScroll = false,
   images,
 }) => {
-  const [speed, setSpeed] = useState(0);
+  // Derive total width of one ImageBlock
+  const imageBlockWidth = images.reduce(
+    (totalWidth, image) =>
+      // Sum widths of all ImageWrappers in one ImageBlock
+      (totalWidth +=
+        // Account for Image max-width and ImageWrapper padding
+        (image.width <= IMAGE_MAX_WIDTH ? image.width : IMAGE_MAX_WIDTH) +
+        IMAGE_WRAPPER_PADDING_X),
+    0,
+  );
+
+  // Set animation duration based on magic number divisor
+  const marqueeSpeed =
+    imageBlockWidth / IMAGE_BLOCK_PIXEL_TRANSLATE_X_PER_SECOND;
+
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const imageBlockWidth = images.reduce(
-      (totalWidth, image) =>
-        // Sum widths of all ImageWrappers in one ImageBlock
-        (totalWidth +=
-          // Account for Image max-width and ImageWrapper padding
-          (image.width <= IMAGE_MAX_WIDTH ? image.width : IMAGE_MAX_WIDTH) +
-          IMAGE_WRAPPER_PADDING_X),
-      0,
-    );
-    // Set animation duration based on magic number divisor
-    setSpeed(imageBlockWidth / IMAGE_BLOCK_PIXEL_TRANSLATE_X_PER_SECOND);
-  }, [images, setSpeed]);
+    setIsMounted(true);
+  }, [setIsMounted]);
 
   return (
     <SectionContainer pt={pt} pb={pb}>
       <MarqueeContainer>
-        <MarqueeWrapper backwardScroll={backwardScroll} marqueeSpeed={speed}>
+        <MarqueeWrapper
+          key={isMounted ? "client" : "server"}
+          backwardScroll={backwardScroll}
+          marqueeSpeed={marqueeSpeed}
+        >
           <ImageBlock>
             <FlexRow>
               {images.map(image => (

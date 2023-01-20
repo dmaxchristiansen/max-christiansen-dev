@@ -36,7 +36,9 @@ const InternalWrapper = styled.div`
   padding: ${STANDARD_X_PADDING};
 `;
 
-const StyledLink = styled(Link)<VisibilityProps>`
+const StyledLink = styled(Link).withConfig({
+  shouldForwardProp: prop => !["isVisible"].includes(prop),
+})<VisibilityProps>`
   padding: 10px;
   background-color: ${ROYAL_BLUE};
   border-radius: 5px;
@@ -50,11 +52,9 @@ const StyledLink = styled(Link)<VisibilityProps>`
   transition: background-color ${TWO_FIFTY_MS}, box-shadow ${TWO_FIFTY_MS},
     opacity ${FIVE_HUNDRED_MS} ${ONE_THOUSAND_MS};
   &:hover {
-    background-color: ${OBSIDIAN};
-    box-shadow: ${NARROW_BLUE_GLOW};
-    @media (max-width: 991px) {
-      background-color: ${ROYAL_BLUE};
-      box-shadow: ${DARK_SHADOW};
+    @media (min-width: 992px) {
+      background-color: ${OBSIDIAN};
+      box-shadow: ${NARROW_BLUE_GLOW};
     }
   }
 `;
