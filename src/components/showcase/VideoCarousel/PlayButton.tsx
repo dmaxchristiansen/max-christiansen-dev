@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
-import { Z_TEN } from "src/utils/constants/layer-constants";
-import { OPACITY_FADE } from "src/utils/constants/animation-constants";
+import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import { Z_TEN } from "src/utils/constants/layers";
+import { OPACITY_FADE } from "src/utils/constants/animations";
 import PlayIcon from "./PlayIcon";
 
 interface PlayButtonProps {

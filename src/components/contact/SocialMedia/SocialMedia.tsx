@@ -4,7 +4,7 @@ import {
   FIVE_HUNDRED_MS,
   FIFTEEN_HUNDRED_MS,
   TWO_FIFTY_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import { BLUE_EYES, WHITE } from "src/styles/colors";
 import useHandleWindowResize, {
   isLessThanWidthThreshold,

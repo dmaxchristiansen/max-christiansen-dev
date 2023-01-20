@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { InViewProps } from "src/utils/types/inView";
 import styled, { css } from "styled-components";
-import { WIDE_BLUE_GLOW } from "src/utils/constants/shadow-constants";
+import { WIDE_BLUE_GLOW } from "src/utils/constants/shadows";
 import {
   FIVE_HUNDRED_MS,
   TWO_FIFTY_MS,
@@ -11,7 +11,7 @@ import {
   FOUR_THOUSAND_MS,
   THIRTY_FIVE_HUNDRED_MS,
   TWENTY_FIVE_HUNDRED_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import {
   ComponentViewContext,
   INTRO_TIMEOUT,

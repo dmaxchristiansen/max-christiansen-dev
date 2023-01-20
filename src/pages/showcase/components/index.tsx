@@ -7,15 +7,12 @@ import {
   ONE_THOUSAND_MS,
   TWO_THOUSAND_MS,
   THREE_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import {
   WHEEL_SPIN_KEYFRAMES,
   BLUE_SHADOW_AND_TEXT_GLOW_KEYFRAMES,
-} from "src/utils/constants/animation-constants";
-import {
-  NARROW_PINK_GLOW,
-  DARK_SHADOW,
-} from "src/utils/constants/shadow-constants";
+} from "src/utils/constants/animations";
+import { NARROW_PINK_GLOW, DARK_SHADOW } from "src/utils/constants/shadows";
 import reactLogo from "src/images/reactLogo.svg";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";

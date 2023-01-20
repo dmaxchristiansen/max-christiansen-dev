@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { WHITE } from "src/styles/colors";
-import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import {
   SectionIdProps,
   AccordionStateProps,

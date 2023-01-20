@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import {
-  DARK_SHADOW,
-  NARROW_BLUE_GLOW,
-} from "src/utils/constants/shadow-constants";
+import { DARK_SHADOW, NARROW_BLUE_GLOW } from "src/utils/constants/shadows";
 import { BLACK, OBSIDIAN, ROYAL_BLUE } from "src/styles/colors";
 import { InViewProps } from "src/utils/types/inView";
 import {
@@ -11,7 +8,7 @@ import {
   TWO_THOUSAND_MS,
   TWO_FIFTY_MS,
   FIVE_HUNDRED_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import { ACTION_KEYFRAMES } from "src/components/showcase/VideoCarousel/utils/constants";
 
 interface SubmitProps {

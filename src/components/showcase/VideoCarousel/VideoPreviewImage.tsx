@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
-import { Z_TEN } from "src/utils/constants/layer-constants";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
+import { Z_TEN } from "src/utils/constants/layers";
 
 export interface VideoPreviewImageProps {
   backgroundUrl: string;

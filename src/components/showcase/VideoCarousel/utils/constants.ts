@@ -1,8 +1,8 @@
 import styled, { css, keyframes } from "styled-components";
-import { Z_TEN } from "src/utils/constants/layer-constants";
+import { Z_TEN } from "src/utils/constants/layers";
 import { BLACK } from "src/styles/colors";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
-import { LIGHT_SHADOW } from "src/utils/constants/shadow-constants";
+import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import { LIGHT_SHADOW } from "src/utils/constants/shadows";
 
 export const NEXT = "next";
 export const PREV = "prev";

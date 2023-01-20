@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
-import { OPACITY_FADE } from "src/utils/constants/animation-constants";
+import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import { OPACITY_FADE } from "src/utils/constants/animations";
 import { CLEAR, WHITE } from "src/styles/colors";
 import CloseIcon from "./CloseIcon";
 

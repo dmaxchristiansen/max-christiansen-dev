@@ -10,10 +10,7 @@ import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import SocialMedia from "src/components/contact/SocialMedia/SocialMedia";
 import FormRow from "src/components/contact/ContactForm/FormRow";
-import {
-  ONE_THOUSAND_MS,
-  TWO_FIFTY_MS,
-} from "src/utils/constants/transition-speeds";
+import { ONE_THOUSAND_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 
 const Container = styled.div`
   max-width: 1350px;

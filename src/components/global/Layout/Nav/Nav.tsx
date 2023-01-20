@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { Z_ONE_THOUSAND } from "src/utils/constants/layer-constants";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
+import { Z_ONE_THOUSAND } from "src/utils/constants/layers";
+import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { BLUE_EYES, GRIMACE } from "src/styles/colors";
-import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
+import { DARK_SHADOW } from "src/utils/constants/shadows";
 import { navConfig } from "./utils/navConfig";
 import useHandleScroll from "src/utils/hooks/useHandleScroll";
 import HamburgerButton from "./HamburgerButton";

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { BLUE_EYES, WHITE } from "src/styles/colors";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import GitHubSvg from "src/components/svgs/GitHubSvg";
 import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
 import LinkedInSvg from "src/components/svgs/LinkedInSvg";

@@ -6,7 +6,7 @@ import {
   FIVE_HUNDRED_MS,
   FIFTEEN_HUNDRED_MS,
   TWO_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import {
   ComponentViewContext,
   EXPERIENCE_TIMEOUT,

@@ -1,4 +1,4 @@
-import { Z_NEGATIVE_ONE, Z_ZERO } from "src/utils/constants/layer-constants";
+import { Z_NEGATIVE_ONE, Z_ZERO } from "src/utils/constants/layers";
 import styled from "styled-components";
 
 interface SubheaderProps {

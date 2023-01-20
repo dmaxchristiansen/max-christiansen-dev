@@ -6,8 +6,8 @@ import { colConfig } from "src/components/homepage/Expertise/utils/colConfig";
 import {
   FIFTEEN_HUNDRED_MS,
   TWO_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
-import { Z_TWENTY } from "src/utils/constants/layer-constants";
+} from "src/utils/constants/transitions";
+import { Z_TWENTY } from "src/utils/constants/layers";
 import {
   ComponentViewContext,
   EXPERTISE_TIMEOUT,

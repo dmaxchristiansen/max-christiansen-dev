@@ -6,7 +6,7 @@ import { WHITE } from "src/styles/colors";
 import {
   FIVE_HUNDRED_MS,
   ONE_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import { InViewProps } from "src/utils/types/inView";
 
 const ImageContainer = styled.div<InViewProps>`

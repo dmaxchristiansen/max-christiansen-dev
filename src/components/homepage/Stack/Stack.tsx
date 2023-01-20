@@ -8,7 +8,7 @@ import {
   THREE_THOUSAND_MS,
   FORTY_FIVE_HUNDRED_MS,
   ONE_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import {
   ComponentViewContext,
   STACK_TIMEOUT,

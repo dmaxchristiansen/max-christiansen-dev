@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { scrollToTargetElement } from "src/utils/scrollToTargetElement";
-import { BLUE_TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animation-constants";
+import { BLUE_TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animations";
 import {
   THREE_THOUSAND_MS,
   FIVE_HUNDRED_MS,
-} from "src/utils/constants/transition-speeds";
-import { Z_TWENTY } from "src/utils/constants/layer-constants";
+} from "src/utils/constants/transitions";
+import { Z_TWENTY } from "src/utils/constants/layers";
 import { InViewProps } from "src/utils/types/inView";
 
 import { GRIMACE } from "src/styles/colors";

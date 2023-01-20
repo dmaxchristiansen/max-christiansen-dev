@@ -5,13 +5,10 @@ import {
   FIVE_HUNDRED_MS,
   ONE_THOUSAND_MS,
   TWO_FIFTY_MS,
-} from "src/utils/constants/transition-speeds";
+} from "src/utils/constants/transitions";
 import { ROYAL_BLUE, OBSIDIAN } from "src/styles/colors";
-import {
-  NARROW_BLUE_GLOW,
-  DARK_SHADOW,
-} from "src/utils/constants/shadow-constants";
-import { Z_FIVE_HUNDRED } from "src/utils/constants/layer-constants";
+import { NARROW_BLUE_GLOW, DARK_SHADOW } from "src/utils/constants/shadows";
+import { Z_FIVE_HUNDRED } from "src/utils/constants/layers";
 
 interface VisibilityProps {
   isVisible: boolean;

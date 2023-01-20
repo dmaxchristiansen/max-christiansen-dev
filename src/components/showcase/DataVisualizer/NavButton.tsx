@@ -1,11 +1,8 @@
 import styled from "styled-components";
 import { ActiveProps } from "./types/dataVisualizer";
-import {
-  DARK_SHADOW,
-  LIGHT_BLUE_SHADOW,
-} from "src/utils/constants/shadow-constants";
+import { DARK_SHADOW, LIGHT_BLUE_SHADOW } from "src/utils/constants/shadows";
 import { OBSIDIAN, ROYAL_BLUE, GRIMACE_LIGHTLY } from "src/styles/colors";
-import { ONE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
+import { ONE_HUNDRED_MS } from "src/utils/constants/transitions";
 
 interface NavButtonProps {
   buttonLabel: string;

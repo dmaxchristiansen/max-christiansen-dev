@@ -4,7 +4,7 @@ import {
   DataVisualizerProps,
   BackgroundColorProps,
 } from "./types/dataVisualizer";
-import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
+import { DARK_SHADOW } from "src/utils/constants/shadows";
 import Title from "./Title";
 import GraphInfo from "./GraphInfo";
 import Graph from "./Graph";

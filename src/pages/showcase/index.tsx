@@ -28,11 +28,8 @@ import {
   FOUR_THOUSAND_MS,
   FORTY_FIVE_HUNDRED_MS,
   FIFTY_FIVE_HUNDRED_MS,
-} from "src/utils/constants/transition-speeds";
-import {
-  WIDE_BLUE_GLOW,
-  WIDE_PINK_GLOW,
-} from "src/utils/constants/shadow-constants";
+} from "src/utils/constants/transitions";
+import { WIDE_BLUE_GLOW, WIDE_PINK_GLOW } from "src/utils/constants/shadows";
 import { InViewProps } from "src/utils/types/inView";
 import {
   ComponentViewContext,

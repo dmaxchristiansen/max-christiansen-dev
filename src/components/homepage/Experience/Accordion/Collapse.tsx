@@ -5,10 +5,10 @@ import {
   SectionIdProps,
   AccordionStateProps,
 } from "src/components/homepage/Experience/Accordion/types/accordion";
-import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import { GRIMACE, OBSIDIAN, ROYAL_BLUE, PEACHY } from "src/styles/colors";
 import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
-import { DARK_SHADOW } from "src/utils/constants/shadow-constants";
+import { DARK_SHADOW } from "src/utils/constants/shadows";
 import LocationSvg from "src/components/svgs/LocationSvg";
 import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg";
 

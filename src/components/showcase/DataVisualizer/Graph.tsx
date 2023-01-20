@@ -1,12 +1,9 @@
 import styled, { Keyframes, keyframes } from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { BAR_ANIMATION_START_HEIGHT } from "./utils/constants";
-import {
-  TWO_FIFTY_MS,
-  ONE_THOUSAND_MS,
-} from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY_MS, ONE_THOUSAND_MS } from "src/utils/constants/transitions";
 import { CLEAR, WHITE, OBSIDIAN } from "src/styles/colors";
-import { OPACITY_KEYFRAMES } from "src/utils/constants/animation-constants";
+import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
 import { ActiveProps, GraphProps } from "./types/dataVisualizer";
 
 interface ArrowProps {

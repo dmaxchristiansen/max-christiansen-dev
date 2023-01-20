@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { InViewProps } from "src/utils/types/inView";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
-import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
-import { NARROW_BLUE_GLOW } from "src/utils/constants/shadow-constants";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
+import { NARROW_BLUE_GLOW } from "src/utils/constants/shadows";
 import ContactForm from "./ContactForm";
 
 const FlexRow = styled.div<InViewProps>`

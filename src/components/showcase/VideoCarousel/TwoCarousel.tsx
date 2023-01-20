@@ -10,7 +10,7 @@ import {
   SHARED_NAV_BUTTON_STYLES,
   ACTION_KEYFRAMES,
 } from "./utils/constants";
-import { FIVE_HUNDRED_MS } from "src/utils/constants/transition-speeds";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import QuotationMark from "./QuotationMark";
 import TwoCarouselSlide from "./TwoCarouselSlide";
 

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { Quote, Attribution, Title, ACTION_KEYFRAMES } from "./utils/constants";
-import { TWO_FIFTY_MS } from "src/utils/constants/transition-speeds";
+import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import useHandleWindowResize, {
   isLessThanWidthThreshold,
 } from "src/utils/hooks/useHandleWindowResize";
