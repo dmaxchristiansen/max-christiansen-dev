@@ -19,10 +19,12 @@ import TypescriptSvg from "src/components/svgs/TypescriptSvg/TypescriptSvg";
 import StyledComponentsSvg from "src/components/svgs/StyledComponentsSvg/StyledComponentsSvg";
 import NetlifySvg from "src/components/svgs/NetlifySvg/NetlifySvg";
 import CtaLink from "../CtaLink/CtaLink";
+import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 
 const Container = styled.div`
   margin: 50px 0 70px;
-  padding: 50px 30px 0;
+  padding: ${STANDARD_X_PADDING};
+  padding-top: 50px;
   @media (max-width: 991px) {
     margin: 30px 0 70px;
   }

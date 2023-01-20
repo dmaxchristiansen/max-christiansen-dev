@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 import { BLUE_EYES, WHITE } from "src/utils/constants/colors";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import {
+  STANDARD_X_PADDING,
+  STANDARD_WIDTH,
+} from "src/utils/constants/layouts";
 import GitHubSvg from "src/components/svgs/GitHubSvg/GitHubSvg";
 import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg/NewTabLinkSvg";
 import LinkedInSvg from "src/components/svgs/LinkedInSvg/LinkedInSvg";
@@ -13,9 +17,9 @@ const Container = styled.div`
 `;
 
 const ExternalWrapper = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 0 30px;
+  padding: ${STANDARD_X_PADDING};
 `;
 
 const Row = styled.div`

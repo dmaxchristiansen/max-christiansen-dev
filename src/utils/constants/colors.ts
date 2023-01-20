@@ -32,3 +32,5 @@ export const GRIMACE_LIGHTLY = "#490C86DE";
 export const GRIMACE = "#20125f";
 
 export const OBSIDIAN = "#0b161e";
+
+export const NAV_BACKGROUND_COLOR = "rgba(26, 26, 26, 0.7)";

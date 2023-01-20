@@ -1,21 +1,26 @@
 import styled from "styled-components";
 import { VideoCarouselProps, SlideProps } from "./types/videoCarousel";
+import {
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 import CarouselContextProvider from "./utils/CarouselContextProvider";
 import TwoCarousel from "./TwoCarousel/TwoCarousel";
 import Carousel from "./Carousel/Carousel";
 
 const Container = styled.div`
-  padding: 0 30px 50px;
+  padding: ${STANDARD_X_PADDING};
+  padding-bottom: 50px;
   @media (min-width: 768px) {
-    padding: 0 30px 80px;
+    padding-bottom: 80px;
   }
   @media (min-width: 992px) {
-    padding: 0 30px 100px;
+    padding-bottom: 100px;
   }
 `;
 
 const Wrapper = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
 `;
 

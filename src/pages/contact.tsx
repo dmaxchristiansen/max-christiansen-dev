@@ -5,17 +5,21 @@ import {
   ComponentViewContext,
   CONTACT_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
+import { ONE_THOUSAND_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import {
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import SocialMedia from "src/components/contact/SocialMedia/SocialMedia";
 import FormRow from "src/components/contact/FormRow/FormRow";
-import { ONE_THOUSAND_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 
 const Container = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 0 30px 0;
+  padding: ${STANDARD_X_PADDING};
 `;
 
 const ContactPage = () => {

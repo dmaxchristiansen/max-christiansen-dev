@@ -16,13 +16,17 @@ import {
   ComponentViewContext,
   INTRO_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
+import {
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 import ProfileImage from "src/components/homepage/Intro/ProfileImage/ProfileImage";
 import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
 
 const Container = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 0 30px 0;
+  padding: ${STANDARD_X_PADDING};
 `;
 
 const Wrapper = styled.div`

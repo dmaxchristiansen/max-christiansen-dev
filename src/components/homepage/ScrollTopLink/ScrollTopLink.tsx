@@ -5,6 +5,10 @@ import { ROYAL_BLUE, OBSIDIAN, WHITE, CLEAR } from "src/utils/constants/colors";
 import { NARROW_BLUE_GLOW, DARK_SHADOW } from "src/utils/constants/shadows";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { Z_FIVE_HUNDRED } from "src/utils/constants/layers";
+import {
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 
 const SCROLL_REACTION_THRESHOLD = 680;
 
@@ -30,9 +34,9 @@ const InternalWrapper = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 0 30px;
+  padding: ${STANDARD_X_PADDING};
 `;
 
 const StyledLink = styled(Link).withConfig({

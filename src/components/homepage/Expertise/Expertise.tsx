@@ -12,6 +12,10 @@ import {
   ComponentViewContext,
   EXPERTISE_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
+import {
+  STANDARD_WIDTH,
+  STANDARD_X_PADDING,
+} from "src/utils/constants/layouts";
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader/Subheader";
@@ -20,9 +24,10 @@ import CtaLink from "src/components/homepage/CtaLink/CtaLink";
 import BackgroundImage from "src/components/homepage/Expertise/BackgroundImage/BackgroundImage";
 
 const Container = styled.div`
-  max-width: 1350px;
+  max-width: ${STANDARD_WIDTH};
   margin: 0 auto;
-  padding: 50px 30px 0;
+  padding: ${STANDARD_X_PADDING};
+  padding-top: 50px;
   @media (max-width: 520px) {
     padding-top: 60px;
   }

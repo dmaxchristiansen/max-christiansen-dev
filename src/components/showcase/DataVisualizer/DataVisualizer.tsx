@@ -9,6 +9,7 @@ import Title from "./Title/Title";
 import GraphInfo from "./GraphInfo/GraphInfo";
 import Graph from "./Graph/Graph";
 import NavButton from "./NavButton/NavButton";
+import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 
 interface MarginProps {
   margin: string;
@@ -17,7 +18,7 @@ interface MarginProps {
 const SectionWrapper = styled.div<MarginProps>`
   width: 100%;
   margin: ${({ margin }) => margin};
-  padding: 0 30px;
+  padding: ${STANDARD_X_PADDING};
   @media (max-width: 520px) {
     padding: 0;
   }

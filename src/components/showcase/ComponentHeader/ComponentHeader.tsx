@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BLUE_SKY } from "src/utils/constants/colors";
+import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 
 interface ComponentHeaderProps {
   text: string;
@@ -7,7 +8,7 @@ interface ComponentHeaderProps {
 
 const H1 = styled.h1`
   margin: 40px 0 50px;
-  padding: 0 30px;
+  padding: ${STANDARD_X_PADDING};
   text-align: center;
   font-size: 110px;
   line-height: 1;
