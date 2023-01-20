@@ -6,7 +6,7 @@ import {
   JELLYBEAN,
 } from "src/utils/constants/colors";
 import Nav from "./Nav/Nav";
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 
 interface LayoutProps {
   hideNav?: boolean;

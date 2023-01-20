@@ -16,7 +16,7 @@ import {
   ComponentViewContext,
   INTRO_TIMEOUT,
 } from "src/utils/providers/ComponentViewContextProvider";
-import ProfileImage from "src/components/homepage/Intro/ProfileImage";
+import ProfileImage from "src/components/homepage/Intro/ProfileImage/ProfileImage";
 import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
 
 const Container = styled.div`

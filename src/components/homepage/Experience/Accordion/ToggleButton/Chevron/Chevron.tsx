@@ -5,7 +5,7 @@ import {
   SectionIdProps,
   AccordionStateProps,
 } from "src/components/homepage/Experience/Accordion/types/accordion";
-import { ACCORDION_TRANSITION_TIMING } from "./utils/constants";
+import { ACCORDION_TRANSITION_TIMING } from "../../utils/constants";
 
 interface ChevronProps {
   isExpanded: AccordionStateProps;

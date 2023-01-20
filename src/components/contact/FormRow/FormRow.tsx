@@ -5,7 +5,7 @@ import { InViewProps } from "src/utils/types/inView";
 import { IGatsbyImageDataQuery } from "src/utils/types/gatsbyImage";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import { NARROW_BLUE_GLOW } from "src/utils/constants/shadows";
-import ContactForm from "./ContactForm";
+import ContactForm from "./ContactForm/ContactForm";
 
 const FlexRow = styled.div<InViewProps>`
   display: flex;

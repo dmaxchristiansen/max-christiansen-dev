@@ -27,8 +27,9 @@
     },
     "removeComments": true,
     "resolveJsonModule": true,
-    "strict": true,
     "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
     "target": "esnext"
   },
   "include": ["src", "types.d.ts", ".eslintrc.js", "gatsby-*"]

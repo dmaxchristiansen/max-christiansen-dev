@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ActiveProps } from "./types/dataVisualizer";
+import { ActiveProps } from "../types/dataVisualizer";
 import { DARK_SHADOW, LIGHT_BLUE_SHADOW } from "src/utils/constants/shadows";
 import {
   OBSIDIAN,

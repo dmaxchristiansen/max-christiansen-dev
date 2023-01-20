@@ -1,11 +1,11 @@
-import magnoliaVp from "../images/magnolia-vp.jpg";
-import shintoVp from "../images/shinto-vp.jpg";
-import bessVp from "../images/bess-vp.jpg";
-import tydeVp from "../images/tyde-vp.jpg";
-import magnoliaT from "../images/magnolia-t.jpg";
-import shintoT from "../images/shinto-t.jpg";
-import bessT from "../images/bess-t.jpg";
-import tydeT from "../images/tyde-t.jpg";
+import magnoliaVp from "src/images/VideoCarousel/magnolia-vp.jpg";
+import shintoVp from "src/images/VideoCarousel/shinto-vp.jpg";
+import bessVp from "src/images/VideoCarousel/bess-vp.jpg";
+import tydeVp from "src/images/VideoCarousel/tyde-vp.jpg";
+import magnoliaT from "src/images/VideoCarousel/magnolia-t.jpg";
+import shintoT from "src/images/VideoCarousel/shinto-t.jpg";
+import bessT from "src/images/VideoCarousel/bess-t.jpg";
+import tydeT from "src/images/VideoCarousel/tyde-t.jpg";
 
 export const buttonConfig = [
   { index: 0, label: "←" },

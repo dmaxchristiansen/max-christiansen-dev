@@ -5,10 +5,10 @@ import {
   BackgroundColorProps,
 } from "./types/dataVisualizer";
 import { DARK_SHADOW } from "src/utils/constants/shadows";
-import Title from "./Title";
-import GraphInfo from "./GraphInfo";
-import Graph from "./Graph";
-import NavButton from "./NavButton";
+import Title from "./Title/Title";
+import GraphInfo from "./GraphInfo/GraphInfo";
+import Graph from "./Graph/Graph";
+import NavButton from "./NavButton/NavButton";
 
 interface MarginProps {
   margin: string;
