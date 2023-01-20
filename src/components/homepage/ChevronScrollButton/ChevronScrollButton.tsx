@@ -6,12 +6,12 @@ import {
   FIVE_HUNDRED_MS,
 } from "src/utils/constants/transitions";
 import { Z_TWENTY } from "src/utils/constants/layers";
-import { InViewProps } from "src/utils/types/inView";
-
 import { GRIMACE } from "src/utils/constants/colors";
+import { InViewProps } from "src/utils/types/inView";
 
 interface RenderProps {
   transitionDelay: string;
+  isPositionAbsolute?: boolean;
   hideOnMobile?: boolean;
 }
 
@@ -23,9 +23,11 @@ interface ChevronScrollButtonProps extends InViewProps, RenderProps {
 const Wrapper = styled.div<InViewProps & RenderProps>`
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: 20px;
+  position: ${({ isPositionAbsolute }) =>
+    isPositionAbsolute ? "absolute" : "relative"};
+  bottom: ${({ isPositionAbsolute }) => isPositionAbsolute && "20px"};
   width: 100%;
+  margin-top: ${({ isPositionAbsolute }) => !isPositionAbsolute && "60px"};
   z-index: ${Z_TWENTY};
   opacity: ${({ inView }) => (inView ? "1" : "0")};
   transform: ${({ inView }) =>
@@ -63,11 +65,13 @@ const ChevronScrollButton: React.FC<ChevronScrollButtonProps> = ({
   targetElementId,
   targetElementOffsetTopValue,
   transitionDelay,
+  isPositionAbsolute,
   hideOnMobile,
   inView,
 }) => (
   <Wrapper
     transitionDelay={transitionDelay}
+    isPositionAbsolute={isPositionAbsolute}
     hideOnMobile={hideOnMobile}
     inView={inView}
   >

@@ -163,6 +163,7 @@ const Intro = () => {
           targetElementId="expertise"
           targetElementOffsetTopValue={0}
           transitionDelay={FOUR_THOUSAND_MS}
+          isPositionAbsolute
           inView={isMounted || hasIntroBeenViewed}
         />
       </Wrapper>
