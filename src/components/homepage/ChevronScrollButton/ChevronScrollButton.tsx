@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { scrollToTargetElement } from "src/utils/scrollToTargetElement";
+import { scrollToTargetElement } from "src/utils/helpers/scrollToTargetElement";
 import { BLUE_TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animations";
 import {
   THREE_THOUSAND_MS,
