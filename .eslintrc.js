@@ -27,7 +27,7 @@ module.exports = {
       { avoidEscape: true, allowTemplateLiterals: true },
     ],
     "react/destructuring-assignment": "warn",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "error",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
