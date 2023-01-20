@@ -105,11 +105,13 @@ const Content = styled.h3`
 
 const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasExpertiseBeenViewed, hasExpertiseBeenViewed } =
+    componentViewContext;
 
   useEffect(() => {
     if (inView) {
       setTimeout(() => {
-        componentViewContext.setHasExpertiseBeenViewed(true);
+        setHasExpertiseBeenViewed(true);
       }, EXPERTISE_TIMEOUT);
     }
   });
@@ -117,19 +119,17 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
   return (
     <Container id="expertise" ref={ref}>
       <Wrapper>
-        <BackgroundImage
-          inView={inView || componentViewContext.hasExpertiseBeenViewed}
-        />
+        <BackgroundImage inView={inView || hasExpertiseBeenViewed} />
         <SectionHeader
           text="My Expertise"
-          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+          inView={inView || hasExpertiseBeenViewed}
         />
         <FlexRow>
           {colConfig.map(col => (
             <Col
               key={col.topLineText}
               index={col.index}
-              inView={inView || componentViewContext.hasExpertiseBeenViewed}
+              inView={inView || hasExpertiseBeenViewed}
             >
               <SubheaderWrapper>
                 <SvgWrapper>
@@ -151,14 +151,14 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
           text="go to showcase"
           destination="/showcase"
           transitionDelay={FIFTEEN_HUNDRED_MS}
-          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+          inView={inView || hasExpertiseBeenViewed}
         />
         <ChevronScrollButton
           targetElementId="experience"
           targetElementOffsetTopValue={0}
           transitionDelay={TWO_THOUSAND_MS}
           hideOnMobile
-          inView={inView || componentViewContext.hasExpertiseBeenViewed}
+          inView={inView || hasExpertiseBeenViewed}
         />
       </Wrapper>
     </Container>

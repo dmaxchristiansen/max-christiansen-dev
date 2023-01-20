@@ -297,44 +297,38 @@ const ReplayButton = styled.button`
 const FrontendShowcasePage = () => {
   const [isMounted, setIsMounted] = useState(false);
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasShowcaseBeenViewed, hasShowcaseBeenViewed } =
+    componentViewContext;
 
   useEffect(() => {
     setIsMounted(true);
     setTimeout(() => {
-      componentViewContext.setHasShowcaseBeenViewed(true);
+      setHasShowcaseBeenViewed(true);
     }, SHOWCASE_TIMEOUT);
-  }, [setIsMounted, componentViewContext]);
+  }, [setIsMounted, setHasShowcaseBeenViewed]);
 
   return (
     <Layout hideNav hideFooter>
       <Container>
-        <Grid
-          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
-        />
-        <Lines
-          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
-        />
-        <Header
-          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
-        >
+        <Grid inView={isMounted || hasShowcaseBeenViewed} />
+        <Lines inView={isMounted || hasShowcaseBeenViewed} />
+        <Header inView={isMounted || hasShowcaseBeenViewed}>
           <FirstSpan>FRONTEND</FirstSpan>
           <SecondSpan>FRONTEND</SecondSpan>
         </Header>
-        <Subheader
-          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
-        >
+        <Subheader inView={isMounted || hasShowcaseBeenViewed}>
           Showcase
         </Subheader>
       </Container>
       <LinkWrapper>
         <StyledLink
           to="/showcase/components"
-          inView={isMounted || componentViewContext.hasShowcaseBeenViewed}
+          inView={isMounted || hasShowcaseBeenViewed}
         >
           ENTER
         </StyledLink>
       </LinkWrapper>
-      <ReplayButtonWrapper inView={componentViewContext.hasShowcaseBeenViewed}>
+      <ReplayButtonWrapper inView={hasShowcaseBeenViewed}>
         <ReplayButton
           type="button"
           aria-label="replay animation"

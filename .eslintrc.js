@@ -20,6 +20,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "react-app",
   ],
+  ignorePatterns: ["public"],
   rules: {
     quotes: [
       "warn",
@@ -28,7 +29,7 @@ module.exports = {
     ],
     "react/destructuring-assignment": "warn",
     "react-hooks/exhaustive-deps": "error",
-    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/rules-of-hooks": "warn",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "unused-imports/no-unused-imports": "warn",

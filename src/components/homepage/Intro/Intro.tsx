@@ -128,43 +128,38 @@ const DesktopProfileImageContainer = styled.div<InViewProps>`
 const Intro = () => {
   const [isMounted, setIsMounted] = useState(false);
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasIntroBeenViewed, hasIntroBeenViewed } = componentViewContext;
 
   useEffect(() => {
     setIsMounted(true);
     setTimeout(() => {
-      componentViewContext.setHasIntroBeenViewed(true);
+      setHasIntroBeenViewed(true);
     }, INTRO_TIMEOUT);
-  }, [setIsMounted, componentViewContext]);
+  }, [setIsMounted, setHasIntroBeenViewed]);
 
   return (
     <Container>
       <Wrapper>
-        <Header inView={isMounted || componentViewContext.hasIntroBeenViewed}>
+        <Header inView={isMounted || hasIntroBeenViewed}>
           Max Christiansen
         </Header>
-        <Subheader
-          inView={isMounted || componentViewContext.hasIntroBeenViewed}
-        >
+        <Subheader inView={isMounted || hasIntroBeenViewed}>
           Software Engineer
         </Subheader>
-        <MobileProfileImageContainer
-          inView={isMounted || componentViewContext.hasIntroBeenViewed}
-        >
+        <MobileProfileImageContainer inView={isMounted || hasIntroBeenViewed}>
           <ProfileImage />
         </MobileProfileImageContainer>
-        <Devotion inView={isMounted || componentViewContext.hasIntroBeenViewed}>
+        <Devotion inView={isMounted || hasIntroBeenViewed}>
           devoted to creating beautifully simple, modern web experiences
         </Devotion>
-        <DesktopProfileImageContainer
-          inView={isMounted || componentViewContext.hasIntroBeenViewed}
-        >
+        <DesktopProfileImageContainer inView={isMounted || hasIntroBeenViewed}>
           <ProfileImage />
         </DesktopProfileImageContainer>
         <ChevronScrollButton
           targetElementId="expertise"
           targetElementOffsetTopValue={0}
           transitionDelay={FOUR_THOUSAND_MS}
-          inView={isMounted || componentViewContext.hasIntroBeenViewed}
+          inView={isMounted || hasIntroBeenViewed}
         />
       </Wrapper>
     </Container>

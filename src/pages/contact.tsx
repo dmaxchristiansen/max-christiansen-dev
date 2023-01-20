@@ -28,6 +28,8 @@ const ContactPage = () => {
   });
 
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasContactBeenViewed, hasContactBeenViewed } =
+    componentViewContext;
 
   /*
    * Reset window scroll position on page component mount
@@ -39,7 +41,7 @@ const ContactPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => {
-      componentViewContext.setHasContactBeenViewed(true);
+      setHasContactBeenViewed(true);
     }, CONTACT_TIMEOUT);
   });
 
@@ -48,22 +50,18 @@ const ContactPage = () => {
       <Container ref={contactRef}>
         <SectionHeader
           text="Reach out and say hello!"
-          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+          inView={isPageVisible || hasContactBeenViewed}
           textAlign="left"
           transitionDelay={TWO_FIFTY_MS}
         />
-        <FormRow
-          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
-        />
+        <FormRow inView={isPageVisible || hasContactBeenViewed} />
         <SectionHeader
           text="See more from me..."
-          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
+          inView={isPageVisible || hasContactBeenViewed}
           textAlign="left"
           transitionDelay={ONE_THOUSAND_MS}
         />
-        <SocialMedia
-          inView={isPageVisible || componentViewContext.hasContactBeenViewed}
-        />
+        <SocialMedia inView={isPageVisible || hasContactBeenViewed} />
       </Container>
     </Layout>
   );

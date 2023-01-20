@@ -86,11 +86,12 @@ const NetlifySvgWrapper = styled.div`
 
 const Stack = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
   const componentViewContext = useContext(ComponentViewContext);
+  const { setHasStackBeenViewed, hasStackBeenViewed } = componentViewContext;
 
   useEffect(() => {
     if (inView) {
       setTimeout(() => {
-        componentViewContext.setHasStackBeenViewed(true);
+        setHasStackBeenViewed(true);
       }, STACK_TIMEOUT);
     }
   });
@@ -99,9 +100,9 @@ const Stack = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
     <Container id="stack" ref={ref}>
       <SectionHeader
         text="this site built with"
-        inView={inView || componentViewContext.hasStackBeenViewed}
+        inView={inView || hasStackBeenViewed}
       />
-      <Row inView={inView || componentViewContext.hasStackBeenViewed}>
+      <Row inView={inView || hasStackBeenViewed}>
         <SvgContainer>
           <GatsbySvgWrapper>
             <GatsbySvg />
@@ -128,7 +129,7 @@ const Stack = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
         destination="https://github.com/dmaxchristiansen/max-christiansen-dev"
         transitionDelay={ONE_THOUSAND_MS}
         isExternal
-        inView={inView || componentViewContext.hasStackBeenViewed}
+        inView={inView || hasStackBeenViewed}
       />
     </Container>
   );

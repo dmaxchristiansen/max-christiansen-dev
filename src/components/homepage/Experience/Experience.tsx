@@ -47,11 +47,13 @@ const AccordionWrapper = styled.div<InViewProps>`
 const Experience = forwardRef<HTMLDivElement, InViewProps>(
   ({ inView }, ref) => {
     const componentViewContext = useContext(ComponentViewContext);
+    const { setHasExperienceBeenViewed, hasExperienceBeenViewed } =
+      componentViewContext;
 
     useEffect(() => {
       if (inView) {
         setTimeout(() => {
-          componentViewContext.setHasExperienceBeenViewed(true);
+          setHasExperienceBeenViewed(true);
         }, EXPERIENCE_TIMEOUT);
       }
     });
@@ -61,11 +63,9 @@ const Experience = forwardRef<HTMLDivElement, InViewProps>(
         <Wrapper>
           <SectionHeader
             text="Professional Experience"
-            inView={inView || componentViewContext.hasExperienceBeenViewed}
+            inView={inView || hasExperienceBeenViewed}
           />
-          <AccordionWrapper
-            inView={inView || componentViewContext.hasExperienceBeenViewed}
-          >
+          <AccordionWrapper inView={inView || hasExperienceBeenViewed}>
             <Accordion config={accordionConfig} />
           </AccordionWrapper>
           <CtaLink
@@ -73,14 +73,14 @@ const Experience = forwardRef<HTMLDivElement, InViewProps>(
             destination="/max_christiansen_resume.pdf"
             transitionDelay={FIFTEEN_HUNDRED_MS}
             isExternal
-            inView={inView || componentViewContext.hasExperienceBeenViewed}
+            inView={inView || hasExperienceBeenViewed}
           />
           <ChevronScrollButton
             targetElementId="stack"
             targetElementOffsetTopValue={0}
             transitionDelay={TWO_THOUSAND_MS}
             hideOnMobile
-            inView={inView || componentViewContext.hasExperienceBeenViewed}
+            inView={inView || hasExperienceBeenViewed}
           />
         </Wrapper>
       </Container>
