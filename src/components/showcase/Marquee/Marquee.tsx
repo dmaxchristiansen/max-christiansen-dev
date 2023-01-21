@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -15,7 +15,6 @@ import {
 } from "./utils/constants";
 
 const Container = styled.div<ContainerProps>`
-  display: block;
   margin: 0 auto;
   padding: ${({ pt, pb }) => `${pt} 0 ${pb}`};
 `;
@@ -60,24 +59,24 @@ const Marquee: React.FC<MarqueeProps> = ({
   backwardScroll = false,
   images,
 }) => {
-  // Derive total width of one ImageBlock
-  const imageBlockWidth = images.reduce(
-    (totalWidth, image) =>
-      // Sum widths of all ImageWrappers in one ImageBlock
-      (totalWidth +=
-        // Account for Image max-width and ImageWrapper padding
-        (image.width <= IMAGE_MAX_WIDTH ? image.width : IMAGE_MAX_WIDTH) +
-        IMAGE_WRAPPER_PADDING_X),
-    0,
-  );
-
-  // Set animation duration based on magic number divisor
-  const animationSpeed =
-    imageBlockWidth / IMAGE_BLOCK_PIXEL_TRANSLATE_X_PER_SECOND;
+  const [animationSpeed, setAnimationSpeed] = useState(0);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+    // Derive total width of one ImageBlock
+    const imageBlockWidth = images.reduce(
+      (totalWidth, image) =>
+        // Sum widths of all ImageWrappers in one ImageBlock
+        (totalWidth +=
+          // Account for Image max-width and ImageWrapper padding
+          (image.width <= IMAGE_MAX_WIDTH ? image.width : IMAGE_MAX_WIDTH) +
+          IMAGE_WRAPPER_PADDING_X),
+      0,
+    );
+    // Set animation duration based on magic number divisor, truncate
+    setAnimationSpeed(
+      Math.floor(imageBlockWidth / IMAGE_BLOCK_PIXEL_TRANSLATE_X_PER_SECOND),
+    );
+  }, [setAnimationSpeed, images]);
 
   return (
     <Container pt={pt} pb={pb}>
