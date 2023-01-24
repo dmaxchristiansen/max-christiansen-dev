@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { VideoCarouselProps, SlideProps } from "./types/videoCarousel";
+import { VideoCarouselProps } from "./types/videoCarousel";
 import {
   STANDARD_WIDTH,
   STANDARD_X_PADDING,
 } from "src/utils/constants/layouts";
 import CarouselContextProvider from "./utils/CarouselContextProvider";
-import TwoCarousel from "./Slider/Slider";
 import Carousel from "./Carousel/Carousel";
 
 const Container = styled.div`
@@ -41,27 +40,15 @@ const Header = styled.h2`
 const VideoCarousel: React.FC<VideoCarouselProps> = ({
   header,
   slideConfig,
-}) => {
-  const renderVariants = (slideConfig: SlideProps[]) => {
-    if (slideConfig.length === 2) {
-      return <TwoCarousel slideConfig={slideConfig} />;
-    } else {
-      return (
-        <CarouselContextProvider slideConfig={slideConfig}>
-          <Carousel />
-        </CarouselContextProvider>
-      );
-    }
-  };
-
-  return (
-    <Container>
-      <Wrapper>
-        {header && <Header>{header}</Header>}
-        {renderVariants(slideConfig)}
-      </Wrapper>
-    </Container>
-  );
-};
+}) => (
+  <Container>
+    <Wrapper>
+      {header && <Header>{header}</Header>}
+      <CarouselContextProvider slideConfig={slideConfig}>
+        <Carousel />
+      </CarouselContextProvider>
+    </Wrapper>
+  </Container>
+);
 
 export default VideoCarousel;

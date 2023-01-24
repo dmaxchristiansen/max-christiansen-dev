@@ -7,15 +7,15 @@ import {
   Title,
   SHARED_NAV_BUTTON_ROW_STYLES,
   SHARED_NAV_BUTTON_STYLES,
-  ACTION_KEYFRAMES,
 } from "../utils/constants";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
+import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
 import {
   SliderProps,
   SliderLengthProps,
   ActiveIndexProps,
   SlideIndexProps,
-} from "src/components/showcase/VideoCarousel/types/slider";
+} from "src/components/showcase/Carousels/types/slider";
 import QuotationMarkSvg from "src/components/svgs/QuotationMarkSvg/QuotationMarkSvg";
 import TwoCarouselSlide from "./Slide/Slide";
 
@@ -40,7 +40,7 @@ const QuoteContainer = styled.div<ActiveIndexProps & SlideIndexProps>`
   flex-direction: column;
   min-height: 182px;
   margin-bottom: 32px;
-  animation: ${ACTION_KEYFRAMES} ${FIVE_HUNDRED_MS};
+  animation: ${OPACITY_KEYFRAMES} ${FIVE_HUNDRED_MS};
   @media (min-width: 768px) {
     width: 35%;
     min-height: unset;
@@ -124,7 +124,7 @@ const Slider: React.FC<SliderProps> = ({ slideConfig }) => {
         <SliderWrapper>
           <AnimatedSlider
             activeIndex={activeIndex}
-            sliderLength={slideConfig.length - 1}
+            sliderLength={slideConfig.length}
           >
             {slideConfig.map(slide => (
               <TwoCarouselSlide

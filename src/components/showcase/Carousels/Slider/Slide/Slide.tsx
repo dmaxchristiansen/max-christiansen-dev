@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
 import MuxVideo from "@mux/mux-video-react";
-import PlayButton from "../../PlayButton/PlayButton";
-import CloseButton from "../../CloseButton/CloseButton";
-import VideoPreviewImage from "../../VideoPreviewImage/VideoPreviewImage";
+import PlayButton from "../../sharedComponents/PlayButton/PlayButton";
+import CloseButton from "../../sharedComponents/CloseButton/CloseButton";
+import VideoPreviewImage from "../../sharedComponents/VideoPreviewImage/VideoPreviewImage";
 
 interface SlideProps {
   isSlideActive: boolean;

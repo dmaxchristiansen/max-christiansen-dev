@@ -9,7 +9,7 @@ import {
   TWO_FIFTY_MS,
   FIVE_HUNDRED_MS,
 } from "src/utils/constants/transitions";
-import { ACTION_KEYFRAMES } from "src/components/showcase/VideoCarousel/utils/constants";
+import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
 
 interface SubmitProps {
   isSubmitted: boolean;
@@ -26,7 +26,7 @@ const Container = styled.div`
 const SuccessContent = styled.div<SubmitProps>`
   display: ${({ isSubmitted }) => (isSubmitted ? "block" : "none")};
   padding-top: 50px;
-  animation-name: ${ACTION_KEYFRAMES};
+  animation-name: ${OPACITY_KEYFRAMES};
   animation-duration: ${TWO_THOUSAND_MS};
   font-size: 60px;
   text-align: center;

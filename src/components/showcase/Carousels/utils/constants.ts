@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { Z_TEN } from "src/utils/constants/layers";
 import { BLACK } from "src/utils/constants/colors";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
@@ -9,11 +9,6 @@ export const PREV = "prev";
 export const RESET = "reset";
 
 export const ACTION_TIMEOUT = 250;
-
-export const ACTION_KEYFRAMES = keyframes`
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-`;
 
 export const SHARED_NAV_BUTTON_ROW_STYLES = css`
   display: flex;

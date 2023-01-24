@@ -1,13 +1,13 @@
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import ComponentHeader from "src/components/showcase/ComponentHeader/ComponentHeader";
-import VideoCarousel from "src/components/showcase/VideoCarousel/VideoCarousel";
+import VideoCarousel from "src/components/showcase/Carousels/VideoCarousel";
 import BackLink from "src/components/showcase/BackLink/BackLink";
 import {
   sliderConfig,
   carouselConfig,
-} from "src/components/showcase/VideoCarousel/utils/configs";
-import TwoCarousel from "src/components/showcase/VideoCarousel/Slider/Slider";
+} from "src/components/showcase/Carousels/utils/configs";
+import TwoCarousel from "src/components/showcase/Carousels/Slider/Slider";
 
 const CarouselsPage = () => (
   <Layout>
