@@ -5,7 +5,7 @@ import {
   STANDARD_X_PADDING,
 } from "src/utils/constants/layouts";
 import CarouselContextProvider from "./utils/CarouselContextProvider";
-import TwoCarousel from "./TwoCarousel/TwoCarousel";
+import TwoCarousel from "./Slider/Slider";
 import Carousel from "./Carousel/Carousel";
 
 const Container = styled.div`

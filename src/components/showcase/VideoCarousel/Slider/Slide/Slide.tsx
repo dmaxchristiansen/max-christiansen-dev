@@ -6,14 +6,14 @@ import PlayButton from "../../PlayButton/PlayButton";
 import CloseButton from "../../CloseButton/CloseButton";
 import VideoPreviewImage from "../../VideoPreviewImage/VideoPreviewImage";
 
-interface TwoCarouselSlideProps {
+interface SlideProps {
   isSlideActive: boolean;
   videoPlaybackId: string;
   videoPreviewImageUrl: string;
   attribution: string;
 }
 
-const Slide = styled.div`
+const SlideWrapper = styled.div`
   display: flex;
   position: relative;
   width: 100%;
@@ -22,7 +22,7 @@ const Slide = styled.div`
   border-radius: 16px;
 `;
 
-const TwoCarouselSlide: React.FC<TwoCarouselSlideProps> = ({
+const Slide: React.FC<SlideProps> = ({
   isSlideActive,
   videoPlaybackId,
   videoPreviewImageUrl,
@@ -57,7 +57,7 @@ const TwoCarouselSlide: React.FC<TwoCarouselSlideProps> = ({
   };
 
   return (
-    <Slide>
+    <SlideWrapper>
       <VideoPreviewImage
         backgroundUrl={videoPreviewImageUrl}
         isVisible={!isVideoVisible}
@@ -83,8 +83,8 @@ const TwoCarouselSlide: React.FC<TwoCarouselSlideProps> = ({
         videoRef={videoRef}
         onButtonClick={() => setIsVideoVisible(false)}
       />
-    </Slide>
+    </SlideWrapper>
   );
 };
 
-export default TwoCarouselSlide;
+export default Slide;

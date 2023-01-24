@@ -1,5 +1,4 @@
 export interface SlideProps {
-  internalId: string;
   index: number;
   attribution: string;
   title: string;
@@ -9,7 +8,18 @@ export interface SlideProps {
   videoPlaybackId: string;
 }
 
-export interface VideoCarouselProps {
-  header?: string;
+export interface SliderProps {
   slideConfig: SlideProps[];
+}
+
+export interface SliderLengthProps {
+  sliderLength: number;
+}
+
+export interface ActiveIndexProps {
+  activeIndex: number;
+}
+
+export interface SlideIndexProps {
+  slideIndex: number;
 }

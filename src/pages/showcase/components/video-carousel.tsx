@@ -4,15 +4,16 @@ import ComponentHeader from "src/components/showcase/ComponentHeader/ComponentHe
 import VideoCarousel from "src/components/showcase/VideoCarousel/VideoCarousel";
 import BackLink from "src/components/showcase/BackLink/BackLink";
 import {
-  twoCarouselConfig,
+  sliderConfig,
   carouselConfig,
 } from "src/components/showcase/VideoCarousel/utils/configs";
+import TwoCarousel from "src/components/showcase/VideoCarousel/Slider/Slider";
 
 const VideoCarouselPage = () => (
   <Layout>
     <ComponentHeader text="Video Carousel" />
+    <TwoCarousel slideConfig={sliderConfig} />
     <VideoCarousel {...carouselConfig} />
-    <VideoCarousel {...twoCarouselConfig} />
     <BackLink />
   </Layout>
 );

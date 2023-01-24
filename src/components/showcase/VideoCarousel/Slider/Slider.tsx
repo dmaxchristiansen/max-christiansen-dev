@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { TwoCarouselProps } from "../types/videoCarousel";
-import { buttonConfig } from "../utils/configs";
+import { v4 as uuidv4 } from "uuid";
 import {
   Quote,
   Attribution,
@@ -11,30 +10,31 @@ import {
   ACTION_KEYFRAMES,
 } from "../utils/constants";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
+import {
+  SliderProps,
+  SliderLengthProps,
+  ActiveIndexProps,
+  SlideIndexProps,
+} from "src/components/showcase/VideoCarousel/types/slider";
 import QuotationMarkSvg from "src/components/svgs/QuotationMarkSvg/QuotationMarkSvg";
-import TwoCarouselSlide from "./TwoCarouselSlide/TwoCarouselSlide";
+import TwoCarouselSlide from "./Slide/Slide";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 640px;
+  max-width: 700px;
   margin: 0 auto;
-  padding-bottom: 24px;
+  padding: 0 30px 24px;
   @media (min-width: 768px) {
     flex-direction: row;
-    max-width: 1100px;
+    max-width: 1160px;
   }
   @media (min-width: 992px) {
-    padding-bottom: 40px;
+    padding: 0 30px 40px;
   }
 `;
 
-interface CopyContainerProps {
-  activeIndex: number;
-  slideIndex: number;
-}
-
-const CopyContainer = styled.div<CopyContainerProps>`
+const QuoteContainer = styled.div<ActiveIndexProps & SlideIndexProps>`
   display: ${({ activeIndex, slideIndex }) =>
     activeIndex === slideIndex ? "flex" : "none"};
   flex-direction: column;
@@ -49,7 +49,7 @@ const CopyContainer = styled.div<CopyContainerProps>`
   }
 `;
 
-const ContentContainer = styled.div`
+const SliderContainer = styled.div`
   position: relative;
   width: 100%;
   @media (min-width: 768px) {
@@ -63,17 +63,13 @@ const SliderWrapper = styled.div`
   border-radius: 16px;
 `;
 
-interface SliderProps {
-  activeIndex: number;
-}
-
-const Slider = styled.div<SliderProps>`
+const AnimatedSlider = styled.div<ActiveIndexProps & SliderLengthProps>`
   display: flex;
   position: relative;
   top: 0;
   left: ${({ activeIndex }) => `-${activeIndex * 100}%`};
   height: 100%;
-  width: 200%;
+  width: ${({ sliderLength }) => `${sliderLength}00%`};
   transition: left ${FIVE_HUNDRED_MS} ease-in-out;
 `;
 
@@ -86,22 +82,18 @@ const NavButtonRow = styled.div`
   }
 `;
 
-interface NavButtonProps {
-  activeIndex: number;
-  buttonIndex: number;
-}
-
-const NavButton = styled.button<NavButtonProps>`
+const NavButton = styled.button<ActiveIndexProps>`
   ${SHARED_NAV_BUTTON_STYLES}
   height: 48px;
   width: 48px;
   margin: 0 8px 0;
   font-size: 32px;
-  background-color: ${({ activeIndex, buttonIndex }) =>
-    activeIndex === buttonIndex ? "#848484" : "#dddddd"};
-  &:hover {
-    background-color: ${({ activeIndex, buttonIndex }) =>
-      activeIndex !== buttonIndex && "#bcbcbc"};
+  background-color: #dddddd;
+  &:hover:enabled {
+    background-color: #bcbcbc;
+  }
+  &:disabled {
+    background-color: #848484;
   }
   @media (min-width: 992px) {
     height: 80px;
@@ -111,14 +103,14 @@ const NavButton = styled.button<NavButtonProps>`
   }
 `;
 
-const TwoCarousel: React.FC<TwoCarouselProps> = ({ slideConfig }) => {
+const Slider: React.FC<SliderProps> = ({ slideConfig }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <Container>
       {slideConfig.map(slide => (
-        <CopyContainer
-          key={slide.internalId}
+        <QuoteContainer
+          key={uuidv4()}
           activeIndex={activeIndex}
           slideIndex={slide.index}
         >
@@ -126,40 +118,44 @@ const TwoCarousel: React.FC<TwoCarouselProps> = ({ slideConfig }) => {
           <Quote>{slide.quote}</Quote>
           <Attribution>{slide.attribution}</Attribution>
           <Title>{slide.title}</Title>
-        </CopyContainer>
+        </QuoteContainer>
       ))}
-      <ContentContainer>
+      <SliderContainer>
         <SliderWrapper>
-          <Slider activeIndex={activeIndex}>
+          <AnimatedSlider
+            activeIndex={activeIndex}
+            sliderLength={slideConfig.length - 1}
+          >
             {slideConfig.map(slide => (
               <TwoCarouselSlide
-                key={slide.internalId}
+                key={uuidv4()}
                 isSlideActive={slide.index === activeIndex}
                 videoPlaybackId={slide.videoPlaybackId}
                 videoPreviewImageUrl={slide.videoPreviewImageUrl}
                 attribution={slide.attribution}
               />
             ))}
-          </Slider>
+          </AnimatedSlider>
         </SliderWrapper>
         <NavButtonRow>
-          {buttonConfig.map(button => (
-            <NavButton
-              key={button.label}
-              activeIndex={activeIndex}
-              buttonIndex={button.index}
-              disabled={activeIndex === button.index ? true : false}
-              onClick={() =>
-                button.index === 1 ? setActiveIndex(1) : setActiveIndex(0)
-              }
-            >
-              {button.label}
-            </NavButton>
-          ))}
+          <NavButton
+            activeIndex={activeIndex}
+            disabled={activeIndex === 0 ? true : false}
+            onClick={() => setActiveIndex(activeIndex - 1)}
+          >
+            ←
+          </NavButton>
+          <NavButton
+            activeIndex={activeIndex}
+            disabled={activeIndex === slideConfig.length - 1 ? true : false}
+            onClick={() => setActiveIndex(activeIndex + 1)}
+          >
+            →
+          </NavButton>
         </NavButtonRow>
-      </ContentContainer>
+      </SliderContainer>
     </Container>
   );
 };
 
-export default TwoCarousel;
+export default Slider;
