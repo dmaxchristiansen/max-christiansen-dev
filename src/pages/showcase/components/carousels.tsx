@@ -9,9 +9,9 @@ import {
 } from "src/components/showcase/VideoCarousel/utils/configs";
 import TwoCarousel from "src/components/showcase/VideoCarousel/Slider/Slider";
 
-const VideoCarouselPage = () => (
+const CarouselsPage = () => (
   <Layout>
-    <ComponentHeader text="Video Carousel" />
+    <ComponentHeader text="Carousels" />
     <TwoCarousel slideConfig={sliderConfig} />
     <VideoCarousel {...carouselConfig} />
     <BackLink />
@@ -21,9 +21,9 @@ const VideoCarouselPage = () => (
 export const Head = () => (
   <Seo
     title="Video Carousel"
-    description="Two variants of a video carousel component"
-    pathname="/showcase/components/video-carousel"
+    description="Animated carousel components"
+    pathname="/showcase/components/carousels"
   />
 );
 
-export default VideoCarouselPage;
+export default CarouselsPage;
