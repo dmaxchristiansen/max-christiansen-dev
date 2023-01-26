@@ -1,65 +1,41 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import {
-  Quote,
-  Attribution,
-  Title,
-  SHARED_NAV_BUTTON_ROW_STYLES,
-  SHARED_NAV_BUTTON_STYLES,
-} from "../utils/constants";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
-import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
 import {
   SliderProps,
   SliderLengthProps,
   ActiveIndexProps,
-  SlideIndexProps,
 } from "src/components/showcase/Carousels/types/slider";
-import QuotationMarkSvg from "src/components/svgs/QuotationMarkSvg/QuotationMarkSvg";
-import TwoCarouselSlide from "./Slide/Slide";
+import Slide from "./Slide/Slide";
+import { BLACK } from "src/utils/constants/colors";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 30px 24px;
-  @media (min-width: 768px) {
-    flex-direction: row;
-    max-width: 1160px;
-  }
-  @media (min-width: 992px) {
-    padding: 0 30px 40px;
+  justify-content: center;
+  padding: 0 30px 100px;
+  @media (max-width: 520px) {
+    padding: 0 10px 60px;
   }
 `;
 
-const QuoteContainer = styled.div<ActiveIndexProps & SlideIndexProps>`
-  display: ${({ activeIndex, slideIndex }) =>
-    activeIndex === slideIndex ? "flex" : "none"};
-  flex-direction: column;
-  min-height: 182px;
-  margin-bottom: 32px;
-  animation: ${OPACITY_KEYFRAMES} ${FIVE_HUNDRED_MS};
-  @media (min-width: 768px) {
-    width: 35%;
-    min-height: unset;
-    margin-bottom: 0;
-    padding-right: 24px;
+const Wrapper = styled.div`
+  position: relative;
+  max-width: 796px;
+  padding: 0 72px;
+  @media (max-width: 520px) {
+    padding: 0 46px;
   }
 `;
 
 const SliderContainer = styled.div`
-  position: relative;
-  width: 100%;
-  @media (min-width: 768px) {
-    width: 65%;
-  }
+  max-width: 700px;
+  overflow: hidden;
+  border-radius: 16px;
 `;
 
 const SliderWrapper = styled.div`
   width: calc(100% + 16px);
-  overflow: hidden;
   border-radius: 16px;
 `;
 
@@ -73,33 +49,62 @@ const AnimatedSlider = styled.div<ActiveIndexProps & SliderLengthProps>`
   transition: left ${FIVE_HUNDRED_MS} ease-in-out;
 `;
 
-const NavButtonRow = styled.div`
-  ${SHARED_NAV_BUTTON_ROW_STYLES}
-  width: 100%;
-  margin-top: -24px;
-  @media (min-width: 992px) {
-    margin-top: -40px;
-  }
-`;
-
-const NavButton = styled.button<ActiveIndexProps>`
-  ${SHARED_NAV_BUTTON_STYLES}
+const SharedButtonStyles = css`
+  display: block;
+  position: absolute;
+  top: calc(50% - 24px);
   height: 48px;
   width: 48px;
-  margin: 0 8px 0;
-  font-size: 32px;
+  margin: 0;
+  padding: 4px;
   background-color: #dddddd;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:before {
+    position: absolute;
+    top: -3px;
+    font-size: 50px;
+    font-family: Consolas;
+    color: ${BLACK};
+  }
   &:hover:enabled {
     background-color: #bcbcbc;
   }
   &:disabled {
     background-color: #848484;
   }
-  @media (min-width: 992px) {
-    height: 80px;
-    width: 80px;
-    margin: 0 12px 0;
-    font-size: 36px;
+  @media (max-width: 520px) {
+    height: 36px;
+    width: 36px;
+    &:before {
+      top: -4px;
+      font-size: 42px;
+    }
+  }
+`;
+
+const PrevButton = styled.button`
+  ${SharedButtonStyles}
+  left: 0;
+  &:before {
+    content: "<";
+    left: 10px;
+    @media (max-width: 520px) {
+      left: 6px;
+    }
+  }
+`;
+
+const NextButton = styled.button`
+  ${SharedButtonStyles}
+  right: 0;
+  &:before {
+    content: ">";
+    left: 12px;
+    @media (max-width: 520px) {
+      left: 7px;
+    }
   }
 `;
 
@@ -108,52 +113,38 @@ const Slider: React.FC<SliderProps> = ({ slideConfig }) => {
 
   return (
     <Container>
-      {slideConfig.map(slide => (
-        <QuoteContainer
-          key={uuidv4()}
-          activeIndex={activeIndex}
-          slideIndex={slide.index}
-        >
-          <QuotationMarkSvg />
-          <Quote>{slide.quote}</Quote>
-          <Attribution>{slide.attribution}</Attribution>
-          <Title>{slide.title}</Title>
-        </QuoteContainer>
-      ))}
-      <SliderContainer>
-        <SliderWrapper>
-          <AnimatedSlider
-            activeIndex={activeIndex}
-            sliderLength={slideConfig.length}
-          >
-            {slideConfig.map(slide => (
-              <TwoCarouselSlide
-                key={uuidv4()}
-                isSlideActive={slide.index === activeIndex}
-                videoPlaybackId={slide.videoPlaybackId}
-                videoPreviewImageUrl={slide.videoPreviewImageUrl}
-                attribution={slide.attribution}
-              />
-            ))}
-          </AnimatedSlider>
-        </SliderWrapper>
-        <NavButtonRow>
-          <NavButton
-            activeIndex={activeIndex}
-            disabled={activeIndex === 0 ? true : false}
-            onClick={() => setActiveIndex(activeIndex - 1)}
-          >
-            ←
-          </NavButton>
-          <NavButton
-            activeIndex={activeIndex}
-            disabled={activeIndex === slideConfig.length - 1 ? true : false}
-            onClick={() => setActiveIndex(activeIndex + 1)}
-          >
-            →
-          </NavButton>
-        </NavButtonRow>
-      </SliderContainer>
+      <Wrapper>
+        <SliderContainer>
+          <SliderWrapper>
+            <AnimatedSlider
+              activeIndex={activeIndex}
+              sliderLength={slideConfig.length}
+            >
+              {slideConfig.map(slide => (
+                <Slide
+                  key={uuidv4()}
+                  isSlideActive={slide.index === activeIndex}
+                  videoUrl={slide.videoUrl}
+                  imageUrl={slide.imageUrl}
+                  videoTitle={slide.videoTitle}
+                />
+              ))}
+            </AnimatedSlider>
+          </SliderWrapper>
+        </SliderContainer>
+        <PrevButton
+          type="button"
+          aria-label="previous"
+          disabled={activeIndex === 0 ? true : false}
+          onClick={() => setActiveIndex(activeIndex - 1)}
+        />
+        <NextButton
+          type="button"
+          aria-label="next"
+          disabled={activeIndex === slideConfig.length - 1 ? true : false}
+          onClick={() => setActiveIndex(activeIndex + 1)}
+        />
+      </Wrapper>
     </Container>
   );
 };

@@ -1,11 +1,8 @@
 export interface SlideProps {
   index: number;
-  attribution: string;
-  title: string;
-  quote: string;
-  thumbnailImageUrl: string;
-  videoPreviewImageUrl: string;
-  videoPlaybackId: string;
+  imageUrl: string;
+  videoUrl: string;
+  videoTitle: string;
 }
 
 export interface SliderProps {

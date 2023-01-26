@@ -1,16 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
-import MuxVideo from "@mux/mux-video-react";
 import PlayButton from "../../sharedComponents/PlayButton/PlayButton";
 import CloseButton from "../../sharedComponents/CloseButton/CloseButton";
-import VideoPreviewImage from "../../sharedComponents/VideoPreviewImage/VideoPreviewImage";
+import SlideImage from "./SlideImage/SlideImage";
 
 interface SlideProps {
   isSlideActive: boolean;
-  videoPlaybackId: string;
-  videoPreviewImageUrl: string;
-  attribution: string;
+  imageUrl: string;
+  videoUrl: string;
+  videoTitle: string;
 }
 
 const SlideWrapper = styled.div`
@@ -24,9 +23,9 @@ const SlideWrapper = styled.div`
 
 const Slide: React.FC<SlideProps> = ({
   isSlideActive,
-  videoPlaybackId,
-  videoPreviewImageUrl,
-  attribution,
+  videoTitle,
+  imageUrl,
+  videoUrl,
 }) => {
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -58,26 +57,24 @@ const Slide: React.FC<SlideProps> = ({
 
   return (
     <SlideWrapper>
-      <VideoPreviewImage
-        backgroundUrl={videoPreviewImageUrl}
-        isVisible={!isVideoVisible}
-      >
+      <SlideImage backgroundUrl={imageUrl} isVisible={!isVideoVisible}>
         <PlayButton
           isButtonFocusable={!isVideoVisible && isSlideActive}
-          attribution={attribution}
+          attribution={videoTitle}
           onButtonClick={() => handlePlayButtonClick()}
         />
-      </VideoPreviewImage>
-      <MuxVideo
+      </SlideImage>
+      <video
         ref={videoRef}
+        title={videoTitle}
         width="100%"
-        playbackId={videoPlaybackId}
-        streamType="on-demand"
-        poster={videoPreviewImageUrl}
+        poster={imageUrl}
         controls={isVideoVisible}
         loop
         playsInline
-      />
+      >
+        <source src={videoUrl} type="video/mp4" />
+      </video>
       <CloseButton
         isButtonFocusable={isVideoVisible}
         videoRef={videoRef}

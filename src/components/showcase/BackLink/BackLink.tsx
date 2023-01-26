@@ -36,7 +36,9 @@ const InternalWrapper = styled.div`
   padding: ${STANDARD_X_PADDING};
 `;
 
-const StyledLink = styled(Link)<VisibilityProps>`
+const StyledLink = styled(Link).withConfig({
+  shouldForwardProp: prop => !["isVisible"].includes(prop),
+})<VisibilityProps>`
   padding: 10px;
   background-color: ${ROYAL_BLUE};
   border-radius: 5px;
