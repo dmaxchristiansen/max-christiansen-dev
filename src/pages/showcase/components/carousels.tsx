@@ -56,7 +56,7 @@ const CarouselsPage = () => (
 
 export const Head = () => (
   <Seo
-    title="Video Carousel"
+    title="Carousels"
     description="Animated carousel components"
     pathname="/showcase/components/carousels"
   />

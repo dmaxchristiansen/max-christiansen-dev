@@ -103,6 +103,9 @@ const LinksContainer = styled.div`
     }
     &:nth-child(3) {
       animation-delay: ${TWO_THOUSAND_MS};
+      @media (max-width: 991px) {
+        display: none;
+      }
     }
   }
 `;
