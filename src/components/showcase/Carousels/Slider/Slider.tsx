@@ -124,8 +124,8 @@ const Slider: React.FC<SliderProps> = ({ slideConfig }) => {
                 <Slide
                   key={uuidv4()}
                   isSlideActive={slide.index === activeIndex}
-                  videoUrl={slide.videoUrl}
-                  imageUrl={slide.imageUrl}
+                  muxVideoId={slide.muxVideoId}
+                  backgroundImageUrl={slide.backgroundImageUrl}
                   videoTitle={slide.videoTitle}
                 />
               ))}

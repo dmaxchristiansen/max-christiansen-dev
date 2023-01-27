@@ -8,8 +8,8 @@ import SlideImage from "./SlideImage/SlideImage";
 
 interface SlideProps {
   isSlideActive: boolean;
-  imageUrl: string;
-  videoUrl: string;
+  backgroundImageUrl: string;
+  muxVideoId: string;
   videoTitle: string;
 }
 
@@ -25,8 +25,8 @@ const SlideWrapper = styled.div`
 const Slide: React.FC<SlideProps> = ({
   isSlideActive,
   videoTitle,
-  imageUrl,
-  videoUrl,
+  backgroundImageUrl,
+  muxVideoId,
 }) => {
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -58,19 +58,22 @@ const Slide: React.FC<SlideProps> = ({
 
   return (
     <SlideWrapper>
-      <SlideImage backgroundUrl={imageUrl} isVisible={!isVideoVisible}>
+      <SlideImage
+        backgroundUrl={backgroundImageUrl}
+        isVisible={!isVideoVisible}
+      >
         <PlayButton
           isButtonFocusable={!isVideoVisible && isSlideActive}
-          attribution={videoTitle}
+          videoTitle={videoTitle}
           onButtonClick={() => handlePlayButtonClick()}
         />
       </SlideImage>
       <MuxVideo
         ref={videoRef}
         width="100%"
-        playbackId={videoUrl}
+        playbackId={muxVideoId}
         streamType="on-demand"
-        poster={imageUrl}
+        poster={backgroundImageUrl}
         controls={isVideoVisible}
         loop
         playsInline

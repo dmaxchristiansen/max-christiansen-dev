@@ -1,7 +1,7 @@
 export interface SlideProps {
   index: number;
-  imageUrl: string;
-  videoUrl: string;
+  backgroundImageUrl: string;
+  muxVideoId: string;
   videoTitle: string;
 }
 

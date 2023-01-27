@@ -18,20 +18,20 @@ export const buttonConfig = [
 export const sliderConfig = [
   {
     index: 0,
-    imageUrl: fcrnrwSky,
-    videoUrl: "6TVNvJHqTtFjGmjyvlCmrDhiBbdWUojLgHVoHiQKil4",
+    backgroundImageUrl: fcrnrwSky,
+    muxVideoId: "h4OjEFZO79SjXusvTHd3ppY5AV6hhgByO5XWMK5gjRA",
     videoTitle: "Frank Church River of No Return Wilderness August 2022",
   },
   {
     index: 1,
-    imageUrl: rileyRiver,
-    videoUrl: "6TVNvJHqTtFjGmjyvlCmrDhiBbdWUojLgHVoHiQKil4",
+    backgroundImageUrl: rileyRiver,
+    muxVideoId: "Cixsv9r71cJaQGTv02fcJtD00m4S02UcbhJpAblRA1e02EU",
     videoTitle: "A Day on the River",
   },
   {
     index: 2,
-    imageUrl: owyheeSunset,
-    videoUrl: "6TVNvJHqTtFjGmjyvlCmrDhiBbdWUojLgHVoHiQKil4",
+    backgroundImageUrl: owyheeSunset,
+    muxVideoId: "6TVNvJHqTtFjGmjyvlCmrDhiBbdWUojLgHVoHiQKil4",
     videoTitle: "Finding the Speed Goat",
   },
 ];
