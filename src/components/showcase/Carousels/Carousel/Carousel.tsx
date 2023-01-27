@@ -1,12 +1,8 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import {
-  Quote,
-  Attribution,
-  Title,
-  ACTION_KEYFRAMES,
-} from "../utils/constants";
+import { Quote, Attribution, Title } from "../utils/constants";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
 import useHandleWindowResize, {
   isLessThanWidthThreshold,
 } from "src/utils/hooks/useHandleWindowResize";
@@ -31,7 +27,7 @@ const CopyContainer = styled.div`
   flex-direction: column;
   min-height: 182px;
   margin: 0;
-  animation: ${ACTION_KEYFRAMES} ${TWO_FIFTY_MS};
+  animation: ${OPACITY_KEYFRAMES} ${TWO_FIFTY_MS};
   @media (min-width: 768px) {
     max-width: 180px;
     min-height: unset;

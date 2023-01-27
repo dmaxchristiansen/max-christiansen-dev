@@ -6,7 +6,7 @@ import PlaySvg from "src/components/svgs/PlaySvg/PlaySvg";
 
 interface PlayButtonProps {
   isButtonFocusable: boolean;
-  attribution: string;
+  videoTitle: string;
   onButtonClick: () => void;
 }
 
@@ -32,12 +32,12 @@ const Button = styled.button`
 
 const PlayButton: React.FC<PlayButtonProps> = ({
   isButtonFocusable,
-  attribution,
+  videoTitle,
   onButtonClick,
 }) => (
   <Button
     type="button"
-    aria-label={`play video from ${attribution}`}
+    aria-label={`play video from ${videoTitle}`}
     tabIndex={isButtonFocusable ? undefined : -1}
     onClick={onButtonClick}
   >

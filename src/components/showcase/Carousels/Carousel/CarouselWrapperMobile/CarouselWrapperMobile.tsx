@@ -18,8 +18,8 @@ import {
   VisibilityProps,
 } from "../CarouselWrapper/CarouselWrapper";
 import { buttonConfig } from "../../utils/configs";
-import CloseButton from "../../CloseButton/CloseButton";
-import PlayButton from "../../PlayButton/PlayButton";
+import CloseButton from "../../sharedComponents/CloseButton/CloseButton";
+import PlayButton from "../../sharedComponents/PlayButton/PlayButton";
 
 interface TransitionProps {
   isTransitioned: boolean | undefined;

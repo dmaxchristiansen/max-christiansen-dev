@@ -22,7 +22,7 @@ import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 
 const linksConfig = [
-  { label: "VIDEO CAROUSEL", href: "/showcase/components/video-carousel" },
+  { label: "CAROUSELS", href: "/showcase/components/carousels" },
   { label: "MARQUEE", href: "/showcase/components/marquee" },
   { label: "DATA VISUALIZER", href: "/showcase/components/data-visualizer" },
 ];

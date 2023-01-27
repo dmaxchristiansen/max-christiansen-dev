@@ -27,6 +27,7 @@ module.exports = {
       "double",
       { avoidEscape: true, allowTemplateLiterals: true },
     ],
+    "jsx-a11y/media-has-caption": ["off", { video: ["Video"] }],
     "react/destructuring-assignment": "warn",
     "react-hooks/exhaustive-deps": "error",
     "react-hooks/rules-of-hooks": "warn",

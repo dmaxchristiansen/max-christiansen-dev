@@ -13,11 +13,3 @@ export interface VideoCarouselProps {
   header?: string;
   slideConfig: SlideProps[];
 }
-
-export interface SingleProps {
-  slide: SlideProps;
-}
-
-export interface TwoCarouselProps {
-  slideConfig: SlideProps[];
-}

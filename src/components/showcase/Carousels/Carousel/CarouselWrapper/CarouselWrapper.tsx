@@ -14,8 +14,8 @@ import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { OPACITY_FADE } from "src/utils/constants/animations";
 import { Z_TWENTY } from "src/utils/constants/layers";
 import MuxVideo from "@mux/mux-video-react";
-import CloseButton from "../../CloseButton/CloseButton";
-import PlayButton from "../../PlayButton/PlayButton";
+import CloseButton from "../../sharedComponents/CloseButton/CloseButton";
+import PlayButton from "../../sharedComponents/PlayButton/PlayButton";
 
 export interface VisibilityProps {
   isVisible: boolean | undefined;

@@ -1,21 +1,32 @@
+import styled from "styled-components";
 import { WHITE } from "src/utils/constants/colors";
 
+const StyledSvg = styled.svg`
+  height: 50px;
+  width: 50px;
+  @media (min-width: 768px) {
+    height: 76px;
+    width: 76px;
+  }
+`;
+
 const PlaySvg = () => (
-  <svg
+  <StyledSvg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 77 77"
+    viewBox="0 0 24 24"
     width="77"
     height="77"
-    fill="none"
+    fill={WHITE}
     focusable="false"
   >
     <path
-      d="M34.907 29.3384C33.5754 28.4951 31.8369 29.4518 31.8369 31.0281V46.2677C31.8369 47.8439 33.5754 48.8007 34.907 47.9573L46.9383 40.3375C48.1782 39.5523 48.1782 37.7435 46.9383 36.9583L34.907 29.3384Z"
-      fill={WHITE}
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3ZM5 1C2.79086 1 1 2.79086 1 5V19C1 21.2091 2.79086 23 5 23H19C21.2091 23 23 21.2091 23 19V5C23 2.79086 21.2091 1 19 1H5Z"
     />
-    <circle cx="38.5" cy="38.5" r="36.5" stroke={WHITE} strokeWidth="4" />
-  </svg>
+    <path d="M16 12L10 16.3301V7.66987L16 12Z" />
+  </StyledSvg>
 );
 
 export default PlaySvg;

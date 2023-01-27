@@ -2,18 +2,18 @@ import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
 import MuxVideo from "@mux/mux-video-react";
-import PlayButton from "../../PlayButton/PlayButton";
-import CloseButton from "../../CloseButton/CloseButton";
-import VideoPreviewImage from "../../VideoPreviewImage/VideoPreviewImage";
+import PlayButton from "../../sharedComponents/PlayButton/PlayButton";
+import CloseButton from "../../sharedComponents/CloseButton/CloseButton";
+import SlideImage from "./SlideImage/SlideImage";
 
-interface TwoCarouselSlideProps {
+interface SlideProps {
   isSlideActive: boolean;
-  videoPlaybackId: string;
-  videoPreviewImageUrl: string;
-  attribution: string;
+  backgroundImageUrl: string;
+  muxVideoId: string;
+  videoTitle: string;
 }
 
-const Slide = styled.div`
+const SlideWrapper = styled.div`
   display: flex;
   position: relative;
   width: 100%;
@@ -22,11 +22,11 @@ const Slide = styled.div`
   border-radius: 16px;
 `;
 
-const TwoCarouselSlide: React.FC<TwoCarouselSlideProps> = ({
+const Slide: React.FC<SlideProps> = ({
   isSlideActive,
-  videoPlaybackId,
-  videoPreviewImageUrl,
-  attribution,
+  videoTitle,
+  backgroundImageUrl,
+  muxVideoId,
 }) => {
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -57,23 +57,23 @@ const TwoCarouselSlide: React.FC<TwoCarouselSlideProps> = ({
   };
 
   return (
-    <Slide>
-      <VideoPreviewImage
-        backgroundUrl={videoPreviewImageUrl}
+    <SlideWrapper>
+      <SlideImage
+        backgroundUrl={backgroundImageUrl}
         isVisible={!isVideoVisible}
       >
         <PlayButton
           isButtonFocusable={!isVideoVisible && isSlideActive}
-          attribution={attribution}
+          videoTitle={videoTitle}
           onButtonClick={() => handlePlayButtonClick()}
         />
-      </VideoPreviewImage>
+      </SlideImage>
       <MuxVideo
         ref={videoRef}
         width="100%"
-        playbackId={videoPlaybackId}
+        playbackId={muxVideoId}
         streamType="on-demand"
-        poster={videoPreviewImageUrl}
+        poster={backgroundImageUrl}
         controls={isVideoVisible}
         loop
         playsInline
@@ -83,8 +83,8 @@ const TwoCarouselSlide: React.FC<TwoCarouselSlideProps> = ({
         videoRef={videoRef}
         onButtonClick={() => setIsVideoVisible(false)}
       />
-    </Slide>
+    </SlideWrapper>
   );
 };
 
-export default TwoCarouselSlide;
+export default Slide;
