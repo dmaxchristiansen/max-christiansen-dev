@@ -3,13 +3,14 @@ import {
   sliderConfig,
   carouselConfig,
 } from "src/components/showcase/Carousels/utils/configs";
+import { BLUE_SKY } from "src/utils/constants/colors";
+import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import ComponentHeader from "src/components/showcase/ComponentHeader/ComponentHeader";
 import Slider from "src/components/showcase/Carousels/Slider/Slider";
 import VideoCarousel from "src/components/showcase/Carousels/VideoCarousel";
 import BackLink from "src/components/showcase/BackLink/BackLink";
-import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 
 const Header = styled.h2`
   margin: 0 0 10px;
@@ -17,6 +18,7 @@ const Header = styled.h2`
   line-height: 1;
   font-family: Roboto Mono;
   font-size: 46px;
+  text-shadow: 0 0 16px ${BLUE_SKY}, 0 0 18px ${BLUE_SKY};
   @media (max-width: 520px) {
     font-size: 30px;
   }
@@ -39,6 +41,7 @@ const CarouselsPage = () => (
     <Description>
       A simple sliding video carousel featuring some videos I have made
     </Description>
+
     <Slider slideConfig={sliderConfig} />
     <Header>&lt;PreviewCarousel/&gt;</Header>
     <Description>

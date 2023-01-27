@@ -14,7 +14,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   padding: 0 30px 100px;
-  @media (max-width: 520px) {
+  @media (max-width: 767px) {
     padding: 0 10px 60px;
   }
 `;
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   position: relative;
   max-width: 796px;
   padding: 0 72px;
-  @media (max-width: 520px) {
+  @media (max-width: 767px) {
     padding: 0 46px;
   }
 `;
@@ -74,7 +74,7 @@ const SharedButtonStyles = css`
   &:disabled {
     background-color: #848484;
   }
-  @media (max-width: 520px) {
+  @media (max-width: 767px) {
     height: 36px;
     width: 36px;
     &:before {
@@ -90,7 +90,7 @@ const PrevButton = styled.button`
   &:before {
     content: "<";
     left: 10px;
-    @media (max-width: 520px) {
+    @media (max-width: 767px) {
       left: 6px;
     }
   }
@@ -102,7 +102,7 @@ const NextButton = styled.button`
   &:before {
     content: ">";
     left: 12px;
-    @media (max-width: 520px) {
+    @media (max-width: 767px) {
       left: 7px;
     }
   }

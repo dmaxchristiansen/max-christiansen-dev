@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
+import MuxVideo from "@mux/mux-video-react";
 import PlayButton from "../../sharedComponents/PlayButton/PlayButton";
 import CloseButton from "../../sharedComponents/CloseButton/CloseButton";
 import SlideImage from "./SlideImage/SlideImage";
@@ -64,17 +65,16 @@ const Slide: React.FC<SlideProps> = ({
           onButtonClick={() => handlePlayButtonClick()}
         />
       </SlideImage>
-      <video
+      <MuxVideo
         ref={videoRef}
-        title={videoTitle}
         width="100%"
+        playbackId={videoUrl}
+        streamType="on-demand"
         poster={imageUrl}
         controls={isVideoVisible}
         loop
         playsInline
-      >
-        <source src={videoUrl} type="video/mp4" />
-      </video>
+      />
       <CloseButton
         isButtonFocusable={isVideoVisible}
         videoRef={videoRef}
