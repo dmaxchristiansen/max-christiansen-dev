@@ -37,7 +37,6 @@ export const sliderConfig = [
 ];
 
 export const carouselConfig = {
-  header: "3+ Slides Carousel",
   slideConfig: [
     {
       index: 0,
