@@ -1,4 +1,4 @@
-export interface SlideProps {
+export interface PreviewCarouselCardProps {
   internalId: string;
   index: number;
   attribution: string;
@@ -9,7 +9,6 @@ export interface SlideProps {
   muxVideoId: string;
 }
 
-export interface VideoCarouselProps {
-  header?: string;
-  slideConfig: SlideProps[];
+export interface PreviewCarouselProps {
+  slideConfig: PreviewCarouselCardProps[];
 }

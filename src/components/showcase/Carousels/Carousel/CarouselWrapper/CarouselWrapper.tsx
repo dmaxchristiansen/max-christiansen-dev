@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import styled, { css } from "styled-components";
 import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
-import { CarouselContext } from "../../utils/CarouselContextProvider";
+import { PreviewCarouselContext } from "../../utils/PreviewCarouselContextProvider";
 import { buttonConfig } from "../../utils/configs";
 import {
   NEXT,
@@ -166,7 +166,7 @@ const VideoContainer = styled.div<VisibilityProps>`
 `;
 
 const CarouselWrapper = () => {
-  const context = useContext(CarouselContext);
+  const context = useContext(PreviewCarouselContext);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useHandleEscapeKeypress(videoRef, () => context?.setIsVideoVisible(false));
@@ -210,7 +210,7 @@ const CarouselWrapper = () => {
           />
           <PlayButton
             isButtonFocusable={!context?.isVideoVisible}
-            attribution={context?.activeName ?? ""}
+            videoTitle={context?.activeName ?? ""}
             onButtonClick={() => handlePlayButtonClick()}
           />
         </Active>

@@ -1,8 +1,8 @@
 import React, { useState, createContext } from "react";
-import { SlideProps } from "../types/videoCarousel";
+import { PreviewCarouselCardProps } from "../types/previewCarousel";
 import { NEXT, PREV, RESET, ACTION_TIMEOUT } from "./constants";
 
-interface CarouselContextProps {
+interface PreviewCarouselContextProps {
   muxVideoId: string;
   activeIndex: number;
   activePreviewUrl: string;
@@ -33,13 +33,15 @@ interface CarouselContextProps {
   setIsVideoVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const CarouselContext = createContext<CarouselContextProps | null>(null);
+export const PreviewCarouselContext =
+  createContext<PreviewCarouselContextProps | null>(null);
 
-interface CarouselContextProviderProps {
-  slideConfig: SlideProps[];
+interface PreviewCarouselContextProviderProps {
+  slideConfig: PreviewCarouselCardProps[];
 }
-export const CarouselContextProvider: React.FC<
-  CarouselContextProviderProps & React.PropsWithChildren
+
+export const PreviewCarouselContextProvider: React.FC<
+  PreviewCarouselContextProviderProps & React.PropsWithChildren
 > = ({ slideConfig, children }) => {
   const config = slideConfig;
 
@@ -169,10 +171,10 @@ export const CarouselContextProvider: React.FC<
   };
 
   return (
-    <CarouselContext.Provider value={state}>
+    <PreviewCarouselContext.Provider value={state}>
       {children}
-    </CarouselContext.Provider>
+    </PreviewCarouselContext.Provider>
   );
 };
 
-export default CarouselContextProvider;
+export default PreviewCarouselContextProvider;

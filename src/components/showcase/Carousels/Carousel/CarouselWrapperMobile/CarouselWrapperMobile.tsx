@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 import styled, { css } from "styled-components";
-import { CarouselContext } from "../../utils/CarouselContextProvider";
+import { PreviewCarouselContext } from "../../utils/PreviewCarouselContextProvider";
 import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
 import {
   NEXT,
@@ -171,7 +171,7 @@ const StyledMuxVideo = styled(MuxVideo)`
 `;
 
 const CarouselWrapperMobile = () => {
-  const context = useContext(CarouselContext);
+  const context = useContext(PreviewCarouselContext);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useHandleEscapeKeypress(videoRef, () => context?.setIsVideoVisible(false));
@@ -260,7 +260,7 @@ const CarouselWrapperMobile = () => {
           />
           <PlayButton
             isButtonFocusable={!context?.isVideoVisible}
-            attribution={context?.activeName ?? ""}
+            videoTitle={context?.activeName ?? ""}
             onButtonClick={() => handlePlayButtonClick()}
           />
         </Active>

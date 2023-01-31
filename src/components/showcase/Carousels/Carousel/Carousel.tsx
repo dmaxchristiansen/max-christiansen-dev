@@ -6,7 +6,7 @@ import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
 import useHandleWindowResize, {
   isLessThanWidthThreshold,
 } from "src/utils/hooks/useHandleWindowResize";
-import { CarouselContext } from "../utils/CarouselContextProvider";
+import { PreviewCarouselContext } from "../utils/PreviewCarouselContextProvider";
 import QuotationMarkSvg from "src/components/svgs/QuotationMarkSvg/QuotationMarkSvg";
 import CarouselWrapper from "./CarouselWrapper/CarouselWrapper";
 import CarouselWrapperMobile from "./CarouselWrapperMobile/CarouselWrapperMobile";
@@ -40,7 +40,7 @@ const CopyContainer = styled.div`
 `;
 
 const Carousel: React.FC = () => {
-  const context = useContext(CarouselContext);
+  const context = useContext(PreviewCarouselContext);
   const isMobile = useHandleWindowResize(isLessThanWidthThreshold(767));
 
   return (
