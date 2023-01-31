@@ -8,7 +8,3 @@ export interface PreviewCarouselCardProps {
   backgroundImageUrl: string;
   muxVideoId: string;
 }
-
-export interface PreviewCarouselProps {
-  cardConfig: PreviewCarouselCardProps[];
-}

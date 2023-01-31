@@ -1,14 +1,15 @@
-import rileyRiver from "src/images/VideoCarousel/riley-river.jpg";
-import fcrnrwSky from "src/images/VideoCarousel/fcrnrw-sky.jpg";
-import owyheeSunset from "src/images/VideoCarousel/owyhee-sunset.jpg";
-import magnoliaVp from "src/images/VideoCarousel/magnolia-vp.jpg";
-import shintoVp from "src/images/VideoCarousel/shinto-vp.jpg";
-import bessVp from "src/images/VideoCarousel/bess-vp.jpg";
-import tydeVp from "src/images/VideoCarousel/tyde-vp.jpg";
-import magnoliaT from "src/images/VideoCarousel/magnolia-t.jpg";
-import shintoT from "src/images/VideoCarousel/shinto-t.jpg";
-import bessT from "src/images/VideoCarousel/bess-t.jpg";
-import tydeT from "src/images/VideoCarousel/tyde-t.jpg";
+import rileyRiver from "src/images/Slider/riley-river.jpg";
+import fcrnrwSky from "src/images/Slider/fcrnrw-sky.jpg";
+import owyheeSunset from "src/images/Slider/owyhee-sunset.jpg";
+
+import magnoliaVp from "src/images/PreviewCarousel/magnolia-vp.jpg";
+import shintoVp from "src/images/PreviewCarousel/shinto-vp.jpg";
+import bessVp from "src/images/PreviewCarousel/bess-vp.jpg";
+import tydeVp from "src/images/PreviewCarousel/tyde-vp.jpg";
+import magnoliaT from "src/images/PreviewCarousel/magnolia-t.jpg";
+import shintoT from "src/images/PreviewCarousel/shinto-t.jpg";
+import bessT from "src/images/PreviewCarousel/bess-t.jpg";
+import tydeT from "src/images/PreviewCarousel/tyde-t.jpg";
 
 export const buttonConfig = [
   { index: 0, label: "←" },

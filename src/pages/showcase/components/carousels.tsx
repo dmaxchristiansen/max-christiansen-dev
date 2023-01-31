@@ -39,7 +39,7 @@ const Description = styled.p`
 const CarouselsPage = () => (
   <Layout>
     <ComponentHeader text="Carousels" />
-    <Header>&lt;VideoSlider/&gt;</Header>
+    <Header>&lt;Slider/&gt;</Header>
     <Description>
       A simple sliding video carousel featuring some videos I have made
     </Description>
