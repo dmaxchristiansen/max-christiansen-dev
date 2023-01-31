@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import GlobalStyle from "../../../styles/GlobalStyle";
 import {
-  ELECTRIC_PURPLE,
+  TRANSLUCENT_ELECTRIC_PURPLE,
   OBSIDIAN,
   JELLYBEAN,
 } from "src/utils/constants/colors";
@@ -17,7 +17,10 @@ const Background = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: radial-gradient(${ELECTRIC_PURPLE} 0%, transparent 70%),
+  background: radial-gradient(
+      ${TRANSLUCENT_ELECTRIC_PURPLE} 0%,
+      transparent 70%
+    ),
     linear-gradient(${OBSIDIAN} 40%, ${JELLYBEAN} 70%);
 `;
 

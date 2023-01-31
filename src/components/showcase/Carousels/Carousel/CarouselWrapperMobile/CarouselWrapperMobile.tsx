@@ -8,7 +8,7 @@ import {
   SHARED_NAV_BUTTON_ROW_STYLES,
   SHARED_NAV_BUTTON_STYLES,
 } from "../../utils/constants";
-import { LIGHT_GRAY, GRAY } from "src/utils/constants/colors";
+import { WHITE_SMOKE, GRAY_DAY } from "src/utils/constants/colors";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { Z_TEN } from "src/utils/constants/layers";
 import { OPACITY_FADE } from "src/utils/constants/animations";
@@ -112,14 +112,14 @@ const NavButton = styled.button`
   height: 48px;
   width: 48px;
   margin: 0 5px 0;
-  background-color: ${LIGHT_GRAY};
+  background-color: ${WHITE_SMOKE};
   font-size: 32px;
   &:hover {
-    background-color: ${GRAY};
+    background-color: ${GRAY_DAY};
   }
   &:disabled {
     opacity: ${OPACITY_FADE};
-    background-color: ${GRAY};
+    background-color: ${GRAY_DAY};
   }
 `;
 

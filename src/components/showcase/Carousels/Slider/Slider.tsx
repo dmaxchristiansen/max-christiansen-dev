@@ -1,14 +1,19 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
+import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import {
   SliderProps,
   SliderLengthProps,
   ActiveIndexProps,
 } from "src/components/showcase/Carousels/types/slider";
 import Slide from "./Slide/Slide";
-import { BLACK } from "src/utils/constants/colors";
+import {
+  BLACK,
+  GRAY_DAY,
+  STORM_CLOUD,
+  WHITE_SMOKE,
+} from "src/utils/constants/colors";
 
 const Container = styled.div`
   display: flex;
@@ -57,10 +62,11 @@ const SharedButtonStyles = css`
   width: 48px;
   margin: 0;
   padding: 4px;
-  background-color: #dddddd;
+  background-color: ${WHITE_SMOKE};
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color ${TWO_FIFTY_MS};
   &:before {
     position: absolute;
     top: -3px;
@@ -69,10 +75,11 @@ const SharedButtonStyles = css`
     color: ${BLACK};
   }
   &:hover:enabled {
-    background-color: #bcbcbc;
+    background-color: ${GRAY_DAY};
   }
   &:disabled {
-    background-color: #848484;
+    background-color: ${STORM_CLOUD};
+    cursor: auto;
   }
   @media (max-width: 767px) {
     height: 36px;

@@ -25,7 +25,8 @@ const Header = styled.h2`
 `;
 
 const Description = styled.p`
-  margin: 0 0 24px;
+  max-width: 700px;
+  margin: 0 auto 24px;
   padding: ${STANDARD_X_PADDING};
   text-align: center;
   font-size: 20px;
@@ -41,14 +42,12 @@ const CarouselsPage = () => (
     <Description>
       A simple sliding video carousel featuring some videos I have made
     </Description>
-
     <Slider slideConfig={sliderConfig} />
     <Header>&lt;PreviewCarousel/&gt;</Header>
     <Description>
       A more complex, infinitely looped video carousel that pairs a featured
       slide/video with a quote and credentials
     </Description>
-
     <VideoCarousel {...carouselConfig} />
     <BackLink />
   </Layout>

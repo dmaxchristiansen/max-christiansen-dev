@@ -6,7 +6,7 @@ import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import {
   BLUE_EYES,
   GRIMACE,
-  NAV_BACKGROUND_COLOR,
+  NAV_TRANSLUCENT,
 } from "src/utils/constants/colors";
 import { DARK_SHADOW, NAV_BACKDROP_FILTER } from "src/utils/constants/shadows";
 import { NAV_PADDING, STANDARD_WIDTH } from "src/utils/constants/layouts";
@@ -29,7 +29,7 @@ const NavContainer = styled.nav<NavContainerProps>`
   z-index: ${Z_ONE_THOUSAND};
   @media (min-width: 992px) {
     background-color: ${({ isScrolled }) =>
-      isScrolled ? NAV_BACKGROUND_COLOR : "transparent"};
+      isScrolled ? NAV_TRANSLUCENT : "transparent"};
     box-shadow: ${({ isScrolled }) => (isScrolled ? DARK_SHADOW : "none")};
     backdrop-filter: ${({ isScrolled }) =>
       isScrolled ? NAV_BACKDROP_FILTER : "none"};

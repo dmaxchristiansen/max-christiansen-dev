@@ -9,7 +9,7 @@ import {
   SHARED_NAV_BUTTON_STYLES,
   SHARED_NAV_BUTTON_ROW_STYLES,
 } from "../../utils/constants";
-import { LIGHT_GRAY, GRAY } from "src/utils/constants/colors";
+import { WHITE_SMOKE, GRAY_DAY } from "src/utils/constants/colors";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { OPACITY_FADE } from "src/utils/constants/animations";
 import { Z_TWENTY } from "src/utils/constants/layers";
@@ -139,14 +139,14 @@ const NavButton = styled.button<NavButtonProps>`
   width: 48px;
   margin-right: ${({ index }) => (index === 0 ? "24px" : "0")};
   margin-left: ${({ index }) => (index === 0 ? "0" : "24px")};
-  background-color: ${LIGHT_GRAY};
+  background-color: ${WHITE_SMOKE};
   font-size: 32px;
   &:hover {
-    background-color: ${GRAY};
+    background-color: ${GRAY_DAY};
   }
   &:disabled {
     opacity: ${OPACITY_FADE};
-    background-color: ${GRAY};
+    background-color: ${GRAY_DAY};
   }
   @media (min-width: 992px) {
     height: 64px;

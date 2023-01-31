@@ -2,15 +2,15 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import {
-  FUTURE_BLUE,
+  TRANSLUCENT_BLUE_FUTURE,
   PURPLE_PASTEL,
   CANDY_BLUE,
-  MAVEN_BLUE,
-  BLUE_DREAM,
+  TRANSLUCENT_MAVEN_BLUE,
+  TRANSLUCENT_BLUE_DREAM,
   BLUE_EYES,
   WHITE,
   PEACHY,
-  GRIMACE_LIGHTLY,
+  EGGPLANT,
   PURPLE_HAZE,
   BLUE_GRAY,
   BLUE_GRIMLY,
@@ -57,17 +57,17 @@ const Grid = styled.div<InViewProps>`
   width: 200%;
   background: linear-gradient(
       transparent 65%,
-      ${FUTURE_BLUE} 75%,
+      ${TRANSLUCENT_BLUE_FUTURE} 75%,
       ${PURPLE_PASTEL} 80%,
-      ${FUTURE_BLUE} 85%,
+      ${TRANSLUCENT_BLUE_FUTURE} 85%,
       transparent 95%
     ),
     linear-gradient(
       90deg,
       transparent 65%,
-      ${FUTURE_BLUE} 75%,
+      ${TRANSLUCENT_BLUE_FUTURE} 75%,
       ${PURPLE_PASTEL} 80%,
-      ${FUTURE_BLUE} 85%,
+      ${TRANSLUCENT_BLUE_FUTURE} 85%,
       transparent 95%
     );
   background-size: 30px 30px;
@@ -83,13 +83,13 @@ const Lines = styled.div<InViewProps>`
   height: 72px;
   width: 100%;
   background: linear-gradient(
-    ${MAVEN_BLUE} 20%,
+    ${TRANSLUCENT_MAVEN_BLUE} 20%,
     ${CANDY_BLUE} 40%,
     ${CANDY_BLUE} 60%,
-    ${MAVEN_BLUE} 80%
+    ${TRANSLUCENT_MAVEN_BLUE} 80%
   );
   background-size: 1px 8px;
-  box-shadow: 0 0 16px ${BLUE_DREAM};
+  box-shadow: 0 0 16px ${TRANSLUCENT_BLUE_DREAM};
   transform: ${({ inView }) =>
     inView ? "translateY(-26px)" : "translateY(-1000px)"};
   transition: transform ${TWO_THOUSAND_MS} ${TWO_FIFTY_MS};
@@ -251,9 +251,9 @@ const StyledLink = styled(Link).withConfig({
   padding: 15px 25px;
   box-shadow: ${WIDE_BLUE_GLOW};
   background-color: ${BLUE_EYES};
-  border: 4px solid ${GRIMACE_LIGHTLY};
+  border: 4px solid ${EGGPLANT};
   border-radius: 16px;
-  color: ${GRIMACE_LIGHTLY};
+  color: ${EGGPLANT};
   font-weight: 700;
   font-size: 28px;
   letter-spacing: 2px;
@@ -264,7 +264,7 @@ const StyledLink = styled(Link).withConfig({
     opacity ${FIVE_HUNDRED_MS} ${FIFTY_FIVE_HUNDRED_MS};
   &:hover {
     box-shadow: ${WIDE_PINK_GLOW};
-    background-color: ${GRIMACE_LIGHTLY};
+    background-color: ${EGGPLANT};
     border: 4px solid ${BLUE_EYES};
     color: ${BLUE_EYES};
   }
