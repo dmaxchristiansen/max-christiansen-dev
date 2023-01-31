@@ -1,10 +1,5 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import {
-  Quote,
-  Attribution,
-  Title,
-} from "src/components/showcase/carousels/utils/constants";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
 import {
@@ -16,8 +11,8 @@ import useHandleWindowResize, {
 } from "src/utils/hooks/useHandleWindowResize";
 import { PreviewCarouselContext } from "src/utils/providers/PreviewCarouselContextProvider";
 import QuotationMarkSvg from "src/components/svgs/QuotationMarkSvg/QuotationMarkSvg";
-import CarouselWrapper from "src/components/showcase/carousels/PreviewCarousel/CarouselWrapper/CarouselWrapper";
-import CarouselWrapperMobile from "src/components/showcase/carousels/PreviewCarousel/CarouselWrapperMobile/CarouselWrapperMobile";
+import CarouselController from "src/components/showcase/carousels/PreviewCarousel/CarouselController/CarouselController";
+import CarouselControllerMobile from "src/components/showcase/carousels/PreviewCarousel/CarouselControllerMobile/CarouselControllerMobile";
 
 const Container = styled.div`
   padding: ${STANDARD_X_PADDING};
@@ -63,6 +58,29 @@ const CopyContainer = styled.div`
   }
 `;
 
+export const Quote = styled.p`
+  margin: 16px 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 120%;
+  @media (min-width: 768px) {
+    margin: 32px 0 32px;
+    font-size: 22px;
+  }
+  @media (min-width: 992px) {
+    font-size: 26px;
+  }
+`;
+
+export const Attribution = styled.p`
+  margin: 0 0 8px 0;
+  font-size: 18px;
+`;
+
+export const Title = styled.p`
+  margin: 0;
+`;
+
 const PreviewCarousel = () => {
   const context = useContext(PreviewCarouselContext);
   const isMobile = useHandleWindowResize(isLessThanWidthThreshold(767));
@@ -79,7 +97,7 @@ const PreviewCarousel = () => {
             <Attribution>{context?.activeName}</Attribution>
             <Title>{context?.activeTitle}</Title>
           </CopyContainer>
-          {!isMobile ? <CarouselWrapper /> : <CarouselWrapperMobile />}
+          {!isMobile ? <CarouselController /> : <CarouselControllerMobile />}
         </InternalWrapper>
       </ExternalWrapper>
     </Container>

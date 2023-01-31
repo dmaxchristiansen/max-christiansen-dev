@@ -7,13 +7,14 @@ import {
   SliderLengthProps,
   ActiveIndexProps,
 } from "src/components/showcase/carousels/types/slider";
-import Slide from "./Slide/Slide";
 import {
   BLACK,
   GRAY_DAY,
   STORM_CLOUD,
   WHITE_SMOKE,
 } from "src/utils/constants/colors";
+import Slide from "./Slide/Slide";
+import { LIGHT_SHADOW } from "src/utils/constants/shadows";
 
 const Container = styled.div`
   display: flex;
@@ -65,6 +66,7 @@ const SharedButtonStyles = css`
   background-color: ${WHITE_SMOKE};
   border: none;
   border-radius: 5px;
+  box-shadow: ${LIGHT_SHADOW};
   cursor: pointer;
   transition: background-color ${TWO_FIFTY_MS};
   &:before {

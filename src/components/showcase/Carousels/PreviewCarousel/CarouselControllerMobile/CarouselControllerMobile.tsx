@@ -14,16 +14,13 @@ import { Z_TEN } from "src/utils/constants/layers";
 import { OPACITY_FADE } from "src/utils/constants/animations";
 import MuxVideo from "@mux/mux-video-react";
 import {
-  ActionProps,
   VisibilityProps,
-} from "../CarouselWrapper/CarouselWrapper";
+  ActionProps,
+  TransitionProps,
+} from "src/components/showcase/carousels/types/previewCarousel";
 import { buttonConfig } from "src/components/showcase/carousels/utils/configs";
 import CloseButton from "src/components/showcase/carousels/sharedComponents/CloseButton/CloseButton";
 import PlayButton from "src/components/showcase/carousels/sharedComponents/PlayButton/PlayButton";
-
-interface TransitionProps {
-  isTransitioned: boolean | undefined;
-}
 
 const Wrapper = styled.div`
   display: flex;
@@ -170,7 +167,7 @@ const StyledMuxVideo = styled(MuxVideo)`
   border-radius: 16px;
 `;
 
-const CarouselWrapperMobile = () => {
+const CarouselControllerMobile = () => {
   const context = useContext(PreviewCarouselContext);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -292,4 +289,4 @@ const CarouselWrapperMobile = () => {
   );
 };
 
-export default CarouselWrapperMobile;
+export default CarouselControllerMobile;

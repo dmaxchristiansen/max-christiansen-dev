@@ -3,29 +3,21 @@ import styled, { css } from "styled-components";
 import useHandleEscapeKeypress from "src/components/showcase/carousels/utils/useHandleEscapeKeypress";
 import { PreviewCarouselContext } from "src/utils/providers/PreviewCarouselContextProvider";
 import { buttonConfig } from "src/components/showcase/carousels/utils/configs";
-import {
-  NEXT,
-  PREV,
-  SHARED_NAV_BUTTON_STYLES,
-  SHARED_NAV_BUTTON_ROW_STYLES,
-} from "src/components/showcase/carousels/utils/constants";
-import { WHITE_SMOKE, GRAY_DAY } from "src/utils/constants/colors";
+import { NEXT, PREV } from "src/components/showcase/carousels/utils/constants";
+import { WHITE_SMOKE, GRAY_DAY, BLACK } from "src/utils/constants/colors";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { OPACITY_FADE } from "src/utils/constants/animations";
-import { Z_TWENTY } from "src/utils/constants/layers";
+import { Z_TWENTY, Z_TEN } from "src/utils/constants/layers";
+import { LIGHT_SHADOW } from "src/utils/constants/shadows";
+import {
+  VisibilityProps,
+  ActionProps,
+} from "src/components/showcase/carousels/types/previewCarousel";
 import MuxVideo from "@mux/mux-video-react";
 import CloseButton from "src/components/showcase/carousels/sharedComponents/CloseButton/CloseButton";
 import PlayButton from "src/components/showcase/carousels/sharedComponents/PlayButton/PlayButton";
 
-export interface VisibilityProps {
-  isVisible: boolean | undefined;
-}
-
-export interface ActionProps {
-  action: "prev" | "next" | "reset" | undefined;
-}
-
-const Wrapper = styled.div`
+const ExternalWrapper = styled.div`
   display: flex;
   position: relative;
   width: 100%;
@@ -33,7 +25,7 @@ const Wrapper = styled.div`
   border-radius: 16px;
 `;
 
-const SlidesContainer = styled.div`
+const InternalWrapper = styled.div`
   display: flex;
   position: absolute;
   left: -50%;
@@ -120,10 +112,13 @@ const PrevClone = styled.div<ActionProps & VisibilityProps>`
 `;
 
 const NavButtonRow = styled.div`
-  ${SHARED_NAV_BUTTON_ROW_STYLES}
+  display: flex;
+  justify-content: center;
+  position: absolute;
   top: calc(70% - 24px);
   right: 0;
   width: 54.5%;
+  z-index: ${Z_TEN};
   @media (min-width: 992px) {
     top: calc(70% - 32px);
   }
@@ -134,13 +129,19 @@ interface NavButtonProps {
 }
 
 const NavButton = styled.button<NavButtonProps>`
-  ${SHARED_NAV_BUTTON_STYLES}
   height: 48px;
   width: 48px;
   margin-right: ${({ index }) => (index === 0 ? "24px" : "0")};
   margin-left: ${({ index }) => (index === 0 ? "0" : "24px")};
+  padding: 0;
+  border: none;
+  border-radius: 4px;
   background-color: ${WHITE_SMOKE};
+  box-shadow: ${LIGHT_SHADOW};
+  color: ${BLACK};
   font-size: 32px;
+  cursor: pointer;
+  transition: background ${TWO_FIFTY_MS};
   &:hover {
     background-color: ${GRAY_DAY};
   }
@@ -165,7 +166,7 @@ const VideoContainer = styled.div<VisibilityProps>`
   transition: top ${FIVE_HUNDRED_MS} ease-in-out;
 `;
 
-const CarouselWrapper = () => {
+const CarouselController = () => {
   const context = useContext(PreviewCarouselContext);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -197,12 +198,11 @@ const CarouselWrapper = () => {
   };
 
   return (
-    <Wrapper>
-      <SlidesContainer>
+    <ExternalWrapper>
+      <InternalWrapper>
         <NextClone action={context?.action} isVisible={context?.isAnimated}>
           <SlideImage src={context?.nextCloneThumbnailUrl} alt="" />
         </NextClone>
-
         <Active isVisible={!context?.isAnimated}>
           <SlideImage
             src={context?.activeThumbnailUrl}
@@ -244,7 +244,7 @@ const CarouselWrapper = () => {
         <PrevClone action={context?.action} isVisible={context?.isAnimated}>
           <SlideImage src={context?.prevCloneThumbnailUrl} alt="" />
         </PrevClone>
-      </SlidesContainer>
+      </InternalWrapper>
       <NavButtonRow>
         {buttonConfig.map(button => (
           <NavButton
@@ -274,8 +274,8 @@ const CarouselWrapper = () => {
           onButtonClick={() => context?.setIsVideoVisible(false)}
         />
       </VideoContainer>
-    </Wrapper>
+    </ExternalWrapper>
   );
 };
 
-export default CarouselWrapper;
+export default CarouselController;
