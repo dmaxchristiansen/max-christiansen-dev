@@ -3,7 +3,7 @@ import { SlideProps } from "../types/videoCarousel";
 import { NEXT, PREV, RESET, ACTION_TIMEOUT } from "./constants";
 
 interface CarouselContextProps {
-  videoPlaybackId: string;
+  muxVideoId: string;
   activeIndex: number;
   activePreviewUrl: string;
   activeThumbnailUrl: string;
@@ -102,43 +102,43 @@ export const CarouselContextProvider: React.FC<
     }, ACTION_TIMEOUT);
   };
 
-  const videoPlaybackId = config[activeIndex].videoPlaybackId;
+  const muxVideoId = config[activeIndex].muxVideoId;
 
-  const activePreviewUrl = config[activeIndex].videoPreviewImageUrl;
+  const activePreviewUrl = config[activeIndex].backgroundImageUrl;
   const activeThumbnailUrl = config[activeIndex].thumbnailImageUrl;
   const activeQuote = config[activeIndex].quote;
   const activeTitle = config[activeIndex].title;
   const activeName = config[activeIndex].attribution;
 
   const secondThumbnailUrl = config[secondIndex].thumbnailImageUrl;
-  const secondPreviewUrl = config[secondIndex].videoPreviewImageUrl;
+  const secondPreviewUrl = config[secondIndex].backgroundImageUrl;
   const secondAltText = config[secondIndex].attribution;
 
   const thirdThumbnailUrl = config[thirdIndex].thumbnailImageUrl;
-  const thirdPreviewUrl = config[thirdIndex].videoPreviewImageUrl;
+  const thirdPreviewUrl = config[thirdIndex].backgroundImageUrl;
   const thirdAltText = config[thirdIndex].attribution;
 
   const animatedActiveThumbnailUrl =
     config[animatedActiveIndex].thumbnailImageUrl;
   const animatedActivePreviewUrl =
-    config[animatedActiveIndex].videoPreviewImageUrl;
+    config[animatedActiveIndex].backgroundImageUrl;
 
   const animatedSecondThumbnailUrl =
     config[animatedSecondIndex].thumbnailImageUrl;
   const animatedSecondPreviewUrl =
-    config[animatedSecondIndex].videoPreviewImageUrl;
+    config[animatedSecondIndex].backgroundImageUrl;
 
   const animatedThirdThumbnailUrl =
     config[animatedThirdIndex].thumbnailImageUrl;
 
   const nextCloneThumbnailUrl = config[nextCloneIndex].thumbnailImageUrl;
-  const nextClonePreviewUrl = config[nextCloneIndex].videoPreviewImageUrl;
+  const nextClonePreviewUrl = config[nextCloneIndex].backgroundImageUrl;
 
   const prevCloneThumbnailUrl = config[prevCloneIndex].thumbnailImageUrl;
-  const prevClonePreviewUrl = config[prevCloneIndex].videoPreviewImageUrl;
+  const prevClonePreviewUrl = config[prevCloneIndex].backgroundImageUrl;
 
   const state = {
-    videoPlaybackId,
+    muxVideoId,
     activeIndex,
     activePreviewUrl,
     activeThumbnailUrl,

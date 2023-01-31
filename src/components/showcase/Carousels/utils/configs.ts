@@ -45,8 +45,8 @@ export const carouselConfig = {
       title: "VP Operations",
       quote: "You only live once, but if you do it right, once is enough.",
       thumbnailImageUrl: magnoliaT,
-      videoPreviewImageUrl: magnoliaVp,
-      videoPlaybackId: "feho00uzABfveO2Y7uywrzPDMYUzLI9aYq3P00wClFkls",
+      backgroundImageUrl: magnoliaVp,
+      muxVideoId: "79SERkdtyLoIhAg3b3IcAuTYEqR2tqDbkNItHoXvh78",
     },
     {
       index: 1,
@@ -55,8 +55,8 @@ export const carouselConfig = {
       title: "Alpine Guide",
       quote: "Whether you think you can or you think you can't, you're right.",
       thumbnailImageUrl: shintoT,
-      videoPreviewImageUrl: shintoVp,
-      videoPlaybackId: "pfPeX9Rgf3vGMrw3MMLOvy3YhqQIeLrjKs02P6HSRlCo",
+      backgroundImageUrl: shintoVp,
+      muxVideoId: "ajVABFnMsMBIdrwmL2E9QNOCm6AeFRI6vW02O58nfxAg",
     },
     {
       index: 2,
@@ -65,8 +65,8 @@ export const carouselConfig = {
       title: "Travel Author",
       quote: "Those who dare to fail miserably can achieve greatly.",
       thumbnailImageUrl: bessT,
-      videoPreviewImageUrl: bessVp,
-      videoPlaybackId: "Ne02fNZy00hQF8G8NxN02QyJiGMn4fIKt9ggjNzxfyn3gQ",
+      backgroundImageUrl: bessVp,
+      muxVideoId: "Qaii01a0141dpGC7touUEVVIp5neWPX301rNPsGNudcD8s",
     },
     {
       index: 3,
@@ -75,8 +75,8 @@ export const carouselConfig = {
       title: "Bitcoin Journalist",
       quote: "Strive not to be a success, but rather to be of value.",
       thumbnailImageUrl: tydeT,
-      videoPreviewImageUrl: tydeVp,
-      videoPlaybackId: "jds0202ct6IcodQRhgeD5BbANCr2o0000HSHoijUSALQoXE",
+      backgroundImageUrl: tydeVp,
+      muxVideoId: "73xDfjmvAdr7302e4A7Ebz4gfZhjb00q02ENJGDcTSb9fc",
     },
   ],
 };

@@ -274,7 +274,7 @@ const CarouselWrapperMobile = () => {
           <StyledMuxVideo
             ref={videoRef}
             width="100%"
-            playbackId={context?.videoPlaybackId}
+            playbackId={context?.muxVideoId}
             poster={context?.activePreviewUrl}
             streamType="on-demand"
             controls={context?.isVideoVisible}

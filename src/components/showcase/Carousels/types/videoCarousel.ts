@@ -5,8 +5,8 @@ export interface SlideProps {
   title: string;
   quote: string;
   thumbnailImageUrl: string;
-  videoPreviewImageUrl: string;
-  videoPlaybackId: string;
+  backgroundImageUrl: string;
+  muxVideoId: string;
 }
 
 export interface VideoCarouselProps {
