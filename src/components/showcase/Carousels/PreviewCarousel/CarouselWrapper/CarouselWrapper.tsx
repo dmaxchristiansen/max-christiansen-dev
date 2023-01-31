@@ -1,21 +1,21 @@
 import { useContext, useRef } from "react";
 import styled, { css } from "styled-components";
-import useHandleEscapeKeypress from "../../utils/useHandleEscapeKeypress";
-import { PreviewCarouselContext } from "../../utils/PreviewCarouselContextProvider";
-import { buttonConfig } from "../../utils/configs";
+import useHandleEscapeKeypress from "src/components/showcase/carousels/utils/useHandleEscapeKeypress";
+import { PreviewCarouselContext } from "src/utils/providers/PreviewCarouselContextProvider";
+import { buttonConfig } from "src/components/showcase/carousels/utils/configs";
 import {
   NEXT,
   PREV,
   SHARED_NAV_BUTTON_STYLES,
   SHARED_NAV_BUTTON_ROW_STYLES,
-} from "../../utils/constants";
+} from "src/components/showcase/carousels/utils/constants";
 import { WHITE_SMOKE, GRAY_DAY } from "src/utils/constants/colors";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { OPACITY_FADE } from "src/utils/constants/animations";
 import { Z_TWENTY } from "src/utils/constants/layers";
 import MuxVideo from "@mux/mux-video-react";
-import CloseButton from "../../sharedComponents/CloseButton/CloseButton";
-import PlayButton from "../../sharedComponents/PlayButton/PlayButton";
+import CloseButton from "src/components/showcase/carousels/sharedComponents/CloseButton/CloseButton";
+import PlayButton from "src/components/showcase/carousels/sharedComponents/PlayButton/PlayButton";
 
 export interface VisibilityProps {
   isVisible: boolean | undefined;

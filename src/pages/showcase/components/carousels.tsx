@@ -2,14 +2,15 @@ import styled from "styled-components";
 import {
   sliderConfig,
   previewCarouselConfig,
-} from "src/components/showcase/Carousels/utils/configs";
+} from "src/components/showcase/carousels/utils/configs";
 import { BLUE_SKY } from "src/utils/constants/colors";
 import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
+import PreviewCarouselContextProvider from "src/utils/providers/PreviewCarouselContextProvider";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import ComponentHeader from "src/components/showcase/ComponentHeader/ComponentHeader";
-import Slider from "src/components/showcase/Carousels/Slider/Slider";
-import PreviewCarousel from "src/components/showcase/Carousels/PreviewCarousel";
+import Slider from "src/components/showcase/carousels/Slider/Slider";
+import PreviewCarousel from "src/components/showcase/carousels/PreviewCarousel/PreviewCarousel";
 import BackLink from "src/components/showcase/BackLink/BackLink";
 
 const Header = styled.h2`
@@ -48,7 +49,9 @@ const CarouselsPage = () => (
       A more complex, infinitely looped video carousel that pairs a featured
       slide/video with a quote and credentials
     </Description>
-    <PreviewCarousel slideConfig={previewCarouselConfig} />
+    <PreviewCarouselContextProvider cardConfig={previewCarouselConfig}>
+      <PreviewCarousel />
+    </PreviewCarouselContextProvider>
     <BackLink />
   </Layout>
 );

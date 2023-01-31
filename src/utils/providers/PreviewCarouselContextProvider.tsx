@@ -1,6 +1,11 @@
 import React, { useState, createContext } from "react";
-import { PreviewCarouselCardProps } from "../types/previewCarousel";
-import { NEXT, PREV, RESET, ACTION_TIMEOUT } from "./constants";
+import { PreviewCarouselCardProps } from "../../components/showcase/carousels/types/previewCarousel";
+import {
+  NEXT,
+  PREV,
+  RESET,
+  ACTION_TIMEOUT,
+} from "../../components/showcase/carousels/utils/constants";
 
 interface PreviewCarouselContextProps {
   muxVideoId: string;
@@ -37,13 +42,13 @@ export const PreviewCarouselContext =
   createContext<PreviewCarouselContextProps | null>(null);
 
 interface PreviewCarouselContextProviderProps {
-  slideConfig: PreviewCarouselCardProps[];
+  cardConfig: PreviewCarouselCardProps[];
 }
 
 export const PreviewCarouselContextProvider: React.FC<
   PreviewCarouselContextProviderProps & React.PropsWithChildren
-> = ({ slideConfig, children }) => {
-  const config = slideConfig;
+> = ({ cardConfig, children }) => {
+  const config = cardConfig;
 
   const COUNT = config.length;
 

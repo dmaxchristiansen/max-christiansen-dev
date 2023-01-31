@@ -6,7 +6,7 @@ import {
   SliderProps,
   SliderLengthProps,
   ActiveIndexProps,
-} from "src/components/showcase/Carousels/types/slider";
+} from "src/components/showcase/carousels/types/slider";
 import Slide from "./Slide/Slide";
 import {
   BLACK,

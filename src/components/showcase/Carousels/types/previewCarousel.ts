@@ -10,5 +10,5 @@ export interface PreviewCarouselCardProps {
 }
 
 export interface PreviewCarouselProps {
-  slideConfig: PreviewCarouselCardProps[];
+  cardConfig: PreviewCarouselCardProps[];
 }
