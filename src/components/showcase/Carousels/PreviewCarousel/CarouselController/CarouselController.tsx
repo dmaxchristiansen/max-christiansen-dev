@@ -17,7 +17,7 @@ import MuxVideo from "@mux/mux-video-react";
 import CloseButton from "src/components/showcase/carousels/sharedComponents/CloseButton/CloseButton";
 import PlayButton from "src/components/showcase/carousels/sharedComponents/PlayButton/PlayButton";
 
-const ExternalWrapper = styled.div`
+const OverflowContainer = styled.div`
   display: flex;
   position: relative;
   width: 100%;
@@ -25,7 +25,7 @@ const ExternalWrapper = styled.div`
   border-radius: 16px;
 `;
 
-const InternalWrapper = styled.div`
+const CarouselWrapper = styled.div`
   display: flex;
   position: absolute;
   left: -50%;
@@ -39,23 +39,43 @@ const SHARED_SLIDE_STYLES = css`
   aspect-ratio: 367 / 550;
 `;
 
-const NextClone = styled.div<ActionProps & VisibilityProps>`
-  ${SHARED_SLIDE_STYLES}
-  left: ${({ action }) => (action === NEXT ? "25%" : "0%")};
-  height: 100%;
-  transition: left ${TWO_FIFTY_MS};
-  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
-`;
-
-const SlideImage = styled.img`
+const Image = styled.img`
   width: 100%;
   border-radius: 16px;
   aspect-ratio: 367 / 550;
 `;
 
+const NextClone = styled.div<ActionProps & VisibilityProps>`
+  ${SHARED_SLIDE_STYLES}
+  /* top: 12.5%; */
+  left: ${({ action }) => (action === NEXT ? "25%" : "0%")};
+  height: 75%;
+  transition: left ${TWO_FIFTY_MS};
+  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
+`;
+
+const Next = styled.div<VisibilityProps>`
+  ${SHARED_SLIDE_STYLES}
+  /* top: 12.5%; */
+  left: 25%;
+  height: 75%;
+  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
+`;
+
+const AnimatedNext = styled.div<ActionProps & VisibilityProps>`
+  ${SHARED_SLIDE_STYLES}
+  /* top: ${({ action }) => (action === NEXT ? "0" : "12.5%")}; */
+  left: ${({ action }) =>
+    action === PREV ? "0%" : action === NEXT ? "40.62%" : "25%"};
+  height: ${({ action }) => (action === NEXT ? "100%" : "75%")};
+  transition-property: left, height;
+  transition-duration: ${TWO_FIFTY_MS};
+  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
+`;
+
 const Active = styled.div<VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  left: 25%;
+  left: 40.62%;
   height: 100%;
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
@@ -63,51 +83,36 @@ const Active = styled.div<VisibilityProps>`
 const AnimatedActive = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
   left: ${({ action }) =>
-    action === PREV ? "0%" : action === NEXT ? "47.5%" : "25%"};
-  height: ${({ action }) => (action === "next" ? "70%" : "100%")};
+    action === PREV ? "25%" : action === NEXT ? "60.93%" : "40.62%"};
+  height: ${({ action }) =>
+    action === PREV || action === NEXT ? "75%" : "100%"};
   transition-property: left, height;
   transition-duration: ${TWO_FIFTY_MS};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
-const Second = styled.div<VisibilityProps>`
+const Prev = styled.div<VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  left: 47.5%;
-  height: 70%;
-  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
-`;
-
-const AnimatedSecond = styled.div<ActionProps & VisibilityProps>`
-  ${SHARED_SLIDE_STYLES}
-  left: ${({ action }) =>
-    action === PREV ? "25%" : action === NEXT ? "61.85%" : "47.5%"};
-  height: ${({ action }) => (action === PREV ? "100%" : "70%")};
-  transition-property: left, height;
-  transition-duration: ${TWO_FIFTY_MS};
-  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
-`;
-
-const Third = styled.div<VisibilityProps>`
-  ${SHARED_SLIDE_STYLES}
-  left: 61.85%;
-  height: 70%;
+  left: 60.93%;
+  height: 75%;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
 `;
 
-const AnimatedThird = styled.div<ActionProps & VisibilityProps>`
+const AnimatedPrev = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
   left: ${({ action }) =>
-    action === PREV ? "47.5%" : action === NEXT ? "76%" : "61.85%"};
-  height: 70%;
-  transition: left ${TWO_FIFTY_MS};
+    action === PREV ? "40.62%" : action === NEXT ? "76%" : "60.93%"};
+  height: ${({ action }) => (action === PREV ? "100%" : "75%")};
+  transition-property: left, height;
+  transition-duration: ${TWO_FIFTY_MS};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
 const PrevClone = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  left: ${({ action }) => (action === PREV ? "61.85%" : "76%")};
+  left: ${({ action }) => (action === PREV ? "60.93%" : "76%")};
   transition: left ${TWO_FIFTY_MS};
-  height: 70%;
+  height: 75%;
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
@@ -117,10 +122,10 @@ const NavButtonRow = styled.div`
   position: absolute;
   top: calc(70% - 24px);
   right: 0;
-  width: 54.5%;
+  width: 100%;
   z-index: ${Z_TEN};
   @media (min-width: 992px) {
-    top: calc(70% - 32px);
+    top: calc(100% - 32px);
   }
 `;
 
@@ -198,83 +203,88 @@ const CarouselController = () => {
   };
 
   return (
-    <ExternalWrapper>
-      <InternalWrapper>
-        <NextClone action={context?.action} isVisible={context?.isAnimated}>
-          <SlideImage src={context?.nextCloneThumbnailUrl} alt="" />
-        </NextClone>
-        <Active isVisible={!context?.isAnimated}>
-          <SlideImage
-            src={context?.activeThumbnailUrl}
-            alt={context?.activeName}
-          />
-          <PlayButton
-            isButtonFocusable={!context?.isVideoVisible}
-            videoTitle={context?.activeName ?? ""}
-            onButtonClick={() => handlePlayButtonClick()}
-          />
-        </Active>
-        <AnimatedActive
-          action={context?.action}
-          isVisible={context?.isAnimated}
-        >
-          <SlideImage src={context?.animatedActiveThumbnailUrl} alt="" />
-        </AnimatedActive>
-        <Second isVisible={!context?.isAnimated}>
-          <SlideImage
-            src={context?.secondThumbnailUrl}
-            alt={context?.secondAltText}
-          />
-        </Second>
-        <AnimatedSecond
-          action={context?.action}
-          isVisible={context?.isAnimated}
-        >
-          <SlideImage src={context?.animatedSecondThumbnailUrl} alt="" />
-        </AnimatedSecond>
-        <Third isVisible={!context?.isAnimated}>
-          <SlideImage
-            src={context?.thirdThumbnailUrl}
-            alt={context?.thirdAltText}
-          />
-        </Third>
-        <AnimatedThird action={context?.action} isVisible={context?.isAnimated}>
-          <SlideImage src={context?.animatedThirdThumbnailUrl} alt="" />
-        </AnimatedThird>
-        <PrevClone action={context?.action} isVisible={context?.isAnimated}>
-          <SlideImage src={context?.prevCloneThumbnailUrl} alt="" />
-        </PrevClone>
-      </InternalWrapper>
-      <NavButtonRow>
-        {buttonConfig.map(button => (
-          <NavButton
-            key={button.label}
-            index={button.index}
-            disabled={context?.isAnimated}
-            onClick={e => handleNavButtonClick(e, button.index)}
+    <>
+      <OverflowContainer>
+        <CarouselWrapper>
+          <NextClone action={context?.action} isVisible={context?.isAnimated}>
+            <Image src={context?.nextCloneThumbnailUrl} alt="" />
+          </NextClone>
+          <Next isVisible={!context?.isAnimated}>
+            <Image
+              src={context?.activeThumbnailUrl}
+              alt={context?.activeName}
+            />
+          </Next>
+          <AnimatedNext
+            action={context?.action}
+            isVisible={context?.isAnimated}
           >
-            {button.label}
-          </NavButton>
-        ))}
-      </NavButtonRow>
-      <VideoContainer isVisible={context?.isVideoVisible}>
-        <MuxVideo
-          ref={videoRef}
-          width="100%"
-          playbackId={context?.muxVideoId}
-          poster={context?.activePreviewUrl}
-          streamType="on-demand"
-          controls={context?.isVideoVisible}
-          loop
-          playsInline
-        />
-        <CloseButton
-          isButtonFocusable={context?.isVideoVisible ?? false}
-          videoRef={videoRef}
-          onButtonClick={() => context?.setIsVideoVisible(false)}
-        />
-      </VideoContainer>
-    </ExternalWrapper>
+            <Image src={context?.animatedActiveThumbnailUrl} alt="" />
+          </AnimatedNext>
+          <Active isVisible={!context?.isAnimated}>
+            <Image
+              src={context?.secondThumbnailUrl}
+              alt={context?.secondAltText}
+            />
+            <PlayButton
+              isButtonFocusable={!context?.isVideoVisible}
+              videoTitle={context?.activeName ?? ""}
+              onButtonClick={() => handlePlayButtonClick()}
+            />
+          </Active>
+          <AnimatedActive
+            action={context?.action}
+            isVisible={context?.isAnimated}
+          >
+            <Image src={context?.animatedSecondThumbnailUrl} alt="" />
+          </AnimatedActive>
+          <Prev isVisible={!context?.isAnimated}>
+            <Image
+              src={context?.thirdThumbnailUrl}
+              alt={context?.thirdAltText}
+            />
+          </Prev>
+          <AnimatedPrev
+            action={context?.action}
+            isVisible={context?.isAnimated}
+          >
+            <Image src={context?.animatedThirdThumbnailUrl} alt="" />
+          </AnimatedPrev>
+          <PrevClone action={context?.action} isVisible={context?.isAnimated}>
+            <Image src={context?.prevCloneThumbnailUrl} alt="" />
+          </PrevClone>
+        </CarouselWrapper>
+        <NavButtonRow>
+          {buttonConfig.map(button => (
+            <NavButton
+              key={button.label}
+              index={button.index}
+              disabled={context?.isAnimated}
+              onClick={e => handleNavButtonClick(e, button.index)}
+            >
+              {button.label}
+            </NavButton>
+          ))}
+        </NavButtonRow>
+        <VideoContainer isVisible={context?.isVideoVisible}>
+          <MuxVideo
+            ref={videoRef}
+            width="100%"
+            playbackId={context?.muxVideoId}
+            poster={context?.activePreviewUrl}
+            streamType="on-demand"
+            controls={context?.isVideoVisible}
+            loop
+            playsInline
+          />
+          <CloseButton
+            isButtonFocusable={context?.isVideoVisible ?? false}
+            videoRef={videoRef}
+            onButtonClick={() => context?.setIsVideoVisible(false)}
+          />
+        </VideoContainer>
+      </OverflowContainer>
+    </>
   );
 };
 
