@@ -47,7 +47,7 @@ const CarouselsPage = () => (
     <Header>&lt;PreviewCarousel/&gt;</Header>
     <Description>
       A more complex, infinitely looped video carousel that renders previous and
-      next slide previews
+      next slide previews - populated with placeholder content
     </Description>
     <PreviewCarouselContextProvider cardConfig={previewCarouselConfig}>
       <PreviewCarousel />

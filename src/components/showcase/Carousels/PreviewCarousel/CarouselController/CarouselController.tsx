@@ -43,7 +43,6 @@ const Image = styled.img`
 
 const NextClone = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  /* top: 12.5%; */
   left: ${({ action }) => (action === NEXT ? "25%" : "0%")};
   height: 75%;
   transition: left ${TWO_FIFTY_MS};
@@ -52,7 +51,6 @@ const NextClone = styled.div<ActionProps & VisibilityProps>`
 
 const Next = styled.div<VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  /* top: 12.5%; */
   left: 25%;
   height: 75%;
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
@@ -60,7 +58,6 @@ const Next = styled.div<VisibilityProps>`
 
 const AnimatedNext = styled.div<ActionProps & VisibilityProps>`
   ${SHARED_SLIDE_STYLES}
-  /* top: ${({ action }) => (action === NEXT ? "0" : "12.5%")}; */
   left: ${({ action }) =>
     action === PREV ? "0%" : action === NEXT ? "40.62%" : "25%"};
   height: ${({ action }) => (action === NEXT ? "100%" : "75%")};
@@ -150,10 +147,7 @@ const CarouselController = () => {
             <Image src={context?.nextCloneThumbnailUrl} alt="" />
           </NextClone>
           <Next isVisible={!context?.isAnimated}>
-            <Image
-              src={context?.activeThumbnailUrl}
-              alt={context?.activeName}
-            />
+            <Image src={context?.activeThumbnailUrl} alt={context?.activeAlt} />
           </Next>
           <AnimatedNext
             action={context?.action}
@@ -162,13 +156,10 @@ const CarouselController = () => {
             <Image src={context?.animatedActiveThumbnailUrl} alt="" />
           </AnimatedNext>
           <Active isVisible={!context?.isAnimated}>
-            <Image
-              src={context?.secondThumbnailUrl}
-              alt={context?.secondAltText}
-            />
+            <Image src={context?.secondThumbnailUrl} alt={context?.secondAlt} />
             <PlayButton
               isButtonFocusable={!context?.isVideoVisible}
-              videoTitle={context?.activeName ?? ""}
+              videoTitle={context?.activeAlt ?? ""}
               onButtonClick={() => handlePlayButtonClick()}
             />
           </Active>
@@ -179,10 +170,7 @@ const CarouselController = () => {
             <Image src={context?.animatedSecondThumbnailUrl} alt="" />
           </AnimatedActive>
           <Prev isVisible={!context?.isAnimated}>
-            <Image
-              src={context?.thirdThumbnailUrl}
-              alt={context?.thirdAltText}
-            />
+            <Image src={context?.thirdThumbnailUrl} alt={context?.thirdAlt} />
           </Prev>
           <AnimatedPrev
             action={context?.action}

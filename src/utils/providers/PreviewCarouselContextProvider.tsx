@@ -12,15 +12,19 @@ interface PreviewCarouselContextProps {
   activeIndex: number;
   activePreviewUrl: string;
   activeThumbnailUrl: string;
-  activeQuote: string;
-  activeName: string;
-  activeTitle: string;
+
+  activeAlt: string;
+
   secondThumbnailUrl: string;
   secondPreviewUrl: string;
-  secondAltText: string;
+
+  secondAlt: string;
+
   thirdThumbnailUrl: string;
   thirdPreviewUrl: string;
-  thirdAltText: string;
+
+  thirdAlt: string;
+
   animatedActiveThumbnailUrl: string;
   animatedActivePreviewUrl: string;
   animatedSecondThumbnailUrl: string;
@@ -48,15 +52,13 @@ interface PreviewCarouselContextProviderProps {
 export const PreviewCarouselContextProvider: React.FC<
   PreviewCarouselContextProviderProps & React.PropsWithChildren
 > = ({ cardConfig, children }) => {
-  const config = cardConfig;
-
-  const COUNT = config.length;
+  const cardConfigLength = cardConfig.length;
 
   const determineNext = (index: number) =>
-    index === 0 ? COUNT - 1 : index - 1;
+    index === 0 ? cardConfigLength - 1 : index - 1;
 
   const determinePrev = (index: number) =>
-    index === COUNT - 1 ? 0 : index + 1;
+    index === cardConfigLength - 1 ? 0 : index + 1;
 
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -70,7 +72,7 @@ export const PreviewCarouselContextProvider: React.FC<
   const [animatedSecondIndex, setAnimatedSecondIndex] = useState(1);
   const [animatedThirdIndex, setAnimatedThirdIndex] = useState(2);
 
-  const [nextCloneIndex, setNextCloneIndex] = useState(COUNT - 1);
+  const [nextCloneIndex, setNextCloneIndex] = useState(cardConfigLength - 1);
   const [prevCloneIndex, setPrevCloneIndex] = useState(determinePrev(2));
 
   const [isVideoVisible, setIsVideoVisible] = useState(false);
@@ -109,55 +111,60 @@ export const PreviewCarouselContextProvider: React.FC<
     }, ACTION_TIMEOUT);
   };
 
-  const muxVideoId = config[activeIndex].muxVideoId;
+  const muxVideoId = cardConfig[activeIndex].muxVideoId;
 
-  const activePreviewUrl = config[activeIndex].backgroundImageUrl;
-  const activeThumbnailUrl = config[activeIndex].thumbnailImageUrl;
-  const activeQuote = config[activeIndex].quote;
-  const activeTitle = config[activeIndex].title;
-  const activeName = config[activeIndex].attribution;
+  const activePreviewUrl = cardConfig[activeIndex].backgroundImageUrl;
+  const activeThumbnailUrl = cardConfig[activeIndex].thumbnailImageUrl;
 
-  const secondThumbnailUrl = config[secondIndex].thumbnailImageUrl;
-  const secondPreviewUrl = config[secondIndex].backgroundImageUrl;
-  const secondAltText = config[secondIndex].attribution;
+  const activeAlt = cardConfig[activeIndex].videoTitle;
 
-  const thirdThumbnailUrl = config[thirdIndex].thumbnailImageUrl;
-  const thirdPreviewUrl = config[thirdIndex].backgroundImageUrl;
-  const thirdAltText = config[thirdIndex].attribution;
+  const secondThumbnailUrl = cardConfig[secondIndex].thumbnailImageUrl;
+  const secondPreviewUrl = cardConfig[secondIndex].backgroundImageUrl;
+
+  const secondAlt = cardConfig[secondIndex].videoTitle;
+
+  const thirdThumbnailUrl = cardConfig[thirdIndex].thumbnailImageUrl;
+  const thirdPreviewUrl = cardConfig[thirdIndex].backgroundImageUrl;
+
+  const thirdAlt = cardConfig[thirdIndex].videoTitle;
 
   const animatedActiveThumbnailUrl =
-    config[animatedActiveIndex].thumbnailImageUrl;
+    cardConfig[animatedActiveIndex].thumbnailImageUrl;
   const animatedActivePreviewUrl =
-    config[animatedActiveIndex].backgroundImageUrl;
+    cardConfig[animatedActiveIndex].backgroundImageUrl;
 
   const animatedSecondThumbnailUrl =
-    config[animatedSecondIndex].thumbnailImageUrl;
+    cardConfig[animatedSecondIndex].thumbnailImageUrl;
   const animatedSecondPreviewUrl =
-    config[animatedSecondIndex].backgroundImageUrl;
+    cardConfig[animatedSecondIndex].backgroundImageUrl;
 
   const animatedThirdThumbnailUrl =
-    config[animatedThirdIndex].thumbnailImageUrl;
+    cardConfig[animatedThirdIndex].thumbnailImageUrl;
 
-  const nextCloneThumbnailUrl = config[nextCloneIndex].thumbnailImageUrl;
-  const nextClonePreviewUrl = config[nextCloneIndex].backgroundImageUrl;
+  const nextCloneThumbnailUrl = cardConfig[nextCloneIndex].thumbnailImageUrl;
+  const nextClonePreviewUrl = cardConfig[nextCloneIndex].backgroundImageUrl;
 
-  const prevCloneThumbnailUrl = config[prevCloneIndex].thumbnailImageUrl;
-  const prevClonePreviewUrl = config[prevCloneIndex].backgroundImageUrl;
+  const prevCloneThumbnailUrl = cardConfig[prevCloneIndex].thumbnailImageUrl;
+  const prevClonePreviewUrl = cardConfig[prevCloneIndex].backgroundImageUrl;
 
   const state = {
     muxVideoId,
     activeIndex,
     activePreviewUrl,
     activeThumbnailUrl,
-    activeQuote,
-    activeName,
-    activeTitle,
+
+    activeAlt,
+
     secondThumbnailUrl,
     secondPreviewUrl,
-    secondAltText,
+
+    secondAlt,
+
     thirdThumbnailUrl,
     thirdPreviewUrl,
-    thirdAltText,
+
+    thirdAlt,
+
     animatedActiveThumbnailUrl,
     animatedActivePreviewUrl,
     animatedSecondThumbnailUrl,
