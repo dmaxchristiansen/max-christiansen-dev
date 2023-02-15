@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import { ActiveProps } from "../types/dataVisualizer";
 import { DARK_SHADOW, LIGHT_BLUE_SHADOW } from "src/utils/constants/shadows";
-import {
-  OBSIDIAN,
-  ROYAL_BLUE,
-  GRIMACE_LIGHTLY,
-} from "src/utils/constants/colors";
+import { OBSIDIAN, ROYAL_BLUE, EGGPLANT } from "src/utils/constants/colors";
 import { ONE_HUNDRED_MS } from "src/utils/constants/transitions";
 
 interface NavButtonProps {
@@ -31,7 +27,7 @@ const Button = styled.button<ActiveProps & ButtonIdProps>`
   cursor: pointer;
   transition: background-color ${ONE_HUNDRED_MS}, box-shadow ${ONE_HUNDRED_MS};
   &:hover {
-    background-color: ${GRIMACE_LIGHTLY};
+    background-color: ${EGGPLANT};
     box-shadow: ${LIGHT_BLUE_SHADOW};
   }
   &:focus {

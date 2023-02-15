@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BLACK, WHITE } from "src/utils/constants/colors";
+import { BLACK, GEORGIA, WHITE } from "src/utils/constants/colors";
 
 const StyledSvg = styled.svg`
   height: 100px;
@@ -17,7 +17,7 @@ const StyledComponentsSvg = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 318 318"
     height={60}
-    style={{ borderRadius: 5, backgroundColor: "#ff8180" }}
+    style={{ borderRadius: 5, backgroundColor: GEORGIA }}
     focusable="false"
   >
     <title>styled-components</title>

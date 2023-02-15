@@ -28,7 +28,7 @@ export const colConfig = [
     topLineText: "High EQ &",
     bottomLineText: "Communication",
     contentText:
-      "An empathetic and compassionate leader who expressed solid logical, analytical, and critical reasoning skills.",
+      "An empathetic and compassionate leader who expresses solid logical, analytical, and critical reasoning skills.",
     backgroundColor: PURPLE_HAZE,
   },
 ];

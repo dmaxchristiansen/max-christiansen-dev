@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { OBSIDIAN } from "src/utils/constants/colors";
+import { MUTE_BLUE, OBSIDIAN, TEALY_GREEN } from "src/utils/constants/colors";
 
 const StyledSvg = styled.svg`
   height: 100px;
@@ -36,8 +36,8 @@ const NetlifySvg = () => (
         r="99.999879%"
         id="radialGradient-1"
       >
-        <stop stopColor="#20C6B7" offset="0%"></stop>
-        <stop stopColor="#4D9ABF" offset="100%"></stop>
+        <stop stopColor={TEALY_GREEN} offset="0%"></stop>
+        <stop stopColor={MUTE_BLUE} offset="100%"></stop>
       </radialGradient>
     </defs>
     <g>

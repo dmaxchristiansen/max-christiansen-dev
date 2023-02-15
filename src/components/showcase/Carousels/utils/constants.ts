@@ -1,6 +1,10 @@
-import styled, { css } from "styled-components";
-import { Z_TEN } from "src/utils/constants/layers";
-import { BLACK } from "src/utils/constants/colors";
+import { css } from "styled-components";
+import {
+  BLACK,
+  WHITE_SMOKE,
+  GRAY_DAY,
+  STORM_CLOUD,
+} from "src/utils/constants/colors";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { LIGHT_SHADOW } from "src/utils/constants/shadows";
 
@@ -10,42 +14,60 @@ export const RESET = "reset";
 
 export const ACTION_TIMEOUT = 250;
 
-export const SHARED_NAV_BUTTON_ROW_STYLES = css`
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  z-index: ${Z_TEN};
-`;
-
 export const SHARED_NAV_BUTTON_STYLES = css`
+  position: absolute;
+  height: 36px;
+  width: 36px;
   padding: 0;
+  background-color: ${WHITE_SMOKE};
   border: none;
-  border-radius: 4px;
-  color: ${BLACK};
-  cursor: pointer;
+  border-radius: 5px;
   box-shadow: ${LIGHT_SHADOW};
-  transition: background ${TWO_FIFTY_MS};
-`;
-
-export const Quote = styled.p`
-  margin: 16px 0 16px;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 120%;
+  cursor: pointer;
+  line-height: 1.1;
+  transition: background-color ${TWO_FIFTY_MS};
+  &:before {
+    font-size: 36px;
+    font-family: Consolas;
+    color: ${BLACK};
+  }
   @media (min-width: 768px) {
-    margin: 32px 0 32px;
-    font-size: 22px;
-  }
-  @media (min-width: 992px) {
-    font-size: 26px;
+    top: calc(50% - 24px);
+    height: 48px;
+    width: 48px;
+    line-height: 1.05;
+    &:before {
+      font-size: 48px;
+    }
   }
 `;
 
-export const Attribution = styled.p`
-  margin: 0 0 8px 0;
-  font-size: 18px;
+export const SLIDER_NAV_BUTTON_STYLES = css`
+  top: calc(50% - 18px);
+  &:hover:enabled {
+    background-color: ${GRAY_DAY};
+  }
+  &:disabled {
+    background-color: ${STORM_CLOUD};
+    cursor: auto;
+  }
 `;
 
-export const Title = styled.p`
-  margin: 0;
+export const CAROUSEL_NAV_BUTTON_STYLES = css`
+  bottom: calc(12.5% - 18px);
+  &:hover {
+    background-color: ${GRAY_DAY};
+  }
+`;
+
+export const PREV_NAV_BUTTON_BEFORE_STYLES = css`
+  &:before {
+    content: "<";
+  }
+`;
+
+export const NEXT_NAV_BUTTON_BEFORE_STYLES = css`
+  &:before {
+    content: ">";
+  }
 `;

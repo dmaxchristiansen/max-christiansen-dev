@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import {
   sliderConfig,
-  carouselConfig,
-} from "src/components/showcase/Carousels/utils/configs";
+  previewCarouselConfig,
+} from "src/components/showcase/carousels/utils/configs";
 import { BLUE_SKY } from "src/utils/constants/colors";
 import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
+import PreviewCarouselContextProvider from "src/utils/providers/PreviewCarouselContextProvider";
 import Layout from "src/components/global/Layout/Layout";
 import Seo from "src/components/global/Seo/Seo";
 import ComponentHeader from "src/components/showcase/ComponentHeader/ComponentHeader";
-import Slider from "src/components/showcase/Carousels/Slider/Slider";
-import VideoCarousel from "src/components/showcase/Carousels/VideoCarousel";
+import Slider from "src/components/showcase/carousels/Slider/Slider";
+import PreviewCarousel from "src/components/showcase/carousels/PreviewCarousel/PreviewCarousel";
 import BackLink from "src/components/showcase/BackLink/BackLink";
 
 const Header = styled.h2`
@@ -25,7 +26,8 @@ const Header = styled.h2`
 `;
 
 const Description = styled.p`
-  margin: 0 0 24px;
+  max-width: 700px;
+  margin: 0 auto 24px;
   padding: ${STANDARD_X_PADDING};
   text-align: center;
   font-size: 20px;
@@ -37,19 +39,19 @@ const Description = styled.p`
 const CarouselsPage = () => (
   <Layout>
     <ComponentHeader text="Carousels" />
-    <Header>&lt;VideoSlider/&gt;</Header>
+    <Header>&lt;Slider/&gt;</Header>
     <Description>
       A simple sliding video carousel featuring some videos I have made
     </Description>
-
     <Slider slideConfig={sliderConfig} />
     <Header>&lt;PreviewCarousel/&gt;</Header>
     <Description>
-      A more complex, infinitely looped video carousel that pairs a featured
-      slide/video with a quote and credentials
+      A more complex, infinitely looped video carousel that renders previous and
+      next slide previews - populated with placeholder content
     </Description>
-
-    <VideoCarousel {...carouselConfig} />
+    <PreviewCarouselContextProvider cardConfig={previewCarouselConfig}>
+      <PreviewCarousel />
+    </PreviewCarouselContextProvider>
     <BackLink />
   </Layout>
 );

@@ -1,19 +1,15 @@
-import rileyRiver from "src/images/VideoCarousel/riley-river.jpg";
-import fcrnrwSky from "src/images/VideoCarousel/fcrnrw-sky.jpg";
-import owyheeSunset from "src/images/VideoCarousel/owyhee-sunset.jpg";
-import magnoliaVp from "src/images/VideoCarousel/magnolia-vp.jpg";
-import shintoVp from "src/images/VideoCarousel/shinto-vp.jpg";
-import bessVp from "src/images/VideoCarousel/bess-vp.jpg";
-import tydeVp from "src/images/VideoCarousel/tyde-vp.jpg";
-import magnoliaT from "src/images/VideoCarousel/magnolia-t.jpg";
-import shintoT from "src/images/VideoCarousel/shinto-t.jpg";
-import bessT from "src/images/VideoCarousel/bess-t.jpg";
-import tydeT from "src/images/VideoCarousel/tyde-t.jpg";
+import rileyRiver from "src/images/Slider/riley-river.jpg";
+import fcrnrwSky from "src/images/Slider/fcrnrw-sky.jpg";
+import owyheeSunset from "src/images/Slider/owyhee-sunset.jpg";
 
-export const buttonConfig = [
-  { index: 0, label: "←" },
-  { index: 1, label: "→" },
-];
+import whaleSharkT from "src/images/PreviewCarousel/whale-shark-t.jpg";
+import whaleSharkVp from "src/images/PreviewCarousel/whale-shark-vp.jpg";
+import norwayT from "src/images/PreviewCarousel/norway-t.jpg";
+import norwayVp from "src/images/PreviewCarousel/norway-vp.jpg";
+import alpineLakeT from "src/images/PreviewCarousel/alpine-lake-t.jpg";
+import alpineLakeVp from "src/images/PreviewCarousel/alpine-lake-vp.jpg";
+import fallRoadT from "src/images/PreviewCarousel/fall-road-t.jpg";
+import fallRoadVp from "src/images/PreviewCarousel/fall-road-vp.jpg";
 
 export const sliderConfig = [
   {
@@ -36,47 +32,33 @@ export const sliderConfig = [
   },
 ];
 
-export const carouselConfig = {
-  slideConfig: [
-    {
-      index: 0,
-      internalId: "3tkwe58YfXVl13iB5jR5vB",
-      attribution: "Magnolia B.",
-      title: "VP Operations",
-      quote: "You only live once, but if you do it right, once is enough.",
-      thumbnailImageUrl: magnoliaT,
-      videoPreviewImageUrl: magnoliaVp,
-      videoPlaybackId: "feho00uzABfveO2Y7uywrzPDMYUzLI9aYq3P00wClFkls",
-    },
-    {
-      index: 1,
-      internalId: "4YGkn2zPU5MkeVJUHTqLdl",
-      attribution: "Shinto V.",
-      title: "Alpine Guide",
-      quote: "Whether you think you can or you think you can't, you're right.",
-      thumbnailImageUrl: shintoT,
-      videoPreviewImageUrl: shintoVp,
-      videoPlaybackId: "pfPeX9Rgf3vGMrw3MMLOvy3YhqQIeLrjKs02P6HSRlCo",
-    },
-    {
-      index: 2,
-      internalId: "dGp061wL4x619dBomqsjB",
-      attribution: "Bess W.",
-      title: "Travel Author",
-      quote: "Those who dare to fail miserably can achieve greatly.",
-      thumbnailImageUrl: bessT,
-      videoPreviewImageUrl: bessVp,
-      videoPlaybackId: "Ne02fNZy00hQF8G8NxN02QyJiGMn4fIKt9ggjNzxfyn3gQ",
-    },
-    {
-      index: 3,
-      internalId: "4iUBAwP2fqkP75TyRJmIxS",
-      attribution: "Tyde F.",
-      title: "Bitcoin Journalist",
-      quote: "Strive not to be a success, but rather to be of value.",
-      thumbnailImageUrl: tydeT,
-      videoPreviewImageUrl: tydeVp,
-      videoPlaybackId: "jds0202ct6IcodQRhgeD5BbANCr2o0000HSHoijUSALQoXE",
-    },
-  ],
-};
+export const previewCarouselConfig = [
+  {
+    index: 0,
+    thumbnailImageUrl: norwayT,
+    backgroundImageUrl: norwayVp,
+    muxVideoId: "79SERkdtyLoIhAg3b3IcAuTYEqR2tqDbkNItHoXvh78",
+    videoTitle: "Coastal Norway",
+  },
+  {
+    index: 1,
+    thumbnailImageUrl: whaleSharkT,
+    backgroundImageUrl: whaleSharkVp,
+    muxVideoId: "ajVABFnMsMBIdrwmL2E9QNOCm6AeFRI6vW02O58nfxAg",
+    videoTitle: "Whale shark",
+  },
+  {
+    index: 2,
+    thumbnailImageUrl: fallRoadT,
+    backgroundImageUrl: fallRoadVp,
+    muxVideoId: "Qaii01a0141dpGC7touUEVVIp5neWPX301rNPsGNudcD8s",
+    videoTitle: "Fall trees",
+  },
+  {
+    index: 3,
+    thumbnailImageUrl: alpineLakeT,
+    backgroundImageUrl: alpineLakeVp,
+    muxVideoId: "73xDfjmvAdr7302e4A7Ebz4gfZhjb00q02ENJGDcTSb9fc",
+    videoTitle: "Nature across the globe",
+  },
+];
