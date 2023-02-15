@@ -2,14 +2,14 @@ import rileyRiver from "src/images/Slider/riley-river.jpg";
 import fcrnrwSky from "src/images/Slider/fcrnrw-sky.jpg";
 import owyheeSunset from "src/images/Slider/owyhee-sunset.jpg";
 
-import magnoliaVp from "src/images/PreviewCarousel/magnolia-vp.jpg";
-import shintoVp from "src/images/PreviewCarousel/shinto-vp.jpg";
-import bessVp from "src/images/PreviewCarousel/bess-vp.jpg";
-import tydeVp from "src/images/PreviewCarousel/tyde-vp.jpg";
-import magnoliaT from "src/images/PreviewCarousel/magnolia-t.jpg";
-import shintoT from "src/images/PreviewCarousel/shinto-t.jpg";
-import bessT from "src/images/PreviewCarousel/bess-t.jpg";
-import tydeT from "src/images/PreviewCarousel/tyde-t.jpg";
+import whaleSharkT from "src/images/PreviewCarousel/whale-shark-t.jpg";
+import whaleSharkVp from "src/images/PreviewCarousel/whale-shark-vp.jpg";
+import norwayT from "src/images/PreviewCarousel/norway-t.jpg";
+import norwayVp from "src/images/PreviewCarousel/norway-vp.jpg";
+import alpineLakeT from "src/images/PreviewCarousel/alpine-lake-t.jpg";
+import alpineLakeVp from "src/images/PreviewCarousel/alpine-lake-vp.jpg";
+import fallRoadT from "src/images/PreviewCarousel/fall-road-t.jpg";
+import fallRoadVp from "src/images/PreviewCarousel/fall-road-vp.jpg";
 
 export const sliderConfig = [
   {
@@ -35,30 +35,30 @@ export const sliderConfig = [
 export const previewCarouselConfig = [
   {
     index: 0,
-    thumbnailImageUrl: magnoliaT,
-    backgroundImageUrl: magnoliaVp,
+    thumbnailImageUrl: norwayT,
+    backgroundImageUrl: norwayVp,
     muxVideoId: "79SERkdtyLoIhAg3b3IcAuTYEqR2tqDbkNItHoXvh78",
-    videoTitle: "Placeholder Video One",
+    videoTitle: "Coastal Norway",
   },
   {
     index: 1,
-    thumbnailImageUrl: shintoT,
-    backgroundImageUrl: shintoVp,
+    thumbnailImageUrl: whaleSharkT,
+    backgroundImageUrl: whaleSharkVp,
     muxVideoId: "ajVABFnMsMBIdrwmL2E9QNOCm6AeFRI6vW02O58nfxAg",
-    videoTitle: "Placeholder Video Two",
+    videoTitle: "Whale shark",
   },
   {
     index: 2,
-    thumbnailImageUrl: bessT,
-    backgroundImageUrl: bessVp,
+    thumbnailImageUrl: fallRoadT,
+    backgroundImageUrl: fallRoadVp,
     muxVideoId: "Qaii01a0141dpGC7touUEVVIp5neWPX301rNPsGNudcD8s",
-    videoTitle: "Placeholder Video Three",
+    videoTitle: "Fall trees",
   },
   {
     index: 3,
-    thumbnailImageUrl: tydeT,
-    backgroundImageUrl: tydeVp,
+    thumbnailImageUrl: alpineLakeT,
+    backgroundImageUrl: alpineLakeVp,
     muxVideoId: "73xDfjmvAdr7302e4A7Ebz4gfZhjb00q02ENJGDcTSb9fc",
-    videoTitle: "Placeholder Video Three",
+    videoTitle: "Nature across the globe",
   },
 ];
