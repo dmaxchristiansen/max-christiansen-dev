@@ -6,8 +6,8 @@ import {
   CAROUSEL_NAV_BUTTON_STYLES,
   PREV_NAV_BUTTON_BEFORE_STYLES,
   NEXT_NAV_BUTTON_BEFORE_STYLES,
-} from "src/components/showcase/carousels/utils/constants";
-import CarouselController from "src/components/showcase/carousels/PreviewCarousel/CarouselController/CarouselController";
+} from "src/components/showcase/SliderCarousel/utils/constants";
+import CarouselController from "src/components/showcase/SliderCarousel/PreviewCarousel/CarouselController/CarouselController";
 
 const Container = styled.div`
   padding: 0 15px 50px;

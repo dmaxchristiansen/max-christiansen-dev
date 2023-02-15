@@ -1,17 +1,20 @@
 import { useContext, useRef } from "react";
 import styled, { css } from "styled-components";
-import useHandleEscapeKeypress from "src/components/showcase/carousels/utils/useHandleEscapeKeypress";
+import useHandleEscapeKeypress from "src/components/showcase/SliderCarousel/utils/useHandleEscapeKeypress";
 import { PreviewCarouselContext } from "src/utils/providers/PreviewCarouselContextProvider";
-import { NEXT, PREV } from "src/components/showcase/carousels/utils/constants";
+import {
+  NEXT,
+  PREV,
+} from "src/components/showcase/SliderCarousel/utils/constants";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { Z_TWENTY } from "src/utils/constants/layers";
 import {
   VisibilityProps,
   ActionProps,
-} from "src/components/showcase/carousels/types/previewCarousel";
+} from "src/components/showcase/SliderCarousel/types/previewCarousel";
 import MuxVideo from "@mux/mux-video-react";
-import CloseButton from "src/components/showcase/carousels/sharedComponents/CloseButton/CloseButton";
-import PlayButton from "src/components/showcase/carousels/sharedComponents/PlayButton/PlayButton";
+import CloseButton from "src/components/showcase/SliderCarousel/sharedComponents/CloseButton/CloseButton";
+import PlayButton from "src/components/showcase/SliderCarousel/sharedComponents/PlayButton/PlayButton";
 
 const OverflowContainer = styled.div`
   display: flex;
