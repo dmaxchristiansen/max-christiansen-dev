@@ -2,13 +2,9 @@ import { useContext, useRef } from "react";
 import styled, { css } from "styled-components";
 import useHandleEscapeKeypress from "src/components/showcase/carousels/utils/useHandleEscapeKeypress";
 import { PreviewCarouselContext } from "src/utils/providers/PreviewCarouselContextProvider";
-import { buttonConfig } from "src/components/showcase/carousels/utils/configs";
 import { NEXT, PREV } from "src/components/showcase/carousels/utils/constants";
-import { WHITE_SMOKE, GRAY_DAY, BLACK } from "src/utils/constants/colors";
 import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
-import { OPACITY_FADE } from "src/utils/constants/animations";
-import { Z_TWENTY, Z_TEN } from "src/utils/constants/layers";
-import { LIGHT_SHADOW } from "src/utils/constants/shadows";
+import { Z_TWENTY } from "src/utils/constants/layers";
 import {
   VisibilityProps,
   ActionProps,
@@ -116,51 +112,6 @@ const PrevClone = styled.div<ActionProps & VisibilityProps>`
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
-const NavButtonRow = styled.div`
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: calc(70% - 24px);
-  right: 0;
-  width: 100%;
-  z-index: ${Z_TEN};
-  @media (min-width: 992px) {
-    top: calc(100% - 32px);
-  }
-`;
-
-interface NavButtonProps {
-  index: number;
-}
-
-const NavButton = styled.button<NavButtonProps>`
-  height: 48px;
-  width: 48px;
-  margin-right: ${({ index }) => (index === 0 ? "24px" : "0")};
-  margin-left: ${({ index }) => (index === 0 ? "0" : "24px")};
-  padding: 0;
-  border: none;
-  border-radius: 4px;
-  background-color: ${WHITE_SMOKE};
-  box-shadow: ${LIGHT_SHADOW};
-  color: ${BLACK};
-  font-size: 32px;
-  cursor: pointer;
-  transition: background ${TWO_FIFTY_MS};
-  &:hover {
-    background-color: ${GRAY_DAY};
-  }
-  &:disabled {
-    opacity: ${OPACITY_FADE};
-    background-color: ${GRAY_DAY};
-  }
-  @media (min-width: 992px) {
-    height: 64px;
-    width: 64px;
-    font-size: 36px;
-  }
-`;
-
 const VideoContainer = styled.div<VisibilityProps>`
   display: flex;
   position: relative;
@@ -176,17 +127,6 @@ const CarouselController = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useHandleEscapeKeypress(videoRef, () => context?.setIsVideoVisible(false));
-
-  const handleNavButtonClick = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    index: number,
-  ) => {
-    e.preventDefault();
-    if (!context?.isAnimated) {
-      if (index === 0) context?.prevAction();
-      else context?.nextAction();
-    } else return;
-  };
 
   const handlePlayButtonClick = () => {
     if (videoRef.current) {
@@ -254,18 +194,6 @@ const CarouselController = () => {
             <Image src={context?.prevCloneThumbnailUrl} alt="" />
           </PrevClone>
         </CarouselWrapper>
-        <NavButtonRow>
-          {buttonConfig.map(button => (
-            <NavButton
-              key={button.label}
-              index={button.index}
-              disabled={context?.isAnimated}
-              onClick={e => handleNavButtonClick(e, button.index)}
-            >
-              {button.label}
-            </NavButton>
-          ))}
-        </NavButtonRow>
         <VideoContainer isVisible={context?.isVideoVisible}>
           <MuxVideo
             ref={videoRef}

@@ -1,13 +1,18 @@
-// import { useContext } from "react";
-import styled from "styled-components";
-// import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
-// import { OPACITY_KEYFRAMES } from "src/utils/constants/animations";
+import { useContext } from "react";
+import styled, { css } from "styled-components";
+import { PreviewCarouselContext } from "src/utils/providers/PreviewCarouselContextProvider";
 import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 import useHandleWindowResize, {
   isLessThanWidthThreshold,
 } from "src/utils/hooks/useHandleWindowResize";
-// import { PreviewCarouselContext } from "src/utils/providers/PreviewCarouselContextProvider";
-// import QuotationMarkSvg from "src/components/svgs/QuotationMarkSvg/QuotationMarkSvg";
+import {
+  WHITE_SMOKE,
+  GRAY_DAY,
+  BLACK,
+  STORM_CLOUD,
+} from "src/utils/constants/colors";
+import { LIGHT_SHADOW } from "src/utils/constants/shadows";
+import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import CarouselController from "src/components/showcase/carousels/PreviewCarousel/CarouselController/CarouselController";
 import CarouselControllerMobile from "src/components/showcase/carousels/PreviewCarousel/CarouselControllerMobile/CarouselControllerMobile";
 
@@ -23,72 +28,99 @@ const Container = styled.div`
 `;
 
 const InternalWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 640px;
   margin: 0 auto;
+  padding: 0 72px;
   @media (min-width: 768px) {
     flex-direction: row;
     max-width: 900px;
   }
 `;
 
-// const CopyContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 182px;
-//   margin: 0;
-//   animation: ${OPACITY_KEYFRAMES} ${TWO_FIFTY_MS};
-//   @media (min-width: 768px) {
-//     max-width: 180px;
-//     min-height: unset;
-//     margin-right: 20px;
-//   }
-//   @media (min-width: 992px) {
-//     max-width: 240px;
-//     margin-right: 64px;
-//   }
-// `;
+const SharedButtonStyles = css`
+  position: absolute;
+  top: calc(50% - 24px);
+  height: 48px;
+  width: 48px;
+  padding: 4px;
+  background-color: ${WHITE_SMOKE};
+  border: none;
+  border-radius: 5px;
+  box-shadow: ${LIGHT_SHADOW};
+  cursor: pointer;
+  transition: background-color ${TWO_FIFTY_MS};
+  &:before {
+    position: absolute;
+    top: -3px;
+    font-size: 50px;
+    font-family: Consolas;
+    color: ${BLACK};
+  }
+  &:hover:enabled {
+    background-color: ${GRAY_DAY};
+  }
+  &:disabled {
+    background-color: ${STORM_CLOUD};
+    cursor: auto;
+  }
+  @media (max-width: 767px) {
+    height: 36px;
+    width: 36px;
+    &:before {
+      top: -4px;
+      font-size: 42px;
+    }
+  }
+`;
 
-// export const Quote = styled.p`
-//   margin: 16px 0 16px;
-//   font-size: 20px;
-//   font-weight: 700;
-//   line-height: 120%;
-//   @media (min-width: 768px) {
-//     margin: 32px 0 32px;
-//     font-size: 22px;
-//   }
-//   @media (min-width: 992px) {
-//     font-size: 26px;
-//   }
-// `;
+const PrevButton = styled.button`
+  ${SharedButtonStyles}
+  position: absolute;
+  left: 0;
+  &:before {
+    content: "<";
+    left: 10px;
+    @media (max-width: 767px) {
+      left: 6px;
+    }
+  }
+`;
 
-// export const Attribution = styled.p`
-//   margin: 0 0 8px 0;
-//   font-size: 18px;
-// `;
-
-// export const Title = styled.p`
-//   margin: 0;
-// `;
+const NextButton = styled.button`
+  ${SharedButtonStyles}
+  right: 0;
+  &:before {
+    content: ">";
+    left: 12px;
+    @media (max-width: 767px) {
+      left: 7px;
+    }
+  }
+`;
 
 const PreviewCarousel = () => {
-  // const context = useContext(PreviewCarouselContext);
   const isMobile = useHandleWindowResize(isLessThanWidthThreshold(767));
+  const context = useContext(PreviewCarouselContext);
 
   return (
     <Container>
       <InternalWrapper>
-        {/* <CopyContainer
-            key={`copyContainer-${context?.activeIndex.toString() ?? ""}`}
-          >
-            <QuotationMarkSvg />
-            <Quote>{context?.activeQuote}</Quote>
-            <Attribution>{context?.activeName}</Attribution>
-            <Title>{context?.activeTitle}</Title>
-          </CopyContainer> */}
         {!isMobile ? <CarouselController /> : <CarouselControllerMobile />}
+        <PrevButton
+          type="button"
+          aria-label="previous"
+          disabled={context?.isAnimated}
+          onClick={() => context?.prevAction()}
+        />
+        <NextButton
+          type="button"
+          aria-label="next"
+          disabled={context?.isAnimated}
+          onClick={() => context?.nextAction()}
+        />
       </InternalWrapper>
     </Container>
   );

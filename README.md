@@ -11,5 +11,5 @@
 </p>
 </hr>
 <p align="center">
-  Gatsby TypeScript Styled-Components Netlify
+  Gatsby || TypeScript || Styled-Components || Netlify
 </p>

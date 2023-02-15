@@ -46,8 +46,8 @@ const CarouselsPage = () => (
     <Slider slideConfig={sliderConfig} />
     <Header>&lt;PreviewCarousel/&gt;</Header>
     <Description>
-      A more complex, infinitely looped video carousel that pairs a featured
-      slide/video with a quote and credentials
+      A more complex, infinitely looped video carousel that renders previous and
+      next slide previews
     </Description>
     <PreviewCarouselContextProvider cardConfig={previewCarouselConfig}>
       <PreviewCarousel />

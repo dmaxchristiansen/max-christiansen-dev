@@ -56,12 +56,10 @@ const AnimatedSlider = styled.div<ActiveIndexProps & SliderLengthProps>`
 `;
 
 const SharedButtonStyles = css`
-  display: block;
   position: absolute;
   top: calc(50% - 24px);
   height: 48px;
   width: 48px;
-  margin: 0;
   padding: 4px;
   background-color: ${WHITE_SMOKE};
   border: none;
