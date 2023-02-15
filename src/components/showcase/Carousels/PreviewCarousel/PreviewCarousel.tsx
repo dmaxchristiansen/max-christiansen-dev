@@ -1,25 +1,19 @@
 import { useContext } from "react";
-import styled, { css } from "styled-components";
 import { PreviewCarouselContext } from "src/utils/providers/PreviewCarouselContextProvider";
-import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
-import useHandleWindowResize, {
-  isLessThanWidthThreshold,
-} from "src/utils/hooks/useHandleWindowResize";
+import styled from "styled-components";
 import {
-  WHITE_SMOKE,
-  GRAY_DAY,
-  BLACK,
-  STORM_CLOUD,
-} from "src/utils/constants/colors";
-import { LIGHT_SHADOW } from "src/utils/constants/shadows";
-import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
+  SHARED_NAV_BUTTON_STYLES,
+  CAROUSEL_NAV_BUTTON_STYLES,
+  PREV_NAV_BUTTON_STYLES,
+  NEXT_NAV_BUTTON_STYLES,
+} from "src/components/showcase/carousels/utils/constants";
+import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 import CarouselController from "src/components/showcase/carousels/PreviewCarousel/CarouselController/CarouselController";
-import CarouselControllerMobile from "src/components/showcase/carousels/PreviewCarousel/CarouselControllerMobile/CarouselControllerMobile";
 
 const Container = styled.div`
-  padding: ${STANDARD_X_PADDING};
-  padding-bottom: 50px;
+  padding: 0 10px 50px;
   @media (min-width: 768px) {
+    padding: ${STANDARD_X_PADDING};
     padding-bottom: 80px;
   }
   @media (min-width: 992px) {
@@ -30,85 +24,33 @@ const Container = styled.div`
 const InternalWrapper = styled.div`
   position: relative;
   display: flex;
-  flex-direction: column;
-  max-width: 640px;
   margin: 0 auto;
-  padding: 0 72px;
+  padding: 0 46px;
   @media (min-width: 768px) {
-    flex-direction: row;
     max-width: 900px;
-  }
-`;
-
-const SharedButtonStyles = css`
-  position: absolute;
-  top: calc(50% - 24px);
-  height: 48px;
-  width: 48px;
-  padding: 4px;
-  background-color: ${WHITE_SMOKE};
-  border: none;
-  border-radius: 5px;
-  box-shadow: ${LIGHT_SHADOW};
-  cursor: pointer;
-  transition: background-color ${TWO_FIFTY_MS};
-  &:before {
-    position: absolute;
-    top: -3px;
-    font-size: 50px;
-    font-family: Consolas;
-    color: ${BLACK};
-  }
-  &:hover:enabled {
-    background-color: ${GRAY_DAY};
-  }
-  &:disabled {
-    background-color: ${STORM_CLOUD};
-    cursor: auto;
-  }
-  @media (max-width: 767px) {
-    height: 36px;
-    width: 36px;
-    &:before {
-      top: -4px;
-      font-size: 42px;
-    }
+    padding: 0 72px;
   }
 `;
 
 const PrevButton = styled.button`
-  ${SharedButtonStyles}
-  position: absolute;
-  left: 0;
-  &:before {
-    content: "<";
-    left: 10px;
-    @media (max-width: 767px) {
-      left: 6px;
-    }
-  }
+  ${SHARED_NAV_BUTTON_STYLES}
+  ${CAROUSEL_NAV_BUTTON_STYLES}
+  ${PREV_NAV_BUTTON_STYLES}
 `;
 
 const NextButton = styled.button`
-  ${SharedButtonStyles}
-  right: 0;
-  &:before {
-    content: ">";
-    left: 12px;
-    @media (max-width: 767px) {
-      left: 7px;
-    }
-  }
+  ${SHARED_NAV_BUTTON_STYLES}
+  ${CAROUSEL_NAV_BUTTON_STYLES}
+  ${NEXT_NAV_BUTTON_STYLES}
 `;
 
 const PreviewCarousel = () => {
-  const isMobile = useHandleWindowResize(isLessThanWidthThreshold(767));
   const context = useContext(PreviewCarouselContext);
 
   return (
     <Container>
       <InternalWrapper>
-        {!isMobile ? <CarouselController /> : <CarouselControllerMobile />}
+        <CarouselController />
         <PrevButton
           type="button"
           aria-label="previous"

@@ -11,11 +11,6 @@ import shintoT from "src/images/PreviewCarousel/shinto-t.jpg";
 import bessT from "src/images/PreviewCarousel/bess-t.jpg";
 import tydeT from "src/images/PreviewCarousel/tyde-t.jpg";
 
-export const buttonConfig = [
-  { index: 0, label: "←" },
-  { index: 1, label: "→" },
-];
-
 export const sliderConfig = [
   {
     index: 0,

@@ -1,36 +1,35 @@
 import { useState } from "react";
-import styled, { css } from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import { FIVE_HUNDRED_MS, TWO_FIFTY_MS } from "src/utils/constants/transitions";
+import styled from "styled-components";
+import {
+  SHARED_NAV_BUTTON_STYLES,
+  SLIDER_NAV_BUTTON_STYLES,
+  PREV_NAV_BUTTON_STYLES,
+  NEXT_NAV_BUTTON_STYLES,
+} from "src/components/showcase/carousels/utils/constants";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import {
   SliderProps,
   SliderLengthProps,
   ActiveIndexProps,
 } from "src/components/showcase/carousels/types/slider";
-import {
-  BLACK,
-  GRAY_DAY,
-  STORM_CLOUD,
-  WHITE_SMOKE,
-} from "src/utils/constants/colors";
 import Slide from "./Slide/Slide";
-import { LIGHT_SHADOW } from "src/utils/constants/shadows";
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0 30px 100px;
-  @media (max-width: 767px) {
-    padding: 0 10px 60px;
+  padding: 0 10px 60px;
+  @media (min-width: 768px) {
+    padding: 0 30px 100px;
   }
 `;
 
 const Wrapper = styled.div`
   position: relative;
   max-width: 796px;
-  padding: 0 72px;
-  @media (max-width: 767px) {
-    padding: 0 46px;
+  padding: 0 46px;
+  @media (min-width: 768px) {
+    padding: 0 72px;
   }
 `;
 
@@ -55,64 +54,16 @@ const AnimatedSlider = styled.div<ActiveIndexProps & SliderLengthProps>`
   transition: left ${FIVE_HUNDRED_MS} ease-in-out;
 `;
 
-const SharedButtonStyles = css`
-  position: absolute;
-  top: calc(50% - 24px);
-  height: 48px;
-  width: 48px;
-  padding: 4px;
-  background-color: ${WHITE_SMOKE};
-  border: none;
-  border-radius: 5px;
-  box-shadow: ${LIGHT_SHADOW};
-  cursor: pointer;
-  transition: background-color ${TWO_FIFTY_MS};
-  &:before {
-    position: absolute;
-    top: -3px;
-    font-size: 50px;
-    font-family: Consolas;
-    color: ${BLACK};
-  }
-  &:hover:enabled {
-    background-color: ${GRAY_DAY};
-  }
-  &:disabled {
-    background-color: ${STORM_CLOUD};
-    cursor: auto;
-  }
-  @media (max-width: 767px) {
-    height: 36px;
-    width: 36px;
-    &:before {
-      top: -4px;
-      font-size: 42px;
-    }
-  }
-`;
-
 const PrevButton = styled.button`
-  ${SharedButtonStyles}
-  left: 0;
-  &:before {
-    content: "<";
-    left: 10px;
-    @media (max-width: 767px) {
-      left: 6px;
-    }
-  }
+  ${SHARED_NAV_BUTTON_STYLES}
+  ${SLIDER_NAV_BUTTON_STYLES}
+  ${PREV_NAV_BUTTON_STYLES}
 `;
 
 const NextButton = styled.button`
-  ${SharedButtonStyles}
-  right: 0;
-  &:before {
-    content: ">";
-    left: 12px;
-    @media (max-width: 767px) {
-      left: 7px;
-    }
-  }
+  ${SHARED_NAV_BUTTON_STYLES}
+  ${SLIDER_NAV_BUTTON_STYLES}
+  ${NEXT_NAV_BUTTON_STYLES}
 `;
 
 const Slider: React.FC<SliderProps> = ({ slideConfig }) => {
