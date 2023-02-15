@@ -16,7 +16,6 @@ export const ACTION_TIMEOUT = 250;
 
 export const SHARED_NAV_BUTTON_STYLES = css`
   position: absolute;
-  top: calc(50% - 18px);
   height: 36px;
   width: 36px;
   padding: 0;
@@ -25,10 +24,9 @@ export const SHARED_NAV_BUTTON_STYLES = css`
   border-radius: 5px;
   box-shadow: ${LIGHT_SHADOW};
   cursor: pointer;
+  line-height: 1.1;
   transition: background-color ${TWO_FIFTY_MS};
   &:before {
-    position: absolute;
-    top: -2px;
     font-size: 36px;
     font-family: Consolas;
     color: ${BLACK};
@@ -37,6 +35,7 @@ export const SHARED_NAV_BUTTON_STYLES = css`
     top: calc(50% - 24px);
     height: 48px;
     width: 48px;
+    line-height: 1.05;
     &:before {
       font-size: 48px;
     }
@@ -44,6 +43,7 @@ export const SHARED_NAV_BUTTON_STYLES = css`
 `;
 
 export const SLIDER_NAV_BUTTON_STYLES = css`
+  top: calc(50% - 18px);
   &:hover:enabled {
     background-color: ${GRAY_DAY};
   }
@@ -54,23 +54,20 @@ export const SLIDER_NAV_BUTTON_STYLES = css`
 `;
 
 export const CAROUSEL_NAV_BUTTON_STYLES = css`
+  bottom: calc(12.5% - 18px);
   &:hover {
     background-color: ${GRAY_DAY};
   }
 `;
 
-export const PREV_NAV_BUTTON_STYLES = css`
-  left: 0;
+export const PREV_NAV_BUTTON_BEFORE_STYLES = css`
   &:before {
     content: "<";
-    left: 20%;
   }
 `;
 
-export const NEXT_NAV_BUTTON_STYLES = css`
-  right: 0;
+export const NEXT_NAV_BUTTON_BEFORE_STYLES = css`
   &:before {
     content: ">";
-    right: 20%;
   }
 `;

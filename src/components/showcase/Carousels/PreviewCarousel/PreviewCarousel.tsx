@@ -4,17 +4,15 @@ import styled from "styled-components";
 import {
   SHARED_NAV_BUTTON_STYLES,
   CAROUSEL_NAV_BUTTON_STYLES,
-  PREV_NAV_BUTTON_STYLES,
-  NEXT_NAV_BUTTON_STYLES,
+  PREV_NAV_BUTTON_BEFORE_STYLES,
+  NEXT_NAV_BUTTON_BEFORE_STYLES,
 } from "src/components/showcase/carousels/utils/constants";
-import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 import CarouselController from "src/components/showcase/carousels/PreviewCarousel/CarouselController/CarouselController";
 
 const Container = styled.div`
-  padding: 0 10px 50px;
+  padding: 0 15px 50px;
   @media (min-width: 768px) {
-    padding: ${STANDARD_X_PADDING};
-    padding-bottom: 80px;
+    padding: 0 30px 80px;
   }
   @media (min-width: 992px) {
     padding-bottom: 100px;
@@ -24,10 +22,9 @@ const Container = styled.div`
 const InternalWrapper = styled.div`
   position: relative;
   display: flex;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 46px;
   @media (min-width: 768px) {
-    max-width: 900px;
     padding: 0 72px;
   }
 `;
@@ -35,13 +32,21 @@ const InternalWrapper = styled.div`
 const PrevButton = styled.button`
   ${SHARED_NAV_BUTTON_STYLES}
   ${CAROUSEL_NAV_BUTTON_STYLES}
-  ${PREV_NAV_BUTTON_STYLES}
+  ${PREV_NAV_BUTTON_BEFORE_STYLES}
+  left: calc(14% - 18px);
+  @media (min-width: 768px) {
+    left: 0;
+  }
 `;
 
 const NextButton = styled.button`
   ${SHARED_NAV_BUTTON_STYLES}
   ${CAROUSEL_NAV_BUTTON_STYLES}
-  ${NEXT_NAV_BUTTON_STYLES}
+  ${NEXT_NAV_BUTTON_BEFORE_STYLES}
+  right: calc(14% - 18px);
+  @media (min-width: 768px) {
+    right: 0;
+  }
 `;
 
 const PreviewCarousel = () => {

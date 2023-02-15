@@ -24,7 +24,7 @@ const Button = styled.button`
   &:hover {
     opacity: ${OPACITY_FADE};
   }
-  @media (min-width: 992px) {
+  @media (min-width: 786px) {
     left: 24px;
     bottom: 24px;
   }
