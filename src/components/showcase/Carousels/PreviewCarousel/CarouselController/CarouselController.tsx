@@ -147,16 +147,16 @@ const CarouselController = () => {
             <Image src={context?.nextCloneThumbnailUrl} alt="" />
           </NextClone>
           <Next isVisible={!context?.isAnimated}>
-            <Image src={context?.activeThumbnailUrl} alt={context?.activeAlt} />
+            <Image src={context?.nextThumbnailUrl} alt={context?.nextAlt} />
           </Next>
           <AnimatedNext
             action={context?.action}
             isVisible={context?.isAnimated}
           >
-            <Image src={context?.animatedActiveThumbnailUrl} alt="" />
+            <Image src={context?.animatedNextThumbnailUrl} alt="" />
           </AnimatedNext>
           <Active isVisible={!context?.isAnimated}>
-            <Image src={context?.secondThumbnailUrl} alt={context?.secondAlt} />
+            <Image src={context?.activeThumbnailUrl} alt={context?.activeAlt} />
             <PlayButton
               isButtonFocusable={!context?.isVideoVisible}
               videoTitle={context?.activeAlt ?? ""}
@@ -167,16 +167,16 @@ const CarouselController = () => {
             action={context?.action}
             isVisible={context?.isAnimated}
           >
-            <Image src={context?.animatedSecondThumbnailUrl} alt="" />
+            <Image src={context?.animatedActiveThumbnailUrl} alt="" />
           </AnimatedActive>
           <Prev isVisible={!context?.isAnimated}>
-            <Image src={context?.thirdThumbnailUrl} alt={context?.thirdAlt} />
+            <Image src={context?.prevThumbnailUrl} alt={context?.prevAlt} />
           </Prev>
           <AnimatedPrev
             action={context?.action}
             isVisible={context?.isAnimated}
           >
-            <Image src={context?.animatedThirdThumbnailUrl} alt="" />
+            <Image src={context?.animatedPrevThumbnailUrl} alt="" />
           </AnimatedPrev>
           <PrevClone action={context?.action} isVisible={context?.isAnimated}>
             <Image src={context?.prevCloneThumbnailUrl} alt="" />
@@ -186,7 +186,7 @@ const CarouselController = () => {
           <MuxVideo
             ref={videoRef}
             width="100%"
-            playbackId={context?.muxVideoId}
+            playbackId={context?.activeMuxVideoId}
             poster={context?.activePreviewUrl}
             streamType="on-demand"
             controls={context?.isVideoVisible}

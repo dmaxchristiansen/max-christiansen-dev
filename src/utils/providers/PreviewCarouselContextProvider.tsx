@@ -8,32 +8,19 @@ import {
 } from "../../components/showcase/carousels/utils/constants";
 
 interface PreviewCarouselContextProps {
-  muxVideoId: string;
-  activeIndex: number;
-  activePreviewUrl: string;
-  activeThumbnailUrl: string;
-
-  activeAlt: string;
-
-  secondThumbnailUrl: string;
-  secondPreviewUrl: string;
-
-  secondAlt: string;
-
-  thirdThumbnailUrl: string;
-  thirdPreviewUrl: string;
-
-  thirdAlt: string;
-
-  animatedActiveThumbnailUrl: string;
-  animatedActivePreviewUrl: string;
-  animatedSecondThumbnailUrl: string;
-  animatedSecondPreviewUrl: string;
-  animatedThirdThumbnailUrl: string;
   nextCloneThumbnailUrl: string;
-  nextClonePreviewUrl: string;
+  nextThumbnailUrl: string;
+  nextAlt: string;
+  animatedNextThumbnailUrl: string;
+  activeThumbnailUrl: string;
+  activeAlt: string;
+  activePreviewUrl: string;
+  activeMuxVideoId: string;
+  animatedActiveThumbnailUrl: string;
+  prevThumbnailUrl: string;
+  prevAlt: string;
+  animatedPrevThumbnailUrl: string;
   prevCloneThumbnailUrl: string;
-  prevClonePreviewUrl: string;
   isAnimated: boolean;
   action: "prev" | "next" | "reset";
   nextAction: React.Dispatch<React.SetStateAction<void>>;
@@ -60,35 +47,30 @@ export const PreviewCarouselContextProvider: React.FC<
   const determinePrev = (index: number) =>
     index === cardConfigLength - 1 ? 0 : index + 1;
 
-  const [isAnimated, setIsAnimated] = useState(false);
-
-  const [action, setAction] = useState<"prev" | "next" | "reset">("reset");
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [secondIndex, setSecondIndex] = useState(1);
-  const [thirdIndex, setThirdIndex] = useState(2);
-
-  const [animatedActiveIndex, setAnimatedActiveIndex] = useState(0);
-  const [animatedSecondIndex, setAnimatedSecondIndex] = useState(1);
-  const [animatedThirdIndex, setAnimatedThirdIndex] = useState(2);
-
   const [nextCloneIndex, setNextCloneIndex] = useState(cardConfigLength - 1);
+  const [nextIndex, setNextIndex] = useState(0);
+  const [animatedNextIndex, setAnimatedNextIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
+  const [animatedActiveIndex, setAnimatedActiveIndex] = useState(1);
+  const [prevIndex, setPrevIndex] = useState(2);
+  const [animatedPrevIndex, setAnimatedPrevIndex] = useState(2);
   const [prevCloneIndex, setPrevCloneIndex] = useState(determinePrev(2));
-
+  const [isAnimated, setIsAnimated] = useState(false);
+  const [action, setAction] = useState<"prev" | "next" | "reset">("reset");
   const [isVideoVisible, setIsVideoVisible] = useState(false);
 
   const nextAction = () => {
     setIsAnimated(true);
     setAction(NEXT);
+    setNextIndex(determineNext(nextIndex));
     setActiveIndex(determineNext(activeIndex));
-    setSecondIndex(determineNext(secondIndex));
-    setThirdIndex(determineNext(thirdIndex));
+    setPrevIndex(determineNext(prevIndex));
     setTimeout(() => {
       setIsAnimated(false);
       setAction(RESET);
+      setAnimatedNextIndex(determineNext(nextIndex));
       setAnimatedActiveIndex(determineNext(activeIndex));
-      setAnimatedSecondIndex(determineNext(secondIndex));
-      setAnimatedThirdIndex(determineNext(thirdIndex));
+      setAnimatedPrevIndex(determineNext(prevIndex));
       setNextCloneIndex(determineNext(nextCloneIndex));
       setPrevCloneIndex(determineNext(prevCloneIndex));
     }, ACTION_TIMEOUT);
@@ -97,83 +79,51 @@ export const PreviewCarouselContextProvider: React.FC<
   const prevAction = () => {
     setIsAnimated(true);
     setAction(PREV);
+    setNextIndex(determinePrev(nextIndex));
     setActiveIndex(determinePrev(activeIndex));
-    setSecondIndex(determinePrev(secondIndex));
-    setThirdIndex(determinePrev(thirdIndex));
+    setPrevIndex(determinePrev(prevIndex));
     setTimeout(() => {
       setIsAnimated(false);
       setAction(RESET);
+      setAnimatedNextIndex(determinePrev(nextIndex));
       setAnimatedActiveIndex(determinePrev(activeIndex));
-      setAnimatedSecondIndex(determinePrev(secondIndex));
-      setAnimatedThirdIndex(determinePrev(thirdIndex));
+      setAnimatedPrevIndex(determinePrev(prevIndex));
       setNextCloneIndex(determinePrev(nextCloneIndex));
       setPrevCloneIndex(determinePrev(prevCloneIndex));
     }, ACTION_TIMEOUT);
   };
 
-  const muxVideoId = cardConfig[activeIndex].muxVideoId;
-
-  const activePreviewUrl = cardConfig[activeIndex].backgroundImageUrl;
+  const nextCloneThumbnailUrl = cardConfig[nextCloneIndex].thumbnailImageUrl;
+  const nextThumbnailUrl = cardConfig[nextIndex].thumbnailImageUrl;
+  const nextAlt = cardConfig[nextIndex].videoTitle;
+  const animatedNextThumbnailUrl =
+    cardConfig[animatedNextIndex].thumbnailImageUrl;
   const activeThumbnailUrl = cardConfig[activeIndex].thumbnailImageUrl;
-
   const activeAlt = cardConfig[activeIndex].videoTitle;
-
-  const secondThumbnailUrl = cardConfig[secondIndex].thumbnailImageUrl;
-  const secondPreviewUrl = cardConfig[secondIndex].backgroundImageUrl;
-
-  const secondAlt = cardConfig[secondIndex].videoTitle;
-
-  const thirdThumbnailUrl = cardConfig[thirdIndex].thumbnailImageUrl;
-  const thirdPreviewUrl = cardConfig[thirdIndex].backgroundImageUrl;
-
-  const thirdAlt = cardConfig[thirdIndex].videoTitle;
-
+  const activePreviewUrl = cardConfig[activeIndex].backgroundImageUrl;
+  const activeMuxVideoId = cardConfig[activeIndex].muxVideoId;
   const animatedActiveThumbnailUrl =
     cardConfig[animatedActiveIndex].thumbnailImageUrl;
-  const animatedActivePreviewUrl =
-    cardConfig[animatedActiveIndex].backgroundImageUrl;
-
-  const animatedSecondThumbnailUrl =
-    cardConfig[animatedSecondIndex].thumbnailImageUrl;
-  const animatedSecondPreviewUrl =
-    cardConfig[animatedSecondIndex].backgroundImageUrl;
-
-  const animatedThirdThumbnailUrl =
-    cardConfig[animatedThirdIndex].thumbnailImageUrl;
-
-  const nextCloneThumbnailUrl = cardConfig[nextCloneIndex].thumbnailImageUrl;
-  const nextClonePreviewUrl = cardConfig[nextCloneIndex].backgroundImageUrl;
-
+  const prevThumbnailUrl = cardConfig[prevIndex].thumbnailImageUrl;
+  const prevAlt = cardConfig[prevIndex].videoTitle;
+  const animatedPrevThumbnailUrl =
+    cardConfig[animatedPrevIndex].thumbnailImageUrl;
   const prevCloneThumbnailUrl = cardConfig[prevCloneIndex].thumbnailImageUrl;
-  const prevClonePreviewUrl = cardConfig[prevCloneIndex].backgroundImageUrl;
 
   const state = {
-    muxVideoId,
-    activeIndex,
-    activePreviewUrl,
-    activeThumbnailUrl,
-
-    activeAlt,
-
-    secondThumbnailUrl,
-    secondPreviewUrl,
-
-    secondAlt,
-
-    thirdThumbnailUrl,
-    thirdPreviewUrl,
-
-    thirdAlt,
-
-    animatedActiveThumbnailUrl,
-    animatedActivePreviewUrl,
-    animatedSecondThumbnailUrl,
-    animatedSecondPreviewUrl,
-    animatedThirdThumbnailUrl,
     nextCloneThumbnailUrl,
-    nextClonePreviewUrl,
+    nextThumbnailUrl,
+    nextAlt,
+    animatedNextThumbnailUrl,
+    activeThumbnailUrl,
+    activeAlt,
+    activePreviewUrl,
+    activeMuxVideoId,
+    animatedActiveThumbnailUrl,
+    prevThumbnailUrl,
+    prevAlt,
+    animatedPrevThumbnailUrl,
     prevCloneThumbnailUrl,
-    prevClonePreviewUrl,
     isAnimated,
     action,
     nextAction,
