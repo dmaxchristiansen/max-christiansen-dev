@@ -1,11 +1,11 @@
 import React, { useState, createContext } from "react";
-import { PreviewCarouselCardProps } from "src/components/showcase/carousels/types/previewCarousel";
+import { PreviewCarouselCardProps } from "src/components/showcase/SliderCarousel/types/previewCarousel";
 import {
   NEXT,
   PREV,
   RESET,
   ACTION_TIMEOUT,
-} from "src/components/showcase/carousels/utils/constants";
+} from "src/components/showcase/SliderCarousel/utils/constants";
 
 interface PreviewCarouselContextProps {
   nextCloneThumbnailUrl: string;

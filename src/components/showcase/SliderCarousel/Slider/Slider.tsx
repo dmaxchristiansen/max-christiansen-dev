@@ -6,13 +6,13 @@ import {
   SLIDER_NAV_BUTTON_STYLES,
   PREV_NAV_BUTTON_BEFORE_STYLES,
   NEXT_NAV_BUTTON_BEFORE_STYLES,
-} from "src/components/showcase/carousels/utils/constants";
+} from "src/components/showcase/SliderCarousel/utils/constants";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import {
   SliderProps,
   SliderLengthProps,
   ActiveIndexProps,
-} from "src/components/showcase/carousels/types/slider";
+} from "src/components/showcase/SliderCarousel/types/slider";
 import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
 import Slide from "./Slide/Slide";
 import { WHITE_SMOKE, STORM_CLOUD } from "src/utils/constants/colors";
