@@ -35,6 +35,10 @@ const SuccessContent = styled.div<SubmitProps>`
   }
 `;
 
+const SuccessMessage = styled.div`
+  padding-top: 20px;
+`;
+
 const Form = styled.form<InViewProps & SubmitProps>`
   display: ${({ isSubmitted }) => (isSubmitted ? "none" : "block")};
   opacity: ${({ inView }) => (inView ? "1" : "0")};
@@ -181,7 +185,7 @@ const ContactForm: React.FC<InViewProps> = ({ inView }) => {
     <Container>
       <SuccessContent isSubmitted={isSubmitted}>
         🔥 THANK YOU 🔥
-        <div style={{ paddingTop: 20 }}>I will be in contact soon!</div>
+        <SuccessMessage>I will be in contact soon!</SuccessMessage>
       </SuccessContent>
       <Form
         name="contact"
@@ -196,28 +200,31 @@ const ContactForm: React.FC<InViewProps> = ({ inView }) => {
         <input type="hidden" name="bot-field" />
         <FlexRow>
           <InputWrapper>
-            <InputLabel>Name</InputLabel>
+            <InputLabel htmlFor="userName">Name</InputLabel>
             <Input
               type="text"
+              id="userName"
               name="userName"
               required
               onChange={e => handleChange(e)}
             />
           </InputWrapper>
           <InputWrapper>
-            <InputLabel>Email</InputLabel>
+            <InputLabel htmlFor="userEmail">Email</InputLabel>
             <Input
               type="email"
               name="userEmail"
+              id="userEmail"
               required
               onChange={e => handleChange(e)}
             />
           </InputWrapper>
         </FlexRow>
         <TextAreaWrapper>
-          <InputLabel>Message</InputLabel>
+          <InputLabel htmlFor="userMessage">Message</InputLabel>
           <TextArea
             name="userMessage"
+            id="userMessage"
             rows={4}
             onChange={e => handleChange(e)}
           />

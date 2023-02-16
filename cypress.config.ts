@@ -8,5 +8,6 @@ export default defineConfig({
   retries: 1,
   e2e: {
     baseUrl: "http://localhost:8000",
+    testIsolation: false,
   },
 });

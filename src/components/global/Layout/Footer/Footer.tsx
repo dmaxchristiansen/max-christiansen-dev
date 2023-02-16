@@ -95,7 +95,7 @@ const Text = styled.div`
 `;
 
 const Footer: React.FC = () => (
-  <Container>
+  <Container data-cy="footer">
     <ExternalWrapper>
       <Row>
         <LinksWrapper>
@@ -103,6 +103,7 @@ const Footer: React.FC = () => (
             href="https://github.com/dmaxchristiansen"
             target="_blank"
             rel="noreferrer"
+            data-cy="footerGithubLink"
           >
             <GitHubSvg />
             <LinkText>dmaxchristiansen</LinkText>
@@ -112,12 +113,17 @@ const Footer: React.FC = () => (
             href="https://www.linkedin.com/in/dmaxdev/"
             target="_blank"
             rel="noreferrer"
+            data-cy="footerLinkedInLink"
           >
             <LinkedInSvg />
             <LinkText>dmaxdev</LinkText>
             <NewTabLinkSvg fillColor={WHITE} height={18} />
           </Link>
-          <Link href="/max_christiansen_resume.pdf" target="_blank">
+          <Link
+            href="/max_christiansen_resume.pdf"
+            target="_blank"
+            data-cy="footerResumeLink"
+          >
             <ResumeSvg />
             <LinkText>resume</LinkText>
             <NewTabLinkSvg fillColor={WHITE} height={18} />

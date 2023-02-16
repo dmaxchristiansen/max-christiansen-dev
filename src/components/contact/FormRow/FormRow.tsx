@@ -50,7 +50,6 @@ const FormRow: React.FC<InViewProps> = ({ inView }) => {
   return (
     <FlexRow inView={inView}>
       <ContactForm inView={inView} />
-
       <ImageWrapper>
         <GatsbyImage
           style={{ borderRadius: 16, boxShadow: NARROW_BLUE_GLOW }}

@@ -1,6 +1,6 @@
-describe("Homepage", () => {
+describe("Marquee Page", () => {
   before(() => {
-    cy.visit("/");
+    cy.visit("/showcase/components/marquee");
   });
 
   it("Has no detectable a11y violations on load", () => {
