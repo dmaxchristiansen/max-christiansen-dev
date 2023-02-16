@@ -10,6 +10,7 @@ const BrainSvg = () => (
     fill={WHITE}
     focusable="false"
   >
+    <title>Brain</title>
     <g>
       <path
         d="M151.245,222.446C148.054,237.039,135.036,248,119.5,248c-4.142,0-7.5,3.357-7.5,7.5s3.358,7.5,7.5,7.5

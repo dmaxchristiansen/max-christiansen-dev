@@ -10,7 +10,7 @@ import NewTabLinkSvg from "src/components/svgs/NewTabLinkSvg/NewTabLinkSvg";
 import LinkedInSvg from "src/components/svgs/LinkedInSvg/LinkedInSvg";
 import ResumeSvg from "src/components/svgs/ResumeSvg/ResumeSvg";
 
-const Container = styled.div`
+const Container = styled.footer`
   width: 100%;
   margin-top: auto;
   padding-top: 60px;

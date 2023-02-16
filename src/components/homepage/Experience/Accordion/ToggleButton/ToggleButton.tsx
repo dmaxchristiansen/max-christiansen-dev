@@ -38,7 +38,7 @@ const Button = styled.button<SectionIdProps & ButtonProps>`
   }
 `;
 
-const Header = styled.h3`
+const Header = styled.h2`
   display: flex;
   justify-content: space-between;
   width: 100%;

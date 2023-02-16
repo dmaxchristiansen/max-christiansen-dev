@@ -5,7 +5,7 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: ["./tsconfig.json"],
+    project: ["./tsconfig.json", "./cypress/tsconfig.json"],
   },
   root: true,
   env: {
@@ -21,7 +21,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "react-app",
   ],
-  ignorePatterns: ["*.spec.js", "cypress", "cypress.config.ts", "public"],
+  ignorePatterns: ["cypress.config.ts", "public"],
   rules: {
     quotes: [
       "warn",
