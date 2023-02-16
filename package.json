@@ -46,6 +46,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.2",
+    "start-server-and-test": "^1.15.4",
     "typescript": "^4.9.4"
   },
   "keywords": [
@@ -64,6 +65,7 @@
     "lint:fix": "eslint './**/*.{js,jsx,ts,tsx}' --fix",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "cy:ci": "start-server-and-test develop http://localhost:8000 cy:run",
     "prepare": "husky install"
   },
   "repository": {
