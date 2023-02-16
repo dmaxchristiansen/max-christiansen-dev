@@ -122,7 +122,7 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
   });
 
   return (
-    <Container id="expertise" ref={ref}>
+    <Container id="expertise" ref={ref} data-cy="expertise">
       <Wrapper>
         <BackgroundImage inView={inView || hasExpertiseBeenViewed} />
         <SectionHeader

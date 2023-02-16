@@ -144,7 +144,10 @@ const Intro = () => {
   return (
     <Container>
       <Wrapper>
-        <Header inView={isMounted || hasIntroBeenViewed}>
+        <Header
+          inView={isMounted || hasIntroBeenViewed}
+          data-cy="homepageMainHeader"
+        >
           Max Christiansen
         </Header>
         <Subheader inView={isMounted || hasIntroBeenViewed}>

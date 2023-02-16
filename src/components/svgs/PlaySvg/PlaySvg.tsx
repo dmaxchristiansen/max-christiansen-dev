@@ -20,6 +20,7 @@ const PlaySvg = () => (
     fill={WHITE}
     focusable="false"
   >
+    <title>Play Video</title>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

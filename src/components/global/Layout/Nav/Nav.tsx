@@ -152,7 +152,11 @@ const Nav: React.FC = () => {
         isCollapseOpen={isCollapseOpen}
       >
         <Wrapper>
-          <StyledHomeLink to="/" onClick={() => setIsCollapseOpen(false)}>
+          <StyledHomeLink
+            to="/"
+            onClick={() => setIsCollapseOpen(false)}
+            data-cy="navHomeLink"
+          >
             <OtterSvg />
             <HomeLinkText>Max Christiansen Dev</HomeLinkText>
           </StyledHomeLink>
@@ -163,7 +167,7 @@ const Nav: React.FC = () => {
           <List>
             {navConfig.map(navItem => (
               <Item key={navItem.label}>
-                <ItemLink to={navItem.destination}>
+                <ItemLink to={navItem.destination} data-cy="navLink">
                   &#x2f;&#x2f;&nbsp;{navItem.label}
                 </ItemLink>
               </Item>

@@ -1,0 +1,16 @@
+name: Test Cypress E2E
+on: [push]
+jobs:
+  cypress-e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Node Version to 18.12.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.12.0"
+      - name: Clone Repo
+        uses: actions/checkout@v2
+      - name: Run Cypress E2E Test Suite
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run cy:ci

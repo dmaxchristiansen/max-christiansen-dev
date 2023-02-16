@@ -59,7 +59,7 @@ const Experience = forwardRef<HTMLDivElement, InViewProps>(
     });
 
     return (
-      <Container id="experience" ref={ref}>
+      <Container id="experience" ref={ref} data-cy="experience">
         <Wrapper>
           <SectionHeader
             text="Professional Experience"

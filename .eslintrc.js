@@ -5,7 +5,7 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: ["./tsconfig.json"],
+    project: ["./tsconfig.json", "./cypress/tsconfig.json"],
   },
   root: true,
   env: {
@@ -15,12 +15,13 @@ module.exports = {
   plugins: ["@typescript-eslint", "unused-imports", "react-hooks"],
   extends: [
     "eslint:recommended",
+    "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "react-app",
   ],
-  ignorePatterns: ["public"],
+  ignorePatterns: ["cypress.config.ts", "public"],
   rules: {
     quotes: [
       "warn",
