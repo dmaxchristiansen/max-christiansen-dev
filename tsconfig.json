@@ -32,5 +32,6 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["src", "types.d.ts", ".eslintrc.js", "gatsby-*"]
+  "include": ["src", "types.d.ts", ".eslintrc.js", "gatsby-*"],
+  "exclude": ["cypress.config.ts"]
 }

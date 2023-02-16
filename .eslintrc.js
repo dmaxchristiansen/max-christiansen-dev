@@ -15,12 +15,13 @@ module.exports = {
   plugins: ["@typescript-eslint", "unused-imports", "react-hooks"],
   extends: [
     "eslint:recommended",
+    "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "react-app",
   ],
-  ignorePatterns: ["public"],
+  ignorePatterns: ["*.spec.js", "cypress", "cypress.config.ts", "public"],
   rules: {
     quotes: [
       "warn",
