@@ -1,0 +1,16 @@
+name: Type Check
+on: [push]
+jobs:
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Node Version to 18.12.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.12.0"
+      - name: Clone Repo
+        uses: actions/checkout@v2
+      - name: Install Deps
+        run: npm install
+      - name: Run Type Check
+        run: npm run type:check
