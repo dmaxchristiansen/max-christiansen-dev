@@ -4,8 +4,6 @@ import styled from "styled-components";
 import {
   SHARED_NAV_BUTTON_STYLES,
   SLIDER_NAV_BUTTON_STYLES,
-  PREV_NAV_BUTTON_BEFORE_STYLES,
-  NEXT_NAV_BUTTON_BEFORE_STYLES,
 } from "src/components/showcase/SliderCarousel/utils/constants";
 import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import {
@@ -14,8 +12,10 @@ import {
   ActiveIndexProps,
 } from "src/components/showcase/SliderCarousel/types/slider";
 import { STANDARD_X_PADDING } from "src/utils/constants/layouts";
-import Slide from "./Slide/Slide";
 import { WHITE_SMOKE, STORM_CLOUD } from "src/utils/constants/colors";
+import Slide from "./Slide/Slide";
+import RightChevronSvg from "src/components/svgs/RightChevronSvg/RightChevronSvg";
+import LeftChevronSvg from "src/components/svgs/LeftChevronSvg/LeftChevronSvg";
 
 const Container = styled.div`
   display: flex;
@@ -61,14 +61,12 @@ const AnimatedSlider = styled.div<ActiveIndexProps & SliderLengthProps>`
 const PrevButton = styled.button`
   ${SHARED_NAV_BUTTON_STYLES}
   ${SLIDER_NAV_BUTTON_STYLES}
-  ${PREV_NAV_BUTTON_BEFORE_STYLES}
   left: 0;
 `;
 
 const NextButton = styled.button`
   ${SHARED_NAV_BUTTON_STYLES}
   ${SLIDER_NAV_BUTTON_STYLES}
-  ${NEXT_NAV_BUTTON_BEFORE_STYLES}
   right: 0;
 `;
 
@@ -126,13 +124,17 @@ const Slider: React.FC<SliderProps> = ({ slideConfig }) => {
             aria-label="previous"
             disabled={activeIndex === 0 ? true : false}
             onClick={() => setActiveIndex(activeIndex - 1)}
-          />
+          >
+            <LeftChevronSvg />
+          </PrevButton>
           <NextButton
             type="button"
             aria-label="next"
             disabled={activeIndex === slideConfig.length - 1 ? true : false}
             onClick={() => setActiveIndex(activeIndex + 1)}
-          />
+          >
+            <RightChevronSvg />
+          </NextButton>
         </Wrapper>
       </Container>
       <ProgressRow>

@@ -19,7 +19,7 @@ export const colConfig = [
     topLineText: "Frontend Dev",
     bottomLineText: "React, Gatsby",
     contentText:
-      "Passionate about UI/UX. Over 3 years of development experience in HTML, CSS, JS/TS, React and GatsbyJS frameworks.",
+      "Passionate about UI/UX. Over 3 years of development experience in HTML, CSS, JS/TS, React, Gatsby, and Vue",
     backgroundColor: BLUE_SKY,
   },
   {

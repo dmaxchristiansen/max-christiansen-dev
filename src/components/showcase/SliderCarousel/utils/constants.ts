@@ -1,10 +1,5 @@
 import { css } from "styled-components";
-import {
-  BLACK,
-  WHITE_SMOKE,
-  GRAY_DAY,
-  STORM_CLOUD,
-} from "src/utils/constants/colors";
+import { WHITE_SMOKE, GRAY_DAY, STORM_CLOUD } from "src/utils/constants/colors";
 import { TWO_FIFTY_MS } from "src/utils/constants/transitions";
 import { LIGHT_SHADOW } from "src/utils/constants/shadows";
 
@@ -26,11 +21,6 @@ export const SHARED_NAV_BUTTON_STYLES = css`
   cursor: pointer;
   line-height: 1.1;
   transition: background-color ${TWO_FIFTY_MS};
-  &:before {
-    font-size: 36px;
-    font-family: Consolas;
-    color: ${BLACK};
-  }
   @media (min-width: 768px) {
     top: calc(50% - 24px);
     height: 48px;
@@ -57,17 +47,5 @@ export const CAROUSEL_NAV_BUTTON_STYLES = css`
   bottom: calc(12.5% - 18px);
   &:hover {
     background-color: ${GRAY_DAY};
-  }
-`;
-
-export const PREV_NAV_BUTTON_BEFORE_STYLES = css`
-  &:before {
-    content: "<";
-  }
-`;
-
-export const NEXT_NAV_BUTTON_BEFORE_STYLES = css`
-  &:before {
-    content: ">";
   }
 `;
