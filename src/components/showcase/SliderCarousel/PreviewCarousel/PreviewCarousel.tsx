@@ -4,10 +4,10 @@ import styled from "styled-components";
 import {
   SHARED_NAV_BUTTON_STYLES,
   CAROUSEL_NAV_BUTTON_STYLES,
-  PREV_NAV_BUTTON_BEFORE_STYLES,
-  NEXT_NAV_BUTTON_BEFORE_STYLES,
 } from "src/components/showcase/SliderCarousel/utils/constants";
 import CarouselController from "src/components/showcase/SliderCarousel/PreviewCarousel/CarouselController/CarouselController";
+import RightChevronSvg from "src/components/svgs/RightChevronSvg/RightChevronSvg";
+import LeftChevronSvg from "src/components/svgs/LeftChevronSvg/LeftChevronSvg";
 
 const Container = styled.div`
   padding: 0 15px 50px;
@@ -32,7 +32,6 @@ const InternalWrapper = styled.div`
 const PrevButton = styled.button`
   ${SHARED_NAV_BUTTON_STYLES}
   ${CAROUSEL_NAV_BUTTON_STYLES}
-  ${PREV_NAV_BUTTON_BEFORE_STYLES}
   left: calc(14% - 18px);
   @media (min-width: 768px) {
     left: 0;
@@ -42,7 +41,6 @@ const PrevButton = styled.button`
 const NextButton = styled.button`
   ${SHARED_NAV_BUTTON_STYLES}
   ${CAROUSEL_NAV_BUTTON_STYLES}
-  ${NEXT_NAV_BUTTON_BEFORE_STYLES}
   right: calc(14% - 18px);
   @media (min-width: 768px) {
     right: 0;
@@ -61,13 +59,17 @@ const PreviewCarousel = () => {
           aria-label="previous"
           disabled={context?.isAnimated}
           onClick={() => context?.prevAction()}
-        />
+        >
+          <LeftChevronSvg />
+        </PrevButton>
         <NextButton
           type="button"
           aria-label="next"
           disabled={context?.isAnimated}
           onClick={() => context?.nextAction()}
-        />
+        >
+          <RightChevronSvg />
+        </NextButton>
       </InternalWrapper>
     </Container>
   );
