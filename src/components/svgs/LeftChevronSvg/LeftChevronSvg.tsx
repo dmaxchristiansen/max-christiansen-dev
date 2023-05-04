@@ -14,12 +14,11 @@ const LeftChevronSvg = () => (
       <g>
         <polyline
           fill="none"
-          id="Left"
           points="15.5 5 8.5 12 15.5 19"
           stroke={BLACK}
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
         />
       </g>
     </g>
