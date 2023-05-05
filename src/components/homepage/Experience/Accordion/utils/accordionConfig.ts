@@ -1,9 +1,54 @@
+import melaleucaIcon from "src/images/Accordion/melaleuca-icon.png";
 import hhIcon from "src/images/Accordion/hh-icon.png";
 import codingDojoIcon from "src/images/Accordion/coding-dojo-icon.png";
 import sevenHillsIcon from "src/images/Accordion/seven-hills-icon.jpg";
 import { SectionProps } from "../types/accordion";
 
 export const accordionConfig: SectionProps[] = [
+  {
+    sectionId: "melaleuca",
+    header: {
+      position: "Software Engineer - Melaleuca: The Wellness Company",
+      timeframe: {
+        begin: "2022",
+        end: "?",
+      },
+    },
+    collapse: {
+      location: "Idaho Falls, ID",
+      link: {
+        text: "melaleuca.com",
+
+        href: "https://www.melaleuca.com",
+      },
+
+      description: [
+        "Frontend developer collaborating extensively with backend and services",
+        "Increased local dev build time from 1-3 minutes to 3-6 seconds within first two weeks in role",
+        "Acting SME for implementation of QA Regression Automation with Cypress",
+        "Inc",
+        "Green",
+        "Wro",
+        "Co",
+        "T",
+        "Spe",
+      ],
+      graphic: {
+        src: melaleucaIcon,
+        altText: "Melaleuca",
+      },
+      technologies: [
+        "JS",
+        "Vue",
+        "PatternLab",
+        "Webpack",
+        "C#",
+        "ASP.NET",
+        "Sitecore",
+        "Azure",
+      ],
+    },
+  },
   {
     sectionId: "foundry",
     header: {
