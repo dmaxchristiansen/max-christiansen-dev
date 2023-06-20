@@ -47,6 +47,7 @@ const Header = styled.h2`
   font-weight: 400;
   @media (max-width: 991px) {
     align-items: center;
+    margin-right: 24px;
   }
   @media (max-width: 520px) {
     font-size: 16px;
