@@ -21,7 +21,7 @@ import {
   STANDARD_X_PADDING,
 } from "src/utils/constants/layouts";
 import ProfileImage from "src/components/homepage/Intro/ProfileImage/ProfileImage";
-import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
+import ScrollDownButton from "src/components/homepage/ScrollDownButton/ScrollDownButton";
 
 const Container = styled.div`
   max-width: ${STANDARD_WIDTH};
@@ -162,7 +162,7 @@ const Intro = () => {
         <DesktopProfileImageContainer inView={isMounted || hasIntroBeenViewed}>
           <ProfileImage />
         </DesktopProfileImageContainer>
-        <ChevronScrollButton
+        <ScrollDownButton
           targetElementId="expertise"
           targetElementOffsetTopValue={0}
           transitionDelay={FOUR_THOUSAND_MS}

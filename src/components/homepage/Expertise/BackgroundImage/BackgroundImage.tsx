@@ -18,16 +18,16 @@ const ImageContainer = styled.div<InViewProps>`
   -webkit-mask-image: linear-gradient(
     to bottom,
     ${WHITE} 0%,
-    ${WHITE} 40%,
+    ${WHITE} 60%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     ${WHITE} 0%,
-    ${WHITE} 40%,
+    ${WHITE} 60%,
     transparent 100%
   );
-  opacity: ${({ inView }) => (inView ? "0.17" : "0")};
+  opacity: ${({ inView }) => (inView ? "0.25" : "0")};
   transition: opacity ${FIVE_HUNDRED_MS} ${ONE_THOUSAND_MS};
   @media (max-width: 991px) {
     display: none;

@@ -1,9 +1,54 @@
+import melaleucaIcon from "src/images/Accordion/melaleuca-icon.png";
 import hhIcon from "src/images/Accordion/hh-icon.png";
 import codingDojoIcon from "src/images/Accordion/coding-dojo-icon.png";
 import sevenHillsIcon from "src/images/Accordion/seven-hills-icon.jpg";
 import { SectionProps } from "../types/accordion";
 
 export const accordionConfig: SectionProps[] = [
+  {
+    sectionId: "melaleuca",
+    header: {
+      position: "Software Engineer II - Melaleuca: The Wellness Company",
+      timeframe: {
+        begin: "2023",
+        end: "Current",
+      },
+    },
+    collapse: {
+      location: "Idaho Falls, ID",
+      link: {
+        text: "melaleuca.com",
+
+        href: "https://www.melaleuca.com",
+      },
+
+      description: [
+        "Vue.js frontend developer collaborating extensively with backend, services, and design on an ecommerce app that spans 7 global markets",
+        "Increased local dev build time from 1-3 minutes to 3-6 seconds within first two weeks in role through global overhaul to webpack config",
+        "Greenfielded new Cypress repo for first-time implementation of QA Regression Automation",
+        "Acting Cypress SME",
+        "Pushed-for and authored Node.js version updates to dependencies across 7 projects",
+        "Consulting with C-Suite level stakeholders for implementation of best practices and prioritization of tech-debt work",
+      ],
+      graphic: {
+        src: melaleucaIcon,
+        altText: "Melaleuca",
+      },
+      technologies: [
+        "JS",
+        "Vue",
+        "SaSS",
+        "PatternLab",
+        "HBS",
+        "Webpack",
+        "Cypress",
+        "C#",
+        "ASP.NET",
+        "Sitecore",
+        "Azure",
+      ],
+    },
+  },
   {
     sectionId: "foundry",
     header: {
@@ -26,7 +71,7 @@ export const accordionConfig: SectionProps[] = [
         "Hand-rolled frontend features in HTML, CSS, and JS/TS without any dependencies",
         "Overhauled legacy code and implemented React best practices",
         "Increased code usability, portability, and reduced load time",
-        "Greenfielded a new React repo written in TS",
+        "Greenfielded a new React repo written in TS ahead of company rebrand",
         "Wrote unit and E2E tests against components and pages",
         "Collaborated extensively with designers to achieve intuitive UI/UX",
         "Touches to over 150,000 lines of code",
@@ -41,9 +86,14 @@ export const accordionConfig: SectionProps[] = [
         "JS",
         "React",
         "Gatsby",
+        "Styled-Components",
+        "Storybook",
+        "Jest",
+        "Cypress",
         "GraphQL",
         "Contentful",
         "Netlify",
+        "GitHub",
       ],
     },
   },

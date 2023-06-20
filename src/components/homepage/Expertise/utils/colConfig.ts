@@ -8,18 +8,18 @@ export const colConfig = [
     index: 0,
     SvgComponent: ComputerSvg,
     topLineText: "Software",
-    bottomLineText: "Development",
+    bottomLineText: "Engineering",
     contentText:
-      "Highly proficient in both functional and OOP. Experienced with JavaScript, TypeScript, Python, Java, and Ruby.",
+      "Highly proficient in both functional and OOP. Experienced with JavaScript, TypeScript, Python, C#, Java, and Ruby.",
     backgroundColor: HOT_PINK,
   },
   {
     index: 1,
     SvgComponent: ReactSvg,
-    topLineText: "Frontend Dev",
-    bottomLineText: "React, Gatsby",
+    topLineText: "Frontend",
+    bottomLineText: "Development",
     contentText:
-      "Passionate about UI/UX. Over 3 years of development experience in HTML, CSS, JS/TS, React, Gatsby, and Vue",
+      "Delivering exceptional UI/UX for over 4 years. Extensive experience in HTML5, CSS, SaSS, ES6, React, Gatsby, and Vue.",
     backgroundColor: BLUE_SKY,
   },
   {

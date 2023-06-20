@@ -14,7 +14,7 @@ import {
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Accordion from "src/components/homepage/Experience/Accordion/Accordion";
 import CtaLink from "src/components/homepage/CtaLink/CtaLink";
-import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
+import ScrollDownButton from "src/components/homepage/ScrollDownButton/ScrollDownButton";
 
 const Container = styled.div`
   margin-top: 50px;
@@ -70,12 +70,12 @@ const Experience = forwardRef<HTMLDivElement, InViewProps>(
           </AccordionWrapper>
           <CtaLink
             text="download resume"
-            destination="/max_christiansen_resume.pdf"
+            destination="/max_christiansen_resume_spring_2023.pdf"
             transitionDelay={FIFTEEN_HUNDRED_MS}
             isExternal
             inView={inView || hasExperienceBeenViewed}
           />
-          <ChevronScrollButton
+          <ScrollDownButton
             targetElementId="stack"
             targetElementOffsetTopValue={0}
             transitionDelay={TWO_THOUSAND_MS}

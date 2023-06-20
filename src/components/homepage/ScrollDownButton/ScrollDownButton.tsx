@@ -1,12 +1,8 @@
 import styled from "styled-components";
 import { scrollToTargetElement } from "src/utils/helpers/scrollToTargetElement";
-import { BLUE_TEXT_GLOW_KEYFRAMES } from "src/utils/constants/animations";
-import {
-  THREE_THOUSAND_MS,
-  FIVE_HUNDRED_MS,
-} from "src/utils/constants/transitions";
+import { FIVE_HUNDRED_MS } from "src/utils/constants/transitions";
 import { Z_TWENTY } from "src/utils/constants/layers";
-import { GRIMACE } from "src/utils/constants/colors";
+import { CLEAR, WHITE } from "src/utils/constants/colors";
 import { InViewProps } from "src/utils/types/inView";
 
 interface RenderProps {
@@ -15,7 +11,7 @@ interface RenderProps {
   hideOnMobile?: boolean;
 }
 
-interface ChevronScrollButtonProps extends InViewProps, RenderProps {
+interface ScrollDownButtonProps extends InViewProps, RenderProps {
   targetElementId: string;
   targetElementOffsetTopValue: number;
 }
@@ -44,24 +40,28 @@ const Wrapper = styled.div<InViewProps & RenderProps>`
 `;
 
 const Button = styled.button`
-  padding: 0px 10px 40px;
+  padding: 20px;
   background: none;
   border: none;
-  font-size: 80px;
-  font-weight: 900;
-  line-height: 25%;
   cursor: pointer;
-  -webkit-text-stroke: 2.5px ${GRIMACE};
-  animation: ${BLUE_TEXT_GLOW_KEYFRAMES} ${THREE_THOUSAND_MS};
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  @media (max-width: 520px) {
-    animation: none;
-    font-size: 60px;
-  }
 `;
 
-const ChevronScrollButton: React.FC<ChevronScrollButtonProps> = ({
+const ArrowPoint = styled.div`
+  width: 0px;
+  height: 0px;
+  border-top: 12px solid ${WHITE};
+  border-left: 14px solid ${CLEAR};
+  border-right: 14px solid ${CLEAR};
+`;
+
+const ArrowBase = styled.div`
+  height: 16px;
+  width: 12px;
+  margin: 0px auto;
+  background-color: ${WHITE};
+`;
+
+const ScrollDownButton: React.FC<ScrollDownButtonProps> = ({
   targetElementId,
   targetElementOffsetTopValue,
   transitionDelay,
@@ -82,9 +82,10 @@ const ChevronScrollButton: React.FC<ChevronScrollButtonProps> = ({
         scrollToTargetElement(targetElementId, targetElementOffsetTopValue)
       }
     >
-      &#x2304;
+      <ArrowBase />
+      <ArrowPoint />
     </Button>
   </Wrapper>
 );
 
-export default ChevronScrollButton;
+export default ScrollDownButton;

@@ -1,4 +1,5 @@
 export const INITIAL_STATE = {
+  melaleuca: false,
   foundry: false,
   dojo: false,
   hills: false,

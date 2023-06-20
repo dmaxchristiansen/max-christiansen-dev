@@ -19,7 +19,7 @@ import {
 import SectionHeader from "src/components/global/SectionHeader/SectionHeader";
 import Col from "src/components/homepage/Expertise/Col/Col";
 import Subheader from "src/components/homepage/Expertise/Subheader/Subheader";
-import ChevronScrollButton from "src/components/homepage/ChevronScrollButton/ChevronScrollButton";
+import ScrollDownButton from "src/components/homepage/ScrollDownButton/ScrollDownButton";
 import CtaLink from "src/components/homepage/CtaLink/CtaLink";
 import BackgroundImage from "src/components/homepage/Expertise/BackgroundImage/BackgroundImage";
 
@@ -158,7 +158,7 @@ const Expertise = forwardRef<HTMLDivElement, InViewProps>(({ inView }, ref) => {
           transitionDelay={FIFTEEN_HUNDRED_MS}
           inView={inView || hasExpertiseBeenViewed}
         />
-        <ChevronScrollButton
+        <ScrollDownButton
           targetElementId="experience"
           targetElementOffsetTopValue={0}
           transitionDelay={TWO_THOUSAND_MS}
