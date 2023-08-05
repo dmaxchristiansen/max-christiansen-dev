@@ -40,7 +40,7 @@ const Container = styled.div<SectionIdProps & ContainerProps>`
   transition-timing-function: ${ACCORDION_TRANSITION_TIMING};
   @media (max-width: 767px) {
     max-height: ${({ sectionId, isExpanded }) =>
-      isExpanded[sectionId] ? "840px" : "10px"};
+      isExpanded[sectionId] ? "940px" : "10px"};
   }
 `;
 
