@@ -67,7 +67,7 @@ const SocialMedia: React.FC<InViewProps> = ({ inView }) => {
   return (
     <Container inView={inView}>
       <div>
-        <Link href="/max_christiansen_resume_spring_2023.pdf" target="_blank">
+        <Link href="/max_christiansen_resume_2024.pdf" target="_blank">
           <ResumeSvg height={isMobile ? 50 : 60} />
           <LinkText>download resume</LinkText>
           <NewTabLinkSvg fillColor={WHITE} height={isMobile ? 18 : 25} />

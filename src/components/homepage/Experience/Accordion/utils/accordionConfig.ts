@@ -8,7 +8,7 @@ export const accordionConfig: SectionProps[] = [
   {
     sectionId: "melaleuca",
     header: {
-      position: "Software Engineer II - Melaleuca: The Wellness Company",
+      position: "Sr. Software Engineer - Melaleuca: The Wellness Company",
       timeframe: {
         begin: "2023",
         end: "Current",
