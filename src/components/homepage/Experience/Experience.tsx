@@ -70,7 +70,7 @@ const Experience = forwardRef<HTMLDivElement, InViewProps>(
           </AccordionWrapper>
           <CtaLink
             text="download resume"
-            destination="/max_christiansen_resume_spring_2023.pdf"
+            destination="/max_christiansen_resume_2024.pdf"
             transitionDelay={FIFTEEN_HUNDRED_MS}
             isExternal
             inView={inView || hasExperienceBeenViewed}

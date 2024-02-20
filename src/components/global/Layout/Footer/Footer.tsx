@@ -120,7 +120,7 @@ const Footer: React.FC = () => (
             <NewTabLinkSvg fillColor={WHITE} height={18} />
           </Link>
           <Link
-            href="/max_christiansen_resume_spring_2023.pdf"
+            href="/max_christiansen_resume_2024.pdf"
             target="_blank"
             data-cy="footerResumeLink"
           >
