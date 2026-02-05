@@ -24,11 +24,11 @@ export const accordionConfig: SectionProps[] = [
 
       description: [
         "Vue.js frontend developer collaborating extensively with backend, services, and design on an ecommerce app that spans 7 global markets",
-        "Increased local dev build time from 1-3 minutes to 3-6 seconds within first two weeks in role through global overhaul to webpack config",
-        "Greenfielded new Cypress repo for first-time implementation of QA Regression Automation",
-        "Acting Cypress SME",
-        "Pushed-for and authored Node.js version updates to dependencies across 7 projects",
-        "Consulting with C-Suite level stakeholders for implementation of best practices and prioritization of tech-debt work",
+        "Member of the AI Center of Excellence - integrating AI into all workflows",
+        "Increased local dev build time from 1-3 minutes to 3-6 seconds within first two weeks in role through overhaul refactor to Webpack config",
+        "Pushed-for and authored Node.js & Webpack migrations across the frontend monorepo",
+        "Greenfielded Cypress.io repo for first-time implementation of QA Regression Automation",
+        "Consulting with C-Suite level stakeholders for web optimization and prioritization of tech-debt work",
       ],
       graphic: {
         src: melaleucaIcon,
@@ -162,6 +162,7 @@ export const accordionConfig: SectionProps[] = [
       description: [
         "Instructed and developed a high school CS curricula in grades 9-12",
         "Developed strong foundational knowledge of CS Algorithms & Data Structures",
+        "Facilitated student development of modern web applications",
         "Computer Architecture & Quantum Computing",
         "Ethics in Technology & Women in Programming",
       ],
