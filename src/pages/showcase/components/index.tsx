@@ -23,7 +23,6 @@ import Seo from "src/components/global/Seo/Seo";
 
 const linksConfig = [
   { label: "CAROUSELS", href: "/showcase/components/carousels" },
-  { label: "MARQUEE", href: "/showcase/components/marquee" },
   { label: "DATA VISUALIZER", href: "/showcase/components/data-visualizer" },
 ];
 
@@ -184,7 +183,7 @@ const ComponentsPage = () => {
           </MidLine>
           <ReactImg src={reactLogo} alt="React logo" />
         </MidLineWrapper>
-        <BottomLine>...with no dependencies</BottomLine>
+        <BottomLine>...with no other dependencies</BottomLine>
         <LinksContainer>
           {linksConfig.map(link => (
             <StyledLink key={link.label} to={link.href} isAnimated={isAnimated}>
