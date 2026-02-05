@@ -36,38 +36,23 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        mergeSecurityHeaders: false,
-        headers: {
-          "/*": [
-            "X-Frame-Options: DENY",
-            "X-XSS-Protection: 1; mode=block",
-            "X-Content-Type-Options: nosniff",
-            "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
-            "Referrer-Policy: unsafe-url",
-          ],
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-webfonts`,
       options: {
         fonts: {
           google: [
             {
               family: "Mr Dafoe",
-              strategy: "selfHosted",
+              strategy: "cdn",
             },
             {
               family: "Exo",
               variants: ["500", "700", "900"],
-              strategy: "selfHosted",
+              strategy: "cdn",
             },
             {
               family: "Roboto Mono",
               variants: ["400"],
-              strategy: "selfHosted",
+              strategy: "cdn",
             },
           ],
         },
